@@ -1,6 +1,6 @@
 {
     "name": "devgeniem/acf-codifier",
-    "type": "wordpress-plugin",
+    "type": "wordpress-muplugin",
     "description": "ACF Codifier",
     "authors": [
         {
@@ -8,7 +8,7 @@
             "email": "miika@geniem.com",
             "homepage": "http://geniem.com/",
             "role": "Developer"
-        }, 
+        }
     ],
     "keywords": [
         "wordpress", "acf"

@@ -1,0 +1,27 @@
+{
+    "name": "devgeniem/acf-codifier",
+    "type": "wordpress-plugin",
+    "description": "ACF Codifier",
+    "authors": [
+        {
+            "name": "Miika Arponen",
+            "email": "miika@geniem.com",
+            "homepage": "http://geniem.com/",
+            "role": "Developer"
+        }, 
+    ],
+    "keywords": [
+        "wordpress", "acf"
+    ],
+    "license": "GPL-3.0",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "ssh://git@github.com/devgeniem/acf-codifier.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Geniem\\ACF\\": "src/"}
+    }
+}

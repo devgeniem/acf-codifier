@@ -1,31 +1,105 @@
 <?php
+/**
+ * ACF Codifier Group class
+ */
+
 namespace Geniem\ACF;
 
+/**
+ * Class Group
+ *
+ * @package Geniem\ACF
+ */
 class Group {
+    /**
+     * Field group title
+     *
+     * @var string
+     */
     protected $title;
 
+    /**
+     * Field group key
+     *
+     * @var string
+     */
     protected $key;
 
+    /**
+     * Field group menu order value
+     *
+     * @var int
+     */
     protected $menu_order;
 
+    /**
+     * Field group position value
+     *
+     * @var string
+     */
     protected $position;
 
+    /**
+     * Field group style value
+     *
+     * @var string
+     */
     protected $style;
 
+    /**
+     * Field group label placement value
+     *
+     * @var string
+     */
     protected $label_placement;
 
+    /**
+     * Field group instruction placement value
+     *
+     * @var string
+     */
     protected $instruction_placement;
 
+    /**
+     * Field group hide on screen value
+     *
+     * @var boolean
+     */
     protected $hide_on_screen;
 
+    /**
+     * Field group location rules
+     *
+     * @var array
+     */
     protected $location;
 
+    /**
+     * Field group fields
+     *
+     * @var array
+     */
     protected $fields;
 
+    /**
+     * Field group active status
+     *
+     * @var boolean
+     */
     protected $active;
 
+    /**
+     * Is field group registered yet
+     *
+     * @var boolean
+     */
     protected $registered = false;
 
+    /**
+     * Field group constructor
+     *
+     * @param string $title Field group title.
+     */
     public function __construct( string $title ) {
         $this->title = $title;
 
@@ -34,9 +108,23 @@ class Group {
         $this->active = 1;
     }
 
+    /**
+     * Prevent raw cloning
+     *
+     * @return void
+     */
     private function __clone() {}
 
-    public function clone( $key, $name = null ) {
+    /**
+     * Clone method
+     *
+     * Forces the developer to give new key to cloned field group.
+     *
+     * @param string $key  Field group key.
+     * @param string $name Field group name (optional).
+     * @return Geniem\ACF\Group
+     */
+    public function clone( string $key, string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -50,53 +138,101 @@ class Group {
         return $clone;
     }
 
+    /**
+     * Export fields in ACF's native format.
+     *
+     * @return array
+     */
     public function export() {
         $obj = get_object_vars( $this );
 
         if ( ! empty( $obj['fields'] ) ) {
+            // Loop through fields and return their export method.
             $obj['fields'] = array_map( function( $field ) {
                 return $field->export();
             }, $obj['fields'] );
 
+            // Remove keys from the array.
             $obj['fields'] = array_values( $obj['fields'] );
         }
 
         return $obj;
     }
 
+    /**
+     * Set new title for the field group.
+     *
+     * @param string $title Field group title.
+     * @return self
+     */
     public function set_title( string $title ) {
         $this->title = $title;
 
         return $this;
     }
 
+    /**
+     * Get field group title.
+     *
+     * @return string
+     */
     public function get_title() {
         return $this->title;
     }
 
+    /**
+     * Set new key for the field group.
+     *
+     * @param string $key Field group key.
+     * @return self
+     */
     public function set_key( string $key ) {
         $this->key = $key;
 
         return $this;
     }
 
+    /**
+     * Get field group key.
+     *
+     * @return string
+     */
     public function get_key() {
         return $this->key;
     }
 
+    /**
+     * Set field group menu order.
+     *
+     * @param int $order Field group menu order value.
+     * @return self
+     */
     public function set_menu_order( int $order = 0 ) {
         $this->menu_order = $order;
 
         return $this;
     }
 
+    /**
+     * Get field group menu order.
+     *
+     * @return int
+     */
     public function get_menu_order() {
         return $this->menu_order;
     }
 
+    /**
+     * Set field group position within the edit post screen.
+     *
+     * @param string $position       Field group's position value.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_position( string $position = 'normal' ) {
+        // Check for valid values for the parameter.
         if ( ! in_array( $position, [ 'acf_after_title', 'normal', 'side' ] ) ) {
-            throw new Exception ( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position .'"' );
         }
 
         $this->position = $position;
@@ -104,13 +240,26 @@ class Group {
         return $this;
     }
 
+    /**
+     * Get field group position value.
+     *
+     * @return string
+     */
     public function get_position() {
         return $this->position;
     }
 
+    /**
+     * Set field group display style.
+     *
+     * @param string $style Field group's style value.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_style( string $style = 'default' ) {
+        // Check for valid values for the parameter.
         if ( ! in_array( $style, [ 'default', 'seamless' ] ) ) {
-            throw new Exception ( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style .'"' );
         }
 
         $this->style = $style;
@@ -118,13 +267,26 @@ class Group {
         return $this;
     }
 
+    /**
+     * Get field group display style.
+     *
+     * @return self
+     */
     public function get_style() {
         return $this->style;
     }
 
+    /**
+     * Set field group label placement value.
+     *
+     * @param string $placement Field group's label placement value.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return void
+     */
     public function set_label_placement( string $placement = 'top' ) {
+        // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
-            throw new Exception ( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement .'"' );
         }
 
         $this->label_placement = $placement;
@@ -132,13 +294,26 @@ class Group {
         return $this;
     }
 
+    /**
+     * Get field group label placement value.
+     *
+     * @return string
+     */
     public function get_label_placement() {
         return $this->label_placement;
     }
 
+    /**
+     * Set field group instructions placement value.
+     *
+     * @param string $placement Field group's instruction placement value.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_instruction_placement( string $placement = 'label' ) {
+        // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'label', 'field' ] ) ) {
-            throw new Exception ( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement .'"' );
         }
 
         $this->instruction_placement = $placement;
@@ -146,24 +321,48 @@ class Group {
         return $this;
     }
 
+    /**
+     * Set elements to be hid on the post edit screen.
+     *
+     * @param array $elements Array of elements to hid.
+     * @return self
+     */
     public function set_hidden_elements( array $elements ) {
         $this->hide_on_screen = $elements;
 
         return $this;
     }
 
+    /**
+     * Get hidden elements.
+     *
+     * @return array
+     */
     public function get_hidden_elements() {
         return $this->hide_on_screen;
     }
 
+    /**
+     * Set an element to be hid on the edit post screen.
+     *
+     * @param string $element Name of the element to be hid.
+     * @return self
+     */
     public function hide_element( string $element ) {
         $this->hide_on_screen[] = $element;
 
+        // Ensure that all elements are in the array only once.
         $this->hide_on_screen = array_unique( $this->hide_on_screen );
 
         return $this;
     }
 
+    /**
+     * Show previously hidden element on the edit post screen.
+     *
+     * @param string $element Name of the element to be shown.
+     * @return self
+     */
     public function show_element( string $element ) {
         $position = array_search( $element, $this->hide_on_screen );
 
@@ -174,6 +373,12 @@ class Group {
         return $this;
     }
 
+    /**
+     * Add a location rule group for the field group.
+     *
+     * @param \Geniem\ACF\RuleGroup $group Rule group to be added.
+     * @return self
+     */
     public function add_rule_group( \Geniem\ACF\RuleGroup $group ) {
         $rules = $group->get_rules();
 
@@ -184,23 +389,35 @@ class Group {
         return $this;
     }
 
+    /**
+     * Get all rule groups that have been added for the field group.
+     *
+     * @return array
+     */
     public function get_rule_groups() {
         return $this->location;
     }
 
-    public function add_field( $field ) {
-        if ( ! $field instanceof \Geniem\ACF\Field ) {
-            throw new Exception( 'Geniem\ACF\Group: add_field() requires an argument that is type "\Geniem\ACF\Field"' );
-        }
-
+    /**
+     * Add a field to the field group.
+     *
+     * @param \Geniem\ACF\Field $field A field to be added.
+     * @return self
+     */
+    public function add_field( \Geniem\ACF\Field $field ) {
+        // Special treatment if the field to be added is a tab.
         if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+            // Save the subfields from the tab...
             $sub_fields = $field->get_fields();
 
+            // ...and take them away from their original mother.
             $field->remove_fields();
         }
 
-        $this->fields[ $field->get_name() ] = $field;
+        // Add the field to the fields array.
+        $this->fields[ $field->get_key() ] = $field;
 
+        // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_add_local_field' ) ) {
                 $exported = $field->export();
@@ -211,6 +428,7 @@ class Group {
             }
         }
 
+        // If we have stored subfields from a tab, add them one by one separately.
         if ( ! empty( $sub_fields ) ) {
             foreach ( $sub_fields as $sub_field ) {
                 $this->add_field( $sub_field );
@@ -220,44 +438,86 @@ class Group {
         return $this;
     }
 
-    public function remove_field( $name ) {
+    /**
+     * Remove a field from the field group.
+     *
+     * @param string $key The name of the field to be removed.
+     * @return self
+     */
+    public function remove_field( string $key ) {
+        // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
-            if ( function_exists( 'acf_add_local_field' ) ) {
-                $field = $field->export();
-
-                $field['parent'] = $this->key;
-
-                \acf_add_local_field( $field );
+            if ( function_exists( 'acf_remove_local_field' ) ) {
+                \acf_remove_local_field( $key );
             }
         }
 
-        if ( isset( $this->fields[ $name ] ) ) {
-            unset( $this->fields[ $name ] );
+        // Otherwise just remove it from the array.
+        if ( isset( $this->fields[ $key ] ) ) {
+            unset( $this->fields[ $key ] );
         }
 
         return $this;
     }
 
-    public function get_field( $name ) {
-        return $this->fields[ $name ];
+    /**
+     * Get a field by its key.
+     *
+     * @param string $key The key of the field to be fetched.
+     * @return \Geniem\ACF\Field
+     */
+    public function get_field( string $key ) {
+        return $this->fields[ $key ];
     }
 
+    /**
+     * Get all fields from the field group.
+     *
+     * @return array
+     */
     public function get_fields() {
         return $this->fields;
     }
 
+    /**
+     * Export fields in the ACF format.
+     *
+     * @return array
+     */
+    public function export_fields() {
+        // Loop through fields and return their export method.
+        return array_map( function( $field ) {
+            return $field->export();
+        }, $this->fields );
+    }
+
+    /**
+     * Change the field group's status as active.
+     *
+     * @return self
+     */
     public function activate() {
         $this->active = 1;
 
         return $this;
     }
 
+    /**
+     * Change the field group's status as not active.
+     *
+     * @return self
+     */
     public function deactivate() {
         $this->active = 0;
 
         return $this;
     }
 
+    /**
+     * Register the field group to ACF.
+     *
+     * @return void
+     */
     public function register() {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             \acf_add_local_field_group( $this->export() );
@@ -266,6 +526,11 @@ class Group {
         }
     }
 
+    /**
+     * Reset the field group's registered status.
+     *
+     * @return void
+     */
     public function reset() {
         $this->registered = false;
     }

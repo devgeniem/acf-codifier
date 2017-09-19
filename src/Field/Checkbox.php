@@ -1,4 +1,7 @@
 <?php
+/**
+ * ACF Codifier Checkbox field
+ */
 namespace Geniem\ACF\Field;
 
 class Checkbox extends Field {

@@ -1,5 +1,11 @@
 <?php
+/**
+ * Exception class for the ACF Codifier.
+ */
+
 namespace Geniem\ACF;
 
-class Exception extends \Exception {
-}
+/**
+ * Class Exception
+ */
+class Exception extends \Exception {}

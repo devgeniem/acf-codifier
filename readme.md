@@ -61,7 +61,15 @@ $field_group->set_position( 'side' )         // Set the field group to be shown 
             ->hide_element( 'the_content' ); // Hide the native WP content field.
 ```
 
-#### Available methods
+Field group is registered to use with `register` method:
+
+```php
+$field_group->register();
+```
+
+Obviously your new field group wouldn't have any fields at this point, but don't worry, we get to them later.
+
+### Available methods
 
 **clone**
 - parameters: string $key, string name = _null_

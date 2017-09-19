@@ -1,19 +1,63 @@
 <?php
+/**
+ * ACF Codifier Clone field.
+ */
+
 namespace Geniem\ACF\Field;
 
+/**
+ * Class CloneField
+ *
+ * Named like this because 'Clone' is a reserved word in PHP.
+ */
 class CloneField extends \Geniem\ACF\Field {
+    /**
+     * Field type.
+     *
+     * @var string Clone.
+     */
     protected $type = 'clone';
 
+    /**
+     * The field's display style
+     *
+     * @var string
+     */
     protected $display = 'seamless';
 
+    /**
+     * The layout style of the field.
+     *
+     * @var string
+     */
     protected $layout = 'block';
 
-    protected $prefix_label = 0;
+    /**
+     * Whether the field label is to be prefixed.
+     *
+     * @var boolean
+     */
+    protected $prefix_label = false;
 
-    protected $prefix_name = 0;
+    /**
+     * Whether the field name is to be prefixed.
+     *
+     * @var boolean
+     */
+    protected $prefix_name = false;
 
+    /**
+     * The fields or groups to be cloned.
+     *
+     * @var array
+     */
     protected $clone;
 
+    /**
+     * Export the fields to be cloned in ACF's native format.
+     *
+     * @return array
+     */
     public function export() {
         $obj = get_object_vars( $this );
 
@@ -29,9 +73,16 @@ class CloneField extends \Geniem\ACF\Field {
         return $obj;
     }
 
+    /**
+     * Set the clone field's display mode.
+     *
+     * @param string $display_mode   The display mode.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_display_mode( string $display_mode = 'seamless' ) {
         if ( ! in_array( $display_mode, [ 'seamless', 'group' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_display_mode() does not accept argument "' . $display_mode .'"' );
+            throw new \Geniem\ACF\Exception('Geniem\ACF\Group: set_display_mode() does not accept argument "' . $display_mode .'"' );
         }
 
         $this->display = $display_mode;
@@ -39,13 +90,25 @@ class CloneField extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get the display mode.
+     *
+     * @return string
+     */
     public function get_display_mode() {
         return $this->display;
     }
 
+    /**
+     * Set the clone field's layout mode.
+     *
+     * @param string $layout         Layout mode.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_layout( string $layout = 'block' ) {
         if ( ! in_array( $layout, [ 'block', 'table', 'row' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_layout() does not accept argument "' . $layout .'"' );
+            throw new \Geniem\ACF\Exception('Geniem\ACF\Group: set_layout() does not accept argument "' . $layout .'"' );
         }
 
         $this->layout = $layout;
@@ -53,45 +116,87 @@ class CloneField extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get the field's layout mode.
+     *
+     * @return string
+     */
     public function get_layout() {
         return $this->layout;
     }
 
+    /**
+     * Prefix the field's label.
+     *
+     * @return self
+     */
     public function set_label_prefix() {
         $this->prefix_label = 1;
 
         return $this;
     }
 
+    /**
+     * Don't prefix the field's label.
+     *
+     * @return self
+     */
     public function remove_label_prefix() {
         $this->prefix_label = 0;
 
         return $this;
     }
 
+    /**
+     * Get the label prefixing status.
+     *
+     * @return boolean
+     */
     public function get_label_prefix() {
         return $this->prefix_label;
     }
 
+    /**
+     * Prefix the field's name.
+     *
+     * @return self
+     */
     public function set_name_prefix() {
         $this->prefix_name = 1;
 
         return $this;
     }
 
+    /**
+     * Don't prefix the field's name.
+     *
+     * @return self
+     */
     public function remove_name_prefix() {
         $this->prefix_name = 0;
 
         return $this;
     }
 
+    /**
+     * Get the name prefixing status.
+     *
+     * @return boolean
+     */
     public function get_name_prefix() {
         return $this->prefix_name;
     }
 
+    /**
+     * Add a field or a group to be cloned.
+     *
+     * @param mixed $clone           A field or a field group to be cloned.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function add_clone( $clone ) {
         if ( ! ( $clone instanceof \Geniem\ACF\Field || $clone instanceof \Geniem\ACF\Group || is_string( $clone ) ) ) {
-            throw new Exception ( 'Geniem\ACF\Field\Clone: add_clone() requires an argument that is a string or type "\Geniem\ACF\Field" or "\Geniem\ACF\Group"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Clone: add_clone() requires an argument that is a string or type "\Geniem\ACF\Field" or "\Geniem\ACF\Group"' );
         }
 
         if ( is_string( $clone ) ) {
@@ -108,9 +213,16 @@ class CloneField extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Remove a cloned item.
+     *
+     * @param mixed $clone           A field or a field group to be removed.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function remove_clone( $clone ) {
         if ( ! ( $clone instanceof \Geniem\ACF\Field || $clone instanceof \Geniem\ACF\Group || is_string( $clone ) ) ) {
-            throw new Exception ( 'Geniem\ACF\Field\Clone: remove_clone() requires an argument that is a string or type "\Geniem\ACF\Field" or "\Geniem\ACF\Group"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Clone: remove_clone() requires an argument that is a string or type "\Geniem\ACF\Field" or "\Geniem\ACF\Group"' );
         }
 
         if ( is_string( $clone ) ) {
@@ -125,6 +237,11 @@ class CloneField extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get an array of cloned fields.
+     *
+     * @return array
+     */
     public function get_clones() {
         return $this->clone;
     }

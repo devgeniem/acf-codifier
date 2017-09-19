@@ -100,10 +100,10 @@ class Group {
      *
      * @param string $title Field group title.
      */
-    public function __construct( string $title ) {
+    public function __construct( string $title, string $key = null ) {
         $this->title = $title;
 
-        $this->key = sanitize_title( $title );
+        $this->key = $key ?? sanitize_title( $title );
 
         $this->active = 1;
     }

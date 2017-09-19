@@ -2,68 +2,93 @@
 /**
  * ACF Codifier Checkbox field
  */
+
 namespace Geniem\ACF\Field;
 
+/**
+ * Class Checkbox
+ */
 class Checkbox extends Field {
+    /**
+     * The field type
+     *
+     * @var string Checkbox
+     */
     protected $type = 'checkbox';
 
+    /**
+     * The choices for the field
+     *
+     * @var array
+     */
     protected $choices;
 
-    protected $checkbox;
+    /**
+     * The checkbox layout, vertical or horizontal
+     *
+     * @var string
+     */
+    protected $layout;
 
-    public function set_choices( $choices ) {
-        if ( ! is_array( $choices ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_choices() requires an array as an argument' );
-        }
-
+    /**
+     * Set choices for the checkbox
+     *
+     * @param array $choices Choices as strings.
+     * @return self
+     */
+    public function set_choices( array $choices ) {
         $this->choices = $choices;
 
         return $this;
     }
 
-    public function add_choice( $choice ) {
-        if ( is_array( $choice ) ) {
-            if ( count( $choice ) > 0 ) {
-                throw new Exception ('Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
-            }
+    /**
+     * Add a choice.
+     *
+     * @param string $choice Choice to be added.
+     * @return self
+     */
+    public function add_choice( string $choice ) {
+        $this->choices[] = $choice;
 
-            $this->choices = array_merge( $this->choices, $choice );
-        }
-        else {
-            $this->choices[] = $choice;
+        return $this;
+    }
+
+    /**
+     * Remove a choice.
+     *
+     * @param string $choice Choice to be removed
+     * @return self
+     */
+    public function remove_choice( string $choice ) {
+        $position = array_search( $choice, $this->choices );
+
+        if ( ( $position !== false ) ) {
+            unset( $this->choices[ $position ] );
         }
 
         return $this;
     }
 
-    public function remove_choice( $choice ) {
-        if ( is_array( $choice ) ) {
-            if ( count( $choice ) > 0 ) {
-                throw new Exception ('Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
-            }
-
-            if ( isset( $this->choices[ $choice[0] ] ) && $this->choices[ $choice[ 0 ] ] === $choice[ 1 ] ) {
-                unset( $this->choices[ $choice[0] ] );
-            }
-        }
-        else {
-            $position = array_search( $choice, $this->choices );
-
-            if ( ( $position !== false ) ) {
-                unset( $this->choices[ $position ] );
-            }
-        }
-
-        return $this;
-    }
-
+    /**
+     * Get all choices.
+     *
+     * @return array
+     */
     public function get_choices() {
         return $this->choices;
     }
 
+    /**
+     * Set whether the checkboxes are displayed vertically or horizontally.
+     *
+     * @param  string $layout        Display style.
+     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @return self
+     */
     public function set_layout( string $layout = 'vertical' ) {
         if ( ! in_array( $layout, [ 'vertical', 'horizontal' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_layout() does not accept argument "' . $layout .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_layout() does not accept argument "' . $layout . '"' );
         }
 
         $this->layout = $layout;
@@ -71,6 +96,11 @@ class Checkbox extends Field {
         return $this;
     }
 
+    /**
+     * Get the current display style of the checkbox.
+     *
+     * @return string
+     */
     public function get_layout() {
         return $this->layout;
     }

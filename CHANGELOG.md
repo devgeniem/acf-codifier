@@ -8,4 +8,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Message, link & color fields
-- Changelog
+- Datepicker, timepicker & google map fields
+- Changelog file

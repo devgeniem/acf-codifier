@@ -154,3 +154,36 @@ $flexible_content->add_layout( $layout );
 ```
 
 Like fields, layouts can also take key and name as their second and third parameters.
+
+##### Clone
+
+Clone field is a special case in that its class name is not the same than the field slug. `Clone` is a reserved word in PHP so the class name of the field is `CloneField`.
+
+You can clone both fields and field groups, so the field's `add_clone()` method can take both as a parameter. It can also be given just the key of the desired field or field group as a string.
+
+```php
+$clone = new CloneField( 'Clone' );
+
+$clone->set_label_prefix()        // Set label prefix setting as true
+      ->add_clone( $some_field )  // Add a field object
+      ->add_clone( $some_group )  // Add a field group object.
+      ->add_clone( 'field-key' ); // Add a field by its key
+
+$field_group->add_field( $clone );
+```
+
+##### Tab
+
+With ACF Codifier the tab field is treated like it had subfields. Otherwise it works just the same as native ACF tab would.
+
+```php
+$tab = new Tab( 'My Very First Tab' );
+
+$tab->set_placement( 'left' )
+    ->set_endpoint()
+    ->add_field( $some_field )
+    ->add_field( $another_field );
+
+$field_group->add_field( $tab );
+```
+

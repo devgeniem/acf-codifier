@@ -26,12 +26,23 @@ class ConditionalLogicGroup {
      * @return self
      */
     public function add_rule( string $field, string $operator, bool $value ) {
-        // Check for valid values for the parameter.
+        // Check for valid values for the parameters.
         if ( ! in_array( $operator, [ '==', '!=' ] ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\ConditionalRule: add_role() does not accept argument "' . $operator .'"' );
         }
 
-        $this->rules[] = [ 'field' => $field, 'operator' => $operator, 'value' => (int) $value ];
+        if ( ! ( $field instanceof \Geniem\ACF\Field || is_string( $field ) ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Clone: add_role() requires an argument that is a string or type "\Geniem\ACF\Field"' );
+        }
+
+        if ( is_string( $field ) ) {
+            $key = $field;
+        }
+        else {
+            $key = $field->get_key();
+        }
+
+        $this->rules[] = [ 'field' => $key, 'operator' => $operator, 'value' => (int) $value ];
 
         return $this;
     }

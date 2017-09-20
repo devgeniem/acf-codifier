@@ -12,12 +12,12 @@ class Layout {
 
     protected $display = 'block';
 
-    public function __construct( string $label ) {
+    public function __construct( string $label, string $key = null, string $name = null ) {
         $this->label = $label;
 
-        $this->key = sanitize_title( $label );
+        $this->key = $key ?? sanitize_title( $label );
  
-        $this->name = sanitize_title( $label );
+        $this->name = $name ?? sanitize_title( $label );
 
         $this->active = 1;
     }

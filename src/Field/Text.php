@@ -77,7 +77,7 @@ class Text extends \Geniem\ACF\Field {
     public function enable() {
         $this->disable = false;
 
-        return $†his;
+        return $this;
     }
 
     public function get_disabled() {

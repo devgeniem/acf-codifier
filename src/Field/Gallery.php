@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Gallery extends Field {
+class Gallery extends \Geniem\ACF\Field {
     protected $type = 'gallery';
 
     protected $min;
@@ -25,7 +25,7 @@ class Gallery extends Field {
     protected $max_size;
 
     protected $mime_types;
-    
+
     public function set_min( int $min ) {
         $this->min = $min;
 

@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class User extends Field {
+class User extends \Geniem\ACF\Field {
     protected $type = 'user';
 
     protected $role;

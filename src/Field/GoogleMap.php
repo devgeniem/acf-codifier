@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class GoogleMap
  */
-class GoogleMap extends Field {
+class GoogleMap extends \Geniem\ACF\Field {
 
     /**
      * The field type

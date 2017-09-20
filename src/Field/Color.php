@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Color
  */
-class Color extends Field {
+class Color extends \Geniem\ACF\Field {
 
     /**
      * Field type.

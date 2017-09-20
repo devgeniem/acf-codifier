@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Email
  */
-class Email extends Field {
+class Email extends \Geniem\ACF\Field {
     /**
      * Field type.
      *

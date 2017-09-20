@@ -1,5 +1,5 @@
 <?php
-namespace Geniem\ACF\Flexible;
+namespace Geniem\ACF\Field\Flexible;
 
 class Layout {
     protected $label;
@@ -16,7 +16,7 @@ class Layout {
         $this->label = $label;
 
         $this->key = sanitize_title( $label );
- 
+
         $this->name = sanitize_title( $label );
 
         $this->active = 1;

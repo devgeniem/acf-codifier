@@ -1,17 +1,13 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class PostObject extends Field {
-    protected $type = 'post_object';
-
-    protected $allow_null;
+class PageLink extends \Geniem\ACF\Field {
+    protected $type = 'page_link';
 
     protected $multiple;
 
-    protected $ui;
+    protected $allow_null;
 
-    protected $ajax;
-    
     protected $post_type;
 
     protected $taxonomy;
@@ -110,19 +106,5 @@ class PostObject extends Field {
 
     public function get_taxonomies() {
         return $this->taxonomy;
-    }
-
-    public function set_return_format( string $return_format = 'object' ) {
-        if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format .'"' );
-        }
-
-        $this->return_format = $return_format;
-
-        return $this;
-    }
-
-    public function get_return_format() {
-        return $this->return_format;
     }
 }

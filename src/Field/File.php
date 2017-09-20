@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class File
  */
-class File extends Field {
+class File extends \Geniem\ACF\Field {
     /**
      * Field type.
      *

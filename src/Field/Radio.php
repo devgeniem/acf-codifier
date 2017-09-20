@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Radio extends Field {
+class Radio extends \Geniem\ACF\Field {
     protected $type = 'radio';
 
     protected $choices;
@@ -20,16 +20,26 @@ class Radio extends Field {
         return $this;
     }
 
-    public function add_choice( $choice ) {
+    /**
+     * Adds a choice to the choices array
+     *
+     * @throws Exception Info about incorrect array size.
+     * @param  mixed $choice Array or string to add.
+     * @param  mixed $value  Value to add if $choice is not array, if not set uses $choice.
+     * @return self
+     */
+    public function add_choice( $choice, $value ) {
         if ( is_array( $choice ) ) {
             if ( count( $choice ) > 0 ) {
-                throw new Exception ('Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
+                throw new Exception( 'Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
             }
 
             $this->choices = array_merge( $this->choices, $choice );
-        }
-        else {
-            $this->choices[] = $choice;
+        } else {
+            if ( ! isset( $value ) ) {
+                $value = $choice;
+            }
+            $this->choices[ $value ] = $choice;
         }
 
         return $this;

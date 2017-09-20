@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Textarea extends Field {
+class Textarea extends \Geniem\ACF\Field {
     protected $type = 'textarea';
 
     protected $placeholder;

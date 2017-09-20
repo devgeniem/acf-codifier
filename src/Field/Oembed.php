@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Oembed extends Field {
+class Oembed extends \Geniem\ACF\Field {
     protected $type = 'oembed';
 
     protected $width;

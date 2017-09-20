@@ -1,15 +1,15 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class TrueFalse extends Field {
+class TrueFalse extends \Geniem\ACF\Field {
     protected $type = 'true_false';
 
     protected $message;
-    
+
     protected $ui;
-    
+
     protected $ui_on_text;
-    
+
     protected $ui_off_text;
 
     public function set_message( string $message ) {
@@ -21,7 +21,7 @@ class TrueFalse extends Field {
     public function get_message() {
         return $this->message;
     }
-    
+
     public function use_ui() {
         $this->ui = 1;
         return $this;

@@ -61,6 +61,17 @@ $field_group->set_position( 'side' )         // Set the field group to be shown 
             ->hide_element( 'the_content' ); // Hide the native WP content field.
 ```
 
+Very rarely anyone wants their field group to be shown in every edit screen of a WordPress installation. The visibility rules are handled with their own class `RuleGroup`. A rule group is created and linked with a group like this:
+
+```php
+$rule_group = new RuleGroup();
+$rule_group->add_rule( 'post_type', '==', 'page' );
+
+$field_group->add_rule_group( $rule_group );
+```
+
+You can add multiple rules to a rule group, and each rule within a group is considered an 'and'. If you add multiple rule groups to a field group, they are considered an 'or'.
+
 Field group is registered to use with `register` method:
 
 ```php
@@ -70,3 +81,109 @@ $field_group->register();
 Obviously your new field group wouldn't have any fields at this point, but don't worry, we get to them later.
 
 Comprehensive documentation of the class can be found [here](docs/group.md).
+
+### Creating fields
+
+Like field groups, fields are also objects of their own. They live in classes named for their field types. For example a text field can be created with:
+
+```php
+$text = new Field\Text( 'Text field' );
+```
+
+Now the `$text` variable is populated with a text field with `Text field` as its label and `text-field` with both as its key and its name.
+
+The key and the name can also be given to the constructor as its second and third parameters respectively. Obviously there are `set_key()` and `set_name()` methods also available like there were with the groups as well.
+
+Every property a field type has is defined with its own method. Like the field groups, they can be chained with the fields as well.
+
+```php
+$text->set_placeholder( 'Placeholder text' ) // Set a placeholder text.
+     ->set_append( 'Appendable' )            // Set an appending text.
+     ->set_maxlength( 30 );                  // Set the maxlength.
+```
+
+ACF's conditional logic groups work very similarly to groups' location rules. First you need to create an object from `ConditionalLogicGroup` and add the rule there:
+
+```php
+$conditional_logic = new ConditionalLogicGroup();
+$conditional_logic->add_rule( 'another_field', '==', true );
+
+$text->add_conditional_logic( $conditional_logic );
+```
+
+The logic between 'ands' and 'ors' is the same than it is with the groups' location rules.
+
+Fields are added to field groups with the `add_field` method:
+
+```php
+$field_group->add_field( $text );
+```
+
+#### Grouping field types
+
+There are several special field types that can have subfields within them.
+
+##### Group and repeater
+
+The group and the repeater fields are the simplest of the grouping field types. They are very straightforward:
+
+```php
+$group = new Group( 'Field name' );
+
+$group->set_layout( 'table' )
+      ->add_field( $some_field )
+      ->add_field( $another_field );
+
+$field_group->add_field( $group );
+```
+
+##### Flexible content
+
+Flexible content fields consist of layouts which contain the fields.
+
+```php
+$flexible_content = new FlexibleContent( 'Flexible field' );
+
+$layout = new Layout( 'Layout label' );
+
+$layout->set_display_mode( 'row' )
+       ->add_field( $some_field )
+       ->add_field( $another_field );
+
+$flexible_content->add_layout( $layout );
+```
+
+Like fields, layouts can also take key and name as their second and third parameters.
+
+##### Clone
+
+Clone field is a special case in that its class name is not the same than the field slug. `Clone` is a reserved word in PHP so the class name of the field is `CloneField`.
+
+You can clone both fields and field groups, so the field's `add_clone()` method can take both as a parameter. It can also be given just the key of the desired field or field group as a string.
+
+```php
+$clone = new CloneField( 'Clone' );
+
+$clone->set_label_prefix()        // Set label prefix setting as true
+      ->add_clone( $some_field )  // Add a field object
+      ->add_clone( $some_group )  // Add a field group object.
+      ->add_clone( 'field-key' ); // Add a field by its key
+
+$field_group->add_field( $clone );
+```
+
+##### Tab
+
+With ACF Codifier the tab field is treated like it had subfields. Otherwise it works just the same as native ACF tab would.
+
+```php
+$tab = new Tab( 'My Very First Tab' );
+
+$tab->set_placement( 'left' )
+    ->set_endpoint()
+    ->add_field( $some_field )
+    ->add_field( $another_field );
+
+$field_group->add_field( $tab );
+```
+

@@ -200,13 +200,13 @@ class CloneField extends \Geniem\ACF\Field {
         }
 
         if ( is_string( $clone ) ) {
-            $name = $clone;
+            $key = $clone;
         }
         else {
-            $name = $clone->get_name();
+            $key = $clone->get_key();
         }
 
-        $this->clone[ $name ] = $clone;
+        $this->clone[ $key ] = $clone;
 
         $this->clone = array_unique( $this->clone );
 

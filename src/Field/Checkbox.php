@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Checkbox
  */
-class Checkbox extends Field {
+class Checkbox extends \Geniem\ACF\Field {
     /**
      * The field type
      *
@@ -46,10 +46,15 @@ class Checkbox extends Field {
      * Add a choice.
      *
      * @param string $choice Choice to be added.
+     * @param mixed  $value Value to save if choice selected, uses $choice if not set.
      * @return self
      */
-    public function add_choice( string $choice ) {
-        $this->choices[] = $choice;
+    public function add_choice( string $choice, $value ) {
+        if ( ! isset( $value ) ) {
+            $value = $choice;
+        }
+
+        $this->choices[ $value ] = $choice;
 
         return $this;
     }
@@ -57,7 +62,7 @@ class Checkbox extends Field {
     /**
      * Remove a choice.
      *
-     * @param string $choice Choice to be removed
+     * @param string $choice Choice to be removed.
      * @return self
      */
     public function remove_choice( string $choice ) {

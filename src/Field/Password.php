@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Password extends Field {
+class Password extends \Geniem\ACF\Field {
     protected $type = 'password';
 
     protected $placeholder;

@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class URL extends Field {
+class URL extends \Geniem\ACF\Field {
     protected $type = 'url';
 
     protected $placeholder;

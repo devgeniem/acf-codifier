@@ -1,9 +1,9 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Relationship extends Field {
+class Relationship extends \Geniem\ACF\Field {
     protected $type = 'relationship';
-    
+
     protected $post_type;
 
     protected $taxonomy;

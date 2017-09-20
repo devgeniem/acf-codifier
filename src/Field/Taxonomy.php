@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Taxonomy extends Field {
+class Taxonomy extends \Geniem\ACF\Field {
     protected $type = 'taxonomy';
 
     protected $taxonomy;

@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Wysiwyg extends Field {
+class Wysiwyg extends \Geniem\ACF\Field {
     protected $type = 'wysiwyg';
 
     protected $tabs;

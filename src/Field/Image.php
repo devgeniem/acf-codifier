@@ -1,7 +1,7 @@
 <?php
 namespace Geniem\ACF\Field;
 
-class Image extends Field {
+class Image extends \Geniem\ACF\Field {
     protected $type = 'image';
 
     protected $return_format;

@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class DatePicker
  */
-class DatePicker extends Field {
+class DatePicker extends \Geniem\ACF\Field {
 
     /**
      * The field type

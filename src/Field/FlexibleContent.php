@@ -53,7 +53,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
     }
 
     public function add_layout( $layout ) {
-        if ( ! ( $layout instanceof \Geniem\ACF\Flexible\Layout ) ) {
+        if ( ! ( $layout instanceof \Geniem\ACF\Field\Flexible\Layout ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\FlexibleContent: add_layout() requires an argument that is a string or type "\Geniem\ACF\Flexible\Layout"' );
         }
 
@@ -67,7 +67,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
     }
 
     public function remove_layout( $layout ) {
-        if ( ! ( $layout instanceof \Geniem\ACF\Flexible\Layout || is_string( $layout ) ) ) {
+        if ( ! ( $layout instanceof \Geniem\ACF\Field\Flexible\Layout || is_string( $layout ) ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\FlexibleContent: remove_layout() requires an argument that is a string or type "\Geniem\ACF\Flexible\Layout"' );
         }
 

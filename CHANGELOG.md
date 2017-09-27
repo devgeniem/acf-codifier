@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Datepicker, timepicker & google map fields
 - Changelog file
 - Added an extra value choice to select, checkbox & radio add_choice function
+- Docs generator
 
 ### Changed
 - Renamed various files to match the psr-4 autoload standard so the autoloading can actually work

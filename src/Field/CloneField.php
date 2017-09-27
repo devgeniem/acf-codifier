@@ -64,8 +64,7 @@ class CloneField extends \Geniem\ACF\Field {
         $obj['clone'] = array_map( function( $clone ) {
             if ( is_string( $clone ) ) {
                 return $clone;
-            }
-            else {
+            } else {
                 return $clone->get_name();
             }
         }, $obj['clone'] );
@@ -82,7 +81,7 @@ class CloneField extends \Geniem\ACF\Field {
      */
     public function set_display_mode( string $display_mode = 'seamless' ) {
         if ( ! in_array( $display_mode, [ 'seamless', 'group' ] ) ) {
-            throw new \Geniem\ACF\Exception('Geniem\ACF\Group: set_display_mode() does not accept argument "' . $display_mode .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_display_mode() does not accept argument "' . $display_mode . '"' );
         }
 
         $this->display = $display_mode;
@@ -108,7 +107,7 @@ class CloneField extends \Geniem\ACF\Field {
      */
     public function set_layout( string $layout = 'block' ) {
         if ( ! in_array( $layout, [ 'block', 'table', 'row' ] ) ) {
-            throw new \Geniem\ACF\Exception('Geniem\ACF\Group: set_layout() does not accept argument "' . $layout .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_layout() does not accept argument "' . $layout . '"' );
         }
 
         $this->layout = $layout;
@@ -201,8 +200,7 @@ class CloneField extends \Geniem\ACF\Field {
 
         if ( is_string( $clone ) ) {
             $key = $clone;
-        }
-        else {
+        } else {
             $key = $clone->get_key();
         }
 
@@ -227,8 +225,7 @@ class CloneField extends \Geniem\ACF\Field {
 
         if ( is_string( $clone ) ) {
             $name = $clone;
-        }
-        else {
+        } else {
             $name = $clone->get_name();
         }
 

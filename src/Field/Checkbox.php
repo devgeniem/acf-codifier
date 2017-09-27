@@ -31,6 +31,27 @@ class Checkbox extends \Geniem\ACF\Field {
     protected $layout;
 
     /**
+     * Should a toggle all checkbox be shown
+     *
+     * @var integer
+     */
+    protected $toggle;
+
+    /**
+     * Can user add custom values
+     *
+     * @var integer
+     */
+    protected $allow_custom;
+
+    /**
+     * Should custom values be saved to default possibilities
+     *
+     * @var integer
+     */
+    protected $save_custom;
+
+    /**
      * Set choices for the checkbox
      *
      * @param array $choices Choices as strings.
@@ -108,5 +129,98 @@ class Checkbox extends \Geniem\ACF\Field {
      */
     public function get_layout() {
         return $this->layout;
+    }
+
+    /**
+     * Allow toggle all checkbox
+     *
+     * @return self
+     */
+    public function allow_toggle() {
+        $this->toggle = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disallow toggle all checkbox
+     *
+     * @return self
+     */
+    public function disallow_toggle() {
+        $this->toggle = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get toggle all checkbox
+     *
+     * @return integer
+     */
+    public function get_toggle() {
+        return $this->toggle;
+    }
+
+    /**
+     * Allow custom values
+     *
+     * @return self
+     */
+    public function allow_custom() {
+        $this->allow_custom = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disallow custom values
+     *
+     * @return self
+     */
+    public function disallow_custom() {
+        $this->allow_custom = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get allow custom values status
+     *
+     * @return integer
+     */
+    public function get_custom() {
+        return $this->allow_custom;
+    }
+
+    /**
+     * Allow saving custom values to default values
+     *
+     * @return self
+     */
+    public function allow_save_custom() {
+        $this->save_custom = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disallow saving custom values to default values
+     *
+     * @return self
+     */
+    public function disallow_save_custom() {
+        $this->save_custom = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get save custom status
+     *
+     * @return integer
+     */
+    public function get_save_custom() {
+        return $this->save_custom;
     }
 }

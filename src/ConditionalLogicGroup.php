@@ -25,18 +25,17 @@ class ConditionalLogicGroup {
      * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
      * @return self
      */
-    public function add_rule( string $field, string $operator, bool $value ) {
+    public function add_rule( string $field, string $operator, $value ) {
         // Check for valid values for the parameters.
         if ( ! in_array( $operator, [ '==', '!=' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\ConditionalRule: add_role() does not accept argument "' . $operator .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\ConditionalRule: add_role() does not accept argument "' . $operator . '"' );
         }
         if ( ! ( $field instanceof \Geniem\ACF\Field || is_string( $field ) ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Clone: add_role() requires an argument that is a string or type "\Geniem\ACF\Field"' );
         }
         if ( is_string( $field ) ) {
             $key = $field;
-        }
-        else {
+        } else {
             $key = $field->get_key();
         }
         $this->rules[] = [ 'field' => $key, 'operator' => $operator, 'value' => $value ];

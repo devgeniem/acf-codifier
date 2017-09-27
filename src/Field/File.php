@@ -68,7 +68,7 @@ class File extends \Geniem\ACF\Field {
      */
     public function set_return_format( string $format = 'array' ) {
         if ( ! in_array( $format, [ 'array', 'url', 'id' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $format .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $format . '"' );
         }
 
         $this->return_format = $format;
@@ -115,7 +115,7 @@ class File extends \Geniem\ACF\Field {
      */
     public function set_library( string $library = 'all' ) {
         if ( ! in_array( $library, [ 'all', 'uploadedTo' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_library() does not accept argument "' . $library .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_library() does not accept argument "' . $library . '"' );
         }
 
         $this->library = $library;

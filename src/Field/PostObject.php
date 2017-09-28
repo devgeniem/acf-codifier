@@ -264,4 +264,35 @@ class PostObject extends \Geniem\ACF\Field {
     public function get_return_format() {
         return $this->return_format;
     }
+
+    /**
+     * Enable loading values via ajax
+     *
+     * @return self
+     */
+    public function use_ajax() {
+        $this->ajax = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disable loading values via ajax
+     *
+     * @return self
+     */
+    public function no_ajax() {
+        $this->ajax = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get ajax loading state
+     *
+     * @return integer
+     */
+    public function get_ajax() {
+        return $this->ajax;
+    }
 }

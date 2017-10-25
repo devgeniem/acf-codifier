@@ -488,7 +488,7 @@ class Group {
 
         // Check if the target field exists in the field group.
         if ( ! isset( $this->fields[ $target ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: add_field_after can\'t find given target "'. $target .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: add_field_'. $action .' can\'t find given target "'. $target .'"' );
         }
 
         // Make a copy of the fields array to work with.

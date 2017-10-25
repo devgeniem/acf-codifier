@@ -35,7 +35,7 @@ OR add it in your `composer.json`:
 
 ## Usage
 
-All classes of the Codifier are under the namespace `Geniem\ACF`. For easiness, it's better to put your declarations in separate file(s) and declare `use Geniem\ACF;` on top of them. Rest of this ReadMe supposes you have done that.
+All classes of the Codifier are under the namespace `Geniem\ACF`. For easiness, it's better to put your declarations in separate file(s) and declare `namespace Geniem\ACF;` on top of them. Rest of this ReadMe supposes you have done that.
 
 ### Creating a field group.
 
@@ -203,4 +203,3 @@ $tab->set_placement( 'left' )
 
 $field_group->add_field( $tab );
 ```
-

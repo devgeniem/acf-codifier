@@ -1,26 +1,80 @@
 <?php
+/**
+ * Acf codifier relationship field
+ */
+
 namespace Geniem\ACF\Field;
 
+/**
+ * Class Relationship
+ */
 class Relationship extends \Geniem\ACF\Field {
+    /**
+     * Field type
+     *
+     * @var string
+     */
     protected $type = 'relationship';
 
+    /**
+     * Allowed post types
+     *
+     * @var array
+     */
     protected $post_type;
 
+    /**
+     * Allowed taxonomies
+     *
+     * @var array
+     */
     protected $taxonomy;
 
+    /**
+     * What filters to show
+     *
+     * @var array
+     */
     protected $filters;
 
+    /**
+     * What elements to show
+     *
+     * @var array
+     */
     protected $elements;
 
+    /**
+     * Minimum amount of posts
+     *
+     * @var integer
+     */
     protected $min;
 
+    /**
+     * Maximum amount of posts
+     *
+     * @var integer
+     */
     protected $max;
 
+    /**
+     * Return format
+     *
+     * @var string
+     */
     protected $return_format;
 
-    public function set_post_types( $post_types ) {
+    /**
+     * Set post types to show
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $post_types is not valid.
+     * @param array $post_types An array of post type names.
+     * @return self
+     */
+    public function set_post_types( array $post_types ) {
         if ( ! is_array( $post_types ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_post_types() requires an array as an argument' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_post_types() requires an array as an argument' );
         }
 
         $this->post_type = $post_types;
@@ -28,7 +82,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function add_post_type( $post_type ) {
+    /**
+     * Add a post type to allowed post types
+     *
+     * @param string $post_type Post type to add.
+     * @return self
+     */
+    public function add_post_type( string $post_type ) {
         $this->post_type[] = $post_type;
 
         $this->post_type = array_unique( $this->post_type );
@@ -36,7 +96,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function remove_post_type( $post_type ) {
+    /**
+     * Remove post type by name from allowed
+     *
+     * @param  string $post_type Post type name.
+     * @return self
+     */
+    public function remove_post_type( string $post_type ) {
         $position = array_search( $post_type, $this->post_type );
 
         if ( ( $position !== false ) ) {
@@ -46,13 +112,25 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get allowed post types
+     *
+     * @return array
+     */
     public function get_post_types() {
         return $this->post_type;
     }
 
+    /**
+     * Set taxonomies to show
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $taxonomies is not valid.
+     * @param array $taxonomies An array of taxonomies.
+     * @return self
+     */
     public function set_taxonomies( $taxonomies ) {
         if ( ! is_array( $taxonomies ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_taxonomies() requires an array as an argument' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_taxonomies() requires an array as an argument' );
         }
 
         $this->taxonomy = $taxonomies;
@@ -60,6 +138,12 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Add an allowed taxonomy
+     *
+     * @param string $taxonomy Taxonomy slug.
+     * @return self
+     */
     public function add_taxonomy( $taxonomy ) {
         $this->taxonomy[] = $taxonomy;
 
@@ -68,6 +152,12 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Remove taxonomy from allowed by slug
+     *
+     * @param  string $taxonomy Taxonomy slug.
+     * @return self
+     */
     public function remove_taxonomy( $taxonomy ) {
         $position = array_search( $taxonomy, $this->taxonomy );
 
@@ -78,13 +168,25 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get allowed taxonomies
+     *
+     * @return array
+     */
     public function get_taxonomies() {
         return $this->taxonomy;
     }
 
-    public function set_filters( $filters ) {
+    /**
+     * Set filters to show
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $filters is not valid.
+     * @param array $filters An array of usable filters.
+     * @return self
+     */
+    public function set_filters( array $filters ) {
         if ( ! is_array( $filters ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_filters() requires an array as an argument' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_filters() requires an array as an argument' );
         }
 
         $this->filters = $filters;
@@ -92,7 +194,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function add_filter( $filter ) {
+    /**
+     * Add a filter
+     *
+     * @param string $filter Filter name.
+     * @return self
+     */
+    public function add_filter( string $filter ) {
         $this->filters[] = $filter;
 
         $this->filters = array_unique( $this->filters );
@@ -100,7 +208,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function remove_filter( $filter ) {
+    /**
+     * Remove filter by name
+     *
+     * @param  string $filter Filter name.
+     * @return self
+     */
+    public function remove_filter( string $filter ) {
         $position = array_search( $filter, $this->filters );
 
         if ( ( $position !== false ) ) {
@@ -110,13 +224,25 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get usable filters
+     *
+     * @return array
+     */
     public function get_filters() {
         return $this->filters;
     }
 
-    public function set_elements( $elements ) {
+    /**
+     * Set elements to show
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $elements is not valid.
+     * @param array $elements An array of elements to show.
+     * @return self
+     */
+    public function set_elements( array $elements ) {
         if ( ! is_array( $elements ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_elements() requires an array as an argument' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_elements() requires an array as an argument' );
         }
 
         $this->elements = $elements;
@@ -124,7 +250,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function add_element( $element ) {
+    /**
+     * Add an element to show
+     *
+     * @param string $element Element name.
+     * @return self
+     */
+    public function add_element( string $element ) {
         $this->elements[] = $element;
 
         $this->elements = array_unique( $this->elements );
@@ -132,7 +264,13 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
-    public function remove_element( $element ) {
+    /**
+     * Remove element by name
+     *
+     * @param  string $element Element name.
+     * @return self
+     */
+    public function remove_element( string $element ) {
         $position = array_search( $element, $this->elements );
 
         if ( ( $position !== false ) ) {
@@ -142,33 +280,67 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get elements to show
+     *
+     * @return array
+     */
     public function get_elements() {
         return $this->elements;
     }
 
+    /**
+     * Set minimum value
+     *
+     * @param integer $min Minimum value.
+     * @return self
+     */
     public function set_min( int $min ) {
         $this->min = $min;
 
         return $this;
     }
 
+    /**
+     * Get minimum value
+     *
+     * @return integer Minimum value.
+     */
     public function get_min() {
         return $this->min;
     }
 
+    /**
+     * Set maximum value
+     *
+     * @param integer $max Maximum value.
+     * @return self
+     */
     public function set_max( int $max ) {
         $this->max = $max;
 
         return $this;
     }
 
+    /**
+     * Get maximum value
+     *
+     * @return integer Maximum value.
+     */
     public function get_max() {
         return $this->max;
     }
 
+    /**
+     * Set return format
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
+     * @return self
+     */
     public function set_return_format( string $return_format = 'object' ) {
         if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format . '"' );
         }
 
         $this->return_format = $return_format;
@@ -176,6 +348,11 @@ class Relationship extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get return format
+     *
+     * @return string
+     */
     public function get_return_format() {
         return $this->return_format;
     }

@@ -13,6 +13,8 @@
 
 A helper class to make defining ACF field groups and fields easier in the code.
 
+A complete documentation of the classes can be found [here](docs/CLASSES.md)
+
 ## Installation
 
 Install with composer:

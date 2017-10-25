@@ -99,6 +99,7 @@ class Group {
      * Field group constructor
      *
      * @param string $title Field group title.
+     * @param string $key Field group key or null.
      */
     public function __construct( string $title, string $key = null ) {
         $this->title = $title;
@@ -204,7 +205,7 @@ class Group {
     /**
      * Set field group menu order.
      *
-     * @param int $order Field group menu order value.
+     * @param integer $order Field group menu order value.
      * @return self
      */
     public function set_menu_order( int $order = 0 ) {
@@ -232,7 +233,7 @@ class Group {
     public function set_position( string $position = 'normal' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $position, [ 'acf_after_title', 'normal', 'side' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
         }
 
         $this->position = $position;
@@ -259,7 +260,7 @@ class Group {
     public function set_style( string $style = 'default' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $style, [ 'default', 'seamless' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
         }
 
         $this->style = $style;
@@ -281,12 +282,12 @@ class Group {
      *
      * @param string $placement Field group's label placement value.
      * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
-     * @return void
+     * @return self
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->label_placement = $placement;
@@ -313,7 +314,7 @@ class Group {
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'label', 'field' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->instruction_placement = $placement;

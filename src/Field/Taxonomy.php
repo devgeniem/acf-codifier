@@ -1,32 +1,88 @@
 <?php
+/**
+ * Acf codifier taxonomy field
+ */
+
 namespace Geniem\ACF\Field;
 
+/**
+ * Class Taxonomy
+ */
 class Taxonomy extends \Geniem\ACF\Field {
+    /**
+     * Field type
+     *
+     * @var string
+     */
     protected $type = 'taxonomy';
 
+    /**
+     * What taxonomy to use
+     *
+     * @var string
+     */
     protected $taxonomy;
 
+    /**
+     * How the field is displayed
+     *
+     * @var string
+     */
     protected $field_type;
 
+    /**
+     * Should an empty value be allowed
+     *
+     * @var integer
+     */
     protected $allow_null;
 
+    /**
+     * Should terms be saved
+     * Recheck later because of https://github.com/elliotcondon/acf/issues/580
+     *
+     * @var integer
+     */
     protected $load_save_terms;
 
+    /**
+     * Should user be able to add terms using this
+     *
+     * @var integer
+     */
     protected $add_term;
 
+    /**
+     * Set taxonomy
+     *
+     * @param string $taxonomy Taxonomy slug.
+     * @return self
+     */
     public function set_taxonomy( string $taxonomy = 'category' ) {
         $this->taxonomy = $taxonomy;
 
         return $this;
     }
 
+    /**
+     * Get taxonomy
+     *
+     * @return string
+     */
     public function get_taxonomy() {
         return $this->taxonomy;
     }
 
+    /**
+     * Set displayed field type
+     *
+     * @throws \Geniem\ACF\Exception Info if field_type is not valid.
+     * @param string $field_type New field type.
+     * @return self
+     */
     public function set_field_type( string $field_type = 'checkbox' ) {
         if ( ! in_array( $field_type, [ 'checkbox', 'multi_select', 'radio', 'select' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_field_type() does not accept argument "' . $field_type .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_field_type() does not accept argument "' . $field_type . '"' );
         }
 
         $this->field_type = $field_type;
@@ -34,45 +90,87 @@ class Taxonomy extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get displayed field type
+     *
+     * @return string
+     */
     public function get_field_type() {
         return $this->field_type;
     }
 
+    /**
+     * Allow null value
+     *
+     * @return self
+     */
     public function allow_null() {
         $this->allow_null = 1;
 
         return $this;
     }
 
+    /**
+     * Disallow null value
+     *
+     * @return self
+     */
     public function disallow_null() {
         $this->allow_null = 0;
 
         return $this;
     }
 
+    /**
+     * Get allow null status
+     *
+     * @return integer
+     */
     public function get_allow_null() {
         return $this->allow_null;
     }
 
+    /**
+     * Enable load_save_terms
+     *
+     * @return self
+     */
     public function allow_load_save_terms() {
         $this->load_save_terms = 1;
 
         return $this;
     }
 
+    /**
+     * Disable load_save_terms
+     *
+     * @return self
+     */
     public function disallow_load_save_terms() {
         $this->load_save_terms = 0;
 
         return $this;
     }
 
+    /**
+     * Get load_save_terms state
+     *
+     * @return integer
+     */
     public function get_load_save_terms() {
         return $this->load_save_terms;
     }
 
+    /**
+     * Set return format
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
+     * @return self
+     */
     public function set_return_format( string $return_format = 'object' ) {
         if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new Exception ('Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format . '"' );
         }
 
         $this->return_format = $return_format;
@@ -80,22 +178,42 @@ class Taxonomy extends \Geniem\ACF\Field {
         return $this;
     }
 
+    /**
+     * Get return format
+     *
+     * @return string
+     */
     public function get_return_format() {
         return $this->return_format;
     }
 
+    /**
+     * Enable adding terms
+     *
+     * @return self
+     */
     public function allow_add_term() {
         $this->add_term = 1;
 
         return $this;
     }
 
+    /**
+     * Disable adding terms
+     *
+     * @return self
+     */
     public function disallow_add_term() {
         $this->add_term = 0;
 
         return $this;
     }
 
+    /**
+     * Get whether terms can be added
+     *
+     * @return integer
+     */
     public function get_add_term() {
         return $this->add_term;
     }

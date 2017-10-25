@@ -42,7 +42,7 @@ abstract class Field {
      *
      * @var boolean
      */
-    protected $required;
+    protected $required = 0;
 
     /**
      * Conditional logic attached to the field.

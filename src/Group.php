@@ -522,8 +522,6 @@ class Group {
             $field->remove_fields();
         }
 
-        
-
         // If we have stored subfields from a tab, add them one by one separately.
         if ( ! empty( $sub_fields ) ) {
             foreach ( $sub_fields as $sub_field ) {
@@ -619,7 +617,11 @@ class Group {
      */
     public function register() {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
-            \acf_add_local_field_group( $this->export() );
+            $element = $this;
+
+            \add_action( 'wp_loaded', function() use ( $element ) {
+                \acf_add_local_field_group( $element->export() );
+            });
 
             $this->registered = true;
         }

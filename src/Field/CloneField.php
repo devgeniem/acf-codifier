@@ -37,14 +37,14 @@ class CloneField extends \Geniem\ACF\Field {
      *
      * @var boolean
      */
-    protected $prefix_label = false;
+    protected $prefix_label = 0;
 
     /**
      * Whether the field name is to be prefixed.
      *
      * @var boolean
      */
-    protected $prefix_name = false;
+    protected $prefix_name = 1;
 
     /**
      * The fields or groups to be cloned.
@@ -68,6 +68,9 @@ class CloneField extends \Geniem\ACF\Field {
                 return $clone->get_name();
             }
         }, $obj['clone'] );
+
+        // Remove keys from the array.
+        $obj['clone'] = array_values( $obj['clone'] );
 
         return $obj;
     }

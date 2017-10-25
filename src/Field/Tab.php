@@ -10,20 +10,6 @@ class Tab extends \Geniem\ACF\Field {
 
     protected $endpoint = 0;
 
-    public function set_layout( string $layout = 'table' ) {
-        if ( ! in_array( $layout, [ 'table', 'block', 'row' ] ) ) {
-            throw new Exception ('Geniem\ACF\Field\Tab: set_layout() does not accept argument "' . $layout .'"' );
-        }
-
-        $this->layout = $layout;
-
-        return $this;
-    }
-
-    public function get_layout() {
-        return $this->layout;
-    }
-
     public function add_field( $field ) {
         if ( ! $field instanceof \Geniem\ACF\Field ) {
             throw new Exception ('Geniem\ACF\Field\Tab: add_field() requires an argument that is type "\Geniem\ACF\Field"' );

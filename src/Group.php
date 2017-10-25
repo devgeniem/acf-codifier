@@ -37,7 +37,7 @@ class Group {
      *
      * @var string
      */
-    protected $position;
+    protected $position = 'normal';
 
     /**
      * Field group style value

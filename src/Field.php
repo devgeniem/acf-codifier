@@ -61,9 +61,9 @@ abstract class Field {
     /**
      * Constructor.
      *
-     * @param string $label          Label for the field.
-     * @param string $key            Key for the field.
-     * @param string $name           Name for the field.
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
     public function __construct( string $label, string $key = null, string $name = null  ) {
@@ -281,7 +281,7 @@ abstract class Field {
     /**
      * Set the wrapper width in percents.
      *
-     * @param int $width Width to be set.
+     * @param integer $width Width to be set.
      * @return self
      */
     public function set_wrapper_width( int $width ) {
@@ -309,11 +309,9 @@ abstract class Field {
     public function set_wrapper_classes( $classes ) {
         if ( is_string( $classes ) ) {
             $this->wrapper['class'] = explode( ' ', $classes );
-        }
-        else if ( is_array( $classes ) ) {
+        } else if ( is_array( $classes ) ) {
             $this->wrapper['class'] = $classes;
-        }
-        else {
+        } else {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: set_wrapper_classes() argument must be an array or a string' );
         }
 

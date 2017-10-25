@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Link
  */
-class Link extends Field {
+class Link extends \Geniem\ACF\Field {
     /**
      * Field type.
      *
@@ -26,13 +26,13 @@ class Link extends Field {
     /**
      * Set the return format of the field.
      *
-     * @throws Exception Info about incorrect format.
+     * @throws \Geniem\ACF\Exception Info about incorrect format.
      * @param string $format The return format of the field.
      * @return self
      */
     public function set_return_format( string $format ) {
         if ( ! in_array( $format, [ 'array', 'url' ] ) ) {
-            throw new Exception( 'Geniem\ACF\Field\Link: set_return_format() does not accept argument "' . $type . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Link: set_return_format() does not accept argument "' . $type . '"' );
         }
 
         $this->return_format = $format;

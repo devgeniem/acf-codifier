@@ -99,6 +99,7 @@ class Group {
      * Field group constructor
      *
      * @param string $title Field group title.
+     * @param string $key Field group key or null.
      */
     public function __construct( string $title, string $key = null ) {
         $this->title = $title;
@@ -204,7 +205,7 @@ class Group {
     /**
      * Set field group menu order.
      *
-     * @param int $order Field group menu order value.
+     * @param integer $order Field group menu order value.
      * @return self
      */
     public function set_menu_order( int $order = 0 ) {
@@ -232,7 +233,7 @@ class Group {
     public function set_position( string $position = 'normal' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $position, [ 'acf_after_title', 'normal', 'side' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
         }
 
         $this->position = $position;
@@ -259,7 +260,7 @@ class Group {
     public function set_style( string $style = 'default' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $style, [ 'default', 'seamless' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
         }
 
         $this->style = $style;
@@ -281,12 +282,12 @@ class Group {
      *
      * @param string $placement Field group's label placement value.
      * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
-     * @return void
+     * @return self
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->label_placement = $placement;
@@ -313,7 +314,7 @@ class Group {
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'label', 'field' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->instruction_placement = $placement;
@@ -402,9 +403,10 @@ class Group {
      * Add a field to the field group.
      *
      * @param \Geniem\ACF\Field $field A field to be added.
+     * @param string            $first Whether the field is added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field ) {
+    public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
         // Special treatment if the field to be added is a tab.
         if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
             // Save the subfields from the tab...
@@ -415,7 +417,12 @@ class Group {
         }
 
         // Add the field to the fields array.
-        $this->fields[ $field->get_key() ] = $field;
+        if ( $order == 'first' ) {
+            $this->fields = [ $field->get_key() => $field ] + $this->fields;
+        }
+        else {
+            $this->fields[ $field->get_key() ] = $field;
+        }
 
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
@@ -433,6 +440,98 @@ class Group {
             foreach ( $sub_fields as $sub_field ) {
                 $this->add_field( $sub_field );
             }
+
+            // Return subfields to the original field instance for possible later use
+            $field->set_fields( $sub_fields );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add a field to the field group before a target field.
+     *
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param [mixed]           $target A target field.
+     * @return self
+     */
+    public function add_field_before( \Geniem\ACF\Field $field, $target ) {
+        // Call the real function.
+        return $this->add_field_location( $field, 'before', $target );
+    }
+
+    /**
+     * Add a field to the field group after a target field.
+     *
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param [mixed]           $target A target field.
+     * @return self
+     */
+    public function add_field_after( \Geniem\ACF\Field $field, $target ) {
+        // Call the real function.
+        return $this->add_field_location( $field, 'after', $target );
+    }
+
+    /**
+     * A method for the two previous methods to use.
+     *
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param [string]          $action Whether it's added before or after.
+     * @param [mixed]           $target A target field.
+     * @return void
+     */
+    private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
+        // If given a field instance, replace the value with its key.
+        if ( $target instanceof \ Geniem\ACF\Field ) {
+            $target = $target->get_key();
+        }
+
+        // Check if the target field exists in the field group.
+        if ( ! isset( $this->fields[ $target ] ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: add_field_after can\'t find given target "'. $target .'"' );
+        }
+
+        // Make a copy of the fields array to work with.
+        $fields = [];
+
+        // Loop through the fields and populate the new array.
+        foreach ( $this->fields as $key => $item ) {
+            // If this's the spot, do the right thing.
+            if ( $action === 'before' && $key === $target ) {
+                $fields[ $target ] = $field;
+            }
+
+            // Insert the original inhabitant.
+            $fields[ $key ] = $item;
+
+            // And if this's the spot, do the right thing here.
+            if ( $action === 'after' && $key === $target ) {
+                $fields[ $target ] = $field;
+            }
+        }
+
+        // Replace the original fields array with the new one.
+        $this->fields = $fields;
+
+        // Special treatment if the field to be added is a tab.
+        if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+            // Save the subfields from the tab...
+            $sub_fields = $field->get_fields();
+
+            // ...and take them away from their original mother.
+            $field->remove_fields();
+        }
+
+        
+
+        // If we have stored subfields from a tab, add them one by one separately.
+        if ( ! empty( $sub_fields ) ) {
+            foreach ( $sub_fields as $sub_field ) {
+                $this->add_field( $sub_field );
+            }
+
+            // Return subfields to the original field instance for possible later use
+            $field->set_fields( $sub_fields );
         }
 
         return $this;

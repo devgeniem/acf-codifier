@@ -23,5 +23,8 @@
     ],
     "autoload": {
         "psr-4": {"Geniem\\ACF\\": "src/"}
+    },
+    "require-dev": {
+        "victorjonsson/markdowndocs": "^1.3"
     }
 }

@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Message
  */
-class Message extends Field {
+class Message extends \Geniem\ACF\Field {
     /**
      * The field type
      *
@@ -61,13 +61,13 @@ class Message extends Field {
     /**
      * Set newline handling
      *
-     * @throws Exception Info about incorrect type.
+     * @throws \Geniem\ACF\Exception Info about incorrect type.
      * @param  string $type Newline type.
      * @return self
      */
     public function set_new_lines( string $type ) {
         if ( ! in_array( $layout, [ 'wpautop', 'br', '' ] ) ) {
-            throw new Exception( 'Geniem\ACF\Field\Message: set_new_lines() does not accept argument "' . $type . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Message: set_new_lines() does not accept argument "' . $type . '"' );
         }
 
         $this->new_lines = $type;

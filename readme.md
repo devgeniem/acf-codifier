@@ -13,6 +13,8 @@
 
 A helper class to make defining ACF field groups and fields easier in the code.
 
+A complete documentation of the classes can be found [here](docs/CLASSES.md)
+
 ## Installation
 
 Install with composer:
@@ -118,6 +120,21 @@ Fields are added to field groups with the `add_field` method:
 ```php
 $field_group->add_field( $text );
 ```
+
+Normally `add_field` adds the field to the end of the field group. If you want the field to be inserted first, append a second parameter with `first` as its value:
+
+```php
+$field_group->add_field( $text, 'first' );
+```
+
+You can also insert the field into the field group after or before another field with following methods:
+
+```php
+$field_group->add_field_before( $text, 'target_field_key' );
+$field_group->add_field_after( $text, $target_field_object );
+```
+
+You can use either the field key or the field object with both methods.
 
 #### Grouping field types
 

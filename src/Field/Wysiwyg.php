@@ -21,21 +21,21 @@ class Wysiwyg extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $tabs;
+    protected $tabs = 'all';
 
     /**
      * What toolbar should be shown
      *
      * @var string
      */
-    protected $toolbar;
+    protected $toolbar = 'full';
 
     /**
      * Should media upload be allowed
      *
      * @var boolean
      */
-    protected $media_upload;
+    protected $media_upload = 1;
 
     /**
      * Set tabs to show
@@ -85,13 +85,23 @@ class Wysiwyg extends \Geniem\ACF\Field {
     }
 
     /**
-     * Set whether media upload is enabled or not
+     * Allow media upload
      *
-     * @param boolean $media_upload Should media upload be allowed.
      * @return self
      */
-    public function set_media_upload( bool $media_upload ) {
-        $this->media_upload = $media_upload;
+    public function allow_media_upload() {
+        $this->media_upload = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disable media upload
+     *
+     * @return self
+     */
+    public function disable_media_upload() {
+        $this->media_upload = 0;
 
         return $this;
     }

@@ -79,7 +79,7 @@ class Group {
      *
      * @var array
      */
-    protected $fields;
+    public $fields;
 
     /**
      * Field group active status
@@ -137,27 +137,6 @@ class Group {
         $clone->reset();
 
         return $clone;
-    }
-
-    /**
-     * Export fields in ACF's native format.
-     *
-     * @return array
-     */
-    public function export() {
-        $obj = get_object_vars( $this );
-
-        if ( ! empty( $obj['fields'] ) ) {
-            // Loop through fields and return their export method.
-            $obj['fields'] = array_map( function( $field ) {
-                return $field->export();
-            }, $obj['fields'] );
-
-            // Remove keys from the array.
-            $obj['fields'] = array_values( $obj['fields'] );
-        }
-
-        return $obj;
     }
 
     /**
@@ -403,12 +382,12 @@ class Group {
      * Add a field to the field group.
      *
      * @param \Geniem\ACF\Field $field A field to be added.
-     * @param string            $first Whether the field is added first or last.
+     * @param string            $order Whether the field is added first or last.
      * @return self
      */
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
         // Special treatment if the field to be added is a tab.
-        if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+        if ( $field instanceof \Geniem\ACF\Field\Tab ) {
             // Save the subfields from the tab...
             $sub_fields = $field->get_fields();
 
@@ -482,7 +461,7 @@ class Group {
      */
     private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
         // If given a field instance, replace the value with its key.
-        if ( $target instanceof \ Geniem\ACF\Field ) {
+        if ( $target instanceof \Geniem\ACF\Field ) {
             $target = $target->get_key();
         }
 
@@ -514,7 +493,7 @@ class Group {
         $this->fields = $fields;
 
         // Special treatment if the field to be added is a tab.
-        if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+        if ( $field instanceof \Geniem\ACF\Field\Tab ) {
             // Save the subfields from the tab...
             $sub_fields = $field->get_fields();
 
@@ -634,5 +613,31 @@ class Group {
      */
     public function reset() {
         $this->registered = false;
+    }
+
+    /**
+     * Export current field and sub fields to acf compatible format
+     *
+     * @return array Acf fields
+     */
+    public function export() {
+        $obj = get_object_vars( $this );
+
+        // Remove unnecessary properties from the exported array.
+        unset( $obj['inheritee'] );
+        unset( $obj['groupable'] );
+        unset( $obj['fields_var'] );
+
+        // Loop through fields and export them.
+        if ( ! empty( $obj[ 'fields' ] ) ) {
+            $obj[ 'fields' ] = array_map( function( $field ) {
+                return $field->export();
+            }, $obj[ 'fields' ] );
+
+            // Remove keys, ACF requires the arrays to be numbered.
+            $obj[ 'fields' ] = array_values( $obj[ 'fields' ] );
+        }
+
+        return $obj;
     }
 }

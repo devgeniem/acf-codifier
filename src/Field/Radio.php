@@ -93,4 +93,58 @@ class Radio extends Checkbox {
     public function get_save_other_choice() {
         return $this->save_other_choice;
     }
+
+    /**
+     * Set choices for the checkbox
+     *
+     * @param array $choices Choices as strings.
+     * @return self
+     */
+    public function set_choices( array $choices ) {
+        $this->choices = $choices;
+
+        return $this;
+    }
+
+    /**
+     * Add a choice.
+     *
+     * @param string $choice Choice to be added.
+     * @param mixed  $value Value to save if choice selected, uses $choice if not set.
+     * @return self
+     */
+    public function add_choice( string $choice, $value ) {
+        if ( ! isset( $value ) ) {
+            $value = $choice;
+        }
+
+        $this->choices[ $value ] = $choice;
+
+        return $this;
+    }
+
+    /**
+     * Remove a choice.
+     *
+     * @param string $choice Choice to be removed.
+     * @return self
+     */
+    public function remove_choice( string $choice ) {
+        $position = array_search( $choice, $this->choices );
+
+        if ( ( $position !== false ) ) {
+            unset( $this->choices[ $position ] );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get all choices.
+     *
+     * @return array
+     */
+    public function get_choices() {
+        return $this->choices;
+    }
 }

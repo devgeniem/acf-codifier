@@ -24,6 +24,13 @@ class Groupable {
     protected $fields_var = 'fields';
 
     /**
+     * Either inheritee or $this
+     *
+     * @var mixed
+     */
+    private $self;
+
+    /**
      * Constructor.
      *
      * @param mixed $inheritee
@@ -32,12 +39,14 @@ class Groupable {
         // Save the inheritee class into its property.
         $this->inheritee = $inheritee;
 
-        if ( isset( $inheritee ) && property_exists( $this->inheritee, 'sub_fields' ) ) {
+        if ( isset( $this->inheritee ) && property_exists( $this->inheritee, 'sub_fields' ) ) {
             $this->fields_var = 'sub_fields';
         }
         else {
             $this->fields_var = 'fields';
         }
+
+        $this->self = $this->inheritee ?? $this;
     }
 
     /**
@@ -115,12 +124,7 @@ class Groupable {
             $field->set_fields( $sub_fields );
         }
 
-        if ( $this->inheritee ) {
-            return $this->inheritee;
-        }
-        else {
-            return $this;
-        }
+        return $this->self;
     }
 
     /**
@@ -207,12 +211,7 @@ class Groupable {
             $field->set_fields( $sub_fields );
         }
 
-        if ( $this->inheritee ) {
-            return $this->inheritee;
-        }
-        else {
-            return $this;
-        }
+        return $this->self;
     }
 
     /**
@@ -224,12 +223,7 @@ class Groupable {
     public function remove_field( int $field ) {
         unset( $this->{ $this->fields_var }[ $field ] );
 
-        if ( $this->inheritee ) {
-            return $this->inheritee;
-        }
-        else {
-            return $this;
-        }
+        return $this->self;
     }
 
     /**
@@ -259,6 +253,6 @@ class Groupable {
     public function remove_fields() {
         unset( $this->sub_fields );
 
-        return $this;
+        return $this->self;
     }
 }

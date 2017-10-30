@@ -121,6 +121,18 @@ abstract class Field {
     public function export() {
         $obj = get_object_vars( $this );
 
+        unset( $obj['inheritee'] );
+        unset( $obj['groupable'] );
+        unset( $obj['fields_var'] );
+
+        if ( \property_exists( $this, 'fields_var' ) && ! empty( $obj[ $this->fields_var ] ) ) {
+            $obj[ $this->fields_var ] = array_map( function( $field ) {
+                return $field->export();
+            }, $obj[ $this->fields_var ] );
+
+            $obj[ $this->fields_var ] = array_values( $obj[ $this->fields_var ] );
+        }
+
         // Convert the wrapper class array to a space-separated string.
         if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
             $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );

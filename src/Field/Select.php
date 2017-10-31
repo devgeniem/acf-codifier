@@ -78,9 +78,9 @@ class Select extends \Geniem\ACF\Field {
      * @param  mixed $value  Value to add if $choice is not array, if not set uses $choice.
      * @return self
      */
-    public function add_choice( $choice, $value ) {
+    public function add_choice( $choice, $value = null ) {
         if ( is_array( $choice ) ) {
-            if ( count( $choice ) > 0 ) {
+            if ( count( $choice ) !== 1 ) {
                 throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
             }
 
@@ -89,6 +89,7 @@ class Select extends \Geniem\ACF\Field {
             if ( ! isset( $value ) ) {
                 $value = $choice;
             }
+
             $this->choices[ $value ] = $choice;
         }
 
@@ -104,7 +105,7 @@ class Select extends \Geniem\ACF\Field {
      */
     public function remove_choice( $choice ) {
         if ( is_array( $choice ) ) {
-            if ( count( $choice ) > 0 ) {
+            if ( count( $choice ) !== 1 ) {
                 throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: remove_choice() requires an array with exactly one value as an argument' );
             }
 
@@ -112,7 +113,7 @@ class Select extends \Geniem\ACF\Field {
                 unset( $this->choices[ $choice[0] ] );
             }
         } else {
-            $position = array_search( $choice, $this->choices );
+            $position = array_search( $choice, $this->choices, true );
 
             if ( ( $position !== false ) ) {
                 unset( $this->choices[ $position ] );

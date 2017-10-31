@@ -28,7 +28,7 @@ class Checkbox extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $layout;
+    protected $layout = 'vertical';
 
     /**
      * Should a toggle all checkbox be shown

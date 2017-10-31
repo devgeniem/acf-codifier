@@ -21,7 +21,7 @@ class File extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $return_format;
+    protected $return_format = 'array';
 
     /**
      * The preview size of the field.
@@ -29,14 +29,14 @@ class File extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $preview_size;
+    protected $preview_size = 'thumbnail';
 
     /**
      * The target library to be used.
      *
      * @var string
      */
-    protected $library;
+    protected $library = 'all';
 
     /**
      * Minimum size for the file.

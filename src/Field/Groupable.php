@@ -246,6 +246,16 @@ class Groupable {
     }
 
     /**
+     * Get a field
+     *
+     * @param string $key Field's key.
+     * @return array
+     */
+    public function get_field ( $key ) {
+        return $this->{ $this->fields_var }[ $key ] ?? null;
+    }
+
+    /**
      * Remove all sub fields
      *
      * @return self

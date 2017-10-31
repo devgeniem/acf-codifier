@@ -13,7 +13,7 @@
 
 A helper class to make defining ACF field groups and fields easier in the code.
 
-A complete documentation of the classes can be found [here](docs/CLASSES.md)
+A complete documentation of the classes can be found [here](docs/classes.md).
 
 ## Installation
 
@@ -135,6 +135,8 @@ $field_group->add_field_after( $text, $target_field_object );
 ```
 
 You can use either the field key or the field object with both methods.
+
+List of all field types and their methods can be found [here](docs/classes.md).
 
 #### Grouping field types
 

@@ -457,7 +457,7 @@ class Group {
      * @param \Geniem\ACF\Field $field  A field to be added.
      * @param [string]          $action Whether it's added before or after.
      * @param [mixed]           $target A target field.
-     * @return void
+     * @return self
      */
     private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
         // If given a field instance, replace the value with its key.
@@ -629,13 +629,13 @@ class Group {
         unset( $obj['fields_var'] );
 
         // Loop through fields and export them.
-        if ( ! empty( $obj[ 'fields' ] ) ) {
-            $obj[ 'fields' ] = array_map( function( $field ) {
+        if ( ! empty( $obj['fields'] ) ) {
+            $obj['fields'] = array_map( function( $field ) {
                 return $field->export();
-            }, $obj[ 'fields' ] );
+            }, $obj['fields'] );
 
             // Remove keys, ACF requires the arrays to be numbered.
-            $obj[ 'fields' ] = array_values( $obj[ 'fields' ] );
+            $obj['fields'] = array_values( $obj['fields'] );
         }
 
         return $obj;

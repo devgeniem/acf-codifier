@@ -113,10 +113,15 @@ class Select extends \Geniem\ACF\Field {
                 unset( $this->choices[ $choice[0] ] );
             }
         } else {
-            $position = array_search( $choice, $this->choices, true );
+            if ( isset( $this->choices[ $choice ] ) ) {
+                unset( $this->choices[ $choice ] );
+            }
+            else {
+                $position = array_search( $choice, $this->choices, true );
 
-            if ( ( $position !== false ) ) {
-                unset( $this->choices[ $position ] );
+                if ( ( $position !== false ) ) {
+                    unset( $this->choices[ $position ] );
+                }
             }
         }
 

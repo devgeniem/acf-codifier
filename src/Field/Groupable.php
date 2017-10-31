@@ -220,7 +220,7 @@ class Groupable {
      * @param  integer $field Position in array.
      * @return self
      */
-    public function remove_field( int $field ) {
+    public function remove_field( $field ) {
         unset( $this->{ $this->fields_var }[ $field ] );
 
         return $this->self;
@@ -228,9 +228,9 @@ class Groupable {
 
     /**
      * Set fields
-     * 
+     *
      * @param array $fields Fields to set.
-     * @return self
+     * @return array
      */
     public function set_fields( $fields ) {
         $this->sub_fields = $fields;

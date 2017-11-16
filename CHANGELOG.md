@@ -4,7 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.0.1] - 2017-10-31
+## [0.0.3-beta] - 2017-11-16
+
+### Changed
+- Fixed a bug where field instructions were not shown if instructions placement property wasn't set
+
+## [0.0.2-beta] - 2017-11-07
+
+### Changed
+- Enhanced documentation
+
+## [0.0.1-alpha] - 2017-10-31
 
 ### Added
 - Message, link & color fields

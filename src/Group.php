@@ -51,14 +51,14 @@ class Group {
      *
      * @var string
      */
-    protected $label_placement;
+    protected $label_placement = 'top';
 
     /**
      * Field group instruction placement value
      *
      * @var string
      */
-    protected $instruction_placement;
+    protected $instruction_placement = 'label';
 
     /**
      * Field group hide on screen value
@@ -599,6 +599,8 @@ class Group {
             $element = $this;
 
             \add_action( 'wp_loaded', function() use ( $element ) {
+                // var_dump( $element->export() );
+                // die();
                 \acf_add_local_field_group( $element->export() );
             });
 

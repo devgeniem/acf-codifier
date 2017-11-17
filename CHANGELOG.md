@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [0.1.0] - 2017-11-17
+
+### Added
+- Not yet fully functional possibility to hide field label in the admin side
+
 ## [0.0.3-beta] - 2017-11-16
 
 ### Changed

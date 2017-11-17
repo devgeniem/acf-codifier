@@ -59,6 +59,15 @@ abstract class Field {
     protected $default_value;
 
     /**
+     * Hide field label in the admin side
+     * 
+     * NOTE! This property is not yet in use.
+     *
+     * @var boolean
+     */
+    protected $hide_label = false;
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -70,6 +79,10 @@ abstract class Field {
         // Force the inheriting class to have a property type.
         if ( ! isset( $this->type ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: the extending class must have property "type"' );
+        }
+
+        if ( empty( $label ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: label can\'t be empty' );
         }
 
         $this->label = $label;
@@ -407,5 +420,36 @@ abstract class Field {
      */
     public function get_default_value() {
         return $this->default_value;
+    }
+
+    /**
+     * Hide the field label in the admin side
+     *
+     * @return self
+     */
+    public function hide_label() {
+        $this->hide_label = true;
+
+        return $this;
+    }
+
+    /**
+     * Show the field label in the admin side
+     *
+     * @return self
+     */
+    public function show_label() {
+        $this->hide_label = false;
+
+        return $this;
+    }
+
+    /**
+     * Get the label visibility status
+     *
+     * @return boolean
+     */
+    public function get_label_visibility() {
+        return $this->hide_label;
     }
 }

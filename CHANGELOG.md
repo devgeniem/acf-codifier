@@ -6,10 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.1.0] - 2017-11-17
+## [0.2.0] - 2017-11-20
 
 ### Added
-- Not yet fully functional possibility to hide field label in the admin side
+- Added a possibility to hide a field label easily on the admin side
+
+## [0.1.0] - 2017-11-17
+
+### Changed
+- Published a stable release
 
 ## [0.0.3-beta] - 2017-11-16
 

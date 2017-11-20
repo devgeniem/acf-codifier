@@ -205,3 +205,17 @@ $tab->set_placement( 'left' )
 
 $field_group->add_field( $tab );
 ```
+
+## Additional features
+
+### Hide field label
+
+With the Codifier you can hide a field's label on the admin side. It might be useful for example with flexible content fields or a group field.
+
+You achieve this simply by calling `hide_label()` for your field.
+
+```php
+$field->hide_label();
+```
+
+There are also `show_label()` and `get_label_visibility()` methods.

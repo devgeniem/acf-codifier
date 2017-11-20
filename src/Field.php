@@ -59,15 +59,6 @@ abstract class Field {
     protected $default_value;
 
     /**
-     * Hide field label in the admin side
-     * 
-     * NOTE! This property is not yet in use.
-     *
-     * @var boolean
-     */
-    protected $hide_label = false;
-
-    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -428,7 +419,7 @@ abstract class Field {
      * @return self
      */
     public function hide_label() {
-        $this->hide_label = true;
+        \Geniem\ACF\Codifier::hide_label( $this );
 
         return $this;
     }
@@ -439,7 +430,7 @@ abstract class Field {
      * @return self
      */
     public function show_label() {
-        $this->hide_label = false;
+        \Geniem\ACF\Codifier::show_label( $this );
 
         return $this;
     }
@@ -450,6 +441,6 @@ abstract class Field {
      * @return boolean
      */
     public function get_label_visibility() {
-        return $this->hide_label;
+        return \Geniem\ACF\Codifier::get_label_visibility( $this );
     }
 }

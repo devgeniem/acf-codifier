@@ -94,7 +94,7 @@ abstract class Field {
      *
      * @return void
      */
-    private function __clone() {}
+    protected function __clone() {}
 
     /**
      * Clone method

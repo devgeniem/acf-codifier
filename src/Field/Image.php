@@ -340,4 +340,34 @@ class Image extends \Geniem\ACF\Field {
     public function get_mime_types() {
         return $this->mime_types;
     }
+
+    /**
+     * Register a attachment validating function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function validate_attachment( $function ) {
+        $this->filters['validate_attachment'] = [
+            'filter'   => 'acf/validate_attachment/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a upload prefiltering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function upload_prefilter( $function ) {
+        $this->filters['upload_prefilter'] = [
+            'filter'   => 'acf/upload_prefilter/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
 }

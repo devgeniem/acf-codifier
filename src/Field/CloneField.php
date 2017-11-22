@@ -56,9 +56,11 @@ class CloneField extends \Geniem\ACF\Field {
     /**
      * Export the fields to be cloned in ACF's native format.
      *
+     * @param boolean $register Whether the field is to be registered.
+     *
      * @return array
      */
-    public function export() {
+    public function export( $register = false ) {
         $obj = get_object_vars( $this );
 
         $obj['clone'] = array_map( function( $clone ) {

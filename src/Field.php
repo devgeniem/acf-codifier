@@ -59,6 +59,13 @@ abstract class Field {
     protected $default_value;
 
     /**
+     * Filters and actions to be hooked
+     *
+     * @var array
+     */
+    protected $filters = [];
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -66,7 +73,7 @@ abstract class Field {
      * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
-    public function __construct( string $label, string $key = null, string $name = null  ) {
+    public function __construct( string $label, string $key = null, string $name = null ) {
         // Force the inheriting class to have a property type.
         if ( ! isset( $this->type ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: the extending class must have property "type"' );
@@ -120,14 +127,23 @@ abstract class Field {
     /**
      * Export field in ACF's native format.
      *
+     * @param boolean $register Whether the field is to be registered.
+     *
      * @return array
      */
-    public function export() {
+    public function export( $register = false ) {
+        if ( $register && ! empty( $this->filters ) ) {
+            array_walk( $this->filters, function( $filter ) {
+                add_filter( $filter['filter'] . $this->key, $filter['function'] );
+            });
+        }
+
         $obj = get_object_vars( $this );
 
         unset( $obj['inheritee'] );
         unset( $obj['groupable'] );
         unset( $obj['fields_var'] );
+        unset( $obj['filters'] );
 
         if ( \property_exists( $this, 'fields_var' ) && ! empty( $obj[ $this->fields_var ] ) ) {
             $obj[ $this->fields_var ] = array_map( function( $field ) {
@@ -442,5 +458,92 @@ abstract class Field {
      */
     public function get_label_visibility() {
         return \Geniem\ACF\Codifier::get_label_visibility( $this );
+    }
+
+    /**
+     * Unset a previously set filter.
+     *
+     * @param string $filter The key for the filter to be unset.
+     * @return self
+     */
+    public function unset_filter( $filter ) {
+        unset( $this->filters[ $filter ] );
+
+        return $this;
+    }
+
+    /**
+     * Register a value validation function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function validate_value( $function ) {
+        $this->filters['validate_value'] = [
+            'filter'   => 'acf/validate_value/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a value formatting function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function format_value( $function ) {
+        $this->filters['format_value'] = [
+            'filter'   => 'acf/format_value/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a value loading function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function load_value( $function ) {
+        $this->filters['load_value'] = [
+            'filter'   => 'acf/load_value/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a value updating function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function update_value( $function ) {
+        $this->filters['update_value'] = [
+            'filter'   => 'acf/update_value/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a field preparing function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function prepare_field( $function ) {
+        $this->filters['prepare_field'] = [
+            'filter'   => 'acf/prepare_field/key=',
+            'function' => $function,
+        ];
+
+        return $this;
     }
 }

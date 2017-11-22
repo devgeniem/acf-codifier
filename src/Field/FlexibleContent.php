@@ -62,14 +62,16 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * Export field in ACF's native format.
      * This also exports layout fields
      *
+     * @param boolean $register Whether the field is to be registered.
+     *
      * @return array
      */
-    public function export() {
-        $obj = parent::export();
+    public function export( $register = false ) {
+        $obj = parent::export( $register );
 
         if ( ! empty( $obj['layouts'] ) ) {
-            $obj['layouts'] = array_map( function( $layout ) {
-                return $layout->export();
+            $obj['layouts'] = array_map( function( $layout ) use ( $register ) {
+                return $layout->export( $register );
             }, $obj['layouts'] );
 
             $obj['layouts'] = array_values( $obj['layouts'] );

@@ -49,11 +49,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * Override field construction method to add default button label but run parent constructor after that
      *
      * @param string $label Field label.
+     * @param string $key   Field key.
+     * @param string $name  Field name.
      */
-    public function __construct( $label ) {
+    public function __construct( $label, $key = null, $name = null ) {
         $this->button_label = __( 'Add Row', 'acf' );
 
-        parent::__construct( $label );
+        parent::__construct( $label, $key, $name );
     }
 
     /**

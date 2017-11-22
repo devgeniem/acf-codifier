@@ -6,9 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.0] - 2017-11-22
+
+### Changed
+- Fixed a bug that Repeater and Flexible Content fields wouldn't accept key and name as their constructor parameters
+- Updated version number to 1.0.0 for compatibility purposes
+
 ## [0.2.1] - 2017-11-21
 
-## Changed
+### Changed
 - Fixed a bug with the fields' clone method
 
 ## [0.2.0] - 2017-11-20

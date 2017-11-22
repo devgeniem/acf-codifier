@@ -1,14 +1,7 @@
 <?php
-/*
-Plugin Name: ACF Codifier
-Plugin URI: https://github.com/devgeniem/acf-codifier
-Description: A helper class to make defining ACF field groups and fields easier in the code.
-Version: 0.2.2
-Author: Geniem Oy
-Author URI: https://geniem.fi
-License: GPLv2
-*/
-
+/**
+ * ACF Codifier
+ */
 namespace Geniem\ACF;
 
 /**
@@ -106,5 +99,3 @@ class Codifier {
         return isset( self::$hidden_labels[ $key ] );
     }
 }
-
-Codifier::init();

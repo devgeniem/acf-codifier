@@ -1,5 +1,6 @@
 ## Table of contents
 
+- [\Geniem\ACF\Codifier](#class-geniemacfcodifier)
 - [\Geniem\ACF\ConditionalLogicGroup](#class-geniemacfconditionallogicgroup)
 - [\Geniem\ACF\Exception](#class-geniemacfexception)
 - [\Geniem\ACF\Field (abstract)](#class-geniemacffield-abstract)
@@ -43,6 +44,20 @@
 
 <hr />
 
+### Class: \Geniem\ACF\Codifier
+
+> ACF Codifier
+
+| Visibility | Function |
+|:-----------|:---------|
+| public static | <strong>get_label_visibility(</strong><em>mixed</em> <strong>$field</strong>)</strong> : <em>boolean</em><br /><em>Returns true or false if an ACF field's label has been hidden</em> |
+| public static | <strong>hide_label(</strong><em>mixed</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Hides an ACF field label</em> |
+| public static | <strong>hide_labels()</strong> : <em>void</em><br /><em>Hide ACF field labels from desired fields</em> |
+| public static | <strong>init()</strong> : <em>void</em><br /><em>Init function for registering actions</em> |
+| public static | <strong>show_field(</strong><em>mixed</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Shows a previously hidden ACF field label</em> |
+
+<hr />
+
 ### Class: \Geniem\ACF\ConditionalLogicGroup
 
 > Class ConditionalLogicGroup
@@ -83,12 +98,14 @@
 | public | <strong>get_instructions()</strong> : <em>string</em><br /><em>Get the instruction text of the field.</em> |
 | public | <strong>get_key()</strong> : <em>string</em><br /><em>Get the key of the field.</em> |
 | public | <strong>get_label()</strong> : <em>string</em><br /><em>Get the label of the field.</em> |
+| public | <strong>get_label_visibility()</strong> : <em>boolean</em><br /><em>Get the label visibility status</em> |
 | public | <strong>get_name()</strong> : <em>string</em><br /><em>Get the name of the field.</em> |
 | public | <strong>get_required()</strong> : <em>boolean</em><br /><em>Get the required status of the field.</em> |
 | public | <strong>get_type()</strong> : <em>string</em><br /><em>Get the type of the field.</em> |
 | public | <strong>get_wrapper_classes()</strong> : <em>array</em><br /><em>Get all wrapper classes that have been added for the field.</em> |
 | public | <strong>get_wrapper_id()</strong> : <em>string</em><br /><em>Get the id that has been added for the field.</em> |
 | public | <strong>get_wrapper_width()</strong> : <em>int</em><br /><em>Get the wrapper width.</em> |
+| public | <strong>hide_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Hide the field label in the admin side</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
 | public | <strong>set_default_value(</strong><em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the default value for the field.</em> |
 | public | <strong>set_instructions(</strong><em>\string</em> <strong>$instructions</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set instruction text for the field.</em> |
@@ -100,6 +117,8 @@
 | public | <strong>set_wrapper_classes(</strong><em>mixed</em> <strong>$classes</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set classes to be added for the field.</em> |
 | public | <strong>set_wrapper_id(</strong><em>\string</em> <strong>$id</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a wrapper id for the field.</em> |
 | public | <strong>set_wrapper_width(</strong><em>\integer</em> <strong>$width</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the wrapper width in percents.</em> |
+| public | <strong>show_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Show the field label in the admin side</em> |
+| protected | <strong>__clone()</strong> : <em>void</em><br /><em>Prevent raw cloning.</em> |
 
 <hr />
 
@@ -294,7 +313,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
+| public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>, <em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
 | public | <strong>add_layout(</strong><em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a layout to the layouts</em> |
 | public | <strong>export()</strong> : <em>array</em><br /><em>Export field in ACF's native format. This also exports layout fields</em> |
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
@@ -635,7 +654,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
+| public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>, <em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
 | public | <strong>export()</strong> : <em>array</em><br /><em>Export field in ACF's native format. This also exports sub fields</em> |
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |

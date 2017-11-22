@@ -41,6 +41,8 @@ class Codifier {
                     $key = $field->get_key();
                 }
 
+                $key = str_replace( '_', '-', $key );
+
                 echo 'div.acf-field.acf-field-' . $key . " label { display: none; }\n";
             }
 

@@ -75,14 +75,16 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
      * Export field in ACF's native format.
      * This also exports sub fields
      *
+     * @param boolean $register Whether the field is to be registered.
+     *
      * @return array
      */
-    public function export() {
+    public function export( $register = false ) {
         $obj = get_object_vars( $this );
 
         if ( ! empty( $obj['sub_fields'] ) ) {
-            $obj['sub_fields'] = array_map( function( $field ) {
-                return $field->export();
+            $obj['sub_fields'] = array_map( function( $field ) use ( $register ) {
+                return $field->export( $register );
             }, $obj['sub_fields'] );
 
             $obj['sub_fields'] = array_values( $obj['sub_fields'] );

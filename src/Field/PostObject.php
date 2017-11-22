@@ -295,4 +295,34 @@ class PostObject extends \Geniem\ACF\Field {
     public function get_ajax() {
         return $this->ajax;
     }
+
+    /**
+     * Register a post object query filtering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function post_object_query( $function ) {
+        $this->filters['post_object_query'] = [
+            'filter'   => 'acf/fields/post_object/query/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a post object result filtering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function post_object_result( $function ) {
+        $this->filters['post_object_result'] = [
+            'filter'   => 'acf/fields/post_object/result/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
 }

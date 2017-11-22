@@ -599,7 +599,7 @@ class Group {
             $element = $this;
 
             \add_action( 'wp_loaded', function() use ( $element ) {
-                \acf_add_local_field_group( $element->export() );
+                \acf_add_local_field_group( $element->export( true ) );
             });
 
             $this->registered = true;
@@ -618,9 +618,11 @@ class Group {
     /**
      * Export current field and sub fields to acf compatible format
      *
+     * @param boolean $register Whether the field group is to be registered.
+     * 
      * @return array Acf fields
      */
-    public function export() {
+    public function export( $register = false ) {
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
@@ -630,8 +632,8 @@ class Group {
 
         // Loop through fields and export them.
         if ( ! empty( $obj['fields'] ) ) {
-            $obj['fields'] = array_map( function( $field ) {
-                return $field->export();
+            $obj['fields'] = array_map( function( $field ) use ( $register ) {
+                return $field->export( $register );
             }, $obj['fields'] );
 
             // Remove keys, ACF requires the arrays to be numbered.

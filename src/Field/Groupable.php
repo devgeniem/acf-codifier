@@ -33,7 +33,7 @@ class Groupable {
     /**
      * Constructor.
      *
-     * @param mixed $inheritee
+     * @param mixed $inheritee Instance of the class that inherited this class.
      */
     public function __construct( $inheritee = null ) {
         // Save the inheritee class into its property.
@@ -55,7 +55,7 @@ class Groupable {
      * Reference allows the referenced property to be modified through
      * the call.
      *
-     * @param string $name
+     * @param string $name Name of the property to get.
      * @return mixed
      */
     public function &__get( $name ) {
@@ -66,20 +66,23 @@ class Groupable {
     /**
      * Export current field and sub fields to acf compatible format
      *
-     * @return array Acf fields
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
      */
-    public function export() {
+    public function export( $register = false ) {
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
         unset( $obj['inheritee'] );
         unset( $obj['groupable'] );
         unset( $obj['fields_var'] );
+        unset( $obj['filters'] );
 
         // Loop through fields and export them.
         if ( ! empty( $obj[ $this->fields_var ] ) ) {
-            $obj[ $this->fields_var ] = array_map( function( $field ) {
-                return $field->export();
+            $obj[ $this->fields_var ] = array_map( function( $field ) use ( $register ) {
+                return $field->export( $register );
             }, $obj[ $this->fields_var ] );
 
             // Remove keys, ACF requires the arrays to be numbered.
@@ -94,6 +97,7 @@ class Groupable {
      *
      * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
      * @param \Geniem\ACF\Field $field A field to be added.
+     * @param string            $order Whether the field is to be added first or last.
      * @return self
      */
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
@@ -157,7 +161,7 @@ class Groupable {
      * @param \Geniem\ACF\Field $field  A field to be added.
      * @param [string]          $action Whether it's added before or after.
      * @param [mixed]           $target A target field.
-     * @return void
+     * @return self
      */
     private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
         // If given a field instance, replace the value with its key.
@@ -228,12 +232,14 @@ class Groupable {
 
     /**
      * Set fields
-     * 
+     *
      * @param array $fields Fields to set.
      * @return self
      */
     public function set_fields( $fields ) {
         $this->sub_fields = $fields;
+
+        return $this->self;
     }
 
     /**
@@ -251,7 +257,7 @@ class Groupable {
      * @param string $key Field's key.
      * @return array
      */
-    public function get_field ( $key ) {
+    public function get_field( $key ) {
         return $this->{ $this->fields_var }[ $key ] ?? null;
     }
 

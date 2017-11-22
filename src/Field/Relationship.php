@@ -356,4 +356,35 @@ class Relationship extends \Geniem\ACF\Field {
     public function get_return_format() {
         return $this->return_format;
     }
+
+    /**
+     * Register a relationship query filtering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function relationship_query( $function ) {
+        $this->filters['relationship_query'] = [
+            'filter'   => 'acf/fields/relationship/query/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Register a relationship result filtering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function relationship_result( $function ) {
+        $this->filters['relationship_result'] = [
+            'filter'   => 'acf/fields/relationship/result/key=',
+            'function' => $function,
+        ];
+
+        return $this;
+    }
+
 }

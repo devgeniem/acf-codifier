@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.0] - 2017-11-22
+
+### Added
+- Lots of ACF filter functionality to be used easily when defining the fields.
+
 ## [1.0.0] - 2017-11-22
 
 ### Changed

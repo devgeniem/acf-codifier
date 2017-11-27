@@ -147,7 +147,7 @@ There are several special field types that can have subfields within them.
 The group and the repeater fields are the simplest of the grouping field types. They are very straightforward:
 
 ```php
-$group = new Group( 'Field name' );
+$group = new Field\Group( 'Field name' );
 
 $group->set_layout( 'table' )
       ->add_field( $some_field )
@@ -161,9 +161,9 @@ $field_group->add_field( $group );
 Flexible content fields consist of layouts which contain the fields.
 
 ```php
-$flexible_content = new FlexibleContent( 'Flexible field' );
+$flexible_content = new Field\FlexibleContent( 'Flexible field' );
 
-$layout = new Layout( 'Layout label' );
+$layout = new Field\Flexible\Layout( 'Layout label' );
 
 $layout->set_display_mode( 'row' )
        ->add_field( $some_field )
@@ -181,7 +181,7 @@ Clone field is a special case in that its class name is not the same than the fi
 You can clone both fields and field groups, so the field's `add_clone()` method can take both as a parameter. It can also be given just the key of the desired field or field group as a string.
 
 ```php
-$clone = new CloneField( 'Clone' );
+$clone = new Field\CloneField( 'Clone' );
 
 $clone->set_label_prefix()        // Set label prefix setting as true
       ->add_clone( $some_field )  // Add a field object
@@ -196,7 +196,7 @@ $field_group->add_field( $clone );
 With ACF Codifier the tab field is treated like it had subfields. Otherwise it works just the same as native ACF tab would.
 
 ```php
-$tab = new Tab( 'My Very First Tab' );
+$tab = new Field\Tab( 'My Very First Tab' );
 
 $tab->set_placement( 'left' )
     ->set_endpoint()

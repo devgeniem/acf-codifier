@@ -28,14 +28,14 @@ class Group extends \Geniem\ACF\Field\GroupableField {
      *
      * @var string
      */
-    protected $fields_var = 'fields';
+    protected $fields_var = 'sub_fields';
 
     /**
      * Fields
      *
      * @var array
      */
-    public $fields;
+    public $sub_fields;
 
     /**
      * Set layout

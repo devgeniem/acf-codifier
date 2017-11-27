@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Group
  */
-class Group extends \Geniem\ACF\Field\Groupable {
+class Group extends \Geniem\ACF\Field\GroupableField {
     /**
      * Field type
      *
@@ -35,7 +35,7 @@ class Group extends \Geniem\ACF\Field\Groupable {
      *
      * @var array
      */
-    protected $fields;
+    public $fields;
 
     /**
      * Set layout

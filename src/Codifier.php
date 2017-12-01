@@ -127,19 +127,33 @@ class Codifier {
         }
     
         // Sort the meta rows so that the ones deeper in the tree come last
-        if ( ! ( $sorted = wp_cache_get( 'sorted_meta_' . $id ) ) ) {
+        $sorted = wp_cache_get( 'sorted_meta_' . $id );
+        $sort_cache = [];
+
+        if ( ! $sorted ) {
             uksort( $rows, function ( $a, $b ) {
-    
-                preg_match_all( '/_(\d+)_/', $a, $a_amount );
-                preg_match_all( '/_(\d+)_/', $b, $b_amount );
-                $a_a = count( $a_amount[0] );
-                $b_a = count( $b_amount[0] );
+                if ( isset( $sort_cache[ $a ] ) ) {
+                    $a_amount = $sort_cache[ $a ];
+                }
+                else {
+                    preg_match_all( '/_(\d+)_/', $a, $a_amount );
+                }
+                
+                if ( isset( $sort_cache[ $b ] ) ) {
+                    $b_amount = $sort_cache[ $b ];
+                }
+                else {
+                    preg_match_all( '/_(\d+)_/', $b, $b_amount );
+                }
+
+                $a_amount = count( $a_amount[0] );
+                $b_amount = count( $b_amount[0] );
 
                 // If the depth is same, sort alphabetically
-                if ( $a_a === $b_a ) {
+                if ( $a_amount === $b_amount ) {
                     return $a <=> $b;
                 } else {
-                    return $a_a <=> $b_a;
+                    return $a_amount <=> $b_amount;
                 }
             } );
             wp_cache_set( 'sorted_meta_' . $id, $rows );
@@ -178,7 +192,8 @@ class Codifier {
                 // Fetch the appropriate field object 
                 $field_key = $original[ '_' . $key ];
     
-                if ( ! ( $field = wp_cache_get( $field_key ) ) ) {
+                $field = wp_cache_get( $field_key );
+                if ( ! $field ) {
                     $field = acf_get_local_field( $field_key );
     
                     // If there is a meta-meta pair but the field doesn't exist anymore,
@@ -232,14 +247,16 @@ class Codifier {
                 switch( $field['type'] ) {
                     case 'clone':
                         // Get the cloned field's field object
-                        if ( ! ( $field_object = wp_cache_get( 'local_field_' . $field['key'], 'acf' ) ) ) {
+                        $field_object = wp_cache_get( 'local_field_' . $field['key'], 'acf' );
+                        if ( ! $field_object ) {
                             $field_object = acf_get_local_field( $field['key'] );
                             wp_cache_set( 'local_field_' . $field['key'], $field_object, 'acf' );
                         }
     
                         // Loop through cloned fields and fetch their field objects
                         foreach ( $field_object['clone'] as $cloned_fields ) {
-                            if ( ! ( $cloned_field = wp_cache_get( $cloned_fields, 'acf' ) ) ) {
+                            $cloned_field = wp_cache_get( $cloned_fields, 'acf' );
+                            if ( ! $cloned_field ) {
                                 $cloned_field = acf_get_local_field( $cloned_fields );
                                 wp_cache_set( $cloned_fields, $cloned_field, 'acf' );
                             }
@@ -274,7 +291,9 @@ class Codifier {
                         $value_node = [];
                         break;
                     default:
-                        if ( ! ( $value_node = wp_cache_get( $id .'-'. $key ) ) ) {
+                        $value_node = wp_cache_get( $id .'-'. $key );
+                        
+                        if ( ! $value_node ) {
                             // Run the value through a bunch of filters to get the format we want
                             $value = maybe_unserialize( $value );
                             $value = apply_filters( "acf/format_value", $value, $id, $field );

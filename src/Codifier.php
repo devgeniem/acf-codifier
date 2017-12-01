@@ -126,7 +126,8 @@ class Codifier {
             }, ARRAY_FILTER_USE_KEY );
         }
     
-        // Sort the meta rows so that the ones deeper in the tree come last
+        // Sort the meta rows so that the ones deeper in the final data tree come last
+        // Return the sorted data from the cache if it's stored there
         $sorted = wp_cache_get( 'sorted_meta_' . $id );
 
         if ( ! $sorted ) {
@@ -160,6 +161,7 @@ class Codifier {
                     return $a_amount <=> $b_amount;
                 }
             } );
+            // Store the sorted data to the cache because this is a relatively heavy operation
             wp_cache_set( 'sorted_meta_' . $id, $rows );
         }
         else {
@@ -168,16 +170,16 @@ class Codifier {
     
         $original = [];
     
-        // Convert to ordinary key-value form
+        // Convert the data from get_postmeta to one-dimensional key-value format for easiness
         foreach ( $rows as $key => $row ) {
             $original[ $key ] = $row[0];
         }
     
         // Initiate a few arrays for the future
-        $times = [];
-        $fields = [];
-        $clones = [];
-        $layouts = [];
+        $times          = [];
+        $fields         = [];
+        $clones         = [];
+        $layouts        = [];
         $layout_filters = [];
     
         // Loop through all meta values
@@ -196,25 +198,28 @@ class Codifier {
                 // Fetch the appropriate field object 
                 $field_key = $original[ '_' . $key ];
     
+                // Check if we have a field declaration stored in cache
                 $field = wp_cache_get( $field_key );
                 if ( ! $field ) {
                     $field = acf_get_local_field( $field_key );
     
                     // If there is a meta-meta pair but the field doesn't exist anymore,
-                    // continue without returning the data either
+                    // continue without returning the data
                     if ( ! $field ) {
                         continue;
                     }
     
                     // ACF needs this for some reason
                     $field['_name'] = $field['name'];
+
+                    // Store the field declaration to cache
                     wp_cache_set( $field_key, $field );
                 }
     
                 // If there have been cloned fields, we need to run a few checks
                 if ( ! empty( $clones ) ) {
                     foreach ( $clones as $clone_key => $clone_value ) {
-                        // Clone would be first in the actual key
+                        // The clone's key would be first in the actual key
                         $clone_key_array = explode( '_', $clone_key );
                         $clone_key = $clone_key_array[0];
     
@@ -242,7 +247,7 @@ class Codifier {
                 // Create a reference to the spot where the value is supposed to be placed
                 $value_node =& $fields;
     
-                // Reference magic
+                // Reference magic: find the appropriate location for the value to be stored
                 foreach ( $path as $pkey ) {
                     $value_node =& $value_node[ $pkey ];
                 }
@@ -250,7 +255,7 @@ class Codifier {
                 // Do field type specific things
                 switch( $field['type'] ) {
                     case 'clone':
-                        // Get the cloned field's field object
+                        // Get the cloned field's field object either from cache or from the declaration
                         $field_object = wp_cache_get( 'local_field_' . $field['key'], 'acf' );
                         if ( ! $field_object ) {
                             $field_object = acf_get_local_field( $field['key'] );
@@ -258,6 +263,7 @@ class Codifier {
                         }
     
                         // Loop through cloned fields and fetch their field objects
+                        // either from cache or from the declaration
                         foreach ( $field_object['clone'] as $cloned_fields ) {
                             $cloned_field = wp_cache_get( $cloned_fields, 'acf' );
                             if ( ! $cloned_field ) {
@@ -283,6 +289,8 @@ class Codifier {
                         foreach ( $layouts as $index => $layout ) {
                             // Insert the layout name in the data
                             $value_node[ $index ] = [ 'acf_fc_layout' => $layout ];
+
+                            // Initialize the layout's node if it isn't already there
                             if ( ! isset( $layout_filters[ $layout ] ) ) {
                                 $layout_filters[ $layout ] = [];
                             }
@@ -298,7 +306,7 @@ class Codifier {
                         $value_node = wp_cache_get( $id .'-'. $key );
 
                         if ( ! $value_node ) {
-                            // Run the value through a bunch of filters to get the format we want
+                            // Run the value through a bunch of ACF filters to get the format we want
                             $value = maybe_unserialize( $value );
                             $value = apply_filters( "acf/format_value", $value, $id, $field );
                             $value = apply_filters( "acf/format_value/type={$field['type']}", $value, $id, $field );
@@ -318,7 +326,7 @@ class Codifier {
     
         // Sort the return array recursively by keys so that the fields are in the right order
         // Should be a fairly quick operation because the array should be pretty much in order already
-        self::ksortRecursive( $fields );
+        self::ksort_recursive( $fields );
     
         // Run DustPress Components filters for the layouts through previously stored references
         foreach( $layout_filters as $key => &$datas ) {
@@ -337,13 +345,13 @@ class Codifier {
      * @param int   $sort_flags  Possible sorting flags
      * @return void
      */
-    public static function ksortRecursive( &$array, $sort_flags = SORT_REGULAR ) {
+    public static function ksort_recursive( &$array, $sort_flags = SORT_REGULAR ) {
         if ( ! is_array( $array ) ) {
             return false;
         }
         ksort( $array, $sort_flags );
         foreach ( $array as &$arr ) {
-            self::ksortRecursive( $arr, $sort_flags );
+            self::ksort_recursive( $arr, $sort_flags );
         }
         return true;
     }

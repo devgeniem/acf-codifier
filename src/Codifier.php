@@ -128,7 +128,7 @@ class Codifier {
     
         // Sort the meta rows so that the ones deeper in the final data tree come last
         // Return the sorted data from the cache if it's stored there
-        $sorted = wp_cache_get( 'sorted_meta_' . $id );
+        $sorted = wp_cache_get( 'sorted_meta_data/' . $id );
 
         if ( ! $sorted ) {
             $sort_cache = [];
@@ -162,7 +162,7 @@ class Codifier {
                 }
             } );
             // Store the sorted data to the cache because this is a relatively heavy operation
-            wp_cache_set( 'sorted_meta_' . $id, $rows );
+            wp_cache_set( 'sorted_meta_data/' . $id, $rows );
         }
         else {
             $rows = $sorted;
@@ -199,7 +199,7 @@ class Codifier {
                 $field_key = $original[ '_' . $key ];
     
                 // Check if we have a field declaration stored in cache
-                $field = wp_cache_get( $field_key );
+                $field = wp_cache_get( 'get_field_object=' . $field_key );
                 if ( ! $field ) {
                     $field = acf_get_local_field( $field_key );
     
@@ -213,7 +213,7 @@ class Codifier {
                     $field['_name'] = $field['name'];
 
                     // Store the field declaration to cache
-                    wp_cache_set( $field_key, $field );
+                    wp_cache_set( 'get_field_object=' . $field_key, $field );
                 }
     
                 // If there have been cloned fields, we need to run a few checks
@@ -256,19 +256,19 @@ class Codifier {
                 switch( $field['type'] ) {
                     case 'clone':
                         // Get the cloned field's field object either from cache or from the declaration
-                        $field_object = wp_cache_get( 'local_field_' . $field['key'], 'acf' );
+                        $field_object = wp_cache_get( 'get_field_object/' . $field['key'], 'acf' );
                         if ( ! $field_object ) {
                             $field_object = acf_get_local_field( $field['key'] );
-                            wp_cache_set( 'local_field_' . $field['key'], $field_object, 'acf' );
+                            wp_cache_set( 'get_field_object/' . $field['key'], $field_object, 'acf' );
                         }
     
                         // Loop through cloned fields and fetch their field objects
                         // either from cache or from the declaration
                         foreach ( $field_object['clone'] as $cloned_fields ) {
-                            $cloned_field = wp_cache_get( $cloned_fields, 'acf' );
+                            $cloned_field = wp_cache_get( 'get_field_object/' . $cloned_fields, 'acf' );
                             if ( ! $cloned_field ) {
                                 $cloned_field = acf_get_local_field( $cloned_fields );
-                                wp_cache_set( $cloned_fields, $cloned_field, 'acf' );
+                                wp_cache_set( 'get_field_object/' . $cloned_fields, $cloned_field, 'acf' );
                             }
     
                             // Store the objects for future use
@@ -303,7 +303,7 @@ class Codifier {
                         $value_node = [];
                         break;
                     default:
-                        $value_node = wp_cache_get( $id .'-'. $key );
+                        $value_node = wp_cache_get( 'get_field/' . $id . '/' . $key );
 
                         if ( ! $value_node ) {
                             // Run the value through a bunch of ACF filters to get the format we want
@@ -313,7 +313,7 @@ class Codifier {
                             $value = apply_filters( "acf/format_value/name={$field['_name']}", $value, $id, $field );
                             $value = apply_filters( "acf/format_value/key={$field['key']}", $value, $id, $field );
                             $value_node = $value;
-                            wp_cache_set( $id .'-'. $key, $value_node );
+                            wp_cache_set( 'get_field/' . $id . '/' . $key, $value_node );
                         }
                         break;
     

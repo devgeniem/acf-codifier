@@ -102,7 +102,7 @@ class Codifier {
     }
 
     /**
-     * A more efficient replacement for ACF' native get_fields function
+     * A more efficient replacement for ACF's native get_fields function
      *
      * @param int $id       Post id to fetch fields from
      * @param array $wanted Keys for wanted fields. Empty or null default to all

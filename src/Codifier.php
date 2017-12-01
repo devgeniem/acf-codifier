@@ -128,26 +128,30 @@ class Codifier {
     
         // Sort the meta rows so that the ones deeper in the tree come last
         $sorted = wp_cache_get( 'sorted_meta_' . $id );
-        $sort_cache = [];
 
         if ( ! $sorted ) {
+            $sort_cache = [];
+
             uksort( $rows, function ( $a, $b ) {
+                // Check if $a parse value is in cache
                 if ( isset( $sort_cache[ $a ] ) ) {
                     $a_amount = $sort_cache[ $a ];
                 }
                 else {
+                    // Find the depth from key
                     preg_match_all( '/_(\d+)_/', $a, $a_amount );
+                    $a_amount = count( $a_amount[0] );
                 }
                 
+                // Check if $b parse value is in cache
                 if ( isset( $sort_cache[ $b ] ) ) {
                     $b_amount = $sort_cache[ $b ];
                 }
                 else {
+                    // Find the depth from key
                     preg_match_all( '/_(\d+)_/', $b, $b_amount );
+                    $b_amount = count( $b_amount[0] );
                 }
-
-                $a_amount = count( $a_amount[0] );
-                $b_amount = count( $b_amount[0] );
 
                 // If the depth is same, sort alphabetically
                 if ( $a_amount === $b_amount ) {
@@ -292,7 +296,7 @@ class Codifier {
                         break;
                     default:
                         $value_node = wp_cache_get( $id .'-'. $key );
-                        
+
                         if ( ! $value_node ) {
                             // Run the value through a bunch of filters to get the format we want
                             $value = maybe_unserialize( $value );

@@ -194,134 +194,134 @@ class Codifier {
             if ( ! isset( $original[ '_' . $key ] ) ) {
                 continue;
             }
-            else {
-                // Fetch the appropriate field object 
-                $field_key = $original[ '_' . $key ];
-    
-                // Check if we have a field declaration stored in cache
-                $field = wp_cache_get( 'get_field_object=' . $field_key );
+
+            // Fetch the appropriate field object 
+            $field_key = $original[ '_' . $key ];
+
+            // Check if we have a field declaration stored in cache
+            $field = wp_cache_get( 'get_field_object=' . $field_key );
+            
+            if ( ! $field ) {
+                $field = acf_get_local_field( $field_key );
+
+                // If there is a meta-meta pair but the field doesn't exist anymore,
+                // continue without returning the data
                 if ( ! $field ) {
-                    $field = acf_get_local_field( $field_key );
-    
-                    // If there is a meta-meta pair but the field doesn't exist anymore,
-                    // continue without returning the data
-                    if ( ! $field ) {
-                        continue;
-                    }
-    
-                    // ACF needs this for some reason
-                    $field['_name'] = $field['name'];
+                    continue;
+                }
 
-                    // Store the field declaration to cache
-                    wp_cache_set( 'get_field_object=' . $field_key, $field );
-                }
-    
-                // If there have been cloned fields, we need to run a few checks
-                if ( ! empty( $clones ) ) {
-                    foreach ( $clones as $clone_key => $clone_value ) {
-                        // The clone's key would be first in the actual key
-                        $clone_key_array = explode( '_', $clone_key );
-                        $clone_key = $clone_key_array[0];
-    
-                        // Does the key start with a known clone key?
-                        if ( substr( $key, 0, strlen( $clone_key .'_' ) ) === $clone_key .'_' ) {
-                            $initial_path = [ $clone_key ];
-                            $path_key = substr( $key, strlen( $clone_key . '_' ) );
-                        }
-                        else {
-                            $path_key = $key;
-                            $initial_path = [];
-                        }
-                    }
-                }
-                else {
-                    $path_key = $key;
-                    $initial_path = [];
-                }
-    
-                // Split the key for positioning the values in the tree
-                $path = preg_split( '/_(\d+)_/', $path_key, 0, PREG_SPLIT_DELIM_CAPTURE );
-    
-                $path = array_merge( $initial_path, $path );
-    
-                // Create a reference to the spot where the value is supposed to be placed
-                $value_node =& $fields;
-    
-                // Reference magic: find the appropriate location for the value to be stored
-                foreach ( $path as $pkey ) {
-                    $value_node =& $value_node[ $pkey ];
-                }
-    
-                // Do field type specific things
-                switch( $field['type'] ) {
-                    case 'clone':
-                        // Get the cloned field's field object either from cache or from the declaration
-                        $field_object = wp_cache_get( 'get_field_object/' . $field['key'], 'acf' );
-                        if ( ! $field_object ) {
-                            $field_object = acf_get_local_field( $field['key'] );
-                            wp_cache_set( 'get_field_object/' . $field['key'], $field_object, 'acf' );
-                        }
-    
-                        // Loop through cloned fields and fetch their field objects
-                        // either from cache or from the declaration
-                        foreach ( $field_object['clone'] as $cloned_fields ) {
-                            $cloned_field = wp_cache_get( 'get_field_object/' . $cloned_fields, 'acf' );
-                            if ( ! $cloned_field ) {
-                                $cloned_field = acf_get_local_field( $cloned_fields );
-                                wp_cache_set( 'get_field_object/' . $cloned_fields, $cloned_field, 'acf' );
-                            }
-    
-                            // Store the objects for future use
-                            $clones[ $key .'_' . $cloned_field['name'] ] = $cloned_field;
-                        }
-    
-                        // Create an empty node in the tree to store the actual values later
-                        $value_node = [];
-                        break;
-                    case 'flexible_content':
-                        // Flexible content field's value is an array of the layouts used
-                        $layouts = maybe_unserialize( $value );
-    
-                        // Create an empty node in the tree to store the actual values
-                        $value_node = [];
-    
-                        // Loop through the layouts
-                        foreach ( $layouts as $index => $layout ) {
-                            // Insert the layout name in the data
-                            $value_node[ $index ] = [ 'acf_fc_layout' => $layout ];
+                // ACF needs this for some reason
+                $field['_name'] = $field['name'];
 
-                            // Initialize the layout's node if it isn't already there
-                            if ( ! isset( $layout_filters[ $layout ] ) ) {
-                                $layout_filters[ $layout ] = [];
-                            }
-                            // Store a reference to the layout node for DustPress Component filtering
-                            $layout_filters[ $layout ][] =& $value_node[ $index ];
-                        }
-                        break;
-                    case 'repeater':
-                        // Create an empty node in the tree to store the actual values later
-                        $value_node = [];
-                        break;
-                    default:
-                        $value_node = wp_cache_get( 'get_field/' . $id . '/' . $key );
-
-                        if ( ! $value_node ) {
-                            // Run the value through a bunch of ACF filters to get the format we want
-                            $value = maybe_unserialize( $value );
-                            $value = apply_filters( "acf/format_value", $value, $id, $field );
-                            $value = apply_filters( "acf/format_value/type={$field['type']}", $value, $id, $field );
-                            $value = apply_filters( "acf/format_value/name={$field['_name']}", $value, $id, $field );
-                            $value = apply_filters( "acf/format_value/key={$field['key']}", $value, $id, $field );
-                            $value_node = $value;
-                            wp_cache_set( 'get_field/' . $id . '/' . $key, $value_node );
-                        }
-                        break;
-    
-                }
-    
-                // Unset the reference to prevent odd bugs🐛 to appear
-                unset( $value_node );
+                // Store the field declaration to cache
+                wp_cache_set( 'get_field_object=' . $field_key, $field );
             }
+
+            // If there have been cloned fields, we need to run a few checks
+            if ( ! empty( $clones ) ) {
+                foreach ( $clones as $clone_key => $clone_value ) {
+                    // The clone's key would be first in the actual key
+                    $clone_key_array = explode( '_', $clone_key );
+                    $clone_key = $clone_key_array[0];
+
+                    // Does the key start with a known clone key?
+                    if ( substr( $key, 0, strlen( $clone_key .'_' ) ) === $clone_key .'_' ) {
+                        $initial_path = [ $clone_key ];
+                        $path_key = substr( $key, strlen( $clone_key . '_' ) );
+                    }
+                    else {
+                        $path_key = $key;
+                        $initial_path = [];
+                    }
+                }
+            }
+            else {
+                $path_key = $key;
+                $initial_path = [];
+            }
+
+            // Split the key for positioning the values in the tree
+            $path = preg_split( '/_(\d+)_/', $path_key, 0, PREG_SPLIT_DELIM_CAPTURE );
+
+            $path = array_merge( $initial_path, $path );
+
+            // Create a reference to the spot where the value is supposed to be placed
+            $value_node =& $fields;
+
+            // Reference magic: find the appropriate location for the value to be stored
+            foreach ( $path as $pkey ) {
+                $value_node =& $value_node[ $pkey ];
+            }
+
+            // Do field type specific things
+            switch( $field['type'] ) {
+                case 'clone':
+                    // Get the cloned field's field object either from cache or from the declaration
+                    $field_object = wp_cache_get( 'get_field_object/' . $field['key'], 'acf' );
+                    if ( ! $field_object ) {
+                        $field_object = acf_get_local_field( $field['key'] );
+                        wp_cache_set( 'get_field_object/' . $field['key'], $field_object, 'acf' );
+                    }
+
+                    // Loop through cloned fields and fetch their field objects
+                    // either from cache or from the declaration
+                    foreach ( $field_object['clone'] as $cloned_fields ) {
+                        $cloned_field = wp_cache_get( 'get_field_object/' . $cloned_fields, 'acf' );
+                        if ( ! $cloned_field ) {
+                            $cloned_field = acf_get_local_field( $cloned_fields );
+                            wp_cache_set( 'get_field_object/' . $cloned_fields, $cloned_field, 'acf' );
+                        }
+
+                        // Store the objects for future use
+                        $clones[ $key .'_' . $cloned_field['name'] ] = $cloned_field;
+                    }
+
+                    // Create an empty node in the tree to store the actual values later
+                    $value_node = [];
+                    break;
+                case 'flexible_content':
+                    // Flexible content field's value is an array of the layouts used
+                    $layouts = maybe_unserialize( $value );
+
+                    // Create an empty node in the tree to store the actual values
+                    $value_node = [];
+
+                    // Loop through the layouts
+                    foreach ( $layouts as $index => $layout ) {
+                        // Insert the layout name in the data
+                        $value_node[ $index ] = [ 'acf_fc_layout' => $layout ];
+
+                        // Initialize the layout's node if it isn't already there
+                        if ( ! isset( $layout_filters[ $layout ] ) ) {
+                            $layout_filters[ $layout ] = [];
+                        }
+                        // Store a reference to the layout node for DustPress Component filtering
+                        $layout_filters[ $layout ][] =& $value_node[ $index ];
+                    }
+                    break;
+                case 'repeater':
+                    // Create an empty node in the tree to store the actual values later
+                    $value_node = [];
+                    break;
+                default:
+                    $value_node = wp_cache_get( 'get_field/' . $id . '/' . $key );
+
+                    if ( ! $value_node ) {
+                        // Run the value through a bunch of ACF filters to get the format we want
+                        $value = maybe_unserialize( $value );
+                        $value = apply_filters( "acf/format_value", $value, $id, $field );
+                        $value = apply_filters( "acf/format_value/type={$field['type']}", $value, $id, $field );
+                        $value = apply_filters( "acf/format_value/name={$field['_name']}", $value, $id, $field );
+                        $value = apply_filters( "acf/format_value/key={$field['key']}", $value, $id, $field );
+                        $value_node = $value;
+                        wp_cache_set( 'get_field/' . $id . '/' . $key, $value_node );
+                    }
+                    break;
+
+            }
+
+            // Unset the reference to prevent odd bugs🐛 to appear
+            unset( $value_node );
         }
     
         // Sort the return array recursively by keys so that the fields are in the right order
@@ -349,10 +349,12 @@ class Codifier {
         if ( ! is_array( $array ) ) {
             return false;
         }
+
         ksort( $array, $sort_flags );
         foreach ( $array as &$arr ) {
             self::ksort_recursive( $arr, $sort_flags );
         }
+        
         return true;
     }
 }

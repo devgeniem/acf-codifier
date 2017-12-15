@@ -4,9 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.0-beta] - 2017-12-01
+
+### Added
+- Added a more effective version of ACF's get_fields() method to use with the Codifier
+    - Cache ttl is set to 15 minutes by default and it can be changed 
+      with the `ACF_CODIFIER_CACHE_TTL` constant or through the `acf_codifier_cache_ttl` filter.
+    - Meta value caches are flushed after any meta value is updated.
+- Codifier settings which are overridable with constants.
+
 ## [1.1.3] - 2017-11-27
 
-## Changed
+### Changed
 - Another small bug fix regarding Group field
 
 ## [1.1.2] - 2017-11-27

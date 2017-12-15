@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Added a more effective version of ACF's get_fields() method to use with the Codifier
+    - Cache ttl is set to 15 minutes by default and it can be changed 
+      with the `ACF_CODIFIER_CACHE_TTL` constant or through the `acf_codifier_cache_ttl` filter.
+    - Meta value caches are flushed after any meta value is updated.
+- Codifier settings which are overridable with constants.
 
 ## [1.1.3] - 2017-11-27
 

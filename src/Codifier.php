@@ -43,7 +43,7 @@ class Codifier {
 
                 $key = str_replace( '_', '-', $key );
 
-                echo 'div.acf-field.acf-field-' . $key . " label { display: none; }\n";
+                echo 'div.acf-field.acf-field-' . esc_attr( $key ) . " > div.acf-label > label { display: none; }\n";
             }
 
             echo "</style>\n";

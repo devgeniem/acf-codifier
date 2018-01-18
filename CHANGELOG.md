@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.2.0] - 2018-01-18
 
 ### Added
-- support for ACF Medium Editor plugin
+- Support for ACF Medium Editor plugin.
 
 ### Changed
-- remove_field now uses key instead of the index number
+- Remove_field now uses key instead of the index number.
+
+### Fixed
+- A bug where setting allowed mime types for a file field would cause the field not to work.
 
 ## [1.1.4] - 2018-01-16
 

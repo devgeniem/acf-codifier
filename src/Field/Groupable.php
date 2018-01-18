@@ -221,11 +221,16 @@ class Groupable {
     /**
      * Remove field from sub fields
      *
-     * @param  integer $field Position in array.
+     * @param  string $field Field key to remove.
      * @return self
      */
-    public function remove_field( int $field ) {
-        unset( $this->{ $this->fields_var }[ $field ] );
+    public function remove_field( string $field ) {
+        
+        $position = array_search( $field, $this->{ $this->fields_var }, true );
+
+        if ( ( $position !== false ) ) {
+            unset( $this->{ $this->fields_var }[ $position ] );
+        }
 
         return $this->self;
     }

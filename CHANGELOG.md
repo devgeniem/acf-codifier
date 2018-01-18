@@ -4,10 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2018-01-18
+
+### Added
+- support for ACF Medium Editor plugin
+
+### Changed
+- remove_field now uses key instead of the index number
+
 ## [1.1.4] - 2018-01-16
 
 ### Fixed
-
 - Fixed the CSS on the `hide_label()` method to prevent affecting child elements.
 
 ## [1.1.3] - 2017-11-27

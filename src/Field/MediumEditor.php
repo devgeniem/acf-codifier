@@ -1,6 +1,11 @@
 <?php
 /**
- * Acf Codifier Medium Editor field
+ * ACF Codifier Medium Editor field
+ * 
+ * A field object to use with Hube2's Medium Editor Field
+ * 
+ * Original version: https://github.com/Hube2/acf-medium-editor
+ * Geniem fork with Composer support: https://github.com/devgeniem/acf-medium-editor
  */
 
 namespace Geniem\ACF\Field;
@@ -51,6 +56,30 @@ class MediumEditor extends \Geniem\ACF\Field {
      */
     protected $delay = 0;
 
+    /**
+     * Constructor to throw an error if the Medium Editor plugin is not present
+     * 
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
+     * @throws \Geniem\ACF\Exception Throw error if Medium Editor field is not installed or activated.
+     */
+    public function __construct( string $label, string $key = null, string $name = null ) {
+        // Check if the plugin exists and is activated
+        if ( ! class_exists( 'acf_plugin_medium_editor' ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\MediumEditor: Medium Editor field is not installed or activated. Install it from https://github.com/devgeniem/acf-medium-editor' );
+        }
+
+        // Call the original constructor
+        parent::__construct( $label, $key, $name );
+    }
+
+    /**
+     * ACF Codifier core function to export the field in ACF array format.
+     *
+     * @param boolean $register Whether we are exporting to register or not.
+     * @return array
+     */
     public function export( $register = false ) {
         $obj = parent::export( $register );
 
@@ -83,7 +112,10 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Set buttons to show
+     * Set standard text formatting buttons to show
+     * 
+     * Takes an array of buttons and overrides possible previous values with the new array.
+     * 
      *
      * Possible values:
      * - bold
@@ -128,7 +160,9 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Add a standard button
+     * Add a button into the standard text formatting buttons
+     * 
+     * Adds one button in the array without affecting the others.
      *
      * Possible values:
      * - bold
@@ -170,7 +204,7 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Remove a standard button
+     * Removes a standard button from the text formatting buttons
      *
      * @param  string $button Button.
      * @return self
@@ -186,7 +220,7 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Get set standard buttons
+     * Returns the defined text formatting buttons as an array
      *
      * @return array
      */
@@ -195,7 +229,9 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Add a button to the custom buttons
+     * Add a button to the custom buttons.
+     * 
+     * The custom button must be defined as a \Geniem\ACF\Field\MediumEditor\CustomButton object.
      *
      * @throws \Geniem\ACF\Exception Throws error if $custom_button is not valid.
      * @param \Geniem\ACF\Field\MediumEditor\CustomButton $custom_button CustomButton to add.
@@ -306,7 +342,7 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Get set options
+     * Returns set options as an array
      *
      * @return array
      */
@@ -315,16 +351,7 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Get other choice values status
-     *
-     * @return integer
-     */
-    public function get_other_choice() {
-        return $this->other_choice;
-    }
-
-    /**
-     * Delay loading until the field is clicked
+     * Delay the initialization of Medium until the field is clicked
      *
      * @return self
      */
@@ -335,7 +362,7 @@ class MediumEditor extends \Geniem\ACF\Field {
     }
 
     /**
-     * Do not delay loading until the field is clicked
+     * Do not delay the initialization of Medium until the field is clicked
      *
      * @return self
      */

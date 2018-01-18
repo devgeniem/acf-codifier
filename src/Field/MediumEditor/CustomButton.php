@@ -1,6 +1,8 @@
 <?php
 /**
  * Custom button class for ACF Medium Editor
+ * 
+ * Defines a custom text formatting button to be used in the Medium editor.
  */
 
 namespace Geniem\ACF\Field\MediumEditor;
@@ -70,7 +72,7 @@ class CustomButton {
     }
 
     /**
-     * Set label
+     * Set button label
      *
      * @param string $label New label.
      * @return self
@@ -82,7 +84,7 @@ class CustomButton {
     }
 
     /**
-     * Get label
+     * Get button label
      *
      * @return string Label
      */
@@ -91,7 +93,7 @@ class CustomButton {
     }
 
     /**
-     * Set tag
+     * Set the HTML tag to be used.
      *
      * @param string $tag New tag.
      * @return self
@@ -103,7 +105,7 @@ class CustomButton {
     }
 
     /**
-     * Get tag
+     * Get the defined HTML tag
      *
      * @return string Tag
      */
@@ -134,6 +136,8 @@ class CustomButton {
 
     /**
      * Add an attribute
+     * 
+     * An HTML attribute to be used with the custom element.
      *
      * @param string $name Name of the attribute.
      * @param string $value Value of the attribute.
@@ -161,7 +165,7 @@ class CustomButton {
     }
 
     /**
-     * Get allowed attributes
+     * Get the defined attributes
      *
      * @return array
      */

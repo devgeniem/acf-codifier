@@ -60,6 +60,23 @@ class File extends \Geniem\ACF\Field {
     protected $mime_types;
 
     /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        // Call the original export method
+        $obj = parent::export( $register );
+
+        // Convert the mime type array to a comma-separeated list
+        $obj['mime_types'] = implode( ',', $obj['mime_types'] );
+
+        return $obj;
+    }
+
+    /**
      * Set the return format of the field.
      *
      * @param string $format         Return format.

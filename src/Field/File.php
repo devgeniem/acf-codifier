@@ -57,7 +57,7 @@ class File extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $mime_types;
+    protected $mime_types = [];
 
     /**
      * Export field in ACF's native format.

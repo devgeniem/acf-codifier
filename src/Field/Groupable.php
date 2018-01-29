@@ -226,10 +226,8 @@ class Groupable {
      */
     public function remove_field( string $field ) {
         
-        $position = array_search( $field, $this->{ $this->fields_var }, true );
-
-        if ( ( $position !== false ) ) {
-            unset( $this->{ $this->fields_var }[ $position ] );
+        if ( isset( $this->{ $this->fields_var }[ $field ] ) ) {
+            unset( $this->{ $this->fields_var }[ $field ] );
         }
 
         return $this->self;

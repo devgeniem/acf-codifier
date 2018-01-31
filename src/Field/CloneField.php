@@ -254,7 +254,7 @@ class CloneField extends \Geniem\ACF\Field {
      * @param mixed ...$args Any args this functions gets.
      * @throws \Geniem\ACF\Exception The exception this always throws.
      */
-    public function add_conditional_logic( ...$args ) {
+    public function add_conditional_logic( \Geniem\ACF\ConditionalLogicGroup $group ) {
         throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Clone: add_conditional_logic() can\'t be called on this field type.' );
     }
 }

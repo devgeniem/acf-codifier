@@ -104,6 +104,8 @@ Now the `$text` variable is populated with a text field with `Text field` as its
 
 The key and the name can also be given to the constructor as its second and third parameters respectively. Obviously there are `set_key()` and `set_name()` methods also available like there were with the groups as well.
 
+The plugin checks that the field key is unique within the project and triggers a notice if there is a collision.
+
 Every property a field type has is defined with its own method. Like the field groups, they can be chained with the fields as well.
 
 ```php

@@ -8,9 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - A support for installing the Codifier as an ordinary plugin instead of autoloaded mu-plugin.
+- A check that non-unique field keys throw a notice, and debug information if WP_DEBUG is set.
 
 ### Changed
-- Enhanced the documentation to reflect the above-mentioned change.
+- Enhanced the documentation to reflect the above-mentioned changes.
 
 ## [1.2.4] - 2018-01-31
 
@@ -50,7 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.1.3] - 2017-11-27
 
-## Changed
+### Changed
 - Another small bug fix regarding Group field
 
 ## [1.1.2] - 2017-11-27

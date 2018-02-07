@@ -70,7 +70,7 @@ class File extends \Geniem\ACF\Field {
         // Call the original export method
         $obj = parent::export( $register );
 
-        // Convert the mime type array to a comma-separeated list
+        // Convert the mime type array to a comma-separated list
         $obj['mime_types'] = implode( ',', $obj['mime_types'] );
 
         return $obj;

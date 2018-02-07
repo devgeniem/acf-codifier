@@ -98,7 +98,7 @@ abstract class Field {
 
         $this->wrapper = [
             'width' => '',
-            'class' => '',
+            'class' => [],
             'id'    => '',
         ];
     }
@@ -122,7 +122,7 @@ abstract class Field {
                 $debug_backtrace    = debug_backtrace();
                 self::$keys[ $key ] = ' which was defined in ' . $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
             }
-            // Otherwise just save the info that this is not right.
+            // Otherwise just save the info that this key has already been used.
             else {
                 self::$keys[ $key ] = '';
             }

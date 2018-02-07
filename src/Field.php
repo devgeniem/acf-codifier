@@ -59,11 +59,18 @@ abstract class Field {
     protected $default_value;
 
     /**
-     * Filters and actions to be hooked
+     * Filters and actions to be hooked.
      *
      * @var array
      */
     protected $filters = [];
+
+    /**
+     * Store registered field keys to warn if there are duplicates.
+     *
+     * @var array
+     */
+    static protected $keys = [];
 
     /**
      * Constructor.
@@ -85,15 +92,64 @@ abstract class Field {
 
         $this->label = $label;
 
-        $this->key = $key ?? sanitize_title( $label );
+        $this->inner_set_key( $key ?? $label );
 
         $this->name = $name ?? sanitize_title( $label );
 
         $this->wrapper = [
             'width' => '',
-            'class' => '',
-            'id' => '',
+            'class' => [],
+            'id'    => '',
         ];
+
+        if ( WP_DEBUG === true ) {
+            $debug_backtrace    = debug_backtrace();
+            $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
+        }
+    }
+
+    /**
+     * A protected function to set the field key.
+     * Sanitizes the given string first.
+     *
+     * @param string $key The key to set.
+     * @return void
+     */
+    protected function inner_set_key( $key ) {
+        $key = sanitize_title( $key );
+
+        $this->key = $key;
+    }
+
+    /**
+     * Checks if the field's key is unique within the project scope. Throws a notice if not.
+     *
+     * @return void
+     */
+    protected function check_for_unique_key() {
+        $key  = $this->key;
+        $hash = spl_object_hash( $this );
+
+        // Bail early if key not needed.
+        if ( property_exists( $this, 'no_key' ) && $this->no_key ) {
+            return;
+        }
+
+        if ( ! isset( self::$keys[ $key ] ) ) {
+            // Save backtrace data if we want to debug.
+            if ( ! empty( $this->registered ) ) {
+                self::$keys[ $key ]           = [];
+                self::$keys[ $key ]['string'] = $this->registered;
+                self::$keys[ $key ]['hash']   = $hash;
+            }
+            // Otherwise just save the info that this key has already been used.
+            else {
+                self::$keys[ $key ] = '';
+            }
+        }
+        elseif ( self::$keys[ $key ]['hash'] !== $hash ) {
+            trigger_error( 'ACF Codifier: field key "' . $key . '" defined in ' . $this->registered . ' is already in use within another field which was defined in ' . self::$keys[ $key ]['string'] . '.', E_USER_NOTICE );
+        }
     }
 
     /**
@@ -156,6 +212,11 @@ abstract class Field {
         // Convert the wrapper class array to a space-separated string.
         if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
             $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+
+        // If we are registering the field, check that its key is unique.
+        if ( $register ) {
+            $this->check_for_unique_key();
         }
 
         return $obj;

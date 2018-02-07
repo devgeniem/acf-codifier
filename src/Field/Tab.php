@@ -38,6 +38,13 @@ class Tab extends \Geniem\ACF\Field\GroupableField {
     protected $endpoint = 0;
 
     /**
+     * Tab doesn't need a key.
+     *
+     * @var boolean
+     */
+    public $no_key = true;
+
+    /**
      * Set layout
      *
      * @throws \Geniem\ACF\Exception Throws error if layout is not valid.

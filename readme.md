@@ -4,10 +4,10 @@
 
 - Contributors: [devgeniem](https://github.com/devgeniem) / [Nomafin](https://github.com/Nomafin)
 - Tags: wordpress, acf
-- Requires at least: 4.8.0
-- Tested up to: 4.8.1
-- License: GPLv2 or later
-- License URI: http://www.gnu.org/licenses/gpl-2.0.html
+- Requires at least: 4.6.0
+- Tested up to: 4.9.3
+- License: GPL-3.0 or later
+- License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 ## Description
 
@@ -17,7 +17,7 @@ A complete documentation of the classes can be found [here](docs/classes.md).
 
 ## Installation
 
-Install with composer:
+The recommended way to install ACF Codifier is by Composer:
 
 ```
 $ composer require devgeniem/acf-codifier
@@ -32,6 +32,14 @@ OR add it in your `composer.json`:
   }
 }
 ```
+
+Installing the plugin with Composer requires [Bedrock's autoloader](https://roots.io/bedrock/docs/mu-plugins-autoloader/). It installs as an mu-plugin and doesn't need to be activated.
+
+You can, however, install it also as an ordinary plugin. It can be done in two ways:
+
+- Clone this repository into your `plugins` directory and run `composer install --no-dev` in the repository folder.
+
+- Download the latest release [here](https://github.com/devgeniem/acf-codifier/releases/download/1.3.0/1.3.0.zip) and just extract the archive in your `plugins` directory.
 
 ## Usage
 
@@ -95,6 +103,8 @@ $text = new Field\Text( 'Text field' );
 Now the `$text` variable is populated with a text field with `Text field` as its label and `text-field` with both as its key and its name.
 
 The key and the name can also be given to the constructor as its second and third parameters respectively. Obviously there are `set_key()` and `set_name()` methods also available like there were with the groups as well.
+
+The plugin checks that the field key is unique within the project and triggers a notice if there is a collision.
 
 Every property a field type has is defined with its own method. Like the field groups, they can be chained with the fields as well.
 

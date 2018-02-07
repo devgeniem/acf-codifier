@@ -205,7 +205,8 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Removes a standard button from the text formatting buttons
-     *
+     * 
+     * @see    MediumEditor::add_button()   For the possible buttons to be removed.
      * @param  string $button Button.
      * @return self
      */

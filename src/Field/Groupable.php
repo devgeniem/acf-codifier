@@ -89,6 +89,14 @@ class Groupable {
             $obj[ $this->fields_var ] = array_values( $obj[ $this->fields_var ] );
         }
 
+        // Convert the wrapper class array to a space-separated string.
+        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
+            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+        else {
+            $obj['wrapper']['class'] = '';
+        }
+
         return $obj;
     }
 

@@ -90,6 +90,14 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
             $obj['sub_fields'] = array_values( $obj['sub_fields'] );
         }
 
+        // Convert the wrapper class array to a space-separated string.
+        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
+            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+        else {
+            $obj['wrapper']['class'] = '';
+        }
+
         return $obj;
     }
 

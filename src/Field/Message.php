@@ -38,6 +38,13 @@ class Message extends \Geniem\ACF\Field {
     protected $esc_html;
 
     /**
+     * Message doesn't need a key.
+     *
+     * @var boolean
+     */
+    public $no_key = true;
+
+    /**
      * Set message
      *
      * @param  string $message Message.

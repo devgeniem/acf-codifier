@@ -101,6 +101,11 @@ abstract class Field {
             'class' => [],
             'id'    => '',
         ];
+
+        if ( WP_DEBUG === true ) {
+            $debug_backtrace    = debug_backtrace();
+            $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
+        }
     }
 
     /**
@@ -122,21 +127,28 @@ abstract class Field {
      * @return void
      */
     protected function check_for_unique_key() {
-        $key = $this->key;
+        $key  = $this->key;
+        $hash = spl_object_hash( $this );
+
+        // Bail early if key not needed.
+        if ( property_exists( $this, 'no_key' ) && $this->no_key ) {
+            return;
+        }
 
         if ( ! isset( self::$keys[ $key ] ) ) {
             // Save backtrace data if we want to debug.
-            if ( WP_DEBUG === true ) {
-                $debug_backtrace    = debug_backtrace();
-                self::$keys[ $key ] = ' which was defined in ' . $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
+            if ( ! empty( $this->registered ) ) {
+                self::$keys[ $key ]           = [];
+                self::$keys[ $key ]['string'] = $this->registered;
+                self::$keys[ $key ]['hash']   = $hash;
             }
             // Otherwise just save the info that this key has already been used.
             else {
                 self::$keys[ $key ] = '';
             }
         }
-        else {
-            trigger_error( 'ACF Codifier: field key "' . $key . '" is already in use within another field' . self::$keys[ $key ] . '.', E_USER_NOTICE );
+        elseif ( self::$keys[ $key ]['hash'] !== $hash ) {
+            trigger_error( 'ACF Codifier: field key "' . $key . '" defined in ' . $this->registered . ' is already in use within another field which was defined in ' . self::$keys[ $key ]['string'] . '.', E_USER_NOTICE );
         }
     }
 

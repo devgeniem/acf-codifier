@@ -104,19 +104,27 @@ abstract class Field {
     }
 
     /**
-     * A private function to set the field key.
-     * Sanitizes the given string first, and
-     * checks its uniqueness too.
+     * A protected function to set the field key.
+     * Sanitizes the given string first.
      *
      * @param string $key The key to set.
      * @return void
      */
-    private function inner_set_key( $key ) {
+    protected function inner_set_key( $key ) {
         $key = sanitize_title( $key );
 
-        if ( ! isset( self::$keys[ $key ] ) ) {
-            $this->key = $key;
+        $this->key = $key;
+    }
 
+    /**
+     * Checks if the field's key is unique within the project scope. Throws a notice if not.
+     *
+     * @return void
+     */
+    protected function check_for_unique_key() {
+        $key = $this->key;
+
+        if ( ! isset( self::$keys[ $key ] ) ) {
             // Save backtrace data if we want to debug.
             if ( WP_DEBUG === true ) {
                 $debug_backtrace    = debug_backtrace();
@@ -192,6 +200,14 @@ abstract class Field {
         // Convert the wrapper class array to a space-separated string.
         if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
             $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+        else {
+            $obj['wrapper']['class'] = '';
+        }
+
+        // If we are registering the field, check that its key is unique.
+        if ( $register ) {
+            $this->check_for_unique_key();
         }
 
         return $obj;

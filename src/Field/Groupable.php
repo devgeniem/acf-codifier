@@ -187,9 +187,10 @@ class Groupable {
 
         // Loop through the fields and populate the new array.
         foreach ( $this->{ $this->fields_var } as $key => $item ) {
+
             // If this's the spot, do the right thing.
             if ( $action === 'before' && $key === $target ) {
-                $fields[ $target ] = $field;
+                $fields[ $field->get_name() ] = $field;
             }
 
             // Insert the original inhabitant.
@@ -197,7 +198,7 @@ class Groupable {
 
             // And if this's the spot, do the right thing here.
             if ( $action === 'after' && $key === $target ) {
-                $fields[ $target ] = $field;
+                $fields[ $field->get_name() ] = $field;
             }
         }
 

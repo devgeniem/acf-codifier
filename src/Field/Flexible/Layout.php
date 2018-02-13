@@ -38,6 +38,13 @@ class Layout extends \Geniem\ACF\Field\Groupable {
     public $sub_fields;
 
     /**
+     * Exclude the layout from post types
+     *
+     * @var array
+     */
+    protected $exclude_post_types;
+
+    /**
      * Display mode
      *
      * @var string
@@ -79,7 +86,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      * @param  string|null $name New field name.
      * @return Geniem\ACF\Field
      */
-    public function clone( $key, string $name = null ) {
+    public function clone( $key, $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -171,5 +178,52 @@ class Layout extends \Geniem\ACF\Field\Groupable {
         $this->display = $display_mode;
 
         return $this;
+    }
+
+    /**
+     * Exclude the post type.
+     *
+     * @param string $post_type The post type to exclude this layout from.
+     * @return self
+     */
+    public function exclude_post_type( string $post_type ) {
+        $this->exclude_post_types[] = $post_type;
+
+        $this->exclude_post_types = array_unique( $this->exclude_post_types );
+
+        return $this;
+    }
+
+    /**
+     * Set all post types to exclude.
+     *
+     * @param array $post_types The post types to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_post_types( array $post_types ) {
+        $this->exclude_post_types = $post_types;
+
+        return $this;
+    }
+
+    /**
+     * Remove a post type from the excluded post types list.
+     *
+     * @param string $post_type The post type to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_post_type( string $post_type ) {
+        unset( $this->exclude_post_types[ $post_type ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded post types.
+     *
+     * @return array Excluded post types.
+     */
+    public function get_excluded_post_types() {
+        return $this->exclude_post_types;
     }
 }

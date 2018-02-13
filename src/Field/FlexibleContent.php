@@ -46,6 +46,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
     protected $layouts;
 
     /**
+     * Exclude layouts from post types
+     *
+     * @var array
+     */
+    protected $exclude_post_types = [];
+
+    /**
      * Override field construction method to add default button label but run parent constructor after that
      *
      * @param string $label Field label.
@@ -67,15 +74,38 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * @return array
      */
     public function export( $register = false ) {
-        $obj = parent::export( $register );
+        global $post;
 
-        if ( ! empty( $obj['layouts'] ) ) {
-            $obj['layouts'] = array_map( function( $layout ) use ( $register ) {
-                return $layout->export( $register );
-            }, $obj['layouts'] );
+        if ( ! empty( $this->layouts ) ) {
+            $this->layouts = array_map( function( $layout ) use ( $register, $post ) {
+                if ( $register && $layout instanceof Flexible\Layout ) {
+                    $excludes = $layout->get_excluded_post_types();
 
-            $obj['layouts'] = array_values( $obj['layouts'] );
+                    if ( ! empty( $excludes ) ) {
+                        foreach ( $excludes as $exclude ) {
+                            if ( ! isset( $this->exclude_post_types[ $exclude ] ) ) {
+                                $this->exclude_post_types[ $exclude ] = [];
+                            }
+
+                            $this->exclude_post_types[ $exclude ][] = $layout->get_name();
+                        }
+                    }
+                }
+
+                if ( $layout instanceof Flexible\Layout ) {
+                    return $layout->export();
+                }
+                else {
+                    return $layout;
+                }
+            }, $this->layouts );
+
+            $this->exclude_post_types();
+
+            $this->layouts = array_values( $this->layouts );
         }
+
+        $obj = parent::export( $register );
 
         return $obj;
     }
@@ -178,7 +208,8 @@ class FlexibleContent extends \Geniem\ACF\Field {
 
         if ( is_string( $layout ) ) {
             $name = $layout;
-        } else {
+        }
+        else {
             $name = $layout->get_name();
         }
 
@@ -204,5 +235,49 @@ class FlexibleContent extends \Geniem\ACF\Field {
      */
     public function get_layouts() {
         return $this->layouts;
+    }
+
+    /**
+     * Set layouts
+     *
+     * @param array $layouts The layouts to set.
+     * @return self
+     */
+    public function set_layouts( array $layouts ) {
+        foreach ( $layouts as $layout ) {
+            if ( $layout instanceof Flexible\Layout ) {
+                $this->layouts[ $layout->get_name() ] = $layout;
+            }
+            else {
+                $this->layouts[ $layout['name'] ] = $layout;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Exclude from post types
+     *
+     * @return void
+     */
+    protected function exclude_post_types() {
+        global $post;
+
+        if ( ! empty( $this->exclude_post_types ) ) {
+            $post_types = $this->exclude_post_types;
+
+            add_filter( 'acf/load_field/key=' . $this->key, function( $field ) use ( $post_types ) {
+                global $post;
+
+                if ( ! empty( $post_types[ $post->post_type ] ) ) {
+                    $field['layouts'] = array_filter( $field['layouts'], function( $layout ) use ( $post_types, $post ) {
+                        return array_search( $layout['name'], $post_types[ $post->post_type ], true ) === false;
+                    });
+                }
+
+                return $field;
+            });
+        }
     }
 }

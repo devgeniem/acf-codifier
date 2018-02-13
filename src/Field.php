@@ -405,9 +405,11 @@ abstract class Field {
     public function set_wrapper_classes( $classes ) {
         if ( is_string( $classes ) ) {
             $this->wrapper['class'] = explode( ' ', $classes );
-        } else if ( is_array( $classes ) ) {
+        }
+        elseif ( is_array( $classes ) ) {
             $this->wrapper['class'] = $classes;
-        } else {
+        }
+        else {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: set_wrapper_classes() argument must be an array or a string' );
         }
 

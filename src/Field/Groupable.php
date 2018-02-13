@@ -283,4 +283,29 @@ class Groupable {
 
         return $this->self;
     }
+
+    /**
+     * Clone method
+     *
+     * Forces the developer to give new key to cloned field.
+     *
+     * @param string $key  Field key.
+     * @param string $name Field name (optional).
+     * @return Geniem\ACF\Field
+     */
+    public function clone( $key, $name = null ) {
+        $clone = clone $this;
+
+        $clone->set_key( $key );
+
+        if ( isset( $name ) ) {
+            $clone->set_name( $name );
+        }
+
+        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
+            return $field->clone( $key . '_' . $field->get_key() );
+        }, $clone->{ $this->fields_var });
+
+        return $clone;
+    }
 }

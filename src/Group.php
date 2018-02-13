@@ -619,7 +619,7 @@ class Group {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
-     * 
+     *
      * @return array Acf fields
      */
     public function export( $register = false ) {
@@ -633,7 +633,8 @@ class Group {
         // Loop through fields and export them.
         if ( ! empty( $obj['fields'] ) ) {
             $obj['fields'] = array_map( function( $field ) use ( $register ) {
-                return $field->export( $register );
+                $field = $field->export( $register );
+                return $field;
             }, $obj['fields'] );
 
             // Remove keys, ACF requires the arrays to be numbered.

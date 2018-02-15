@@ -17,7 +17,7 @@ abstract class GroupableField extends \Geniem\ACF\Field {
      * @param string|null $key            Key for the field.
      * @param string|null $name           Name for the field.
      */
-    public function __construct( string $label, string $key = null, string $name = null  ) {
+    public function __construct( string $label, string $key = null, string $name = null ) {
         // Add Groupable to its property to be pseudo-extended
         $this->groupable = new \Geniem\ACF\Field\Groupable( $this );
 
@@ -28,9 +28,9 @@ abstract class GroupableField extends \Geniem\ACF\Field {
     /**
      * Magic function __call
      *
-     * @param string $name       Function name to call
-     * @param array  $arguments  Function arguments
-     * @return mixed             Return value of the function
+     * @param string $name       Function name to call.
+     * @param array  $arguments  Function arguments.
+     * @return mixed             Return value of the function.
      */
     public function __call( $name, array $arguments ) {
         // Call the method from groupable

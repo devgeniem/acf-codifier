@@ -119,7 +119,7 @@ class Groupable {
         }
 
         // Add the field to the fields array.
-        if ( $order == 'first' ) {
+        if ( $order === 'first' ) {
             $this->{ $this->fields_var } = [ $field->get_key() => $field ] + $this->{ $this->fields_var };
         }
         else {
@@ -234,7 +234,7 @@ class Groupable {
      * @return self
      */
     public function remove_field( string $field_name ) {
-        
+
         if ( isset( $this->{ $this->fields_var }[ $field_name ] ) ) {
             unset( $this->{ $this->fields_var }[ $field_name ] );
         }

@@ -229,3 +229,9 @@ $field->hide_label();
 ```
 
 There are also `show_label()` and `get_label_visibility()` methods.
+
+## Tips & Tricks
+
+### Translations
+
+If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an approriate hook - for example `init` is fine.

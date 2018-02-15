@@ -1,6 +1,6 @@
 ![geniem-github-banner](https://cloud.githubusercontent.com/assets/5691777/14319886/9ae46166-fc1b-11e5-9630-d60aa3dc4f9e.png)
 
-# Geniem ACF Codifier
+# ACF Codifier
 
 - Contributors: [devgeniem](https://github.com/devgeniem) / [Nomafin](https://github.com/Nomafin)
 - Tags: wordpress, acf
@@ -229,3 +229,9 @@ $field->hide_label();
 ```
 
 There are also `show_label()` and `get_label_visibility()` methods.
+
+## Tips & Tricks
+
+### Translations
+
+If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an approriate hook - for example `init` is fine.

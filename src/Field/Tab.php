@@ -54,8 +54,9 @@ class Tab extends \Geniem\ACF\Field\GroupableField {
     public function export( $register = false ) {
         $obj = parent::export( $register );
 
-        // Prefix the key so that it wouldn't collide since there is no check on tab keys.
-        $obj['key'] = 'tab_' . $obj['key'];
+        // Make the key unique so that it can't collide with others. This is only used in
+        // the conditional logic feature so it can change on every page load.
+        $obj['key'] = 'tab_' . $obj['key'] .'_' . uniqid();
 
         return $obj;
     }

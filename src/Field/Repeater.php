@@ -98,6 +98,12 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
             $obj['wrapper']['class'] = '';
         }
 
+        // Remove unnecessary properties from the exported array.
+        unset( $obj['inheritee'] );
+        unset( $obj['groupable'] );
+        unset( $obj['fields_var'] );
+        unset( $obj['filters'] );
+
         return $obj;
     }
 

@@ -53,6 +53,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
     protected $exclude_post_types = [];
 
     /**
+     * Exclude layouts from templates
+     *
+     * @var array
+     */
+    protected $exclude_templates = [];
+
+    /**
      * Override field construction method to add default button label but run parent constructor after that
      *
      * @param string $label Field label.
@@ -79,15 +86,26 @@ class FlexibleContent extends \Geniem\ACF\Field {
         if ( ! empty( $this->layouts ) ) {
             $this->layouts = array_map( function( $layout ) use ( $register, $post ) {
                 if ( $register && $layout instanceof Flexible\Layout ) {
-                    $excludes = $layout->get_excluded_post_types();
+                    $exclude_post_types = $layout->get_excluded_post_types();
+                    $exclude_templates  = $layout->get_excluded_templates();
 
-                    if ( ! empty( $excludes ) ) {
-                        foreach ( $excludes as $exclude ) {
+                    if ( ! empty( $exclude_post_types ) ) {
+                        foreach ( $exclude_post_types as $exclude ) {
                             if ( ! isset( $this->exclude_post_types[ $exclude ] ) ) {
                                 $this->exclude_post_types[ $exclude ] = [];
                             }
 
                             $this->exclude_post_types[ $exclude ][] = $layout->get_name();
+                        }
+                    }
+
+                    if ( ! empty( $exclude_templates ) ) {
+                        foreach ( $exclude_templates as $exclude ) {
+                            if ( ! isset( $this->exclude_templates[ $exclude ] ) ) {
+                                $this->exclude_templates[ $exclude ] = [];
+                            }
+
+                            $this->exclude_templates[ $exclude ][] = $layout->get_key();
                         }
                     }
                 }
@@ -101,11 +119,15 @@ class FlexibleContent extends \Geniem\ACF\Field {
             }, $this->layouts );
 
             $this->exclude_post_types();
+            $this->exclude_templates();
 
             $this->layouts = array_values( $this->layouts );
         }
 
         $obj = parent::export( $register );
+
+        // Remove post type exclude info
+        unset( $obj['exclude_post_types'] );
 
         return $obj;
     }
@@ -279,5 +301,64 @@ class FlexibleContent extends \Geniem\ACF\Field {
                 return $field;
             });
         }
+    }
+
+    /**
+     * Exclude from templates
+     *
+     * @return void
+     */
+    protected function exclude_templates() {
+        $template = filter_input( INPUT_POST, 'page_template' );
+
+        if ( $template ) {
+            $excludes = $this->exclude_templates[ $template ] ?? [];
+
+            if ( ! empty( $excludes ) ) {
+                add_filter( 'acf/get_fields', function( $fields ) use ( $excludes ) {
+                    $fields = array_map( [ $this, 'handle_field' ], $fields, array_fill( 0, count( $fields ), $excludes ) );
+
+                    return $fields;
+                });
+            }
+        }
+    }
+
+    /**
+     * Handle a field in template excluding
+     *
+     * @param array $field    The field to process.
+     * @param array $excludes An array of templates to exclude.
+     * @return array
+     */
+    private function handle_field( $field, $excludes ) {
+        if ( $field['type'] === 'flexible_content' ) {
+            $field['layouts'] = $this->handle_layouts( $field['layouts'], $excludes );
+        }
+        elseif ( isset( $field['sub_fields'] ) ) {
+            $field['sub_fields'] = array_map( [ $this, 'handle_field' ], $field['sub_fields'], array_fill( 0, count( $field['sub_fields'] ), $excludes ) );
+        }
+
+        return $field;
+    }
+
+    /**
+     * Handle an array of layouts in template excluding
+     *
+     * @param array $layouts  An array of layouts to process.
+     * @param array $excludes An array of templates to exclude.
+     * @return array
+     */
+    private function handle_layouts( $layouts, $excludes ) {
+        $layouts = array_filter( $layouts, function( $layout ) use ( $excludes ) {
+            if ( in_array( $layout['key'], $excludes, true ) ) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+
+        return $layouts;
     }
 }

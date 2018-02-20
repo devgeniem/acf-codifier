@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.4.0] - 2018-02-13
 
 ### Added
-- A possibility to filter Flexible Content layouts by post types.
-- Key prefixing for tabs to eliminate the possiblity of collisions.
+- A possibility to filter Flexible Content layouts by post types and page templates.
+- Key prefixing for tabs to eliminate the possibility of collisions.
 
 ## [1.3.3] - 2018-02-09
 

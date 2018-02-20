@@ -308,28 +308,4 @@ class Groupable {
 
         return $clone;
     }
-
-    /**
-     * Return keys for the field and all of its subfields
-     *
-     * @return array
-     */
-    public function get_field_keys_recursively() {
-        $return = [];
-
-        if ( $this instanceof \Geniem\ACF\Field ) {
-            $return[] = $this->get_key();
-        }
-
-        foreach ( $this->{ $this->fields_var } as $field ) {
-            if ( $field instanceof \Geniem\ACF\Groupable || $field instanceof \Geniem\ACF\GroupableField ) {
-                $return = array_merge( $return, $field->get_field_keys_recursively() );
-            }
-            else {
-                $return[] = $field->get_key();
-            }
-        };
-
-        return $return;
-    }
 }

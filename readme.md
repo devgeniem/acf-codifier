@@ -218,6 +218,20 @@ $field_group->add_field( $tab );
 
 ## Additional features
 
+### Prevent Flexible Content layouts from showing in some post types or page templates
+
+If you want to prevent some Flexible Content layouts from showing in some post types or page templates, you can do so with `exclude_post_type` or `exclude_template` methods:
+
+```php
+$layout->exclude_post_type( 'post' );
+```
+
+```php
+$layout->exclude_template( 'page-frontpage.php' );
+```
+
+There are also `set_exclude_post_types` and `set_exclude_templates` methods with which you can set multiple excludes at once with an array.
+
 ### Hide field label
 
 With the Codifier you can hide a field's label on the admin side. It might be useful for example with flexible content fields or a group field.

@@ -45,6 +45,13 @@ class Layout extends \Geniem\ACF\Field\Groupable {
     protected $exclude_post_types;
 
     /**
+     * Exclude the layout from templates
+     *
+     * @var array
+     */
+    protected $exclude_templates;
+
+    /**
      * Display mode
      *
      * @var string
@@ -225,5 +232,52 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      */
     public function get_excluded_post_types() {
         return $this->exclude_post_types;
+    }
+
+    /**
+     * Exclude a template.
+     *
+     * @param string $template The template to exclude this layout from.
+     * @return self
+     */
+    public function exclude_template( string $template ) {
+        $this->exclude_templates[] = $template;
+
+        $this->exclude_templates = array_unique( $this->exclude_templates );
+
+        return $this;
+    }
+
+    /**
+     * Set all templates to exclude.
+     *
+     * @param array $templates The templates to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_templates( array $templates ) {
+        $this->exclude_templates = $templates;
+
+        return $this;
+    }
+
+    /**
+     * Remove a template from the excluded templates list.
+     *
+     * @param string $template The template to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_template( string $template ) {
+        unset( $this->exclude_templates[ $template ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded templates.
+     *
+     * @return array Excluded templates.
+     */
+    public function get_excluded_templates() {
+        return $this->exclude_templates;
     }
 }

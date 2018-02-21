@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - A few minor bug fixes on various things.
 
+### Changed
+- Removed array_unique check from FlexibleContent class because it doesn't work.
+
 ## [1.4.0] - 2018-02-13
 
 ### Added

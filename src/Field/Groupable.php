@@ -68,8 +68,8 @@ class Groupable {
      *
      * @return void
      */
-    public function update_self() {
-        $this->self = $this;
+    public function update_self( $self ) {
+        $this->self = $self;
     }
 
     /**
@@ -129,10 +129,10 @@ class Groupable {
 
         // Add the field to the fields array.
         if ( $order === 'first' ) {
-            $this->{ $this->fields_var } = [ $field->get_key() => $field ] + $this->{ $this->fields_var };
+            $this->self->{ $this->fields_var } = [ $field->get_key() => $field ] + $this->self->{ $this->fields_var };
         }
         else {
-            $this->{ $this->fields_var }[ $field->get_key() ] = $field;
+            $this->self->{ $this->fields_var }[ $field->get_key() ] = $field;
         }
 
         // If we have stored subfields from a tab, add them one by one separately.
@@ -189,7 +189,7 @@ class Groupable {
         }
 
         // Check if the target field exists in the field group.
-        if ( ! isset( $this->{ $this->fields_var }[ $target ] ) ) {
+        if ( ! isset( $this->self->{ $this->fields_var }[ $target ] ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Group: add_field_'. $action .' can\'t find given target "'. $target .'"' );
         }
 
@@ -197,7 +197,7 @@ class Groupable {
         $fields = [];
 
         // Loop through the fields and populate the new array.
-        foreach ( $this->{ $this->fields_var } as $key => $item ) {
+        foreach ( $this->self->{ $this->fields_var } as $key => $item ) {
 
             // If this's the spot, do the right thing.
             if ( $action === 'before' && $key === $target ) {
@@ -214,7 +214,7 @@ class Groupable {
         }
 
         // Replace the original fields array with the new one.
-        $this->{ $this->fields_var } = $fields;
+        $this->self->{ $this->fields_var } = $fields;
 
         // Special treatment if the field to be added is a tab.
         if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
@@ -246,8 +246,8 @@ class Groupable {
      */
     public function remove_field( string $field_name ) {
 
-        if ( isset( $this->{ $this->fields_var }[ $field_name ] ) ) {
-            unset( $this->{ $this->fields_var }[ $field_name ] );
+        if ( isset( $this->self->{ $this->fields_var }[ $field_name ] ) ) {
+            unset( $this->self->{ $this->fields_var }[ $field_name ] );
         }
 
         return $this->self;
@@ -260,7 +260,7 @@ class Groupable {
      * @return self
      */
     public function set_fields( $fields ) {
-        $this->sub_fields = $fields;
+        $this->self->{ $this->fields_var } = $fields;
 
         return $this->self;
     }
@@ -271,7 +271,7 @@ class Groupable {
      * @return array
      */
     public function get_fields() {
-        return $this->{ $this->fields_var };
+        return $this->self->{ $this->fields_var };
     }
 
     /**
@@ -281,7 +281,7 @@ class Groupable {
      * @return array
      */
     public function get_field( $key ) {
-        return $this->{ $this->fields_var }[ $key ] ?? null;
+        return $this->self->{ $this->fields_var }[ $key ] ?? null;
     }
 
     /**
@@ -290,7 +290,7 @@ class Groupable {
      * @return self
      */
     public function remove_fields() {
-        unset( $this->sub_fields );
+        unset( $this->self->{ $this->fields_var } );
 
         return $this->self;
     }
@@ -305,7 +305,7 @@ class Groupable {
      * @return Geniem\ACF\Field
      */
     public function clone( $key, $name = null ) {
-        $clone = clone $this;
+        $clone = clone $this->self;
 
         $clone->set_key( $key );
 

@@ -230,8 +230,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
 
         $this->layouts[ $name ] = $layout;
 
-        $this->layouts = array_unique( $this->layouts );
-
         return $this;
     }
 

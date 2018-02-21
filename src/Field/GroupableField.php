@@ -11,6 +11,13 @@ namespace Geniem\ACF\Field;
 abstract class GroupableField extends \Geniem\ACF\Field {
 
     /**
+     * Field variable
+     *
+     * @var string
+     */
+    protected $fields_var = 'sub_fields';
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -35,5 +42,32 @@ abstract class GroupableField extends \Geniem\ACF\Field {
     public function __call( $name, array $arguments ) {
         // Call the method from groupable
         return \call_user_func_array( [ $this->groupable, $name ], $arguments );
+    }
+
+    /**
+     * Clone method
+     *
+     * Forces the developer to give new key to cloned field.
+     *
+     * @param string $key  Field key.
+     * @param string $name Field name (optional).
+     * @return Geniem\ACF\Field
+     */
+    public function clone( $key, $name = null ) {
+        $clone = clone $this;
+
+        $clone->set_key( $key );
+
+        if ( isset( $name ) ) {
+            $clone->set_name( $name );
+        }
+
+        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
+            return $field->clone( $key . '_' . $field->get_key() );
+        }, $clone->{ $this->fields_var });
+
+        $clone->update_self( $clone );
+
+        return $clone;
     }
 }

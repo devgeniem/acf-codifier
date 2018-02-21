@@ -43,7 +43,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $layouts;
+    protected $layouts = [];
 
     /**
      * Exclude layouts from post types
@@ -210,8 +210,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
         $name = $layout->get_name();
 
         $this->layouts[ $name ] = $layout;
-
-        $this->layouts = array_unique( $this->layouts );
 
         return $this;
     }

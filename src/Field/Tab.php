@@ -56,7 +56,7 @@ class Tab extends \Geniem\ACF\Field\GroupableField {
 
         // Make the key unique so that it can't collide with others. This is only used in
         // the conditional logic feature so it can change on every page load.
-        $obj['key'] = 'tab_' . $obj['key'] .'_' . uniqid();
+        $obj['key'] = 'tab_' . $obj['key'] . '_' . uniqid( '', true );
 
         return $obj;
     }

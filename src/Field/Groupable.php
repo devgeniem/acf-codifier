@@ -51,7 +51,7 @@ class Groupable {
 
     /**
      * __get
-     * 
+     *
      * Reference allows the referenced property to be modified through
      * the call.
      *
@@ -61,6 +61,15 @@ class Groupable {
     public function &__get( $name ) {
         // Return inheritee's property with the asked name.
         return $this->inheritee->{ $name };
+    }
+
+    /**
+     * Update the self reference to be up to date after cloning.
+     *
+     * @return void
+     */
+    public function update_self() {
+        $this->self = $this;
     }
 
     /**
@@ -166,9 +175,11 @@ class Groupable {
     /**
      * A method for the two previous methods to use.
      *
-     * @param \Geniem\ACF\Field $field  A field to be added.
-     * @param [string]          $action Whether it's added before or after.
-     * @param [mixed]           $target A target field.
+     * @throws \Geniem\ACF\Exception Throw error if given target is not valid.
+     *
+     * @param  \Geniem\ACF\Field $field  A field to be added.
+     * @param  [string]          $action Whether it's added before or after.
+     * @param  [mixed]           $target A target field.
      * @return self
      */
     private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
@@ -230,7 +241,7 @@ class Groupable {
     /**
      * Remove field from sub fields
      *
-     * @param  string $field Name of the field to remove.
+     * @param  string $field_name Name of the field to remove.
      * @return self
      */
     public function remove_field( string $field_name ) {
@@ -305,6 +316,8 @@ class Groupable {
         $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
             return $field->clone( $key . '_' . $field->get_key() );
         }, $clone->{ $this->fields_var });
+
+        $clone->update_self();
 
         return $clone;
     }

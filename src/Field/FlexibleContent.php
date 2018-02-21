@@ -60,6 +60,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
     protected $exclude_templates = [];
 
     /**
+     * Exclude layouts from fields
+     *
+     * @var array
+     */
+    protected $exclude_fields = [];
+
+    /**
      * Override field construction method to add default button label but run parent constructor after that
      *
      * @param string $label Field label.
@@ -88,6 +95,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
                 if ( $register && $layout instanceof Flexible\Layout ) {
                     $exclude_post_types = $layout->get_excluded_post_types();
                     $exclude_templates  = $layout->get_excluded_templates();
+                    $exclude_fields     = $layout->get_excluded_fields();
 
                     if ( ! empty( $exclude_post_types ) ) {
                         foreach ( $exclude_post_types as $exclude ) {
@@ -108,6 +116,16 @@ class FlexibleContent extends \Geniem\ACF\Field {
                             $this->exclude_templates[ $exclude ][] = $layout->get_key();
                         }
                     }
+
+                    if ( ! empty( $exclude_fields ) ) {
+                        foreach ( $exclude_fields as $exclude ) {
+                            if ( ! isset( $this->exclude_fields[ $exclude ] ) ) {
+                                $this->exclude_fields[ $exclude ] = [];
+                            }
+
+                            $this->exclude_fields[ $exclude ][] = $layout->get_name();
+                        }
+                    }
                 }
 
                 if ( $layout instanceof Flexible\Layout ) {
@@ -120,6 +138,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
 
             $this->exclude_post_types();
             $this->exclude_templates();
+            $this->exclude_fields();
 
             $this->layouts = array_values( $this->layouts );
         }
@@ -204,14 +223,12 @@ class FlexibleContent extends \Geniem\ACF\Field {
      */
     public function add_layout( \Geniem\ACF\Field\Flexible\Layout $layout ) {
         if ( ! ( $layout instanceof \Geniem\ACF\Field\Flexible\Layout ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\FlexibleContent: add_layout() requires an argument that is a string or type "\Geniem\ACF\Flexible\Layout"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\FlexibleContent: add_layout() requires an argument that is of type "\Geniem\ACF\Flexible\Layout"' );
         }
 
         $name = $layout->get_name();
 
         $this->layouts[ $name ] = $layout;
-
-        $this->layouts = array_unique( $this->layouts );
 
         return $this;
     }
@@ -370,5 +387,26 @@ class FlexibleContent extends \Geniem\ACF\Field {
         });
 
         return $layouts;
+    }
+
+    /**
+     * Exclude from fields
+     *
+     * @return void
+     */
+    protected function exclude_fields() {
+        if ( ! empty( $this->exclude_fields ) ) {
+            $layouts = $this->exclude_fields[ $this->get_name() ] ?? [];
+
+            if ( ! empty( $layouts ) ) {
+                add_filter( 'acf/load_field/key=' . $this->key, function( $field ) use ( $layouts ) {
+                    $field['layouts'] = array_filter( $field['layouts'], function( $layout ) use ( $layouts ) {
+                        return array_search( $layout['name'], $layouts, true ) === false;
+                    });
+
+                    return $field;
+                });
+            }
+        }
     }
 }

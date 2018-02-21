@@ -52,6 +52,13 @@ class Layout extends \Geniem\ACF\Field\Groupable {
     protected $exclude_templates;
 
     /**
+     * Exclude the layout from certain Flexible Content fields
+     *
+     * @var array
+     */
+    protected $exclude_fields;
+
+    /**
      * Display mode
      *
      * @var string
@@ -279,5 +286,60 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      */
     public function get_excluded_templates() {
         return $this->exclude_templates;
+    }
+
+    /**
+     * Exclude a Flexible Content field.
+     *
+     * @param string|object $field The field to exclude this layout from.
+     * @return self
+     */
+    public function exclude_field( $field ) {
+        if ( $field instanceof \Geniem\ACF\Field ) {
+            $field = $field->get_name();
+        }
+
+        $this->exclude_fields[] = $field;
+
+        $this->exclude_fields = array_unique( $this->exclude_fields );
+
+        return $this;
+    }
+
+    /**
+     * Set all fields to exclude.
+     *
+     * @param array $fields The fields to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_fields( array $fields ) {
+        $this->exclude_fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Remove a field from the excluded fields list.
+     *
+     * @param string|object $field The field to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_field( $field ) {
+        if ( $field instanceof \Geniem\ACF\Field ) {
+            $field = $field->get_name();
+        }
+
+        unset( $this->exclude_fields[ $field ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded fields.
+     *
+     * @return array Excluded fields.
+     */
+    public function get_excluded_fields() {
+        return $this->exclude_fields;
     }
 }

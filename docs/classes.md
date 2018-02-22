@@ -562,6 +562,7 @@
 | public | <strong>set_layouts(</strong><em>array</em> <strong>$layouts</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layouts</em> |
 | public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
 | public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
+| protected | <strong>exclude_fields()</strong> : <em>void</em><br /><em>Exclude from fields</em> |
 | protected | <strong>exclude_post_types()</strong> : <em>void</em><br /><em>Exclude from post types</em> |
 | protected | <strong>exclude_templates()</strong> : <em>void</em><br /><em>Exclude from templates</em> |
 
@@ -701,6 +702,7 @@
 |:-----------|:---------|
 | public | <strong>__call(</strong><em>string</em> <strong>$name</strong>, <em>array</em> <strong>$arguments</strong>)</strong> : <em>mixed Return value of the function.</em><br /><em>Magic function __call</em> |
 | public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
+| public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Geniem\ACF\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -826,6 +828,7 @@
 | public | <strong>remove_field(</strong><em>\string</em> <strong>$field_name</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove field from sub fields</em> |
 | public | <strong>remove_fields()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove all sub fields</em> |
 | public | <strong>set_fields(</strong><em>array</em> <strong>$fields</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set fields</em> |
+| public | <strong>update_self(</strong><em>mixed</em> <strong>$self</strong>)</strong> : <em>void</em><br /><em>Update the self reference to be up to date after cloning.</em> |
 
 <hr />
 
@@ -929,16 +932,20 @@
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor</em> |
 | public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string/null</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\Geniem\ACF\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
+| public | <strong>exclude_field(</strong><em>string/object</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude a Flexible Content field.</em> |
 | public | <strong>exclude_post_type(</strong><em>\string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude the post type.</em> |
 | public | <strong>exclude_template(</strong><em>\string</em> <strong>$template</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude a template.</em> |
+| public | <strong>get_excluded_fields()</strong> : <em>array Excluded fields.</em><br /><em>Get the list of excluded fields.</em> |
 | public | <strong>get_excluded_post_types()</strong> : <em>array Excluded post types.</em><br /><em>Get the list of excluded post types.</em> |
 | public | <strong>get_excluded_templates()</strong> : <em>array Excluded templates.</em><br /><em>Get the list of excluded templates.</em> |
 | public | <strong>get_key()</strong> : <em>string Key</em><br /><em>Get key</em> |
 | public | <strong>get_label()</strong> : <em>string Label</em><br /><em>Get label</em> |
 | public | <strong>get_name()</strong> : <em>string Name</em><br /><em>Get name</em> |
+| public | <strong>remove_excluded_field(</strong><em>string/object</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Remove a field from the excluded fields list.</em> |
 | public | <strong>remove_excluded_post_type(</strong><em>\string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Remove a post type from the excluded post types list.</em> |
 | public | <strong>remove_excluded_template(</strong><em>\string</em> <strong>$template</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Remove a template from the excluded templates list.</em> |
 | public | <strong>set_display_mode(</strong><em>\string</em> <strong>$display_mode=`'block'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set display mode</em> |
+| public | <strong>set_excluded_fields(</strong><em>array</em> <strong>$fields</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set all fields to exclude.</em> |
 | public | <strong>set_excluded_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set all post types to exclude.</em> |
 | public | <strong>set_excluded_templates(</strong><em>array</em> <strong>$templates</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set all templates to exclude.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set key</em> |

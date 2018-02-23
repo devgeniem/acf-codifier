@@ -129,10 +129,10 @@ class Groupable {
 
         // Add the field to the fields array.
         if ( $order === 'first' ) {
-            $this->self->{ $this->fields_var } = [ $field->get_key() => $field ] + $this->self->{ $this->fields_var };
+            $this->self->{ $this->fields_var } = [ $field->get_name() => $field ] + $this->self->{ $this->fields_var };
         }
         else {
-            $this->self->{ $this->fields_var }[ $field->get_key() ] = $field;
+            $this->self->{ $this->fields_var }[ $field->get_name() ] = $field;
         }
 
         // If we have stored subfields from a tab, add them one by one separately.
@@ -183,9 +183,9 @@ class Groupable {
      * @return self
      */
     private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
-        // If given a field instance, replace the value with its key.
+        // If given a field instance, replace the value with its name.
         if ( $target instanceof \ Geniem\ACF\Field ) {
-            $target = $target->get_key();
+            $target = $target->get_name();
         }
 
         // Check if the target field exists in the field group.
@@ -197,18 +197,18 @@ class Groupable {
         $fields = [];
 
         // Loop through the fields and populate the new array.
-        foreach ( $this->self->{ $this->fields_var } as $key => $item ) {
+        foreach ( $this->self->{ $this->fields_var } as $name => $item ) {
 
             // If this's the spot, do the right thing.
-            if ( $action === 'before' && $key === $target ) {
+            if ( $action === 'before' && $name === $target ) {
                 $fields[ $field->get_name() ] = $field;
             }
 
             // Insert the original inhabitant.
-            $fields[ $key ] = $item;
+            $fields[ $name ] = $item;
 
             // And if this's the spot, do the right thing here.
-            if ( $action === 'after' && $key === $target ) {
+            if ( $action === 'after' && $name === $target ) {
                 $fields[ $field->get_name() ] = $field;
             }
         }
@@ -277,11 +277,11 @@ class Groupable {
     /**
      * Get a field
      *
-     * @param string $key Field's key.
+     * @param string $name Field name.
      * @return array
      */
-    public function get_field( $key ) {
-        return $this->self->{ $this->fields_var }[ $key ] ?? null;
+    public function get_field( $name ) {
+        return $this->self->{ $this->fields_var }[ $name ] ?? null;
     }
 
     /**

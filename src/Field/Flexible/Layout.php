@@ -109,7 +109,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
             $clone->set_name( $name );
         }
 
-        $clone->reset();
+        $clone->update_self();
 
         return $clone;
     }

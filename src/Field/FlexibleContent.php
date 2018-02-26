@@ -43,7 +43,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $layouts;
+    protected $layouts = [];
 
     /**
      * Exclude layouts from post types

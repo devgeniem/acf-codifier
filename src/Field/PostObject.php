@@ -45,11 +45,18 @@ class PostObject extends \Geniem\ACF\Field {
     protected $ajax;
 
     /**
-     * What post types to display
+     * Shown post types
      *
      * @var array
      */
-    protected $post_type;
+    protected $added_post_types = [];
+
+    /**
+     * Excluded post types
+     *
+     * @var array
+     */
+    protected $removed_post_types = [];
 
     /**
      * What taxonomies should be shown
@@ -64,6 +71,34 @@ class PostObject extends \Geniem\ACF\Field {
      * @var string
      */
     protected $return_format;
+
+    /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        // Call the parent's export method
+        $obj = parent::export( $register );
+
+        // Handle the post type functionality
+        if ( ! empty( $this->added_post_types ) ) {
+            $this->post_type = $this->added_post_types;
+
+            if ( ! empty( $this->removed_post_types ) ) {
+                $this->post_type = array_diff( $this->post_type, $this->removed_post_types );
+            }
+        }
+        elseif ( ! empty( $this->removed_post_types ) ) {
+            $post_types = get_post_types();
+
+            $this->post_type = array_diff( $post_types, $this->removed_post_types );
+        }
+
+        return $obj;
+    }
 
     /**
      * Allow null value
@@ -139,7 +174,24 @@ class PostObject extends \Geniem\ACF\Field {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_post_types() requires an array as an argument' );
         }
 
-        $this->post_type = $post_types;
+        $this->added_post_types = $post_types;
+
+        return $this;
+    }
+
+    /**
+     * Set post types to not show
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $post_types is not valid.
+     * @param array $post_types An array of post type names.
+     * @return self
+     */
+    public function set_removed_post_types( array $post_types ) {
+        if ( ! is_array( $post_types ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_post_types() requires an array as an argument' );
+        }
+
+        $this->removed_post_types = $post_types;
 
         return $this;
     }
@@ -151,9 +203,12 @@ class PostObject extends \Geniem\ACF\Field {
      * @return self
      */
     public function add_post_type( string $post_type ) {
-        $this->post_type[] = $post_type;
+        $this->added_post_types[] = $post_type;
 
-        $this->post_type = array_unique( $this->post_type );
+        $this->added_post_types = array_unique( $this->added_post_types );
+
+        // Remove the added post type from the removed post types array
+        $this->removed_post_types = array_diff( $this->removed_post_types, [ $post_type ] );
 
         return $this;
     }
@@ -165,22 +220,32 @@ class PostObject extends \Geniem\ACF\Field {
      * @return self
      */
     public function remove_post_type( $post_type ) {
-        $position = array_search( $post_type, $this->post_type );
+        $this->removed_post_types[] = $post_type;
 
-        if ( ( $position !== false ) ) {
-            unset( $this->post_type[ $position ] );
-        }
+        $this->removed_post_types = array_unique( $this->removed_post_types );
+
+        // Remove the removed post type from the added post types array
+        $this->added_post_types = array_diff( $this->added_post_types, [ $post_type ] );
 
         return $this;
     }
 
     /**
-     * Get allowed post types
+     * Get added post types
      *
      * @return array
      */
-    public function get_post_types() {
-        return $this->post_type;
+    public function get_added_post_types() {
+        return $this->added_post_types;
+    }
+
+    /**
+     * Get removed post types
+     *
+     * @return array
+     */
+    public function get_removed_post_types() {
+        return $this->removed_post_types;
     }
 
     /**

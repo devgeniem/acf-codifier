@@ -49,7 +49,7 @@ abstract class Field {
      *
      * @var array
      */
-    protected $conditional_logic;
+    protected $conditional_logic = [];
 
     /**
      * Default value for the field.
@@ -223,6 +223,15 @@ abstract class Field {
             $this->check_for_unique_key();
         }
 
+        // Change the field references to keys on conditional logics
+        $obj['conditional_logic'] = array_map( function( $logic ) {
+            if ( ! is_string( $logic['field'] ) ) {
+                $logic['field'] = $logic['field']->get_key();
+            }
+
+            return $logic;
+        }, $obj['conditional_logic'] );
+
         return $obj;
     }
 
@@ -367,9 +376,9 @@ abstract class Field {
     }
 
     /**
-     * Get the conditional logic group that have been added to the group.
+     * Get the conditional logic groups that have been added to the field.
      *
-     * @return \Geniem\ACF\ConditionalLogicGroup
+     * @return array
      */
     public function get_conditional_logic() {
         return $this->conditional_logic;

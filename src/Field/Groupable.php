@@ -313,10 +313,49 @@ class Groupable {
             $clone->set_name( $name );
         }
 
-        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
-            return $field->clone( $key . '_' . $field->get_key() );
+        // Store references to the conditional logics in the cloned group.
+        $conditional_logics = [];
+
+        // Store references to both the original and the cloned fields.
+        $field_maps = [];
+
+        // Loop through all subfields recursively to clone them too.
+        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key, &$conditional_logics, &$field_maps ) {
+            // Store references to the conditional logics
+            array_walk( $field->get_conditional_logic(), function( $logic ) use ( &$conditional_logics ) {
+                $conditional_logics[] = &$logic;
+            });
+
+            $cloned = $field->clone( $key . '_' . $field->get_key() );
+
+            $map = [
+                'original' => &$field,
+                'cloned'   => &$cloned,
+            ];
+
+            $field_maps[] = $map;
+
+            return $cloned;
         }, $clone->{ $this->fields_var });
 
+        // Fix all references to other fields in conditional logics
+        array_walk( $conditional_logics, function( $logic ) use ( $field_maps ) {
+            // Bail early if the field has been stored as a string
+            if ( is_string( $logic['field'] ) ) {
+                return;
+            }
+
+            // Find the equivalences
+            foreach ( $field_maps as $field ) {
+                if ( $field['original'] === $logic['field'] ) {
+                    // Replace the reference with the cloned field
+                    $logic['field'] = $field['cloned'];
+                    break;
+                }
+            }
+        });
+
+        // Update the self property to point to correct instance of the field.
         $clone->update_self();
 
         return $clone;

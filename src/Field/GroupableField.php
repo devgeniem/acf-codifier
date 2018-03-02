@@ -62,9 +62,36 @@ abstract class GroupableField extends \Geniem\ACF\Field {
             $clone->set_name( $name );
         }
 
-        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
-            return $field->clone( $key . '_' . $field->get_key() );
+        $field_map = [];
+
+        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key, &$field_map ) {
+            $clone = $field->clone( $key . '_' . $field->get_key() );
+
+            $field_map[] = [
+                'original' => $field,
+                'cloned'   => $clone,
+            ];
+
+            return $clone;
+
         }, $clone->{ $this->fields_var });
+
+        if ( count( $field_map ) > 0 ) {
+            $clone->{ $this->fields_var } = array_map( function( $field ) use ( $field_map ) {
+                foreach ( (array) $field->conditional_logic as &$logics ) {
+                    foreach ( (array) $logics as &$logic ) {
+                        foreach ( $field_map as $map ) {
+                            if ( $map['original'] === $logic['field'] ) {
+                                $logic['field'] = $map['cloned'];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                return $field;
+            }, $clone->{ $this->fields_var });
+        }
 
         $clone->update_self( $clone );
 

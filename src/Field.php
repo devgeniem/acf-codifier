@@ -223,6 +223,18 @@ abstract class Field {
             $this->check_for_unique_key();
         }
 
+        if ( count( $obj['conditional_logic'] ) > 0 ) {
+            foreach ( $obj['conditional_logic'] as &$group ) {
+                if ( count( $group ) > 0 ) {
+                    foreach ( $group as &$rule ) {
+                        if ( ! is_string( $rule['field'] ) ) {
+                            $rule['field'] = $rule['field']->get_key();
+                        }
+                    }
+                }
+            }
+        }
+
         return $obj;
     }
 

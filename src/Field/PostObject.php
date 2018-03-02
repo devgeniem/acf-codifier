@@ -80,8 +80,6 @@ class PostObject extends \Geniem\ACF\Field {
      * @return array
      */
     public function export( $register = false ) {
-        // Call the parent's export method
-        $obj = parent::export( $register );
 
         // Handle the post type functionality
         if ( ! empty( $this->added_post_types ) ) {
@@ -96,6 +94,9 @@ class PostObject extends \Geniem\ACF\Field {
 
             $this->post_type = array_diff( $post_types, $this->removed_post_types );
         }
+
+        // Call the parent's export method
+        $obj = parent::export( $register );
 
         return $obj;
     }

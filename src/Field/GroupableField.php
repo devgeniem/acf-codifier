@@ -78,12 +78,16 @@ abstract class GroupableField extends \Geniem\ACF\Field {
 
         if ( count( $field_map ) > 0 ) {
             $clone->{ $this->fields_var } = array_map( function( $field ) use ( $field_map ) {
-                foreach ( (array) $field->conditional_logic as &$logics ) {
-                    foreach ( (array) $logics as &$logic ) {
-                        foreach ( $field_map as $map ) {
-                            if ( $map['original'] === $logic['field'] ) {
-                                $logic['field'] = $map['cloned'];
-                                break;
+                if ( count( $field->conditional_logic ) > 0 ) {
+                    foreach ( $field->conditional_logic as &$logics ) {
+                        if ( count( $logics ) > 0 ) {
+                            foreach ( $logics as &$logic ) {
+                                foreach ( $field_map as $map ) {
+                                    if ( $map['original'] === $logic['field'] ) {
+                                        $logic['field'] = $map['cloned'];
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }

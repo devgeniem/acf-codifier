@@ -85,16 +85,16 @@ class PostObject extends \Geniem\ACF\Field {
 
         // Handle the post type functionality
         if ( ! empty( $this->added_post_types ) ) {
-            $this->post_type = $this->added_post_types;
+            $obj['post_type'] = $this->added_post_types;
 
             if ( ! empty( $this->removed_post_types ) ) {
-                $this->post_type = array_diff( $this->post_type, $this->removed_post_types );
+                $obj['post_type'] = array_diff( $obj['post_type'], $this->removed_post_types );
             }
         }
         elseif ( ! empty( $this->removed_post_types ) ) {
             $post_types = get_post_types();
 
-            $this->post_type = array_diff( $post_types, $this->removed_post_types );
+            $obj['post_type'] = array_diff( $post_types, $this->removed_post_types );
         }
 
         return $obj;

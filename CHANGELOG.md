@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - A bug in post type filtering within the PostObject field.
 - A bug in cloning a groupable field with conditional logic in it.
+- A bug with the key uniqueness check that would throw a warning if `WP_DEBUG` was not set `true`.
 
 ## [1.5.2] - 2018-02-23
 

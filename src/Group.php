@@ -643,7 +643,7 @@ class Group {
                 $fields[] = $field->export( $register );
 
                 // Add the possibly stored subfields
-                if ( isset( $sub_fields ) ) {
+                if ( ! empty( $sub_fields ) ) {
                     foreach ( $sub_fields as $sub_field ) {
                         $fields[] = $sub_field->export( $register );
                     }

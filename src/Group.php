@@ -632,13 +632,26 @@ class Group {
 
         // Loop through fields and export them.
         if ( ! empty( $obj['fields'] ) ) {
-            $obj['fields'] = array_map( function( $field ) use ( $register ) {
-                $field = $field->export( $register );
-                return $field;
-            }, $obj['fields'] );
+            $fields = [];
+
+            foreach ( $obj['fields'] as $field ) {
+                if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+                    // Get the subfields from the tab
+                    $sub_fields = $field->get_fields();
+                }
+
+                $fields[] = $field->export( $register );
+
+                // Add the possibly stored subfields
+                if ( isset( $sub_fields ) ) {
+                    foreach ( $sub_fields as $sub_field ) {
+                        $fields[] = $sub_field->export( $register );
+                    }
+                }
+            }
 
             // Remove keys, ACF requires the arrays to be numbered.
-            $obj['fields'] = array_values( $obj['fields'] );
+            $obj['fields'] = array_values( $fields );
         }
 
         return $obj;

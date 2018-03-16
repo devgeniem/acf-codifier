@@ -103,6 +103,8 @@ class Groupable {
                     foreach ( $sub_fields as $sub_field ) {
                         $fields[] = $sub_field->export( $register );
                     }
+
+                    unset( $sub_fields );
                 }
             }
 

@@ -265,7 +265,7 @@ class Group {
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
-        if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
+        if ( ! in_array( $placement, [ 'top', 'left' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
@@ -292,7 +292,7 @@ class Group {
      */
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
-        if ( ! in_array( $placement, [ 'label', 'field' ] ) ) {
+        if ( ! in_array( $placement, [ 'label', 'field' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
@@ -344,7 +344,7 @@ class Group {
      * @return self
      */
     public function show_element( string $element ) {
-        $position = array_search( $element, $this->hide_on_screen );
+        $position = array_search( $element, $this->hide_on_screen, true );
 
         if ( ( $position !== false ) ) {
             unset( $this->hide_on_screen[ $position ] );
@@ -599,7 +599,8 @@ class Group {
             $element = $this;
 
             \add_action( 'wp_loaded', function() use ( $element ) {
-                \acf_add_local_field_group( $element->export( true ) );
+                $exported = $element->export( true );
+                \acf_add_local_field_group( $exported );
             });
 
             $this->registered = true;
@@ -647,6 +648,8 @@ class Group {
                     foreach ( $sub_fields as $sub_field ) {
                         $fields[] = $sub_field->export( $register );
                     }
+
+                    unset( $sub_fields );
                 }
             }
 

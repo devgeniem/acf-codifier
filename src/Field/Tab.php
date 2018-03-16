@@ -58,6 +58,9 @@ class Tab extends \Geniem\ACF\Field\GroupableField {
         // the conditional logic feature so it can change on every page load.
         $obj['key'] = 'tab_' . $obj['key'] . '_' . uniqid( '', true );
 
+        // Remove the subfields from the export object.
+        unset( $obj[ $this->fields_var ] );
+
         return $obj;
     }
 

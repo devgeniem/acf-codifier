@@ -201,9 +201,9 @@ $clone->set_label_prefix()        // Set label prefix setting as true
 $field_group->add_field( $clone );
 ```
 
-##### Tab
+##### Tab and Accordion
 
-With ACF Codifier the tab field is treated like it had subfields. Otherwise it works just the same as native ACF tab would.
+With ACF Codifier the tab and accordion field types are treated like they had subfields. Otherwise they works just the same as native ACF fields would.
 
 ```php
 $tab = new Field\Tab( 'My Very First Tab' );

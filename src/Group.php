@@ -387,7 +387,7 @@ class Group {
      */
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
         // Add the field to the fields array.
-        if ( $order == 'first' ) {
+        if ( $order === 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
         }
         else {
@@ -580,11 +580,11 @@ class Group {
     }
 
     /**
-     * Export current field and sub fields to acf compatible format
+     * Export current field and sub fields to ACF compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
      *
-     * @return array Acf fields
+     * @return array ACF fields
      */
     public function export( $register = false ) {
         $obj = get_object_vars( $this );
@@ -599,6 +599,8 @@ class Group {
             $fields = [];
 
             foreach ( $obj['fields'] as $field ) {
+                $sub_fields = [];
+
                 if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
                     // Get the subfields from the tab
                     $sub_fields = $field->get_fields();

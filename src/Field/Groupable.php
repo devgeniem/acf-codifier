@@ -91,17 +91,19 @@ class Groupable {
         // Loop through fields and export them.
         if ( ! empty( $obj[ $this->fields_var ] ) ) {
             foreach ( $obj[ $this->fields_var ] as $field ) {
+                $sub_fields = [];
+
                 if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
                     // Get the subfields from the tab
                     $sub_fields = $field->get_fields();
                 }
 
-                $fields[] = $field->export( $register );
+                $fields[ $field->get_key() ] = $field->export( $register );
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
                     foreach ( $sub_fields as $sub_field ) {
-                        $fields[] = $sub_field->export( $register );
+                        $fields[ $sub_field->get_key() ] = $sub_field->export( $register );
                     }
 
                     unset( $sub_fields );

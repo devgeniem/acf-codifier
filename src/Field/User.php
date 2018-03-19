@@ -38,6 +38,13 @@ class User extends \Geniem\ACF\Field {
     protected $multiple;
 
     /**
+     * Return format to set
+     *
+     * @var string
+     */
+    protected $return_format;
+
+    /**
      * Set allowed roles
      *
      * @throws \Geniem\ACF\Exception Throws error if roles is not valid.
@@ -153,5 +160,31 @@ class User extends \Geniem\ACF\Field {
      */
     public function get_allow_multiple() {
         return $this->multiple;
+    }
+
+    /**
+     * Set return format
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
+     * @return self
+     */
+    public function set_return_format( string $return_format = 'object' ) {
+        if ( ! in_array( $return_format, [ 'array', 'object', 'id' ] ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\User: set_return_format() does not accept argument "' . $return_format . '"' );
+        }
+
+        $this->return_format = $return_format;
+
+        return $this;
+    }
+
+    /**
+     * Get return format
+     *
+     * @return string
+     */
+    public function get_return_format() {
+        return $this->return_format;
     }
 }

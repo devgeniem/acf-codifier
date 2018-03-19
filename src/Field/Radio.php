@@ -33,6 +33,13 @@ class Radio extends Checkbox {
     protected $save_other_choice;
 
     /**
+     * Choices
+     *
+     * @var array
+     */
+    protected $choices = [];
+
+    /**
      * Allow other choice
      *
      * @return self

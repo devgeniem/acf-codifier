@@ -73,7 +73,7 @@ class Message extends \Geniem\ACF\Field {
      * @return self
      */
     public function set_new_lines( string $type ) {
-        if ( ! in_array( $layout, [ 'wpautop', 'br', '' ] ) ) {
+        if ( ! in_array( $type, [ 'wpautop', 'br', '' ] ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Message: set_new_lines() does not accept argument "' . $type . '"' );
         }
 

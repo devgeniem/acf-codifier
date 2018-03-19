@@ -17,7 +17,7 @@ class PostObject extends \Geniem\ACF\Field {
     protected $type = 'post_object';
 
     /**
-     * Can this field be empty
+     * Can this field be left empty
      *
      * @var integer
      */
@@ -66,7 +66,7 @@ class PostObject extends \Geniem\ACF\Field {
     protected $taxonomy;
 
     /**
-     * What return format to set
+     * Return format to set
      *
      * @var string
      */
@@ -290,7 +290,7 @@ class PostObject extends \Geniem\ACF\Field {
      * @return self
      */
     public function remove_taxonomy( $taxonomy ) {
-        $position = array_search( $taxonomy, $this->taxonomy );
+        $position = array_search( $taxonomy, $this->taxonomy, true );
 
         if ( ( $position !== false ) ) {
             unset( $this->taxonomy[ $position ] );
@@ -317,7 +317,7 @@ class PostObject extends \Geniem\ACF\Field {
      */
     public function set_return_format( string $return_format = 'object' ) {
         if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\PostObject: set_return_format() does not accept argument "' . $return_format . '"' );
         }
 
         $this->return_format = $return_format;

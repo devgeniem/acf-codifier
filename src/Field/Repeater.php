@@ -1,6 +1,6 @@
 <?php
 /**
- * Acf codifier repeater field
+ * ACF Codifier repeater field
  */
 
 namespace Geniem\ACF\Field;
@@ -24,14 +24,14 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
     protected $collapsed;
 
     /**
-     * Minimum amount of flexible layouts to add
+     * Minimum amount of items to add
      *
      * @var integer
      */
     protected $min;
 
     /**
-     * Maximum amount of flexible layouts to add
+     * Maximum amount of items to add
      *
      * @var integer
      */

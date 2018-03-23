@@ -21,28 +21,28 @@ class Relationship extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $post_type;
+    protected $post_type = [];
 
     /**
      * Allowed taxonomies
      *
      * @var array
      */
-    protected $taxonomy;
+    protected $taxonomy = [];
 
     /**
      * What filters to show
      *
      * @var array
      */
-    protected $filters;
+    protected $field_filters = [];
 
     /**
      * What elements to show
      *
      * @var array
      */
-    protected $elements;
+    protected $elements = [];
 
     /**
      * Minimum amount of posts
@@ -64,6 +64,22 @@ class Relationship extends \Geniem\ACF\Field {
      * @var string
      */
     protected $return_format;
+
+    /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        $obj = parent::export( $register );
+
+        $obj['filters'] = $obj['field_filters'];
+        unset( $obj['field_filters'] );
+
+        return $obj;
+    }
 
     /**
      * Set post types to show
@@ -189,7 +205,7 @@ class Relationship extends \Geniem\ACF\Field {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_filters() requires an array as an argument' );
         }
 
-        $this->filters = $filters;
+        $this->field_filters = $filters;
 
         return $this;
     }
@@ -201,9 +217,9 @@ class Relationship extends \Geniem\ACF\Field {
      * @return self
      */
     public function add_filter( string $filter ) {
-        $this->filters[] = $filter;
+        $this->field_filters[] = $filter;
 
-        $this->filters = array_unique( $this->filters );
+        $this->field_filters = array_unique( $this->filters );
 
         return $this;
     }
@@ -215,10 +231,10 @@ class Relationship extends \Geniem\ACF\Field {
      * @return self
      */
     public function remove_filter( string $filter ) {
-        $position = array_search( $filter, $this->filters );
+        $position = array_search( $filter, $this->field_filters );
 
         if ( ( $position !== false ) ) {
-            unset( $this->filters[ $position ] );
+            unset( $this->field_filters[ $position ] );
         }
 
         return $this;
@@ -230,7 +246,7 @@ class Relationship extends \Geniem\ACF\Field {
      * @return array
      */
     public function get_filters() {
-        return $this->filters;
+        return $this->field_filters;
     }
 
     /**

@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.2.0-beta] - 2017-12-01
+## [Unreleased] - 2017-12-01
 
 ### Added
 - Added a more effective version of ACF's get_fields() method to use with the Codifier
@@ -12,6 +12,111 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
       with the `ACF_CODIFIER_CACHE_TTL` constant or through the `acf_codifier_cache_ttl` filter.
     - Meta value caches are flushed after any meta value is updated.
 - Codifier settings which are overridable with constants.
+
+## [1.5.5] - 2018-03-16
+
+### Fixed
+- A bug that caused fields to occur multiple times in a tab inside an options page.
+
+## [1.5.4] - 2018-03-06
+
+### Fixed
+- A bug that prevented removing fields from tab afterwards
+
+## [1.5.3] - 2018-02-26
+
+### Fixed
+- A bug in post type filtering within the PostObject field.
+- A bug in cloning a groupable field with conditional logic in it.
+- A bug with the key uniqueness check that would throw a warning if `WP_DEBUG` was not set `true`.
+
+## [1.5.2] - 2018-02-23
+
+### Fixed
+- A bug with remove_field() function.
+
+## [1.5.1] - 2018-02-22
+
+### Fixed
+- A bug where cloning a Flexible Content layout would not update the references to it in all places.
+
+## [1.5.0] - 2018-02-21
+
+### Added
+- A possibility to filter Flexible Content layouts by field name.
+
+### Fixed
+- A few minor bug fixes on various things.
+
+### Changed
+- Removed array_unique check from FlexibleContent class because it doesn't work.
+
+## [1.4.0] - 2018-02-13
+
+### Added
+- A possibility to filter Flexible Content layouts by post types and page templates.
+- Key prefixing for tabs to eliminate the possibility of collisions.
+
+## [1.3.3] - 2018-02-09
+
+### Changed
+- Updated the class documentation.
+
+## [1.3.2] - 2018-02-07
+
+### Changed
+- Fixed a bug in a function `add_field_location()` which is used by the functions `add_field_before()` and `add_field_after()`.
+
+## [1.3.1] - 2018-02-07
+
+### Changed
+- Enhanced the checking of non-unique field keys.
+
+## [1.3.0] - 2018-02-06
+
+### Added
+- A support for installing the Codifier as an ordinary plugin instead of autoloaded mu-plugin.
+- A check that non-unique field keys throw a notice, and debug information if WP_DEBUG is set.
+
+### Changed
+- Enhanced the documentation to reflect the above-mentioned changes.
+
+## [1.2.4] - 2018-01-31
+
+### Fixed
+- Fixed a bug that occured after the change made in 1.2.3.
+
+## [1.2.3] - 2018-01-30
+
+### Changed
+- Clone field now throws an exception if a conditional logic is tried to be applied to it.
+
+## [1.2.2] - 2018-01-29
+
+### Fixed
+- A bug in Groupable class' `remove_field()` method.
+
+## [1.2.1] - 2018-01-23
+
+### Fixed
+- A bug that threw a warning if a File field was used without setting allowed MIME types.
+
+## [1.2.0] - 2018-01-18
+
+### Added
+- Support for ACF Medium Editor plugin.
+
+### Changed
+- Remove_field now uses key instead of the index number.
+
+### Fixed
+- A bug where setting allowed mime types for a file field would cause the field not to work.
+
+## [1.1.4] - 2018-01-16
+
+### Fixed
+- Fixed the CSS on the `hide_label()` method to prevent affecting child elements.
+>>>>>>> master
 
 ## [1.1.3] - 2017-11-27
 

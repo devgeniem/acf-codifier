@@ -38,6 +38,33 @@ class Tab extends \Geniem\ACF\Field\GroupableField {
     protected $endpoint = 0;
 
     /**
+     * Tab doesn't need a key.
+     *
+     * @var boolean
+     */
+    public $no_key = true;
+
+    /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        $obj = parent::export( $register );
+
+        // Make the key unique so that it can't collide with others. This is only used in
+        // the conditional logic feature so it can change on every page load.
+        $obj['key'] = 'tab_' . $obj['key'] . '_' . uniqid( '', true );
+
+        // Remove the subfields from the export object.
+        unset( $obj[ $this->fields_var ] );
+
+        return $obj;
+    }
+
+    /**
      * Set layout
      *
      * @throws \Geniem\ACF\Exception Throws error if layout is not valid.

@@ -13,7 +13,7 @@
     "keywords": [
         "wordpress", "acf"
     ],
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "minimum-stability": "dev",
     "repositories": [
         {

@@ -265,7 +265,7 @@ class Group {
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
-        if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
+        if ( ! in_array( $placement, [ 'top', 'left' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
@@ -292,7 +292,7 @@ class Group {
      */
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
-        if ( ! in_array( $placement, [ 'label', 'field' ] ) ) {
+        if ( ! in_array( $placement, [ 'label', 'field' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
@@ -344,7 +344,7 @@ class Group {
      * @return self
      */
     public function show_element( string $element ) {
-        $position = array_search( $element, $this->hide_on_screen );
+        $position = array_search( $element, $this->hide_on_screen, true );
 
         if ( ( $position !== false ) ) {
             unset( $this->hide_on_screen[ $position ] );
@@ -386,15 +386,6 @@ class Group {
      * @return self
      */
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
-        // Special treatment if the field to be added is a tab.
-        if ( $field instanceof \Geniem\ACF\Field\Tab ) {
-            // Save the subfields from the tab...
-            $sub_fields = $field->get_fields();
-
-            // ...and take them away from their original mother.
-            $field->remove_fields();
-        }
-
         // Add the field to the fields array.
         if ( $order == 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
@@ -412,16 +403,6 @@ class Group {
 
                 \acf_add_local_field( $exported );
             }
-        }
-
-        // If we have stored subfields from a tab, add them one by one separately.
-        if ( ! empty( $sub_fields ) ) {
-            foreach ( $sub_fields as $sub_field ) {
-                $this->add_field( $sub_field );
-            }
-
-            // Return subfields to the original field instance for possible later use
-            $field->set_fields( $sub_fields );
         }
 
         return $this;
@@ -491,25 +472,6 @@ class Group {
 
         // Replace the original fields array with the new one.
         $this->fields = $fields;
-
-        // Special treatment if the field to be added is a tab.
-        if ( $field instanceof \Geniem\ACF\Field\Tab ) {
-            // Save the subfields from the tab...
-            $sub_fields = $field->get_fields();
-
-            // ...and take them away from their original mother.
-            $field->remove_fields();
-        }
-
-        // If we have stored subfields from a tab, add them one by one separately.
-        if ( ! empty( $sub_fields ) ) {
-            foreach ( $sub_fields as $sub_field ) {
-                $this->add_field( $sub_field );
-            }
-
-            // Return subfields to the original field instance for possible later use
-            $field->set_fields( $sub_fields );
-        }
 
         return $this;
     }
@@ -599,7 +561,9 @@ class Group {
             $element = $this;
 
             \add_action( 'wp_loaded', function() use ( $element ) {
-                \acf_add_local_field_group( $element->export( true ) );
+                $exported = $element->export( true );
+
+                \acf_add_local_field_group( $exported );
             });
 
             $this->registered = true;
@@ -619,7 +583,7 @@ class Group {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
-     * 
+     *
      * @return array Acf fields
      */
     public function export( $register = false ) {
@@ -632,12 +596,28 @@ class Group {
 
         // Loop through fields and export them.
         if ( ! empty( $obj['fields'] ) ) {
-            $obj['fields'] = array_map( function( $field ) use ( $register ) {
-                return $field->export( $register );
-            }, $obj['fields'] );
+            $fields = [];
+
+            foreach ( $obj['fields'] as $field ) {
+                if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+                    // Get the subfields from the tab
+                    $sub_fields = $field->get_fields();
+                }
+
+                $fields[] = $field->export( $register );
+
+                // Add the possibly stored subfields
+                if ( ! empty( $sub_fields ) ) {
+                    foreach ( $sub_fields as $sub_field ) {
+                        $fields[] = $sub_field->export( $register );
+                    }
+
+                    unset( $sub_fields );
+                }
+            }
 
             // Remove keys, ACF requires the arrays to be numbered.
-            $obj['fields'] = array_values( $obj['fields'] );
+            $obj['fields'] = array_values( $fields );
         }
 
         return $obj;

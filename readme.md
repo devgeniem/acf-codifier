@@ -1,13 +1,13 @@
 ![geniem-github-banner](https://cloud.githubusercontent.com/assets/5691777/14319886/9ae46166-fc1b-11e5-9630-d60aa3dc4f9e.png)
 
-# Geniem ACF Codifier
+# ACF Codifier
 
 - Contributors: [devgeniem](https://github.com/devgeniem) / [Nomafin](https://github.com/Nomafin)
 - Tags: wordpress, acf
-- Requires at least: 4.8.0
-- Tested up to: 4.8.1
-- License: GPLv2 or later
-- License URI: http://www.gnu.org/licenses/gpl-2.0.html
+- Requires at least: 4.6.0
+- Tested up to: 4.9.3
+- License: GPL-3.0 or later
+- License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 ## Description
 
@@ -17,7 +17,7 @@ A complete documentation of the classes can be found [here](docs/classes.md).
 
 ## Installation
 
-Install with composer:
+The recommended way to install ACF Codifier is by Composer:
 
 ```
 $ composer require devgeniem/acf-codifier
@@ -32,6 +32,14 @@ OR add it in your `composer.json`:
   }
 }
 ```
+
+Installing the plugin with Composer requires [Bedrock's autoloader](https://roots.io/bedrock/docs/mu-plugins-autoloader/). It installs as an mu-plugin and doesn't need to be activated.
+
+You can, however, install it also as an ordinary plugin. It can be done in two ways:
+
+- Clone this repository into your `plugins` directory and run `composer install --no-dev` in the repository folder.
+
+- Download the latest release [here](https://github.com/devgeniem/acf-codifier/releases/download/1.3.2/1.3.2.zip) and just extract the archive in your `plugins` directory.
 
 ## Usage
 
@@ -95,6 +103,8 @@ $text = new Field\Text( 'Text field' );
 Now the `$text` variable is populated with a text field with `Text field` as its label and `text-field` with both as its key and its name.
 
 The key and the name can also be given to the constructor as its second and third parameters respectively. Obviously there are `set_key()` and `set_name()` methods also available like there were with the groups as well.
+
+The plugin checks that the field key is unique within the project and triggers a notice if there is a collision.
 
 Every property a field type has is defined with its own method. Like the field groups, they can be chained with the fields as well.
 
@@ -208,6 +218,20 @@ $field_group->add_field( $tab );
 
 ## Additional features
 
+### Prevent Flexible Content layouts from showing in some post types or page templates
+
+If you want to prevent some Flexible Content layouts from showing in some post types or page templates, you can do so with `exclude_post_type` or `exclude_template` methods:
+
+```php
+$layout->exclude_post_type( 'post' );
+```
+
+```php
+$layout->exclude_template( 'page-frontpage.php' );
+```
+
+There are also `set_exclude_post_types` and `set_exclude_templates` methods with which you can set multiple excludes at once with an array.
+
 ### Hide field label
 
 With the Codifier you can hide a field's label on the admin side. It might be useful for example with flexible content fields or a group field.
@@ -219,3 +243,9 @@ $field->hide_label();
 ```
 
 There are also `show_label()` and `get_label_visibility()` methods.
+
+## Tips & Tricks
+
+### Translations
+
+If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an approriate hook - for example `init` is fine.

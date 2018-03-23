@@ -38,6 +38,27 @@ class Layout extends \Geniem\ACF\Field\Groupable {
     public $sub_fields;
 
     /**
+     * Exclude the layout from post types
+     *
+     * @var array
+     */
+    protected $exclude_post_types;
+
+    /**
+     * Exclude the layout from templates
+     *
+     * @var array
+     */
+    protected $exclude_templates;
+
+    /**
+     * Exclude the layout from certain Flexible Content fields
+     *
+     * @var array
+     */
+    protected $exclude_fields;
+
+    /**
      * Display mode
      *
      * @var string
@@ -79,7 +100,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      * @param  string|null $name New field name.
      * @return Geniem\ACF\Field
      */
-    public function clone( $key, string $name = null ) {
+    public function clone( $key, $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -88,7 +109,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
             $clone->set_name( $name );
         }
 
-        $clone->reset();
+        $clone->update_self();
 
         return $clone;
     }
@@ -171,5 +192,154 @@ class Layout extends \Geniem\ACF\Field\Groupable {
         $this->display = $display_mode;
 
         return $this;
+    }
+
+    /**
+     * Exclude the post type.
+     *
+     * @param string $post_type The post type to exclude this layout from.
+     * @return self
+     */
+    public function exclude_post_type( string $post_type ) {
+        $this->exclude_post_types[] = $post_type;
+
+        $this->exclude_post_types = array_unique( $this->exclude_post_types );
+
+        return $this;
+    }
+
+    /**
+     * Set all post types to exclude.
+     *
+     * @param array $post_types The post types to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_post_types( array $post_types ) {
+        $this->exclude_post_types = $post_types;
+
+        return $this;
+    }
+
+    /**
+     * Remove a post type from the excluded post types list.
+     *
+     * @param string $post_type The post type to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_post_type( string $post_type ) {
+        unset( $this->exclude_post_types[ $post_type ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded post types.
+     *
+     * @return array Excluded post types.
+     */
+    public function get_excluded_post_types() {
+        return $this->exclude_post_types;
+    }
+
+    /**
+     * Exclude a template.
+     *
+     * @param string $template The template to exclude this layout from.
+     * @return self
+     */
+    public function exclude_template( string $template ) {
+        $this->exclude_templates[] = $template;
+
+        $this->exclude_templates = array_unique( $this->exclude_templates );
+
+        return $this;
+    }
+
+    /**
+     * Set all templates to exclude.
+     *
+     * @param array $templates The templates to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_templates( array $templates ) {
+        $this->exclude_templates = $templates;
+
+        return $this;
+    }
+
+    /**
+     * Remove a template from the excluded templates list.
+     *
+     * @param string $template The template to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_template( string $template ) {
+        unset( $this->exclude_templates[ $template ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded templates.
+     *
+     * @return array Excluded templates.
+     */
+    public function get_excluded_templates() {
+        return $this->exclude_templates;
+    }
+
+    /**
+     * Exclude a Flexible Content field.
+     *
+     * @param string|object $field The field to exclude this layout from.
+     * @return self
+     */
+    public function exclude_field( $field ) {
+        if ( $field instanceof \Geniem\ACF\Field ) {
+            $field = $field->get_name();
+        }
+
+        $this->exclude_fields[] = $field;
+
+        $this->exclude_fields = array_unique( $this->exclude_fields );
+
+        return $this;
+    }
+
+    /**
+     * Set all fields to exclude.
+     *
+     * @param array $fields The fields to exclude this layout from.
+     * @return self
+     */
+    public function set_excluded_fields( array $fields ) {
+        $this->exclude_fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Remove a field from the excluded fields list.
+     *
+     * @param string|object $field The field to remove from the excluded list.
+     * @return self
+     */
+    public function remove_excluded_field( $field ) {
+        if ( $field instanceof \Geniem\ACF\Field ) {
+            $field = $field->get_name();
+        }
+
+        unset( $this->exclude_fields[ $field ] );
+
+        return $this;
+    }
+
+    /**
+     * Get the list of excluded fields.
+     *
+     * @return array Excluded fields.
+     */
+    public function get_excluded_fields() {
+        return $this->exclude_fields;
     }
 }

@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Accordion
  */
-class Accordion extends \Geniem\ACF\Field\GroupableField {
+class Accordion extends \Geniem\ACF\Field\PseudoGroupableField {
     /**
      * Field type
      *

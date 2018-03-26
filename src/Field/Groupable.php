@@ -66,6 +66,7 @@ class Groupable {
     /**
      * Update the self reference to be up to date after cloning.
      *
+     * @param \Geniem\ACF\GroupableField $self A GroupableFied reference to save.
      * @return void
      */
     public function update_self( $self ) {
@@ -93,7 +94,7 @@ class Groupable {
             foreach ( $obj[ $this->fields_var ] as $field ) {
                 $sub_fields = [];
 
-                if ( $field instanceof \ Geniem\ACF\Field\Tab ) {
+                if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
                     // Get the subfields from the tab
                     $sub_fields = $field->get_fields();
                 }
@@ -102,16 +103,16 @@ class Groupable {
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    foreach ( $sub_fields as $sub_field ) {
-                        $fields[ $sub_field->get_key() ] = $sub_field->export( $register );
-                    }
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+
+                    $fields = array_merge( $fields, $exported_sub_fields );
 
                     unset( $sub_fields );
                 }
             }
 
             // Remove keys, ACF requires the arrays to be numbered.
-            $obj[ $this->fields_var ] = array_values( $fields );
+            $obj[ $this->fields_var ] = array_filter( array_values( $fields ) );
         }
 
         // Convert the wrapper class array to a space-separated string.
@@ -123,6 +124,37 @@ class Groupable {
         }
 
         return $obj;
+    }
+
+    /**
+     * Helper function to handle possible recursive pseudo group nestings.
+     *
+     * @param array   $fields Fields to export.
+     * @param boolean $register Whether the field group is to be registered.
+     * @return array
+     */
+    private function export_sub_fields( $fields, $register ) {
+        $return = [];
+
+        foreach ( $fields as $field ) {
+            if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
+                // Get the subfields
+                $sub_fields = $field->get_fields();
+            }
+
+            $return[] = $field->export( $register );
+
+            // Add the possibly stored subfields
+            if ( ! empty( $sub_fields ) ) {
+                $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+
+                $return = array_merge( $return, $exported_sub_fields );
+
+                unset( $sub_fields );
+            }
+        }
+
+        return $return;
     }
 
     /**
@@ -187,7 +219,7 @@ class Groupable {
 
         // Check if the target field exists in the field group.
         if ( ! isset( $this->self->{ $this->fields_var }[ $target ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Group: add_field_'. $action .' can\'t find given target "'. $target .'"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Group: add_field_' . $action . ' can\'t find given target "' . $target . '"' );
         }
 
         // Make a copy of the fields array to work with.

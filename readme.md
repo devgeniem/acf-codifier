@@ -216,6 +216,17 @@ $tab->set_placement( 'left' )
 $field_group->add_field( $tab );
 ```
 
+##### Pseudo group
+
+Pseudo group is like a group field, but it doesn't affect the data tree or the admin view. It only acts as a container for multiple fields, which then appear as independents fields when viewing the edit page or looking at the data tree.
+
+```php
+$pseudo = new Field\Pseudo( 'pseudo-group' );
+
+$pseudo->add_field( $some_field )
+       ->add_field( $another_field );
+```
+
 ## Additional features
 
 ### Prevent Flexible Content layouts from showing in some post types or page templates

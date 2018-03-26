@@ -38,7 +38,7 @@ class Group extends \Geniem\ACF\Field\GroupableField {
      * @return self
      */
     public function set_layout( string $layout = 'table' ) {
-        if ( ! in_array( $layout, [ 'table', 'block', 'row' ] ) ) {
+        if ( ! in_array( $layout, [ 'table', 'block', 'row' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Group: set_layout() does not accept argument "' . $layout . '"' );
         }
 

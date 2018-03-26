@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Tab
  */
-class Tab extends \Geniem\ACF\Field\GroupableField {
+class Tab extends \Geniem\ACF\Field\PseudoGroupableField {
     /**
      * Field type
      *

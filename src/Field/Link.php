@@ -31,8 +31,8 @@ class Link extends \Geniem\ACF\Field {
      * @return self
      */
     public function set_return_format( string $format ) {
-        if ( ! in_array( $format, [ 'array', 'url' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Link: set_return_format() does not accept argument "' . $type . '"' );
+        if ( ! in_array( $format, [ 'array', 'url' ], true ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Link: set_return_format() does not accept argument "' . $format . '"' );
         }
 
         $this->return_format = $format;

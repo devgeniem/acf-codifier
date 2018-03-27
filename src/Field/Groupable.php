@@ -135,6 +135,8 @@ class Groupable {
         $return = [];
 
         foreach ( $fields as $field ) {
+            $sub_fields = [];
+
             if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
                 // Get the subfields
                 $sub_fields = $field->get_fields();
@@ -147,8 +149,6 @@ class Groupable {
                 $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
 
                 $return = array_merge( $return, $exported_sub_fields );
-
-                unset( $sub_fields );
             }
         }
 

@@ -157,7 +157,7 @@ abstract class Field {
         elseif ( ! is_string( self::$keys[ $key ] ) && self::$keys[ $key ]['hash'] !== $hash ) {
             trigger_error( 'ACF Codifier: field key "' . $key . '" defined in ' . $this->registered . ' is already in use within another field which was defined in ' . self::$keys[ $key ]['string'] . '.', E_USER_NOTICE );
         }
-        elseif ( self::$keys[ $key ]['hash'] !== $hash ) {
+        elseif ( isset( self::$keys[ $key ]['hash'] ) && self::$keys[ $key ]['hash'] !== $hash ) {
             trigger_error( 'ACF Codifier: field key "' . $key . '" is already in use within another field.', E_USER_NOTICE );
         }
     }

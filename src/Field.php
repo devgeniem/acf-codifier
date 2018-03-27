@@ -66,6 +66,13 @@ abstract class Field {
     protected $filters = [];
 
     /**
+     * Whether to hide the label or not
+     *
+     * @var boolean
+     */
+    protected $hide_label = false;
+
+    /**
      * Store registered field keys to warn if there are duplicates.
      *
      * @var array
@@ -195,6 +202,10 @@ abstract class Field {
             array_walk( $this->filters, function( $filter ) {
                 add_filter( $filter['filter'] . $this->key, $filter['function'] );
             });
+        }
+
+        if ( $register && $this->hide_label ) {
+            \Geniem\ACF\Codifier::hide_label( $this );
         }
 
         $obj = get_object_vars( $this );
@@ -517,7 +528,7 @@ abstract class Field {
      * @return self
      */
     public function hide_label() {
-        \Geniem\ACF\Codifier::hide_label( $this );
+        $this->hide_label = true;
 
         return $this;
     }
@@ -528,7 +539,7 @@ abstract class Field {
      * @return self
      */
     public function show_label() {
-        \Geniem\ACF\Codifier::show_label( $this );
+        $this->hide_label = false;
 
         return $this;
     }
@@ -539,7 +550,7 @@ abstract class Field {
      * @return boolean
      */
     public function get_label_visibility() {
-        return \Geniem\ACF\Codifier::get_label_visibility( $this );
+        return $this->hide_label;
     }
 
     /**

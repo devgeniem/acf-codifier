@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - PseudoGroup field type with which you can treat multiple fields like a group but they appear in the admin as independent.
 
+### Fixed
+- A bug that caused cloned fields lose their hidden label status.
+
 ## [1.6.0] - 2018-03-19
 
 ### Added

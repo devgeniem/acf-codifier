@@ -38,6 +38,10 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
         unset( $obj['fields_var'] );
         unset( $obj['filters'] );
 
+        if ( $register && $this->hide_label ) {
+            \Geniem\ACF\Codifier::hide_label( $this );
+        }
+
         // Loop through fields and export them.
         if ( ! empty( $obj[ $this->fields_var ] ) ) {
             foreach ( $obj[ $this->fields_var ] as $field ) {

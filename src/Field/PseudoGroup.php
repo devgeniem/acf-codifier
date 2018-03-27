@@ -44,6 +44,8 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
 
         // Loop through fields and export them.
         if ( ! empty( $obj[ $this->fields_var ] ) ) {
+            $fields = [];
+
             foreach ( $obj[ $this->fields_var ] as $field ) {
                 $sub_fields = [];
 
@@ -59,8 +61,6 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
                     foreach ( $sub_fields as $sub_field ) {
                         $fields[ $sub_field->get_key() ] = $sub_field->export( $register );
                     }
-
-                    unset( $sub_fields );
                 }
             }
 

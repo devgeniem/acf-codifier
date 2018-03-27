@@ -13,14 +13,18 @@
 - [\Geniem\ACF\Field\DatePicker](#class-geniemacffielddatepicker)
 - [\Geniem\ACF\Field\Radio](#class-geniemacffieldradio)
 - [\Geniem\ACF\Field\Gallery](#class-geniemacffieldgallery)
+- [\Geniem\ACF\Field\ButtonGroup](#class-geniemacffieldbuttongroup)
 - [\Geniem\ACF\Field\Number](#class-geniemacffieldnumber)
 - [\Geniem\ACF\Field\Group](#class-geniemacffieldgroup)
 - [\Geniem\ACF\Field\PageLink](#class-geniemacffieldpagelink)
 - [\Geniem\ACF\Field\Link](#class-geniemacffieldlink)
+- [\Geniem\ACF\Field\Accordion](#class-geniemacffieldaccordion)
 - [\Geniem\ACF\Field\DateTimePicker](#class-geniemacffielddatetimepicker)
 - [\Geniem\ACF\Field\File](#class-geniemacffieldfile)
 - [\Geniem\ACF\Field\PostObject](#class-geniemacffieldpostobject)
+- [\Geniem\ACF\Field\PseudoGroup](#class-geniemacffieldpseudogroup)
 - [\Geniem\ACF\Field\User](#class-geniemacffielduser)
+- [\Geniem\ACF\Field\PseudoGroupableField (abstract)](#class-geniemacffieldpseudogroupablefield-abstract)
 - [\Geniem\ACF\Field\Tab](#class-geniemacffieldtab)
 - [\Geniem\ACF\Field\TrueFalse](#class-geniemacffieldtruefalse)
 - [\Geniem\ACF\Field\Repeater](#class-geniemacffieldrepeater)
@@ -94,7 +98,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>add_rule(</strong><em>\string</em> <strong>$field</strong>, <em>\string</em> <strong>$operator</strong>, <em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a conditional logic rule.</em> |
+| public | <strong>add_rule(</strong><em>mixed</em> <strong>$field</strong>, <em>\string</em> <strong>$operator</strong>, <em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a conditional logic rule.</em> |
 | public | <strong>get_rules()</strong> : <em>array</em><br /><em>Get added conditional logic rules.</em> |
 
 <hr />
@@ -328,6 +332,28 @@
 
 <hr />
 
+### Class: \Geniem\ACF\Field\ButtonGroup
+
+> Class ButtonGroup
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>add_choice(</strong><em>\string</em> <strong>$choice</strong>, <em>mixed</em> <strong>$value</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a choice.</em> |
+| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
+| public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
+| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
+| public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
+| public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
+| public | <strong>remove_choice(</strong><em>\string</em> <strong>$choice</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a choice.</em> |
+| public | <strong>set_choices(</strong><em>array</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
+| public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'vertical'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'value'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
+
+*This class extends [\Geniem\ACF\Field\Checkbox](#class-geniemacffieldcheckbox)*
+
+<hr />
+
 ### Class: \Geniem\ACF\Field\Number
 
 > Class Number
@@ -391,6 +417,31 @@
 
 <hr />
 
+### Class: \Geniem\ACF\Field\Accordion
+
+> Class Accordion
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>get_endpoint()</strong> : <em>integer</em><br /><em>Get endpoint status</em> |
+| public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
+| public | <strong>get_multi_expand()</strong> : <em>integer</em><br /><em>Get multi expand status</em> |
+| public | <strong>get_open()</strong> : <em>integer</em><br /><em>Get open status</em> |
+| public | <strong>get_placement()</strong> : <em>string</em><br /><em>Get placement</em> |
+| public | <strong>remove_endpoint()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable endpoint</em> |
+| public | <strong>remove_multi_expand()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable multi expand</em> |
+| public | <strong>remove_open()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable open on page load</em> |
+| public | <strong>set_endpoint()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable endpoint</em> |
+| public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
+| public | <strong>set_multi_expand()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable multi expand</em> |
+| public | <strong>set_open()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable opening on page load</em> |
+| public | <strong>set_placement(</strong><em>\string</em> <strong>$placement=`'top'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set tab placement</em> |
+
+*This class extends [\Geniem\ACF\Field\PseudoGroupableField](#class-geniemacffieldpseudogroupablefield-abstract)*
+
+<hr />
+
 ### Class: \Geniem\ACF\Field\DateTimePicker
 
 > Class DateTimePicker
@@ -442,10 +493,12 @@
 | public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
 | public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>get_added_post_types()</strong> : <em>array</em><br /><em>Get added post types</em> |
 | public | <strong>get_ajax()</strong> : <em>integer</em><br /><em>Get ajax loading state</em> |
 | public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
-| public | <strong>get_post_types()</strong> : <em>array</em><br /><em>Get allowed post types</em> |
+| public | <strong>get_removed_post_types()</strong> : <em>array</em><br /><em>Get removed post types</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>get_taxonomies()</strong> : <em>array</em><br /><em>Get allowed taxonomies</em> |
 | public | <strong>no_ajax()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable loading values via ajax</em> |
@@ -454,11 +507,25 @@
 | public | <strong>remove_post_type(</strong><em>string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove post type by name from allowed</em> |
 | public | <strong>remove_taxonomy(</strong><em>string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove taxonomy from allowed by slug</em> |
 | public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set post types to show</em> |
+| public | <strong>set_removed_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set post types to not show</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 | public | <strong>set_taxonomies(</strong><em>array</em> <strong>$taxonomies</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set taxonomies to show</em> |
 | public | <strong>use_ajax()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable loading values via ajax</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\PseudoGroup
+
+> Class PseudoGroup
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>clone(</strong><em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Geniem\ACF\Field</em><br /><em>Clone method No key forcing or prefixing because this is just a pseudo group. Parameters are there just for compatibility.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export empty array because this is not a real field.</em> |
+
+*This class extends [\Geniem\ACF\Field\PseudoGroupableField](#class-geniemacffieldpseudogroupablefield-abstract)*
 
 <hr />
 
@@ -475,11 +542,24 @@
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
 | public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>get_roles()</strong> : <em>array</em><br /><em>Get allowed roles</em> |
 | public | <strong>remove_role(</strong><em>string</em> <strong>$role</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove role from allowed roles</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 | public | <strong>set_roles(</strong><em>array</em> <strong>$roles</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set allowed roles</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\PseudoGroupableField (abstract)
+
+> Abstract class GroupableField
+
+| Visibility | Function |
+|:-----------|:---------|
+
+*This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
 <hr />
 
@@ -498,7 +578,7 @@
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
 | public | <strong>set_placement(</strong><em>\string</em> <strong>$placement=`'top'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set tab placement</em> |
 
-*This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
+*This class extends [\Geniem\ACF\Field\PseudoGroupableField](#class-geniemacffieldpseudogroupablefield-abstract)*
 
 <hr />
 
@@ -823,12 +903,12 @@
 | public | <strong>add_field_before(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>, <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\[mixed]</em> <strong>$target</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a field to the group before a target field.</em> |
 | public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Geniem\ACF\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
 | public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export current field and sub fields to acf compatible format</em> |
-| public | <strong>get_field(</strong><em>string</em> <strong>$key</strong>)</strong> : <em>array</em><br /><em>Get a field</em> |
+| public | <strong>get_field(</strong><em>string</em> <strong>$name</strong>)</strong> : <em>array</em><br /><em>Get a field</em> |
 | public | <strong>get_fields()</strong> : <em>array</em><br /><em>Get fields</em> |
 | public | <strong>remove_field(</strong><em>\string</em> <strong>$field_name</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove field from sub fields</em> |
 | public | <strong>remove_fields()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove all sub fields</em> |
 | public | <strong>set_fields(</strong><em>array</em> <strong>$fields</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set fields</em> |
-| public | <strong>update_self(</strong><em>mixed</em> <strong>$self</strong>)</strong> : <em>void</em><br /><em>Update the self reference to be up to date after cloning.</em> |
+| public | <strong>update_self(</strong><em>[\Geniem\ACF\Group](#class-geniemacfgroup)ableField</em> <strong>$self</strong>)</strong> : <em>void</em><br /><em>Update the self reference to be up to date after cloning.</em> |
 
 <hr />
 

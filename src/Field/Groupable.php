@@ -106,8 +106,6 @@ class Groupable {
                     $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
-
-                    unset( $sub_fields );
                 }
             }
 

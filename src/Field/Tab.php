@@ -72,7 +72,7 @@ class Tab extends \Geniem\ACF\Field\PseudoGroupableField {
      * @return self
      */
     public function set_layout( string $layout = 'table' ) {
-        if ( ! in_array( $layout, [ 'table', 'block', 'row' ] ) ) {
+        if ( ! in_array( $layout, [ 'table', 'block', 'row' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Tab: set_layout() does not accept argument "' . $layout . '"' );
         }
 
@@ -98,7 +98,7 @@ class Tab extends \Geniem\ACF\Field\PseudoGroupableField {
      * @return self
      */
     public function set_placement( string $placement = 'top' ) {
-        if ( ! in_array( $placement, [ 'top', 'left' ] ) ) {
+        if ( ! in_array( $placement, [ 'top', 'left' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Tab: set_placement() does not accept argument "' . $placement . '"' );
         }
 

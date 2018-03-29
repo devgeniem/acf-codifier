@@ -608,7 +608,7 @@ class Group {
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = self::export_sub_fields( $sub_fields, $register );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
 
@@ -630,7 +630,7 @@ class Group {
      * @param boolean $register Whether the field group is to be registered.
      * @return array
      */
-    private function export_sub_fields( array $fields, $register ) {
+    private static function export_sub_fields( array $fields, $register ) {
         $return = [];
 
         foreach ( $fields as $field ) {
@@ -645,7 +645,7 @@ class Group {
 
             // Add the possibly stored subfields
             if ( ! empty( $sub_fields ) ) {
-                $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                $exported_sub_fields = self::export_sub_fields( $sub_fields, $register );
 
                 $return = array_merge( $return, $exported_sub_fields );
             }

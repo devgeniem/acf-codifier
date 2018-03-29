@@ -30,53 +30,7 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
      * @return array
      */
     public function export( $register = false ) {
-        $obj = get_object_vars( $this );
-
-        // Remove unnecessary properties from the exported array.
-        unset( $obj['inheritee'] );
-        unset( $obj['groupable'] );
-        unset( $obj['fields_var'] );
-        unset( $obj['filters'] );
-
-        if ( $register && $this->hide_label ) {
-            \Geniem\ACF\Codifier::hide_label( $this );
-        }
-
-        // Loop through fields and export them.
-        if ( ! empty( $obj[ $this->fields_var ] ) ) {
-            $fields = [];
-
-            foreach ( $obj[ $this->fields_var ] as $field ) {
-                $sub_fields = [];
-
-                if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
-                    // Get the subfields from the tab
-                    $sub_fields = $field->get_fields();
-                }
-
-                $fields[ $field->get_key() ] = $field->export( $register );
-
-                // Add the possibly stored subfields
-                if ( ! empty( $sub_fields ) ) {
-                    foreach ( $sub_fields as $sub_field ) {
-                        $fields[ $sub_field->get_key() ] = $sub_field->export( $register );
-                    }
-                }
-            }
-
-            // Remove keys, ACF requires the arrays to be numbered.
-            $obj[ $this->fields_var ] = array_filter( array_values( $fields ) );
-        }
-
-        // Convert the wrapper class array to a space-separated string.
-        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
-            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
-        }
-        else {
-            $obj['wrapper']['class'] = '';
-        }
-
-        return $obj;
+        return null;
     }
 
     /**
@@ -101,7 +55,8 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
             return $field->clone( $key . '_' . $field->get_key() );
         }, $clone->{ $this->fields_var });
 
-        $clone->update_self( $this );
+        $clone->groupable = new \Geniem\ACF\Field\Groupable( $clone );
+        $clone->update_self( $clone );
 
         return $clone;
     }

@@ -97,6 +97,7 @@ abstract class GroupableField extends \Geniem\ACF\Field {
             }, $clone->{ $this->fields_var });
         }
 
+        $clone->groupable = new \Geniem\ACF\Field\Groupable( $clone );
         $clone->update_self( $clone );
 
         return $clone;

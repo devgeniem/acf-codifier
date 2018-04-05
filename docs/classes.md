@@ -26,6 +26,7 @@
 - [\Geniem\ACF\Field\User](#class-geniemacffielduser)
 - [\Geniem\ACF\Field\PseudoGroupableField (abstract)](#class-geniemacffieldpseudogroupablefield-abstract)
 - [\Geniem\ACF\Field\Tab](#class-geniemacffieldtab)
+- [\Geniem\ACF\Field\GravityForms](#class-geniemacffieldgravityforms)
 - [\Geniem\ACF\Field\TrueFalse](#class-geniemacffieldtruefalse)
 - [\Geniem\ACF\Field\Repeater](#class-geniemacffieldrepeater)
 - [\Geniem\ACF\Field\FlexibleContent](#class-geniemacffieldflexiblecontent)
@@ -579,6 +580,25 @@
 | public | <strong>set_placement(</strong><em>\string</em> <strong>$placement=`'top'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set tab placement</em> |
 
 *This class extends [\Geniem\ACF\Field\PseudoGroupableField](#class-geniemacffieldpseudogroupablefield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\GravityForms
+
+> Class GravityForms
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>allow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow multiple values</em> |
+| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
+| public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
+| public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
+| public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
+| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
+
+*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
 <hr />
 

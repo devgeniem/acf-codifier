@@ -255,6 +255,16 @@ $field->hide_label();
 
 There are also `show_label()` and `get_label_visibility()` methods.
 
+## Additional field types
+
+There are some field types that are created in the ACF Codifier that are not built-in in the ACF itself. These fields require a plugin to work. The plugins should be linked in the docblock comment of the field type class.
+
+If you use some ACF field type plugin, you can either request it to be included in the Codifier by creating an issue on GitHub or creating the field type class yourself and filing a pull request for it.
+
+### List of included additional field types
+- [MediumEditor](https://github.com/Hube2/acf-medium-editor)
+- [Gravity Forms](https://wordpress.org/plugins/acf-gravityforms-add-on/)
+
 ## Tips & Tricks
 
 ### Translations

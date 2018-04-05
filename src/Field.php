@@ -237,7 +237,7 @@ abstract class Field {
             $this->check_for_unique_key();
         }
 
-        if ( count( $obj['conditional_logic'] ) > 0 ) {
+        if ( ! empty( $obj['conditional_logic'] ) ) {
             foreach ( $obj['conditional_logic'] as &$group ) {
                 if ( count( $group ) > 0 ) {
                     foreach ( $group as &$rule ) {

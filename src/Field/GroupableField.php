@@ -76,7 +76,7 @@ abstract class GroupableField extends \Geniem\ACF\Field {
 
         }, $clone->{ $this->fields_var });
 
-        if ( count( $field_map ) > 0 ) {
+        if ( ! empty( $field_map ) ) {
             $clone->{ $this->fields_var } = array_map( function( $field ) use ( $field_map ) {
                 if ( count( $field->conditional_logic ) > 0 ) {
                     foreach ( $field->conditional_logic as &$logics ) {

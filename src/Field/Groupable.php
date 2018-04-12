@@ -176,6 +176,30 @@ class Groupable {
     }
 
     /**
+     * Add an array of fields to group
+     *
+     * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
+     * @param array             $fields An array of fields to be added.
+     * @param string            $order Whether the fields are to be added first or last.
+     * @return self
+     */
+    public function add_fields( array $fields, $order = 'last' ) {
+        // Add the field to the fields array.
+        if ( $order === 'first' ) {
+            foreach ( array_reverse( $fields ) as $field ) {
+                $this->add_field( $field );
+            }
+        }
+        else {
+            foreach ( $fields as $field ) {
+                $this->add_field( $field );
+            }
+        }
+
+        return $this->self;
+    }
+
+    /**
      * Add a field to the group before a target field.
      *
      * @param \Geniem\ACF\Field $field  A field to be added.

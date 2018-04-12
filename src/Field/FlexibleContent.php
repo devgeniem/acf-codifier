@@ -129,7 +129,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
                 }
 
                 if ( $layout instanceof Flexible\Layout ) {
-                    return $layout->export();
+                    return $layout->export( $register );
                 }
                 else {
                     return $layout;

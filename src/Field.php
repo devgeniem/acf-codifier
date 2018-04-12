@@ -217,8 +217,8 @@ abstract class Field {
         unset( $obj['filters'] );
 
         if ( \property_exists( $this, 'fields_var' ) && ! empty( $obj[ $this->fields_var ] ) ) {
-            $obj[ $this->fields_var ] = array_map( function( $field ) {
-                return $field->export();
+            $obj[ $this->fields_var ] = array_map( function( $field ) use ( $register ) {
+                return $field->export( $register );
             }, $obj[ $this->fields_var ] );
 
             $obj[ $this->fields_var ] = array_values( $obj[ $this->fields_var ] );

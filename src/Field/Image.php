@@ -77,7 +77,7 @@ class Image extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $mime_types;
+    protected $mime_types = [];
 
     /**
      * Return format

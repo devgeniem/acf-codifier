@@ -82,6 +82,8 @@ class Gallery extends Image {
         $this->filters['validate_attachment'] = [
             'filter'   => 'acf/validate_attachment/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 4,
         ];
 
         return $this;
@@ -97,6 +99,8 @@ class Gallery extends Image {
         $this->filters['upload_prefilter'] = [
             'filter'   => 'acf/upload_prefilter/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;

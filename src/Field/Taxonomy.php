@@ -229,12 +229,16 @@ class Taxonomy extends \Geniem\ACF\Field {
             $this->filters['filter_arguments'] = [
                 'filter'   => 'acf/fields/taxonomy/wp_list_categories/key=',
                 'function' => $function,
+                'priority' => 10,
+                'accepted_args' => 2,
             ];
         }
         else if ( $this->field_type === 'select' ) {
             $this->filters['filter_arguments'] = [
                 'filter'   => 'acf/fields/taxonomy/query/key=',
                 'function' => $function,
+                'priority' => 10,
+                'accepted_args' => 3,
             ];
         }
 

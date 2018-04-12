@@ -87,6 +87,23 @@ class Image extends \Geniem\ACF\Field {
     protected $return_format;
 
     /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        // Call the original export method
+        $obj = parent::export( $register );
+
+        // Convert the mime type array to a comma-separated list
+        $obj['mime_types'] = implode( ',', $obj['mime_types'] );
+
+        return $obj;
+    }
+
+    /**
      * Sets return format
      *
      * @throws \Geniem\ACF\Exception Throws error if format is not valid.

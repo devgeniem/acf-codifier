@@ -98,7 +98,7 @@ class Image extends \Geniem\ACF\Field {
         $obj = parent::export( $register );
 
         // Convert the mime type array to a comma-separated list
-        $obj['mime_types'] = implode( ',', $obj['mime_types'] );
+        $obj['mime_types'] = implode( ',', (array) $obj['mime_types'] );
 
         return $obj;
     }

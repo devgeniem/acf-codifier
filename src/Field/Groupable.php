@@ -187,7 +187,7 @@ class Groupable {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             foreach ( array_reverse( $fields ) as $field ) {
-                $this->add_field( $field );
+                $this->add_field( $field, 'first' );
             }
         }
         else {

@@ -198,9 +198,14 @@ abstract class Field {
      * @return array
      */
     public function export( $register = false ) {
+        $default_filter_args = [
+            'priority' => 10,
+            'accepted_args' => 1
+        ];
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
-                add_filter( $filter['filter'] . $this->key, $filter['function'] );
+                $filter = wp_parse_args( $filter, $default_filter_args );
+                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }
 
@@ -575,6 +580,8 @@ abstract class Field {
         $this->filters['validate_value'] = [
             'filter'   => 'acf/validate_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 4,
         ];
 
         return $this;
@@ -590,6 +597,8 @@ abstract class Field {
         $this->filters['format_value'] = [
             'filter'   => 'acf/format_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -605,6 +614,8 @@ abstract class Field {
         $this->filters['load_value'] = [
             'filter'   => 'acf/load_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -620,6 +631,8 @@ abstract class Field {
         $this->filters['update_value'] = [
             'filter'   => 'acf/update_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -635,6 +648,8 @@ abstract class Field {
         $this->filters['prepare_field'] = [
             'filter'   => 'acf/prepare_field/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 1,
         ];
 
         return $this;

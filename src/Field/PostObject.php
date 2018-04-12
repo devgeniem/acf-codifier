@@ -375,6 +375,8 @@ class PostObject extends \Geniem\ACF\Field {
         $this->filters['post_object_query'] = [
             'filter'   => 'acf/fields/post_object/query/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -390,6 +392,8 @@ class PostObject extends \Geniem\ACF\Field {
         $this->filters['post_object_result'] = [
             'filter'   => 'acf/fields/post_object/result/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 4,
         ];
 
         return $this;

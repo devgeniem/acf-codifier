@@ -204,7 +204,7 @@ abstract class Field {
         ];
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
-                $args = wp_parse_args( $filter, $default_filter_args );
+                $filter = wp_parse_args( $filter, $default_filter_args );
                 add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }

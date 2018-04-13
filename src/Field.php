@@ -80,6 +80,14 @@ abstract class Field {
     static protected $keys = [];
 
     /**
+     * Default filter arguments
+     *
+     * @var array
+     */
+    static protected $default_filter_args = [];
+
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -107,6 +115,11 @@ abstract class Field {
             'width' => '',
             'class' => [],
             'id'    => '',
+        ];
+
+        $this->default_filter_args = [
+            'priority' => 10,
+            'accepted_args' => 1
         ];
 
         if ( WP_DEBUG === true ) {
@@ -198,13 +211,10 @@ abstract class Field {
      * @return array
      */
     public function export( $register = false ) {
-        $default_filter_args = [
-            'priority' => 10,
-            'accepted_args' => 1
-        ];
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
-                $filter = wp_parse_args( $filter, $default_filter_args );
+                $filter = wp_parse_args( $filter, $this->default_filter_args );
+                var_dump($filter);
                 add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }

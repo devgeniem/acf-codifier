@@ -214,7 +214,6 @@ abstract class Field {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_args );
-                var_dump($filter);
                 add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }

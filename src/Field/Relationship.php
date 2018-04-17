@@ -381,9 +381,9 @@ class Relationship extends \Geniem\ACF\Field {
      */
     public function relationship_query( $function ) {
         $this->filters['relationship_query'] = [
-            'filter'   => 'acf/fields/relationship/query/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/fields/relationship/query/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 
@@ -398,9 +398,9 @@ class Relationship extends \Geniem\ACF\Field {
      */
     public function relationship_result( $function ) {
         $this->filters['relationship_result'] = [
-            'filter'   => 'acf/fields/relationship/result/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/fields/relationship/result/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 4,
         ];
 

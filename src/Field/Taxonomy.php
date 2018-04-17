@@ -227,17 +227,17 @@ class Taxonomy extends \Geniem\ACF\Field {
     public function filter_arguments( $function ) {
         if ( in_array( $this->field_type, [ 'radio', 'checkbox' ], true ) ) {
             $this->filters['filter_arguments'] = [
-                'filter'   => 'acf/fields/taxonomy/wp_list_categories/key=',
-                'function' => $function,
-                'priority' => 10,
+                'filter'        => 'acf/fields/taxonomy/wp_list_categories/key=',
+                'function'      => $function,
+                'priority'      => 10,
                 'accepted_args' => 2,
             ];
         }
         else if ( $this->field_type === 'select' ) {
             $this->filters['filter_arguments'] = [
-                'filter'   => 'acf/fields/taxonomy/query/key=',
-                'function' => $function,
-                'priority' => 10,
+                'filter'        => 'acf/fields/taxonomy/query/key=',
+                'function'      => $function,
+                'priority'      => 10,
                 'accepted_args' => 3,
             ];
         }

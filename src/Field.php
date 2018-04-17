@@ -84,7 +84,7 @@ abstract class Field {
      *
      * @var array
      */
-    static protected $default_filter_args = [];
+    static protected $default_filter_arguments = [];
 
 
     /**
@@ -117,14 +117,16 @@ abstract class Field {
             'id'    => '',
         ];
 
-        $this->default_filter_args = [
-            'priority' => 10,
-            'accepted_args' => 1
+        $this->default_filter_arguments = [
+            'priority'      => 10,
+            'accepted_args' => 1,
         ];
 
         if ( WP_DEBUG === true ) {
-            $debug_backtrace    = debug_backtrace();
-            $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
+            $debug_backtrace  = debug_backtrace();
+            if ( ! empty( $debug_backtrace[1]['file'] ) && ! empty( $debug_backtrace[1]['line'] ) ) {
+                $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
+            }
         }
     }
 
@@ -213,7 +215,7 @@ abstract class Field {
     public function export( $register = false ) {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
-                $filter = wp_parse_args( $filter, $this->default_filter_args );
+                $filter = wp_parse_args( $filter, $this->default_filter_arguments );
                 add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }
@@ -587,9 +589,9 @@ abstract class Field {
      */
     public function validate_value( $function ) {
         $this->filters['validate_value'] = [
-            'filter'   => 'acf/validate_value/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/validate_value/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 4,
         ];
 
@@ -604,9 +606,9 @@ abstract class Field {
      */
     public function format_value( $function ) {
         $this->filters['format_value'] = [
-            'filter'   => 'acf/format_value/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/format_value/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 
@@ -621,9 +623,9 @@ abstract class Field {
      */
     public function load_value( $function ) {
         $this->filters['load_value'] = [
-            'filter'   => 'acf/load_value/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/load_value/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 
@@ -638,9 +640,9 @@ abstract class Field {
      */
     public function update_value( $function ) {
         $this->filters['update_value'] = [
-            'filter'   => 'acf/update_value/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/update_value/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 
@@ -655,9 +657,9 @@ abstract class Field {
      */
     public function prepare_field( $function ) {
         $this->filters['prepare_field'] = [
-            'filter'   => 'acf/prepare_field/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/prepare_field/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 1,
         ];
 

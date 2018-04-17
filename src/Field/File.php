@@ -250,9 +250,9 @@ class File extends \Geniem\ACF\Field {
      */
     public function validate_attachment( $function ) {
         $this->filters['validate_attachment'] = [
-            'filter'   => 'acf/validate_attachment/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/validate_attachment/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 4,
         ];
 
@@ -267,9 +267,9 @@ class File extends \Geniem\ACF\Field {
      */
     public function upload_prefilter( $function ) {
         $this->filters['upload_prefilter'] = [
-            'filter'   => 'acf/upload_prefilter/key=',
-            'function' => $function,
-            'priority' => 10,
+            'filter'        => 'acf/upload_prefilter/key=',
+            'function'      => $function,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 

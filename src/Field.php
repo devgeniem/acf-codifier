@@ -49,7 +49,7 @@ abstract class Field {
      *
      * @var array
      */
-    protected $conditional_logic;
+    protected $conditional_logic = [];
 
     /**
      * Default value for the field.

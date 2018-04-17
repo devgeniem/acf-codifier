@@ -80,6 +80,14 @@ abstract class Field {
     static protected $keys = [];
 
     /**
+     * Default filter arguments
+     *
+     * @var array
+     */
+    static protected $default_filter_args = [];
+
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.
@@ -107,6 +115,11 @@ abstract class Field {
             'width' => '',
             'class' => [],
             'id'    => '',
+        ];
+
+        $this->default_filter_args = [
+            'priority' => 10,
+            'accepted_args' => 1
         ];
 
         if ( WP_DEBUG === true ) {
@@ -200,7 +213,8 @@ abstract class Field {
     public function export( $register = false ) {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
-                add_filter( $filter['filter'] . $this->key, $filter['function'] );
+                $filter = wp_parse_args( $filter, $this->default_filter_args );
+                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
             });
         }
 
@@ -444,6 +458,29 @@ abstract class Field {
     }
 
     /**
+     * Set attributes to be added for the field.
+     *
+     * @param mixed $attrs the attributes can be sets all together or one by one
+     * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
+     * @return self
+     */
+    public function set_wrapper_attrs( $attrs, $value = false ) {
+        if ( is_string( $attrs ) ) {
+            $this->wrapper[ $attrs ] = $value;
+        }
+        elseif ( is_array( $attrs ) ) {
+            foreach ( $attrs as $attr => $value ) {
+                $this->wrapper[ $attr ] = $value;
+            }
+        }
+        else {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: set_wrapper_attrs() argument must be an array or a string' );
+        }
+
+        return $this;
+    }
+
+    /**
      * Add a single wrapper class to be added for the field.
      *
      * @param string $class Class to be added.
@@ -478,6 +515,16 @@ abstract class Field {
      */
     public function get_wrapper_classes() {
         return $this->wrapper['class'];
+    }
+
+    /**
+     * Get all wrapper classes that have been added for the field.
+     *
+     * @param string $key Attribute key to retrieve
+     * @return array
+     */
+    public function get_wrapper_attr( $key ) {
+        return array_key_exists( $key, $this->wrapper ) ?  $this->wrapper[ $key ] : false;
     }
 
     /**
@@ -575,6 +622,8 @@ abstract class Field {
         $this->filters['validate_value'] = [
             'filter'   => 'acf/validate_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 4,
         ];
 
         return $this;
@@ -590,6 +639,8 @@ abstract class Field {
         $this->filters['format_value'] = [
             'filter'   => 'acf/format_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -605,6 +656,8 @@ abstract class Field {
         $this->filters['load_value'] = [
             'filter'   => 'acf/load_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -620,6 +673,8 @@ abstract class Field {
         $this->filters['update_value'] = [
             'filter'   => 'acf/update_value/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 3,
         ];
 
         return $this;
@@ -635,6 +690,8 @@ abstract class Field {
         $this->filters['prepare_field'] = [
             'filter'   => 'acf/prepare_field/key=',
             'function' => $function,
+            'priority' => 10,
+            'accepted_args' => 1,
         ];
 
         return $this;

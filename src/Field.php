@@ -73,18 +73,18 @@ abstract class Field {
     protected $hide_label = false;
 
     /**
+     * Default filter arguments
+     *
+     * @var array
+     */
+    protected $default_filter_arguments = [];
+
+    /**
      * Store registered field keys to warn if there are duplicates.
      *
      * @var array
      */
     static protected $keys = [];
-
-    /**
-     * Default filter arguments
-     *
-     * @var array
-     */
-    static protected $default_filter_arguments = [];
 
 
     /**

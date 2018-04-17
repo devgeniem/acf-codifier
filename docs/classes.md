@@ -997,6 +997,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds a mime types to allowed mime types</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_library()</strong> : <em>string Library</em><br /><em>Get library</em> |
 | public | <strong>get_max_height()</strong> : <em>integer Maximum height</em><br /><em>Get maximum height</em> |
 | public | <strong>get_max_size()</strong> : <em>string Maximum size</em><br /><em>Get maximum size</em> |

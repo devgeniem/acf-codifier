@@ -30,6 +30,11 @@ abstract class GroupableField extends \Geniem\ACF\Field {
 
         // Call the original constructor
         parent::__construct( $label, $key, $name );
+
+        // Ensure that the container for the subfields is an array
+        if ( ! is_array( $this->{ $this->fields_var } ) ) {
+            $this->{ $this->fields_var } = [];
+        }
     }
 
     /**

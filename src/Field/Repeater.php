@@ -56,7 +56,7 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
      *
      * @var array
      */
-    public $sub_fields;
+    public $sub_fields = [];
 
     /**
      * Override field construction method to add default button label but run parent constructor after that

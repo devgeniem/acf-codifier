@@ -28,7 +28,7 @@ class Group extends \Geniem\ACF\Field\GroupableField {
      *
      * @var array
      */
-    public $sub_fields;
+    public $sub_fields = [];
 
     /**
      * Set layout

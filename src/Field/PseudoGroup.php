@@ -21,7 +21,7 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
      *
      * @var array
      */
-    public $sub_fields;
+    public $sub_fields = [];
 
     /**
      * Export empty array because this is not a real field.

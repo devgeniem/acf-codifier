@@ -21,7 +21,7 @@ class Accordion extends \Geniem\ACF\Field\PseudoGroupableField {
      *
      * @var array
      */
-    public $sub_fields;
+    public $sub_fields = [];
 
     /**
      * Where should the tab switcher be located

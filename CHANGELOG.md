@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.10.3] - 2018-05-18
+
+### Fixed
+- A bug with the filter functions that didn't run on Repeaters or Group fields.
+
 ## [1.10.2] - 2018-04-18
 
 ### Fixed

@@ -587,6 +587,17 @@ class Group {
      * @return array Acf fields
      */
     public function export( $register = false ) {
+        if ( $register && ! empty( $this->filters ) ) {
+            array_walk( $this->filters, function( $filter ) {
+                $filter = wp_parse_args( $filter, $this->default_filter_arguments );
+                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+            });
+        }
+
+        if ( $register && $this->hide_label ) {
+            \Geniem\ACF\Codifier::hide_label( $this );
+        }
+
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.

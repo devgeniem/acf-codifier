@@ -22,14 +22,14 @@ class DatePicker extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $display_format = 'dd/mm/yy';
+    protected $display_format = 'd/m/Y';
 
     /**
      * Format when returned via get_field
      *
      * @var string
      */
-    protected $return_format = 'yymmdd';
+    protected $return_format = 'd/m/Y';
 
     /**
      * First day to show in datepicker

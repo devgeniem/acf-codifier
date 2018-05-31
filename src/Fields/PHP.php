@@ -7,7 +7,7 @@
 namespace Geniem\ACF\Fields;
 
 /**
- * PHP Message Field
+ * ACF PHP Field class.
  */
 class ACF_Field_PHP extends \acf_field {
     /**

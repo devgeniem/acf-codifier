@@ -263,7 +263,7 @@ The PHP field is an ACF field type that can only be used with the Codifier. It a
 
 The field type shows up in the ACF admin as well, but there are no functionality that can be used from there.
 
-Usage of the field type is very straightforward. You can obviously:
+Usage of the field type is very straightforward. You can just run your own code like this:
 
 ```php
 $php = new Field\PHP( __( 'My PHP field' ) );

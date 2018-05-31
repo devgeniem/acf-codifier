@@ -6,7 +6,7 @@
 namespace Geniem\ACF\Field;
 
 /**
- * Class Message
+ * Class PHP
  */
 class PHP extends \Geniem\ACF\Field {
     /**

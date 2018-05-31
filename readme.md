@@ -257,11 +257,33 @@ There are also `show_label()` and `get_label_visibility()` methods.
 
 ## Additional field types
 
-There are some field types that are created in the ACF Codifier that are not built-in in the ACF itself. These fields require a plugin to work. The plugins should be linked in the docblock comment of the field type class.
+### PHP field
+
+The PHP field is an ACF field type that can only be used with the Codifier. It allows the developer to run his own code within the field area in the admin side and print anything between the ordinary fields.
+
+The field type shows up in the ACF admin as well, but there are no functionality that can be used from there.
+
+Usage of the field type is very straightforward. You can obviously:
+
+```php
+$php = new Field\PHP( __( 'My PHP field' ) );
+$php->run( function() {
+    global $post;
+
+    echo '<pre>';
+    print_r( $post );
+    echo '</pre>';
+});
+```
+
+
+### Support for external field types
+
+There are also some field types that are created in the ACF Codifier that are not built-in in the ACF itself. These fields require a plugin to work. The plugins should be linked in the docblock comment of the field type class.
 
 If you use some ACF field type plugin, you can either request it to be included in the Codifier by creating an issue on GitHub or creating the field type class yourself and filing a pull request for it.
 
-### List of included additional field types
+#### List of included additional field types
 - [MediumEditor](https://github.com/Hube2/acf-medium-editor)
 - [Gravity Forms](https://wordpress.org/plugins/acf-gravityforms-add-on/)
 

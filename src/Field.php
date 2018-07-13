@@ -665,4 +665,21 @@ abstract class Field {
 
         return $this;
     }
+
+    /**
+     * Register a field loading function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function load_field( $function ) {
+        $this->filters['load_field'] = [
+            'filter'        => 'acf/load_field/key=',
+            'function'      => $function,
+            'priority'      => 10,
+            'accepted_args' => 1,
+        ];
+
+        return $this;
+    }
 }

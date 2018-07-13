@@ -144,6 +144,7 @@
 | public | <strong>get_wrapper_id()</strong> : <em>string</em><br /><em>Get the id that has been added for the field.</em> |
 | public | <strong>get_wrapper_width()</strong> : <em>int</em><br /><em>Get the wrapper width.</em> |
 | public | <strong>hide_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Hide the field label in the admin side</em> |
+| public | <strong>load_field(</strong><em>callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |

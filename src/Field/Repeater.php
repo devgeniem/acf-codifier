@@ -206,4 +206,27 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
     public function get_button_label() {
         return $this->button_label;
     }
+
+    /**
+     * Set field whose value is shown when collapsed.
+     *
+     * @param \Geniem\ACF\Field $field The field to use.
+     * @return self
+     */
+    public function set_collapsed( \Geniem\ACF\Field $field ) {
+        $this->collapsed = $field->get_key();
+
+        return $this;
+    }
+
+    /**
+     * Remove collapsed field.
+     *
+     * @return self
+     */
+    public function remove_collapsed() {
+        $this->collapsed = null;
+
+        return $this;
+    }
 }

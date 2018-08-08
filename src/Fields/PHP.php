@@ -14,11 +14,11 @@ class ACF_Field_PHP extends \acf_field {
      * Constructor for the mandatory ACF stuff.
      */
     public function __construct() {
-        $this->name = 'php';
-        $this->label = __( 'PHP', 'acf-codifier' );
+        $this->name     = 'php';
+        $this->label    = __( 'PHP', 'acf-codifier' );
         $this->category = 'layout';
         $this->defaults = array(
-            'code'	=> '',
+            'code' => '',
         );
 
         parent::__construct();
@@ -32,7 +32,8 @@ class ACF_Field_PHP extends \acf_field {
      */
     public function render_field( $field ) {
         if ( is_callable( $field['code'] ) ) {
-            \call_user_func( $field['code'] );
+            \call_user_func( $field['code'], $field );
+            return;
         }
     }
 
@@ -43,11 +44,11 @@ class ACF_Field_PHP extends \acf_field {
      * @return void
      */
     public function render_field_settings( $field ) {
-        acf_render_field_setting( $field, array(
-			'label'			=> __( 'Instructions', 'acf-codifier' ),
-			'type'			=> 'message',
-			'message'		=> __( 'This field can only be used with ACF Codifier. Doesn\'t do anything if defined in the admin side.', 'acf-codifier' ),
-		));
+        acf_render_field_setting( $field, [
+			'label'   => __( 'Instructions', 'acf-codifier' ),
+			'type'    => 'message',
+			'message' => __( 'This field can only be used with ACF Codifier. Doesn\'t do anything if defined in the admin side.', 'acf-codifier' ),
+        ]);
     }
 }
 

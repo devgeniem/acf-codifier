@@ -636,7 +636,9 @@
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
 | public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount of layouts</em> |
 | public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount of layouts</em> |
+| public | <strong>remove_collapsed()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove collapsed field.</em> |
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
+| public | <strong>set_collapsed(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field whose value is shown when collapsed.</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
 | public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
 | public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |

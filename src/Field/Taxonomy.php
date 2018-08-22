@@ -38,12 +38,18 @@ class Taxonomy extends \Geniem\ACF\Field {
     protected $allow_null;
 
     /**
-     * Should terms be saved
-     * Recheck later because of https://github.com/elliotcondon/acf/issues/580
+     * Should terms be saved to the post or just meta data
      *
      * @var integer
      */
-    protected $load_save_terms;
+    protected $save_terms;
+
+    /**
+     * Should terms be loaded from the post or just meta data
+     *
+     * @var integer
+     */
+    protected $load_terms;
 
     /**
      * Should user be able to add terms using this
@@ -131,34 +137,65 @@ class Taxonomy extends \Geniem\ACF\Field {
     }
 
     /**
-     * Enable load_save_terms
+     * Enable saving terms to the post object
      *
      * @return self
      */
-    public function allow_load_save_terms() {
-        $this->load_save_terms = 1;
+    public function allow_save_terms() {
+        $this->save_terms = 1;
 
         return $this;
     }
 
     /**
-     * Disable load_save_terms
+     * Disable saving terms to the post object
      *
      * @return self
      */
-    public function disallow_load_save_terms() {
-        $this->load_save_terms = 0;
+    public function disallow_save_terms() {
+        $this->save_terms = 0;
 
         return $this;
     }
 
     /**
-     * Get load_save_terms state
+     * Get the status of saving terms to the post object
      *
      * @return integer
      */
-    public function get_load_save_terms() {
-        return $this->load_save_terms;
+    public function get_save_terms() {
+        return $this->save_terms;
+    }
+
+    /**
+     * Enable loading terms to the post object
+     *
+     * @return self
+     */
+    public function allow_load_terms() {
+        $this->load_terms = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disable loading terms to the post object
+     *
+     * @return self
+     */
+    public function disallow_load_terms() {
+        $this->load_terms = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get the status of loading terms to the post object
+     *
+     * @return integer
+     */
+    public function get_load_terms() {
+        return $this->load_terms;
     }
 
     /**

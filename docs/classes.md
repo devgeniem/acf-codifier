@@ -260,17 +260,20 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>allow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable adding terms</em> |
-| public | <strong>allow_load_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable load_save_terms</em> |
+| public | <strong>allow_load_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable loading terms to the post object</em> |
 | public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
+| public | <strong>allow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable saving terms to the post object</em> |
 | public | <strong>disallow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable adding terms</em> |
-| public | <strong>disallow_load_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable load_save_terms</em> |
+| public | <strong>disallow_load_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable loading terms to the post object</em> |
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
+| public | <strong>disallow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable saving terms to the post object</em> |
 | public | <strong>filter_arguments(</strong><em>callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a arguments filtering function for the field</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Get whether terms can be added</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_field_type()</strong> : <em>string</em><br /><em>Get displayed field type</em> |
-| public | <strong>get_load_save_terms()</strong> : <em>integer</em><br /><em>Get load_save_terms state</em> |
+| public | <strong>get_load_terms()</strong> : <em>integer</em><br /><em>Get the status of loading terms to the post object</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
+| public | <strong>get_save_terms()</strong> : <em>integer</em><br /><em>Get the status of saving terms to the post object</em> |
 | public | <strong>get_taxonomy()</strong> : <em>string</em><br /><em>Get taxonomy</em> |
 | public | <strong>set_field_type(</strong><em>\string</em> <strong>$field_type=`'checkbox'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set displayed field type</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |

@@ -60,12 +60,25 @@ class Select extends \Geniem\ACF\Field {
 
     /**
      * Set choices for the checkbox
-     *
-     * @param array $choices Choices as strings.
+     * 
+     * @throws \Geniem\ACF\Exception If the parameter or its end result are not arrays.
+     * @param mixed $choices Choices as key-value pair strings or a callable that returns one.
      * @return self
      */
-    public function set_choices( array $choices ) {
-        $this->choices = $choices;
+    public function set_choices( $choices ) {
+        if ( is_callable( $choices ) ) {
+            $result = $choices();
+        }
+        else {
+            $result = $choices;
+        }
+
+        // If the value is not an array.
+        if ( ! is_array( $result ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Select: set_choices() requires an array or a callable that returns an array.' );
+        }
+
+        $this->choices = $result;
 
         return $this;
     }
@@ -81,11 +94,12 @@ class Select extends \Geniem\ACF\Field {
     public function add_choice( $choice, $value = null ) {
         if ( is_array( $choice ) ) {
             if ( count( $choice ) !== 1 ) {
-                throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: add_choice() requires an array with exactly one value as an argument' );
+                throw new \Geniem\ACF\Exception( 'Geniem\ACF\Select: add_choice() requires an array with exactly one value as an argument' );
             }
 
             $this->choices = array_merge( $this->choices, $choice );
-        } else {
+        }
+        else {
             if ( ! isset( $value ) ) {
                 $value = $choice;
             }

@@ -11,19 +11,21 @@
 - [\Geniem\ACF\Field\Wysiwyg](#class-geniemacffieldwysiwyg)
 - [\Geniem\ACF\Field\Taxonomy](#class-geniemacffieldtaxonomy)
 - [\Geniem\ACF\Field\DatePicker](#class-geniemacffielddatepicker)
-- [\Geniem\ACF\Field\TimePicker](#class-geniemacffieldtimepicker)
 - [\Geniem\ACF\Field\Radio](#class-geniemacffieldradio)
 - [\Geniem\ACF\Field\Gallery](#class-geniemacffieldgallery)
 - [\Geniem\ACF\Field\ButtonGroup](#class-geniemacffieldbuttongroup)
 - [\Geniem\ACF\Field\Number](#class-geniemacffieldnumber)
+- [\Geniem\ACF\Field\PostContent](#class-geniemacffieldpostcontent)
 - [\Geniem\ACF\Field\Group](#class-geniemacffieldgroup)
 - [\Geniem\ACF\Field\PageLink](#class-geniemacffieldpagelink)
 - [\Geniem\ACF\Field\Link](#class-geniemacffieldlink)
+- [\Geniem\ACF\Field\PostExcerpt](#class-geniemacffieldpostexcerpt)
 - [\Geniem\ACF\Field\Accordion](#class-geniemacffieldaccordion)
 - [\Geniem\ACF\Field\DateTimePicker](#class-geniemacffielddatetimepicker)
 - [\Geniem\ACF\Field\File](#class-geniemacffieldfile)
 - [\Geniem\ACF\Field\PostObject](#class-geniemacffieldpostobject)
 - [\Geniem\ACF\Field\PseudoGroup](#class-geniemacffieldpseudogroup)
+- [\Geniem\ACF\Field\TimePicker](#class-geniemacffieldtimepicker)
 - [\Geniem\ACF\Field\User](#class-geniemacffielduser)
 - [\Geniem\ACF\Field\PseudoGroupableField (abstract)](#class-geniemacffieldpseudogroupablefield-abstract)
 - [\Geniem\ACF\Field\Tab](#class-geniemacffieldtab)
@@ -301,21 +303,6 @@
 
 <hr />
 
-### Class: \Geniem\ACF\Field\TimePicker
-
-> Class TimePicker
-
-| Visibility | Function |
-|:-----------|:---------|
-| public | <strong>get_display_format()</strong> : <em>string</em><br /><em>Get display_format variable</em> |
-| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
-| public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
-| public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
-
-*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
-
-<hr />
-
 ### Class: \Geniem\ACF\Field\Radio
 
 > Class Radio
@@ -399,6 +386,20 @@
 
 <hr />
 
+### Class: \Geniem\ACF\Field\PostContent
+
+> Class PostContent
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
+| public | <strong>load_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_content</em> |
+| public | <strong>save_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_content</em> |
+
+*This class extends [\Geniem\ACF\Field\Wysiwyg](#class-geniemacffieldwysiwyg)*
+
+<hr />
+
 ### Class: \Geniem\ACF\Field\Group
 
 > Class Group
@@ -436,6 +437,20 @@
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the return format of the field.</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\PostExcerpt
+
+> Class Excerpt
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
+| public | <strong>load_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_excerpt</em> |
+| public | <strong>save_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_excerpt</em> |
+
+*This class extends [\Geniem\ACF\Field\Textarea](#class-geniemacffieldtextarea)*
 
 <hr />
 
@@ -548,6 +563,21 @@
 | public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export empty array because this is not a real field.</em> |
 
 *This class extends [\Geniem\ACF\Field\PseudoGroupableField](#class-geniemacffieldpseudogroupablefield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\TimePicker
+
+> Class TimePicker
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>get_display_format()</strong> : <em>string</em><br /><em>Get display_format variable</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
+| public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
+
+*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
 <hr />
 

@@ -11,6 +11,7 @@
 - [\Geniem\ACF\Field\Wysiwyg](#class-geniemacffieldwysiwyg)
 - [\Geniem\ACF\Field\Taxonomy](#class-geniemacffieldtaxonomy)
 - [\Geniem\ACF\Field\DatePicker](#class-geniemacffielddatepicker)
+- [\Geniem\ACF\Field\TimePicker](#class-geniemacffieldtimepicker)
 - [\Geniem\ACF\Field\Radio](#class-geniemacffieldradio)
 - [\Geniem\ACF\Field\Gallery](#class-geniemacffieldgallery)
 - [\Geniem\ACF\Field\ButtonGroup](#class-geniemacffieldbuttongroup)
@@ -294,6 +295,21 @@
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
 | public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
 | public | <strong>set_first_day(</strong><em>\integer</em> <strong>$day</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set first_day variable</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
+
+*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\TimePicker
+
+> Class TimePicker
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>get_display_format()</strong> : <em>string</em><br /><em>Get display_format variable</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
+| public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*

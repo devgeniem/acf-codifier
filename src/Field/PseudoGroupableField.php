@@ -1,12 +1,12 @@
 <?php
 /**
- * ACF Codifier PseudoGroupableField pseudo groupable field abstract class
+ * PseudoGroupableField interface
  */
 
 namespace Geniem\ACF\Field;
 
 /**
- * Abstract class GroupableField
+ * Interface class PseudoGroupableField
  */
-abstract class PseudoGroupableField extends \Geniem\ACF\Field\GroupableField {
+interface PseudoGroupableField {
 }

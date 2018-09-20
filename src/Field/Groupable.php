@@ -6,72 +6,9 @@
 namespace Geniem\ACF\Field;
 
 /**
- * Groupable Class
+ * Groupable Trait
  */
-class Groupable {
-    /**
-     * Instance of the class that inherited Groupable.
-     *
-     * @var mixed
-     */
-    protected $inheritee;
-
-    /**
-     * Variable name for the fields storage
-     *
-     * @var string
-     */
-    protected $fields_var = 'fields';
-
-    /**
-     * Either inheritee or $this
-     *
-     * @var mixed
-     */
-    private $self;
-
-    /**
-     * Constructor.
-     *
-     * @param mixed $inheritee Instance of the class that inherited this class.
-     */
-    public function __construct( $inheritee = null ) {
-        // Save the inheritee class into its property.
-        $this->inheritee = $inheritee;
-
-        if ( isset( $this->inheritee ) && property_exists( $this->inheritee, 'sub_fields' ) ) {
-            $this->fields_var = 'sub_fields';
-        }
-        else {
-            $this->fields_var = 'fields';
-        }
-
-        $this->self = $this->inheritee ?? $this;
-    }
-
-    /**
-     * __get
-     *
-     * Reference allows the referenced property to be modified through
-     * the call.
-     *
-     * @param string $name Name of the property to get.
-     * @return mixed
-     */
-    public function &__get( $name ) {
-        // Return inheritee's property with the asked name.
-        return $this->inheritee->{ $name };
-    }
-
-    /**
-     * Update the self reference to be up to date after cloning.
-     *
-     * @param \Geniem\ACF\GroupableField $self A GroupableFied reference to save.
-     * @return void
-     */
-    public function update_self( $self ) {
-        $this->self = $self;
-    }
+trait Groupable {
 
     /**
      * Export current field and sub fields to acf compatible format
@@ -84,14 +21,11 @@ class Groupable {
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
-        unset( $obj['inheritee'] );
-        unset( $obj['groupable'] );
-        unset( $obj['fields_var'] );
         unset( $obj['filters'] );
 
         // Loop through fields and export them.
-        if ( ! empty( $obj[ $this->fields_var ] ) ) {
-            foreach ( $obj[ $this->fields_var ] as $field ) {
+        if ( ! empty( $obj[ $this->fields_var() ] ) ) {
+            foreach ( $obj[ $this->fields_var() ] as $field ) {
                 $sub_fields = [];
 
                 if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
@@ -110,7 +44,7 @@ class Groupable {
             }
 
             // Remove keys, ACF requires the arrays to be numbered.
-            $obj[ $this->fields_var ] = array_filter( array_values( $fields ) );
+            $obj[ $this->fields_var() ] = array_filter( array_values( $fields ) );
         }
 
         // Convert the wrapper class array to a space-separated string.
@@ -166,13 +100,13 @@ class Groupable {
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
-            $this->self->{ $this->fields_var } = [ $field->get_name() => $field ] + $this->self->{ $this->fields_var };
+            $this->{ $this->fields_var() } = [ $field->get_name() => $field ] + $this->{ $this->fields_var() };
         }
         else {
-            $this->self->{ $this->fields_var }[ $field->get_name() ] = $field;
+            $this->{ $this->fields_var() }[ $field->get_name() ] = $field;
         }
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -196,7 +130,7 @@ class Groupable {
             }
         }
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -240,15 +174,15 @@ class Groupable {
         }
 
         // Check if the target field exists in the field group.
-        if ( ! isset( $this->self->{ $this->fields_var }[ $target ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Group: add_field_' . $action . ' can\'t find given target "' . $target . '"' );
+        if ( ! isset( $this->{ $this->fields_var() }[ $target ] ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Groupable: add_field_' . $action . ' can\'t find given target "' . $target . '"' );
         }
 
         // Make a copy of the fields array to work with.
         $fields = [];
 
         // Loop through the fields and populate the new array.
-        foreach ( $this->self->{ $this->fields_var } as $name => $item ) {
+        foreach ( $this->{ $this->fields_var() } as $name => $item ) {
 
             // If this's the spot, do the right thing.
             if ( $action === 'before' && $name === $target ) {
@@ -265,9 +199,9 @@ class Groupable {
         }
 
         // Replace the original fields array with the new one.
-        $this->self->{ $this->fields_var } = $fields;
+        $this->{ $this->fields_var() } = $fields;
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -278,11 +212,11 @@ class Groupable {
      */
     public function remove_field( string $field_name ) {
 
-        if ( isset( $this->self->{ $this->fields_var }[ $field_name ] ) ) {
-            unset( $this->self->{ $this->fields_var }[ $field_name ] );
+        if ( isset( $this->{ $this->fields_var() }[ $field_name ] ) ) {
+            unset( $this->{ $this->fields_var() }[ $field_name ] );
         }
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -292,9 +226,9 @@ class Groupable {
      * @return self
      */
     public function set_fields( $fields ) {
-        $this->self->{ $this->fields_var } = $fields;
+        $this->{ $this->fields_var() } = $fields;
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -303,7 +237,7 @@ class Groupable {
      * @return array
      */
     public function get_fields() {
-        return $this->self->{ $this->fields_var };
+        return $this->{ $this->fields_var() };
     }
 
     /**
@@ -313,7 +247,7 @@ class Groupable {
      * @return array
      */
     public function get_field( $name ) {
-        return $this->self->{ $this->fields_var }[ $name ] ?? null;
+        return $this->{ $this->fields_var() }[ $name ] ?? null;
     }
 
     /**
@@ -322,9 +256,9 @@ class Groupable {
      * @return self
      */
     public function remove_fields() {
-        unset( $this->self->{ $this->fields_var } );
+        unset( $this->{ $this->fields_var() } );
 
-        return $this->self;
+        return $this;
     }
 
     /**
@@ -337,7 +271,7 @@ class Groupable {
      * @return Geniem\ACF\Field
      */
     public function clone( $key, $name = null ) {
-        $clone = clone $this->self;
+        $clone = clone $this;
 
         $clone->set_key( $key );
 
@@ -345,12 +279,24 @@ class Groupable {
             $clone->set_name( $name );
         }
 
-        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
+        $clone->{ $this->fields_var() } = array_map( function( $field ) use ( $key ) {
             return $field->clone( $key . '_' . $field->get_key() );
-        }, $clone->{ $this->fields_var });
-
-        $clone->update_self();
+        }, $clone->{ $this->fields_var() });
 
         return $clone;
+    }
+
+    /**
+     * Returns current fields_var
+     *
+     * @return string
+     */
+    public function fields_var() : string {
+        if ( property_exists( $this, 'sub_fields' ) ) {
+            return 'sub_fields';
+        }
+        elseif ( property_exists( $this, 'fields' ) ) {
+            return 'fields';
+        }
     }
 }

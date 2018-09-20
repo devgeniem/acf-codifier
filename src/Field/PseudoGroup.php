@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class PseudoGroup
  */
-class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
+class PseudoGroup extends GroupableField implements PseudoGroupableField {
     /**
      * Field type
      *
@@ -51,12 +51,9 @@ class PseudoGroup extends \Geniem\ACF\Field\PseudoGroupableField {
             $clone->set_name( $name );
         }
 
-        $clone->{ $this->fields_var } = array_map( function( $field ) use ( $key ) {
+        $clone->{ $this->fields_var() } = array_map( function( $field ) use ( $key ) {
             return $field->clone( $key . '_' . $field->get_key() );
-        }, $clone->{ $this->fields_var });
-
-        $clone->groupable = new \Geniem\ACF\Field\Groupable( $clone );
-        $clone->update_self( $clone );
+        }, $clone->{ $this->fields_var() });
 
         return $clone;
     }

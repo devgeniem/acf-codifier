@@ -5,10 +5,18 @@
 
 namespace Geniem\ACF\Field\Flexible;
 
+use Geniem\ACF\Field\Groupable;
+
 /**
  * Class Layout
  */
-class Layout extends \Geniem\ACF\Field\Groupable {
+class Layout {
+
+    /**
+     * Import the groupable functionalities
+     */
+    use Groupable;
+
     /**
      * Layout label
      *
@@ -35,7 +43,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      *
      * @var array
      */
-    public $sub_fields;
+    public $sub_fields = [];
 
     /**
      * Exclude the layout from post types
@@ -80,8 +88,6 @@ class Layout extends \Geniem\ACF\Field\Groupable {
         $this->name = $name ?? sanitize_title( $label );
 
         $this->active = 1;
-
-        parent::__construct( $this );
     }
 
     /**
@@ -108,8 +114,6 @@ class Layout extends \Geniem\ACF\Field\Groupable {
         if ( isset( $name ) ) {
             $clone->set_name( $name );
         }
-
-        $clone->update_self();
 
         return $clone;
     }
@@ -185,7 +189,7 @@ class Layout extends \Geniem\ACF\Field\Groupable {
      * @return self
      */
     public function set_display_mode( string $display_mode = 'block' ) {
-        if ( ! in_array( $display_mode, [ 'block', 'table', 'row' ] ) ) {
+        if ( ! in_array( $display_mode, [ 'block', 'table', 'row' ], true ) ) {
             throw new \Geniem\ACF\Field( 'Geniem\ACF\FlexibleLayout: set_display_mode() does not accept argument "' . $display_mode . '"' );
         }
 

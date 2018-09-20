@@ -110,8 +110,6 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
         }
 
         // Remove unnecessary properties from the exported array.
-        unset( $obj['inheritee'] );
-        unset( $obj['groupable'] );
         unset( $obj['fields_var'] );
         unset( $obj['filters'] );
 
@@ -168,7 +166,7 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
      * @return self
      */
     public function set_layout( string $layout = 'table' ) {
-        if ( ! in_array( $layout, [ 'table', 'block', 'row' ] ) ) {
+        if ( ! in_array( $layout, [ 'table', 'block', 'row' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Repeater: set_layout() does not accept argument "' . $layout . '"' );
         }
 

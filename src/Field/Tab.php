@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field;
 /**
  * Class Tab
  */
-class Tab extends \Geniem\ACF\Field\PseudoGroupableField {
+class Tab extends GroupableField implements PseudoGroupableField {
     /**
      * Field type
      *
@@ -58,8 +58,10 @@ class Tab extends \Geniem\ACF\Field\PseudoGroupableField {
         // the conditional logic feature so it can change on every page load.
         $obj['key'] = 'tab_' . $obj['key'] . '_' . uniqid( '', true );
 
-        // Remove the subfields from the export object.
-        unset( $obj[ $this->fields_var ] );
+        if ( method_exists( $this, 'fields_var' ) ) {
+            // Remove the subfields from the export object.
+            unset( $obj[ $this->fields_var() ] );
+        }
 
         return $obj;
     }

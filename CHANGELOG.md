@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Changed Groupable functionality to be a trait instead of multi-inherited class.
 
+## [1.13.0] - 2018-09-19
+
+### Added
+- TimePicker field
+- PostContent and PostExcerpt fields.
+
 ## [1.12.2] - 2018-09-14
 
 ### Added

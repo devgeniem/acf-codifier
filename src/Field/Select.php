@@ -59,6 +59,13 @@ class Select extends \Geniem\ACF\Field {
     protected $placeholder;
 
     /**
+     * Is field disabled
+     *
+     * @var boolean
+     */
+    protected $disabled;
+
+    /**
      * Set choices for the checkbox
      * 
      * @throws \Geniem\ACF\Exception If the parameter or its end result are not arrays.
@@ -289,5 +296,36 @@ class Select extends \Geniem\ACF\Field {
      */
     public function get_placeholder() {
         return $this->placeholder;
+    }
+
+    /**
+     * Disable field
+     *
+     * @return self
+     */
+    public function disable() {
+        $this->disable = true;
+
+        return $this;
+    }
+
+    /**
+     * Enable field
+     *
+     * @return self
+     */
+    public function enable() {
+        $this->disable = false;
+
+        return $this;
+    }
+
+    /**
+     * Get whether field is disabled or not
+     *
+     * @return boolean
+     */
+    public function get_disabled() {
+        return $this->disabled;
     }
 }

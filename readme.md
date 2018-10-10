@@ -39,7 +39,7 @@ You can, however, install it also as an ordinary plugin. It can be done in two w
 
 - Clone this repository into your `plugins` directory and run `composer install --no-dev` in the repository folder.
 
-- Download the latest release [here](https://github.com/devgeniem/acf-codifier/releases/download/1.3.2/1.3.2.zip) and just extract the archive in your `plugins` directory.
+- Download the latest release [here](https://github.com/devgeniem/acf-codifier/releases/latest) and just extract the archive in your `plugins` directory.
 
 ## Usage
 

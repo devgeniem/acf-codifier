@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Possibility to make a Select field disabled.
 
+## [1.14.0] - 2018-09-20
+
+### Changed
+- Changed Groupable functionality to be a trait instead of multi-inherited class.
+
 ## [1.12.2] - 2018-09-14
 
 ### Added

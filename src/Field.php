@@ -227,8 +227,6 @@ abstract class Field {
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
-        unset( $obj['inheritee'] );
-        unset( $obj['groupable'] );
         unset( $obj['fields_var'] );
         unset( $obj['filters'] );
 

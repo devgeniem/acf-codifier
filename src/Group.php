@@ -5,12 +5,20 @@
 
 namespace Geniem\ACF;
 
+use Geniem\ACF\Field\Groupable;
+
 /**
  * Class Group
  *
  * @package Geniem\ACF
  */
 class Group {
+
+    /**
+     * Import the groupable functionalities
+     */
+    use Groupable;
+
     /**
      * Field group title
      *
@@ -79,7 +87,7 @@ class Group {
      *
      * @var array
      */
-    public $fields;
+    public $fields = [];
 
     /**
      * Field group active status
@@ -409,74 +417,6 @@ class Group {
     }
 
     /**
-     * Add a field to the field group before a target field.
-     *
-     * @param \Geniem\ACF\Field $field  A field to be added.
-     * @param [mixed]           $target A target field.
-     * @return self
-     */
-    public function add_field_before( \Geniem\ACF\Field $field, $target ) {
-        // Call the real function.
-        return $this->add_field_location( $field, 'before', $target );
-    }
-
-    /**
-     * Add a field to the field group after a target field.
-     *
-     * @param \Geniem\ACF\Field $field  A field to be added.
-     * @param [mixed]           $target A target field.
-     * @return self
-     */
-    public function add_field_after( \Geniem\ACF\Field $field, $target ) {
-        // Call the real function.
-        return $this->add_field_location( $field, 'after', $target );
-    }
-
-    /**
-     * A method for the two previous methods to use.
-     *
-     * @param \Geniem\ACF\Field $field  A field to be added.
-     * @param [string]          $action Whether it's added before or after.
-     * @param [mixed]           $target A target field.
-     * @return self
-     */
-    private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
-        // If given a field instance, replace the value with its key.
-        if ( $target instanceof \Geniem\ACF\Field ) {
-            $target = $target->get_key();
-        }
-
-        // Check if the target field exists in the field group.
-        if ( ! isset( $this->fields[ $target ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: add_field_' . $action . ' can\'t find given target "' . $target . '"' );
-        }
-
-        // Make a copy of the fields array to work with.
-        $fields = [];
-
-        // Loop through the fields and populate the new array.
-        foreach ( $this->fields as $key => $item ) {
-            // If this's the spot, do the right thing.
-            if ( $action === 'before' && $key === $target ) {
-                $fields[ $target ] = $field;
-            }
-
-            // Insert the original inhabitant.
-            $fields[ $key ] = $item;
-
-            // And if this's the spot, do the right thing here.
-            if ( $action === 'after' && $key === $target ) {
-                $fields[ $target ] = $field;
-            }
-        }
-
-        // Replace the original fields array with the new one.
-        $this->fields = $fields;
-
-        return $this;
-    }
-
-    /**
      * Remove a field from the field group.
      *
      * @param string $key The name of the field to be removed.
@@ -496,25 +436,6 @@ class Group {
         }
 
         return $this;
-    }
-
-    /**
-     * Get a field by its key.
-     *
-     * @param string $key The key of the field to be fetched.
-     * @return \Geniem\ACF\Field
-     */
-    public function get_field( string $key ) {
-        return $this->fields[ $key ];
-    }
-
-    /**
-     * Get all fields from the field group.
-     *
-     * @return array
-     */
-    public function get_fields() {
-        return $this->fields;
     }
 
     /**
@@ -590,8 +511,6 @@ class Group {
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
-        unset( $obj['inheritee'] );
-        unset( $obj['groupable'] );
         unset( $obj['fields_var'] );
 
         // Loop through fields and export them.
@@ -608,7 +527,7 @@ class Group {
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = self::export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
 
@@ -621,36 +540,5 @@ class Group {
         }
 
         return $obj;
-    }
-
-    /**
-     * Helper function to handle possible recursive pseudo group nestings.
-     *
-     * @param array   $fields Fields to export.
-     * @param boolean $register Whether the field group is to be registered.
-     * @return array
-     */
-    private static function export_sub_fields( array $fields, $register ) {
-        $return = [];
-
-        foreach ( $fields as $field ) {
-            $sub_fields = [];
-
-            if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
-                // Get the subfields
-                $sub_fields = $field->get_fields();
-            }
-
-            $return[] = $field->export( $register );
-
-            // Add the possibly stored subfields
-            if ( ! empty( $sub_fields ) ) {
-                $exported_sub_fields = self::export_sub_fields( $sub_fields, $register );
-
-                $return = array_merge( $return, $exported_sub_fields );
-            }
-        }
-
-        return $return;
     }
 }

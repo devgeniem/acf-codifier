@@ -304,7 +304,7 @@ class Select extends \Geniem\ACF\Field {
      * @return self
      */
     public function disable() {
-        $this->disable = true;
+        $this->disabled = true;
 
         return $this;
     }
@@ -315,7 +315,7 @@ class Select extends \Geniem\ACF\Field {
      * @return self
      */
     public function enable() {
-        $this->disable = false;
+        $this->disabled = false;
 
         return $this;
     }

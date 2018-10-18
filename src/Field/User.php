@@ -82,7 +82,14 @@ class User extends \Geniem\ACF\Field {
      * @return self
      */
     public function remove_role( $role ) {
-        $position = array_search( $role, $this->role );
+        global $wp_roles;
+
+        // Populate the role array with all roles to remove just one if it's empty
+        if ( empty( $this->role ) ) {
+            $this->role = array_keys( $wp_roles->get_names() );
+        }
+
+        $position = array_search( $role, $this->role, true );
 
         if ( ( $position !== false ) ) {
             unset( $this->role[ $position ] );
@@ -97,6 +104,13 @@ class User extends \Geniem\ACF\Field {
      * @return array
      */
     public function get_roles() {
+        global $wp_roles;
+
+        // Show all roles if the role array is empty
+        if ( empty( $this->role ) ) {
+            return array_keys( $wp_roles->get_names() );
+        }
+
         return $this->role;
     }
 

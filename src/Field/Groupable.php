@@ -23,6 +23,11 @@ trait Groupable {
         // Remove unnecessary properties from the exported array.
         unset( $obj['filters'] );
 
+        // Allow hide label functionality for Groupables if they are an instance of Field
+        if ( $register && $this->hide_label && $this instanceof \Geniem\ACF\Field ) {
+            \Geniem\ACF\Codifier::hide_label( $this );
+        }
+
         // Loop through fields and export them.
         if ( ! empty( $obj[ $this->fields_var() ] ) ) {
             foreach ( $obj[ $this->fields_var() ] as $field ) {

@@ -24,7 +24,7 @@ trait Groupable {
         unset( $obj['filters'] );
 
         // Allow hide label functionality for Groupables if they are an instance of Field
-        if ( $register && $this->hide_label && $this instanceof \Geniem\ACF\Field ) {
+        if ( $register && $this instanceof \Geniem\ACF\Field && $this->hide_label ) {
             \Geniem\ACF\Codifier::hide_label( $this );
         }
 

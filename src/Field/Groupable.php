@@ -241,7 +241,7 @@ trait Groupable {
      *
      * @return array
      */
-    public function get_fields() {
+    public function get_fields() : array {
         return $this->{ $this->fields_var() };
     }
 

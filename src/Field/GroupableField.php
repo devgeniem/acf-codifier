@@ -5,10 +5,13 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field,
+    Geniem\ACF\Field\Common\Groupable;
+
 /**
  * Abstract class GroupableField
  */
-abstract class GroupableField extends \Geniem\ACF\Field {
+abstract class GroupableField extends Field {
 
     /**
      * Import the groupable functionalities
@@ -39,7 +42,7 @@ abstract class GroupableField extends \Geniem\ACF\Field {
      *
      * @param string $key  Field key.
      * @param string $name Field name (optional).
-     * @return Geniem\ACF\Field
+     * @return Field
      */
     public function clone( $key, $name = null ) {
         $clone = clone $this;

@@ -74,7 +74,7 @@ class Select extends \Geniem\ACF\Field {
      */
     public function set_choices( $choices ) {
         if ( is_callable( $choices ) ) {
-            $result = $choices();
+            $result = call_user_func( $choices );
         }
         else {
             $result = $choices;

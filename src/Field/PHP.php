@@ -29,10 +29,8 @@ class PHP extends \Geniem\ACF\Field {
      * @param callable $callable The code to run.
      * @return self
      */
-    public function run( $callable ) {
-        if ( is_callable( $callable ) ) {
-            $this->code = $callable;
-        }
+    public function run( callable $callable ) {
+        $this->code = $callable;
 
         return $this;
     }

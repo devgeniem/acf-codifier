@@ -585,7 +585,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function validate_value( $function ) {
+    public function validate_value( callable $function ) {
         $this->filters['validate_value'] = [
             'filter'        => 'acf/validate_value/key=',
             'function'      => $function,
@@ -602,7 +602,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function format_value( $function ) {
+    public function format_value( callable $function ) {
         $this->filters['format_value'] = [
             'filter'        => 'acf/format_value/key=',
             'function'      => $function,
@@ -619,7 +619,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function load_value( $function ) {
+    public function load_value( callable $function ) {
         $this->filters['load_value'] = [
             'filter'        => 'acf/load_value/key=',
             'function'      => $function,
@@ -636,7 +636,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function update_value( $function ) {
+    public function update_value( callable $function ) {
         $this->filters['update_value'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => $function,
@@ -653,7 +653,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function prepare_field( $function ) {
+    public function prepare_field( callable $function ) {
         $this->filters['prepare_field'] = [
             'filter'        => 'acf/prepare_field/key=',
             'function'      => $function,
@@ -670,7 +670,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function load_field( $function ) {
+    public function load_field( callable $function ) {
         $this->filters['load_field'] = [
             'filter'        => 'acf/load_field/key=',
             'function'      => $function,

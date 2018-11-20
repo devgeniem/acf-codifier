@@ -371,7 +371,7 @@ class PostObject extends \Geniem\ACF\Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function post_object_query( $function ) {
+    public function post_object_query( callable $function ) {
         $this->filters['post_object_query'] = [
             'filter'        => 'acf/fields/post_object/query/key=',
             'function'      => $function,
@@ -388,7 +388,7 @@ class PostObject extends \Geniem\ACF\Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function post_object_result( $function ) {
+    public function post_object_result( callable $function ) {
         $this->filters['post_object_result'] = [
             'filter'        => 'acf/fields/post_object/result/key=',
             'function'      => $function,

@@ -379,7 +379,7 @@ class Relationship extends \Geniem\ACF\Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function relationship_query( $function ) {
+    public function relationship_query( callable $function ) {
         $this->filters['relationship_query'] = [
             'filter'        => 'acf/fields/relationship/query/key=',
             'function'      => $function,
@@ -396,7 +396,7 @@ class Relationship extends \Geniem\ACF\Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function relationship_result( $function ) {
+    public function relationship_result( callable $function ) {
         $this->filters['relationship_result'] = [
             'filter'        => 'acf/fields/relationship/result/key=',
             'function'      => $function,

@@ -5,7 +5,9 @@
 
 namespace Geniem\ACF;
 
-use Geniem\ACF\Field\Groupable;
+use Geniem\ACF\Field\Common\Groupable,
+    Geniem\ACF\Exception as Exception,
+    Geniem\ACF\Field\PseudoGroupableField as PseudoGroupableField;
 
 /**
  * Class Group
@@ -214,13 +216,13 @@ class Group {
      * Set field group position within the edit post screen.
      *
      * @param string $position       Field group's position value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_position( string $position = 'normal' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $position, [ 'acf_after_title', 'normal', 'side' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
         }
 
         $this->position = $position;
@@ -241,13 +243,13 @@ class Group {
      * Set field group display style.
      *
      * @param string $style Field group's style value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_style( string $style = 'default' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $style, [ 'default', 'seamless' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
         }
 
         $this->style = $style;
@@ -268,13 +270,13 @@ class Group {
      * Set field group label placement value.
      *
      * @param string $placement Field group's label placement value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'top', 'left' ], true ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->label_placement = $placement;
@@ -295,13 +297,13 @@ class Group {
      * Set field group instructions placement value.
      *
      * @param string $placement Field group's instruction placement value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'label', 'field' ], true ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->instruction_placement = $placement;
@@ -389,7 +391,7 @@ class Group {
     /**
      * Add a field to the field group.
      *
-     * @param \Geniem\ACF\Field $field A field to be added.
+     * @param Field $field A field to be added.
      * @param string            $order Whether the field is added first or last.
      * @return self
      */
@@ -518,7 +520,7 @@ class Group {
             $fields = [];
 
             foreach ( $obj['fields'] as $field ) {
-                if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
+                if ( $field instanceof PseudoGroupableField ) {
                     // Get the subfields
                     $sub_fields = $field->get_fields();
                 }

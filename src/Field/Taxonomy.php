@@ -261,7 +261,7 @@ class Taxonomy extends \Geniem\ACF\Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function filter_arguments( $function ) {
+    public function filter_arguments( callable $function ) {
         if ( in_array( $this->field_type, [ 'radio', 'checkbox' ], true ) ) {
             $this->filters['filter_arguments'] = [
                 'filter'        => 'acf/fields/taxonomy/wp_list_categories/key=',

@@ -1,9 +1,9 @@
 <?php
 /**
- * ACF Codifier Groupable group abstract class
+ * ACF Codifier Groupable trait
  */
 
-namespace Geniem\ACF\Field;
+namespace Geniem\ACF\Field\Common;
 
 /**
  * Groupable Trait

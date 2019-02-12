@@ -60,6 +60,18 @@ trait Groupable {
             $obj['wrapper']['class'] = '';
         }
 
+        if ( ! empty( $obj['conditional_logic'] ) ) {
+            foreach ( $obj['conditional_logic'] as &$group ) {
+                if ( count( $group ) > 0 ) {
+                    foreach ( $group as &$rule ) {
+                        if ( ! is_string( $rule['field'] ) ) {
+                            $rule['field'] = $rule['field']->get_key();
+                        }
+                    }
+                }
+            }
+        }
+
         return $obj;
     }
 

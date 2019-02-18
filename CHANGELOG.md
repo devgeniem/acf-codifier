@@ -4,12 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-# Unreleased
-
-## [1.15.0-beta] - 2018-11-20
+## [1.15.0] - 2019-02-18
 
 ### Added
-- Wrapper file extensions methods on top of ACF's misleadingly named mime types.
+- Wrap file extension methods on top of ACF's misleadingly named mime types.
 
 ### Changed
 - Moved redundant functionalities to traits

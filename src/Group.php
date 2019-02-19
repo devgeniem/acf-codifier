@@ -481,7 +481,7 @@ class Group {
      */
     public function register() {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
-            \add_action( 'acf/init', function() {
+            \add_action( 'wp_loaded', function() {
                 $exported = $this->export( true );
 
                 \acf_add_local_field_group( $exported );

@@ -80,12 +80,18 @@ abstract class Field {
     protected $default_filter_arguments = [];
 
     /**
+     * Whether the field should be included in RediPress search index or not.
+     *
+     * @var boolean
+     */
+    protected $redipress_include_search = false;
+
+    /**
      * Store registered field keys to warn if there are duplicates.
      *
      * @var array
      */
     static protected $keys = [];
-
 
     /**
      * Constructor.
@@ -120,10 +126,11 @@ abstract class Field {
         $this->default_filter_arguments = [
             'priority'      => 10,
             'accepted_args' => 1,
+            'no_suffix'     => false,
         ];
 
         if ( WP_DEBUG === true ) {
-            $debug_backtrace  = debug_backtrace();
+            $debug_backtrace = debug_backtrace();
             if ( ! empty( $debug_backtrace[1]['file'] ) && ! empty( $debug_backtrace[1]['line'] ) ) {
                 $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
             }
@@ -198,7 +205,7 @@ abstract class Field {
 
         $clone->set_key( $key );
 
-        if ( isset( $name ) ) {
+        if ( ! empty( $name ) ) {
             $clone->set_name( $name );
         }
 
@@ -216,7 +223,12 @@ abstract class Field {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
-                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                if ( $filter['no_suffix'] ) {
+                    add_filter( $filter['filter'], $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
+                else {
+                    add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
             });
         }
 
@@ -476,7 +488,7 @@ abstract class Field {
      * @return self
      */
     public function remove_wrapper_class( string $class ) {
-        $position = array_search( $class, $this->wrapper['class'] );
+        $position = array_search( $class, $this->wrapper['class'], true );
 
         if ( ( $position !== false ) ) {
             unset( $this->wrapper['class'][ $position ] );
@@ -577,6 +589,123 @@ abstract class Field {
         unset( $this->filters[ $filter ] );
 
         return $this;
+    }
+
+    /**
+     * Include this field's value in the RediPress search index.
+     *
+     * @return self
+     */
+    public function redipress_include_search() {
+        $this->filters['redipress_include_search'] = [
+            'filter'        => 'acf/update_value/key=',
+            'function'      => \Closure::fromCallable( [ $this, 'redipress_include_search_filter' ] ),
+            'priority'      => 11,
+            'accepted_args' => 3,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Exclude this field's value in the RediPress search index.
+     *
+     * @return self
+     */
+    public function redipress_exclude_search() {
+        unset( $this->filters['redipress_include_search'] );
+
+        return $this;
+    }
+
+    /**
+     * Get RediPress search index status of this field.
+     *
+     * @return boolean
+     */
+    public function redipress_get_search_status() : bool {
+        return isset( $this->filters['redipress_include_search'] );
+    }
+
+    /**
+     * Include the field's value in RediPress search index.
+     *
+     * @param mixed   $value   Field's value.
+     * @param integer $post_id Post ID.
+     * @param array   $field   ACF field object as an array.
+     * @return mixed
+     */
+    protected function redipress_include_search_filter( $value, int $post_id, array $field ) {
+        add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $value ) {
+            return $content . ' ' . $value;
+        });
+
+        return $value;
+    }
+
+    /**
+     * Add this field's value as a queryable value to RediSearch index.
+     *
+     * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
+     * @param float  $weight     Optional weight for the search field.
+     * @return self
+     */
+    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0 ) {
+        $this->filters['redipress_add_queryable'] = [
+            'filter'        => 'acf/update_value/key=',
+            'function'      => function( $value, $post_id, $field ) use ( $field_name ) {
+                add_filter(
+                    'redipress/additional_field/' . $post_id . '/' . ( $field_name ?? $field['key'] ),
+                    function( $field ) use ( $value ) {
+                        return $value;
+                    }
+                );
+
+                return $value;
+            },
+            'priority'      => 11,
+            'accepted_args' => 3,
+        ];
+
+        $this->filters['redipress_schema_fields'] = [
+            'filter'        => 'redipress/schema_fields',
+            'function'      => function( $fields ) use ( $field_name, $weight ) {
+                $field = new \Geniem\RediPress\Entity\TextField([
+                    'name'   => $field_name ?? $this->key,
+                    'weight' => $weight,
+                ]);
+
+                $fields[] = $field;
+
+                return $fields;
+            },
+            'priority'      => 11,
+            'accepted_args' => 3,
+            'no_suffix'     => true,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Remove this field from being queryable in RediSearch index.
+     *
+     * @return self
+     */
+    public function redipress_remove_queryable() {
+        unset( $this->filters['redipress_add_queryable'] );
+        unset( $this->filters['redipress_schema_fields'] );
+
+        return $this;
+    }
+
+    /**
+     * Whether this field is queryable in RediSearch index or not.
+     *
+     * @return boolean
+     */
+    public function redipress_get_queryable_status() : bool {
+        return isset( $this->filters['redipress_add_queryable'] );
     }
 
     /**

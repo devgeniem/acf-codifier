@@ -73,6 +73,14 @@ class CloneField extends \Geniem\ACF\Field {
 
         // Remove keys from the array.
         $obj['clone'] = array_values( $obj['clone'] );
+        
+        // Convert the wrapper class array to a space-separated string.
+        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
+            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+        else {
+            $obj['wrapper']['class'] = '';
+        }
 
         return $obj;
     }

@@ -617,13 +617,14 @@ abstract class Field {
      *
      * @return self
      */
-    public function redipress_include_search() {
-        $this->redipress_include_search = true;
+    public function redipress_include_search( callable $callback = null ) {
+        $this->redipress_include_search          = true;
+        $this->redipress_include_search_callback = $callback;
 
         $this->filters['redipress_include_search'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ),
-            'priority'      => 11,
+            'priority'      => 10,
             'accepted_args' => 3,
         ];
 
@@ -639,6 +640,7 @@ abstract class Field {
         $this->redipress_include_search = false;
 
         unset( $this->filters['redipress_include_search'] );
+        unset( $this->redipress_include_search_callback );
 
         return $this;
     }
@@ -661,7 +663,11 @@ abstract class Field {
      * @return mixed
      */
     protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
-        if ( $field['redipress_include_search'] === true ) {
+        if ( ! empty( $field['redipress_include_search_callback'] ) ) {
+            $value = ( $field['redipress_include_search_callback'] )( $value );
+        }
+
+        if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
             add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $value ) {
                 return $content . ' ' . $value;
             });
@@ -778,7 +784,7 @@ abstract class Field {
         $this->filters['format_value'] = [
             'filter'        => 'acf/format_value/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => 11,
             'accepted_args' => 3,
         ];
 
@@ -854,13 +860,31 @@ abstract class Field {
     }
 
     /**
+     * Register a field rendering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function render_field( callable $function ) {
+        $this->filters['render_field'] = [
+            'filter'        => 'acf/render_field',
+            'function'      => $function,
+            'priority'      => 10,
+            'accepted_args' => 1,
+            'no_suffix'     => true,
+        ];
+
+        return $this;
+    }
+
+    /**
      * Enable indexing features for RediPress plugin.
      *
      * @return void
      */
     public static function redipress_enable_indexing() {
-        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 0, 3 );
-        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 0, 3 );
+        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
     }
 
     /**
@@ -869,8 +893,8 @@ abstract class Field {
      * @return void
      */
     public static function redipress_disable_indexing() {
-        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 0, 3 );
-        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 0, 3 );
+        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
     }
 
     /**

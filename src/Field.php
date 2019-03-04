@@ -663,12 +663,12 @@ abstract class Field {
      * @return mixed
      */
     protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
-        if ( ! empty( $field['redipress_include_search_callback'] ) ) {
-            $value = ( $field['redipress_include_search_callback'] )( $value );
-        }
-
         if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
-            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $value ) {
+            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $field, $value ) {
+                if ( ! empty( $field['redipress_include_search_callback'] ) ) {
+                    $value = ( $field['redipress_include_search_callback'] )( $value );
+                }
+
                 return $content . ' ' . $value;
             });
         }

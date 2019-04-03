@@ -114,7 +114,7 @@ class Group {
     public function __construct( string $title, string $key = null ) {
         $this->title = $title;
 
-        $this->key = $key ?? sanitize_title( $title );
+        $this->key = $key;
 
         $this->active = 1;
     }
@@ -508,6 +508,8 @@ class Group {
      * @return array Acf fields
      */
     public function export( $register = false ) {
+        $this->key = sanitize_title( $this->key );
+
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.

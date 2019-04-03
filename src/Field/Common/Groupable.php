@@ -18,6 +18,9 @@ trait Groupable {
      * @return array
      */
     public function export( $register = false ) {
+        $this->key  = sanitize_title( $this->key );
+        $this->name = sanitize_title( $this->name );
+
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );

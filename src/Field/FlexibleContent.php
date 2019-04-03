@@ -90,6 +90,9 @@ class FlexibleContent extends \Geniem\ACF\Field {
     public function export( $register = false ) {
         global $post;
 
+        $this->key  = sanitize_title( $this->key );
+        $this->name = sanitize_title( $this->name );
+
         if ( ! empty( $this->layouts ) ) {
             $this->layouts = array_map( function( $layout ) use ( $register, $post ) {
                 if ( $register && $layout instanceof Flexible\Layout ) {

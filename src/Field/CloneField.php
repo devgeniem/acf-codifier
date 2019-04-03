@@ -61,6 +61,9 @@ class CloneField extends \Geniem\ACF\Field {
      * @return array
      */
     public function export( $register = false ) {
+        $this->key  = sanitize_title( $this->key );
+        $this->name = sanitize_title( $this->name );
+
         $obj = get_object_vars( $this );
 
         $obj['clone'] = array_map( function( $clone ) {

@@ -134,9 +134,9 @@ abstract class Field {
 
         $this->label = $label;
 
-        $this->inner_set_key( $key ?? $label );
+        $this->$key = $key ?? $label;
 
-        $this->name = $name ?? sanitize_title( $label );
+        $this->name = $name ?? $label;
 
         $this->wrapper = [
             'width' => '',
@@ -156,19 +156,6 @@ abstract class Field {
                 $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
             }
         }
-    }
-
-    /**
-     * A protected function to set the field key.
-     * Sanitizes the given string first.
-     *
-     * @param string $key The key to set.
-     * @return void
-     */
-    protected function inner_set_key( $key ) {
-        $key = sanitize_title( $key );
-
-        $this->key = $key;
     }
 
     /**
@@ -241,6 +228,9 @@ abstract class Field {
      * @return array
      */
     public function export( $register = false ) {
+        $this->key  = sanitize_title( $this->key );
+        $this->name = sanitize_title( $this->name );
+
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );

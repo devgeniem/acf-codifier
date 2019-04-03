@@ -52,8 +52,8 @@ class Message extends \Geniem\ACF\Field {
      * @param string|null $name           Name for the field.
      */
     public function __construct( string $label, string $key = null, string $name = null ) {
-        $key  = uniqid( 'msg', true );
-        $name = uniqid( 'msg', true );
+        $key  = $key ?? uniqid( 'msg', true );
+        $name = $name ?? uniqid( 'msg', true );
 
         parent::__construct( $label, $key, $name );
     }

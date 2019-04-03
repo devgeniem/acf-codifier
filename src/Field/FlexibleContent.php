@@ -85,13 +85,20 @@ class FlexibleContent extends \Geniem\ACF\Field {
      *
      * @param boolean $register Whether the field is to be registered.
      *
+     * @throws Exception Throws an exception if a key or a name is not defined.
+     *
      * @return array
      */
     public function export( $register = false ) {
         global $post;
 
-        $this->key  = sanitize_title( $this->key );
-        $this->name = sanitize_title( $this->name );
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
+        }
+
+        if ( empty( $this->name ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
+        }
 
         if ( ! empty( $this->layouts ) ) {
             $this->layouts = array_map( function( $layout ) use ( $register, $post ) {

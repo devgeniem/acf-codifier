@@ -505,10 +505,14 @@ class Group {
      *
      * @param boolean $register Whether the field group is to be registered.
      *
+     * @throws Exception Throws an exception if a key is not defined.
+     *
      * @return array Acf fields
      */
     public function export( $register = false ) {
-        $this->key = sanitize_title( $this->key );
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
+        }
 
         $obj = get_object_vars( $this );
 

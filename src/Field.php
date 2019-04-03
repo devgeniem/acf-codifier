@@ -134,7 +134,7 @@ abstract class Field {
 
         $this->label = $label;
 
-        $this->$key = $key ?? $label;
+        $this->key = $key ?? $label;
 
         $this->name = $name ?? $label;
 

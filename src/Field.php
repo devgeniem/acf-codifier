@@ -87,6 +87,13 @@ abstract class Field {
     protected $redipress_include_search = false;
 
     /**
+     * The callback that should be run when indexing the field.
+     *
+     * @var callable
+     */
+    protected $redipress_include_search_callback = null;
+
+    /**
      * Whether the field is queryable in RediPress or not.
      *
      * @var boolean
@@ -612,6 +619,7 @@ abstract class Field {
     /**
      * Include this field's value in the RediPress search index.
      *
+     * @param callable $callback Possible callback to run the value through before inserting into index.
      * @return self
      */
     public function redipress_include_search( callable $callback = null ) {

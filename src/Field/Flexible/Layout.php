@@ -84,9 +84,9 @@ class Layout {
     public function __construct( string $label, string $key = null, string $name = null ) {
         $this->label = $label;
 
-        $this->key = $key ?? sanitize_title( $label );
+        $this->key = $key;
 
-        $this->name = $name ?? sanitize_title( $label );
+        $this->name = $name;
 
         $this->active = 1;
     }

@@ -114,7 +114,7 @@ class Group {
     public function __construct( string $title, string $key = null ) {
         $this->title = $title;
 
-        $this->key = $key ?? sanitize_title( $title );
+        $this->key = $key;
 
         $this->active = 1;
     }
@@ -505,9 +505,15 @@ class Group {
      *
      * @param boolean $register Whether the field group is to be registered.
      *
+     * @throws Exception Throws an exception if a key is not defined.
+     *
      * @return array Acf fields
      */
     public function export( $register = false ) {
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
+        }
+
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.

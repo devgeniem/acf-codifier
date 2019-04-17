@@ -92,7 +92,7 @@
 | public | <strong>set_instruction_placement(</strong><em>\string</em> <strong>$placement=`'label'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group instructions placement value.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set new key for the field group.</em> |
 | public | <strong>set_label_placement(</strong><em>\string</em> <strong>$placement=`'top'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group label placement value.</em> |
-| public | <strong>set_menu_order(</strong><em>\integer</em> <strong>$order</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group menu order.</em> |
+| public | <strong>set_menu_order(</strong><em>integer/\int</em> <strong>$order</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group menu order.</em> |
 | public | <strong>set_position(</strong><em>\string</em> <strong>$position=`'normal'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group position within the edit post screen.</em> |
 | public | <strong>set_style(</strong><em>\string</em> <strong>$style=`'default'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set field group display style.</em> |
 | public | <strong>set_title(</strong><em>\string</em> <strong>$title</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set new title for the field group.</em> |
@@ -153,7 +153,17 @@
 | public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
+| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
+| public static | <strong>redipress_disable_indexing()</strong> : <em>void</em><br /><em>Disable indexing features for RediPress plugin.</em> |
+| public static | <strong>redipress_enable_indexing()</strong> : <em>void</em><br /><em>Enable indexing features for RediPress plugin.</em> |
+| public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
+| public static | <strong>redipress_get_fields(</strong><em>\WP_Post</em> <strong>$post</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
+| public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
+| public | <strong>redipress_get_search_status()</strong> : <em>boolean</em><br /><em>Get RediPress search index status of this field.</em> |
+| public | <strong>redipress_include_search(</strong><em>\callable</em> <strong>$callback=null</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Include this field's value in the RediPress search index.</em> |
+| public | <strong>redipress_remove_queryable()</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove this field from being queryable in RediSearch index.</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
+| public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
 | public | <strong>set_default_value(</strong><em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the default value for the field.</em> |
 | public | <strong>set_instructions(</strong><em>\string</em> <strong>$instructions</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set instruction text for the field.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set key for the field.</em> |
@@ -163,14 +173,15 @@
 | public | <strong>set_unrequired()</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the field to be unrequired.</em> |
 | public | <strong>set_wrapper_classes(</strong><em>mixed</em> <strong>$classes</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set classes to be added for the field.</em> |
 | public | <strong>set_wrapper_id(</strong><em>\string</em> <strong>$id</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a wrapper id for the field.</em> |
-| public | <strong>set_wrapper_width(</strong><em>\integer</em> <strong>$width</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the wrapper width in percents.</em> |
+| public | <strong>set_wrapper_width(</strong><em>integer/\int</em> <strong>$width</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the wrapper width in percents.</em> |
 | public | <strong>show_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Show the field label in the admin side</em> |
 | public | <strong>unset_filter(</strong><em>string</em> <strong>$filter</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Unset a previously set filter.</em> |
 | public | <strong>update_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value updating function for the field</em> |
 | public | <strong>validate_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value validation function for the field</em> |
 | protected | <strong>__clone()</strong> : <em>void</em><br /><em>Prevent raw cloning.</em> |
 | protected | <strong>check_for_unique_key()</strong> : <em>void</em><br /><em>Checks if the field's key is unique within the project scope. Throws a notice if not.</em> |
-| protected | <strong>inner_set_key(</strong><em>string</em> <strong>$key</strong>)</strong> : <em>void</em><br /><em>A protected function to set the field key. Sanitizes the given string first.</em> |
+| protected static | <strong>redipress_additional_field(</strong><em>mixed</em> <strong>$value</strong>, <em>int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>A helper function to use to enable indexing the post outside save action.</em> |
+| protected static | <strong>redipress_include_search_filter(</strong><em>mixed</em> <strong>$value</strong>, <em>integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>Include the field's value in RediPress search index.</em> |
 
 <hr />
 
@@ -299,7 +310,7 @@
 | public | <strong>get_first_day()</strong> : <em>integer</em><br /><em>Get first_day variable</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
 | public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
-| public | <strong>set_first_day(</strong><em>\integer</em> <strong>$day</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set first_day variable</em> |
+| public | <strong>set_first_day(</strong><em>integer/\int</em> <strong>$day</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set first_day variable</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
@@ -352,15 +363,15 @@
 | public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extenions</em> |
 | public | <strong>set_allowed_file_extensions(</strong><em>array</em> <strong>$file_extensions</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for set_mime_types() Sets allowed file extensions, e.g. jpg, png, gif.</em> |
 | public | <strong>set_library(</strong><em>\string</em> <strong>$library=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets library</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
-| public | <strong>set_max_height(</strong><em>\integer</em> <strong>$max_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum height</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_max_height(</strong><em>integer/\int</em> <strong>$max_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum height</em> |
 | public | <strong>set_max_size(</strong><em>\string</em> <strong>$max_size</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum size</em> |
-| public | <strong>set_max_width(</strong><em>\integer</em> <strong>$max_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum width</em> |
+| public | <strong>set_max_width(</strong><em>integer/\int</em> <strong>$max_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum width</em> |
 | public | <strong>set_mime_types(</strong><em>array</em> <strong>$mime_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set allowed file extensions e.g. jpg, png, gif</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
-| public | <strong>set_min_height(</strong><em>\integer</em> <strong>$min_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum height</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
+| public | <strong>set_min_height(</strong><em>integer/\int</em> <strong>$min_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum height</em> |
 | public | <strong>set_min_size(</strong><em>\string</em> <strong>$min_size</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the minimum size of the file.</em> |
-| public | <strong>set_min_width(</strong><em>\integer</em> <strong>$min_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum width</em> |
+| public | <strong>set_min_width(</strong><em>integer/\int</em> <strong>$min_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum width</em> |
 | public | <strong>set_preview_size(</strong><em>\string</em> <strong>$preview_size=`'thumbnail'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the preview size of the field.</em> |
 | public | <strong>upload_prefilter(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a upload prefiltering function for the field</em> |
 | public | <strong>validate_attachment(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a attachment validating function for the field</em> |
@@ -404,11 +415,11 @@
 | public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
 | public | <strong>get_step()</strong> : <em>integer</em><br /><em>Get step size</em> |
 | public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
 | public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
-| public | <strong>set_step(</strong><em>\integer</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
+| public | <strong>set_step(</strong><em>integer/\int</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -421,8 +432,8 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
-| public | <strong>load_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_content</em> |
-| public | <strong>save_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_content</em> |
+| public | <strong>load_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_content</em> |
+| public | <strong>save_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_content</em> |
 
 *This class extends [\Geniem\ACF\Field\Wysiwyg](#class-geniemacffieldwysiwyg)*
 
@@ -475,8 +486,8 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
-| public | <strong>load_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_excerpt</em> |
-| public | <strong>save_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>\integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_excerpt</em> |
+| public | <strong>load_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_excerpt</em> |
+| public | <strong>save_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_excerpt</em> |
 
 *This class extends [\Geniem\ACF\Field\Textarea](#class-geniemacffieldtextarea)*
 
@@ -716,7 +727,6 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>, <em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format. This also exports sub fields</em> |
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
 | public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount of layouts</em> |
@@ -725,8 +735,8 @@
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
 | public | <strong>set_collapsed(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field whose value is shown when collapsed.</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
 
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
@@ -749,8 +759,8 @@
 | public | <strong>remove_layout(</strong><em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)/string</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove layout from layouts</em> |
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
 | public | <strong>set_layouts(</strong><em>array</em> <strong>$layouts</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layouts</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
 | protected | <strong>exclude_fields()</strong> : <em>void</em><br /><em>Exclude from fields</em> |
 | protected | <strong>exclude_post_types()</strong> : <em>void</em><br /><em>Exclude from post types</em> |
 | protected | <strong>exclude_templates()</strong> : <em>void</em><br /><em>Exclude from templates</em> |
@@ -799,10 +809,10 @@
 | public | <strong>get_center_lng()</strong> : <em>integer</em><br /><em>Get center_lng variable</em> |
 | public | <strong>get_height()</strong> : <em>integer</em><br /><em>Get height variable</em> |
 | public | <strong>get_zoom()</strong> : <em>integer</em><br /><em>Get zoom variable</em> |
-| public | <strong>set_center_lat(</strong><em>\integer</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
-| public | <strong>set_center_lng(</strong><em>\integer</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
-| public | <strong>set_height(</strong><em>\integer</em> <strong>$height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set height variable</em> |
-| public | <strong>set_zoom(</strong><em>\integer</em> <strong>$zoom</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set zoom variable</em> |
+| public | <strong>set_center_lat(</strong><em>integer/\int</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
+| public | <strong>set_center_lng(</strong><em>integer/\int</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
+| public | <strong>set_height(</strong><em>integer/\int</em> <strong>$height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set height variable</em> |
+| public | <strong>set_zoom(</strong><em>integer/\int</em> <strong>$zoom</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set zoom variable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -873,8 +883,8 @@
 | public | <strong>remove_taxonomy(</strong><em>string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove taxonomy from allowed by slug</em> |
 | public | <strong>set_elements(</strong><em>array</em> <strong>$elements</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set elements to show</em> |
 | public | <strong>set_filters(</strong><em>array</em> <strong>$filters</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set filters to show</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
 | public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set post types to show</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 | public | <strong>set_taxonomies(</strong><em>array</em> <strong>$taxonomies</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set taxonomies to show</em> |
@@ -920,11 +930,11 @@
 | public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>get_rows()</strong> : <em>integer</em><br /><em>Get max rows</em> |
-| public | <strong>set_maxlength(</strong><em>\integer</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
+| public | <strong>set_maxlength(</strong><em>integer/\int</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
 | public | <strong>set_new_lines(</strong><em>\string</em> <strong>$new_lines=`'wpautop'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set new line handling</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
-| public | <strong>set_rows(</strong><em>\integer</em> <strong>$rows</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set max rows</em> |
+| public | <strong>set_rows(</strong><em>integer/\int</em> <strong>$rows</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set max rows</em> |
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
@@ -1002,11 +1012,11 @@
 | public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
 | public | <strong>get_step()</strong> : <em>integer</em><br /><em>Get step size</em> |
 | public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
-| public | <strong>set_max(</strong><em>\integer</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>\integer</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
 | public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
-| public | <strong>set_step(</strong><em>\integer</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
+| public | <strong>set_step(</strong><em>integer/\int</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -1045,6 +1055,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
 | public | <strong>esc_html()</strong> : <em>integer Escape html status.</em><br /><em>Get escape html</em> |
 | public | <strong>get_message()</strong> : <em>string Message.</em><br /><em>Get message</em> |
 | public | <strong>get_new_lines()</strong> : <em>string Newline type.</em><br /><em>Get newline type</em> |
@@ -1071,7 +1082,7 @@
 | public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
-| public | <strong>set_maxlength(</strong><em>\integer</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
+| public | <strong>set_maxlength(</strong><em>integer/\int</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
 | public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
@@ -1105,13 +1116,13 @@
 | public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extenions</em> |
 | public | <strong>set_allowed_file_extensions(</strong><em>array</em> <strong>$file_extensions</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for set_mime_types() Sets allowed file extensions, e.g. jpg, png, gif.</em> |
 | public | <strong>set_library(</strong><em>\string</em> <strong>$library=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets library</em> |
-| public | <strong>set_max_height(</strong><em>\integer</em> <strong>$max_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum height</em> |
+| public | <strong>set_max_height(</strong><em>integer/\int</em> <strong>$max_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum height</em> |
 | public | <strong>set_max_size(</strong><em>\string</em> <strong>$max_size</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum size</em> |
-| public | <strong>set_max_width(</strong><em>\integer</em> <strong>$max_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum width</em> |
+| public | <strong>set_max_width(</strong><em>integer/\int</em> <strong>$max_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum width</em> |
 | public | <strong>set_mime_types(</strong><em>array</em> <strong>$mime_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set allowed file extensions e.g. jpg, png, gif</em> |
-| public | <strong>set_min_height(</strong><em>\integer</em> <strong>$min_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum height</em> |
+| public | <strong>set_min_height(</strong><em>integer/\int</em> <strong>$min_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum height</em> |
 | public | <strong>set_min_size(</strong><em>\string</em> <strong>$min_size</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the minimum size of the file.</em> |
-| public | <strong>set_min_width(</strong><em>\integer</em> <strong>$min_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum width</em> |
+| public | <strong>set_min_width(</strong><em>integer/\int</em> <strong>$min_width</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum width</em> |
 | public | <strong>set_preview_size(</strong><em>\string</em> <strong>$preview_size=`'thumbnail'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the preview size of the field.</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$format=`'array'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets return format</em> |
 | public | <strong>upload_prefilter(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a upload prefiltering function for the field</em> |

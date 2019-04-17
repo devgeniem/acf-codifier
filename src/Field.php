@@ -715,7 +715,17 @@ abstract class Field {
                     $field_args['weight'] = $this->redipress_add_queryable_weight;
                 }
 
-                $field = new $type( $field_args );
+                if ( class_exists( $type ) ) {
+                    $field = new $type( $field_args );
+                }
+                else {
+                    trigger_error(
+                        'ACF Codifier: RediPress field ' . $field_args['name'] . ' type ' . $type . ' is not supported. Using "Text"',
+                        E_USER_NOTICE
+                    );
+
+                    $field = new \Geniem\RediPress\Entity\TextField( $field_args );
+                }
 
                 $fields[] = $field;
 

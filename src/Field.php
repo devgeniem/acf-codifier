@@ -101,6 +101,20 @@ abstract class Field {
     protected $redipress_add_queryable = false;
 
     /**
+     * With what name should the field be indexed into RediSearch.
+     *
+     * @var string
+     */
+    protected $redipress_add_queryable_field_name;
+
+    /**
+     * With what weight should a text field be indexed into RediSearch.
+     *
+     * @var float
+     */
+    protected $redipress_add_queryable_field_weight;
+
+    /**
      * What type the RediPress index field should be. Defaults to 'Text'.
      *
      * @var string

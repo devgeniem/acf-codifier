@@ -13,7 +13,7 @@ namespace Geniem\ACF\Interfaces;
 interface ComponentFactory {
 
     /**
-     * IComponentManager constructor.
+     * ComponentManager constructor.
      *
      * @param Component $component A component class instance.
      */

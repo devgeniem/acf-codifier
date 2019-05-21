@@ -1,15 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: teris
- * Date: 26.10.2018
- * Time: 13.20
+ * Interface Renderer
  */
 
 namespace Geniem\ACF\Interfaces;
 
-use Geniem\ACF\Field;
-
+/**
+ * Interface Renderer
+ *
+ * @package Geniem\ACF
+ */
 interface Renderer {
 
     /**

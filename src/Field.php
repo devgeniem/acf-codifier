@@ -80,12 +80,60 @@ abstract class Field {
     protected $default_filter_arguments = [];
 
     /**
+     * Whether the field should be included in RediPress search index or not.
+     *
+     * @var boolean
+     */
+    protected $redipress_include_search = false;
+
+    /**
+     * The callback that should be run when indexing the field.
+     *
+     * @var callable
+     */
+    protected $redipress_include_search_callback = null;
+
+    /**
+     * Whether the field is queryable in RediPress or not.
+     *
+     * @var boolean
+     */
+    protected $redipress_add_queryable = false;
+
+    /**
+     * With what name should the field be indexed into RediSearch.
+     *
+     * @var string
+     */
+    protected $redipress_add_queryable_field_name;
+
+    /**
+     * With what weight should a text field be indexed into RediSearch.
+     *
+     * @var float
+     */
+    protected $redipress_add_queryable_field_weight;
+
+    /**
+     * What type the RediPress index field should be. Defaults to 'Text'.
+     *
+     * @var string
+     */
+    protected $redipress_field_type = 'Text';
+
+    /**
      * Store registered field keys to warn if there are duplicates.
      *
      * @var array
      */
     static protected $keys = [];
 
+    /**
+     * A static variable to store if we are indexing for Redipress or not.
+     *
+     * @var boolean
+     */
+    static public $indexing = false;
 
     /**
      * Constructor.
@@ -107,9 +155,9 @@ abstract class Field {
 
         $this->label = $label;
 
-        $this->inner_set_key( $key ?? $label );
+        $this->key = $key ?? $label;
 
-        $this->name = $name ?? sanitize_title( $label );
+        $this->name = $name ?? $label;
 
         $this->wrapper = [
             'width' => '',
@@ -120,27 +168,15 @@ abstract class Field {
         $this->default_filter_arguments = [
             'priority'      => 10,
             'accepted_args' => 1,
+            'no_suffix'     => false,
         ];
 
         if ( WP_DEBUG === true ) {
-            $debug_backtrace  = debug_backtrace();
+            $debug_backtrace = debug_backtrace();
             if ( ! empty( $debug_backtrace[1]['file'] ) && ! empty( $debug_backtrace[1]['line'] ) ) {
                 $this->registered = $debug_backtrace[1]['file'] . ' at line ' . $debug_backtrace[1]['line'];
             }
         }
-    }
-
-    /**
-     * A protected function to set the field key.
-     * Sanitizes the given string first.
-     *
-     * @param string $key The key to set.
-     * @return void
-     */
-    protected function inner_set_key( $key ) {
-        $key = sanitize_title( $key );
-
-        $this->key = $key;
     }
 
     /**
@@ -198,7 +234,7 @@ abstract class Field {
 
         $clone->set_key( $key );
 
-        if ( isset( $name ) ) {
+        if ( ! empty( $name ) ) {
             $clone->set_name( $name );
         }
 
@@ -210,13 +246,28 @@ abstract class Field {
      *
      * @param boolean $register Whether the field is to be registered.
      *
+     * @throws Exception Throws an exception if a key or a name is not defined.
+     *
      * @return array
      */
     public function export( $register = false ) {
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
+        }
+
+        if ( empty( $this->name ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
+        }
+
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
-                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                if ( $filter['no_suffix'] ) {
+                    add_filter( $filter['filter'], $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
+                else {
+                    add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
             });
         }
 
@@ -476,7 +527,7 @@ abstract class Field {
      * @return self
      */
     public function remove_wrapper_class( string $class ) {
-        $position = array_search( $class, $this->wrapper['class'] );
+        $position = array_search( $class, $this->wrapper['class'], true );
 
         if ( ( $position !== false ) ) {
             unset( $this->wrapper['class'][ $position ] );
@@ -580,12 +631,168 @@ abstract class Field {
     }
 
     /**
+     * Include this field's value in the RediPress search index.
+     *
+     * @param callable $callback Possible callback to run the value through before inserting into index.
+     * @return self
+     */
+    public function redipress_include_search( callable $callback = null ) {
+        $this->redipress_include_search          = true;
+        $this->redipress_include_search_callback = $callback;
+
+        $this->filters['redipress_include_search'] = [
+            'filter'        => 'acf/update_value/key=',
+            'function'      => \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ),
+            'priority'      => 10,
+            'accepted_args' => 3,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Exclude this field's value in the RediPress search index.
+     *
+     * @return self
+     */
+    public function redipress_exclude_search() {
+        $this->redipress_include_search = false;
+
+        unset( $this->filters['redipress_include_search'] );
+        unset( $this->redipress_include_search_callback );
+
+        return $this;
+    }
+
+    /**
+     * Get RediPress search index status of this field.
+     *
+     * @return boolean
+     */
+    public function redipress_get_search_status() : bool {
+        return isset( $this->filters['redipress_include_search'] );
+    }
+
+    /**
+     * Include the field's value in RediPress search index.
+     *
+     * @param mixed   $value   Field's value.
+     * @param integer $post_id Post ID.
+     * @param array   $field   ACF field object as an array.
+     * @return mixed
+     */
+    protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
+        if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
+            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $field, $value ) {
+                if ( ! empty( $field['redipress_include_search_callback'] ) ) {
+                    $value = ( $field['redipress_include_search_callback'] )( $value );
+                }
+
+                return $content . ' ' . $value;
+            });
+        }
+
+        return $value;
+    }
+
+    /**
+     * Add this field's value as a queryable value to RediSearch index.
+     *
+     * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
+     * @param float  $weight     Optional weight for the search field.
+     * @return self
+     */
+    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0 ) {
+        $this->redipress_add_queryable = true;
+
+        $this->redipress_add_queryable_field_name = $field_name;
+        $this->redipress_add_queryable_weight     = $weight;
+
+        $this->filters['redipress_add_queryable'] = [
+            'filter'        => 'acf/update_value/key=',
+            'function'      => function( $value, $post_id, $field ) {
+                add_filter(
+                    'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                    function( $field ) use ( $value ) {
+                        return $value;
+                    }
+                );
+
+                return $value;
+            },
+            'priority'      => 11,
+            'accepted_args' => 3,
+        ];
+
+        $this->filters['redipress_schema_fields'] = [
+            'filter'        => 'redipress/schema_fields',
+            'function'      => function( $fields ) {
+                $type = '\\Geniem\\RediPress\\Entity\\' . $this->redipress_field_type . 'Field';
+
+                $field_args = [
+                    'name' => $this->redipress_add_queryable_field_name ?? $this->key,
+                ];
+
+                if ( $this->redipress_field_type === 'Text' ) {
+                    $field_args['weight'] = $this->redipress_add_queryable_weight;
+                }
+
+                if ( class_exists( $type ) ) {
+                    $field = new $type( $field_args );
+                }
+                else {
+                    trigger_error(
+                        'ACF Codifier: RediPress field ' . $field_args['name'] . ' type ' . $type . ' is not supported. Using "Text"',
+                        E_USER_NOTICE
+                    );
+
+                    $field = new \Geniem\RediPress\Entity\TextField( $field_args );
+                }
+
+                $fields[] = $field;
+
+                return $fields;
+            },
+            'priority'      => 11,
+            'accepted_args' => 3,
+            'no_suffix'     => true,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Remove this field from being queryable in RediSearch index.
+     *
+     * @return self
+     */
+    public function redipress_remove_queryable() {
+        $this->redipress_add_queryable = false;
+
+        unset( $this->filters['redipress_add_queryable'] );
+        unset( $this->filters['redipress_schema_fields'] );
+        $this->redipress_add_queryable_field_name = null;
+        $this->redipress_add_queryable_weight     = null;
+
+        return $this;
+    }
+
+    /**
+     * Whether this field is queryable in RediSearch index or not.
+     *
+     * @return boolean
+     */
+    public function redipress_get_queryable_status() : bool {
+        return isset( $this->filters['redipress_add_queryable'] );
+    }
+
+    /**
      * Register a value validation function for the field
      *
      * @param callable $function A function to register.
      * @return self
      */
-    public function validate_value( $function ) {
+    public function validate_value( callable $function ) {
         $this->filters['validate_value'] = [
             'filter'        => 'acf/validate_value/key=',
             'function'      => $function,
@@ -602,11 +809,11 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function format_value( $function ) {
+    public function format_value( callable $function ) {
         $this->filters['format_value'] = [
             'filter'        => 'acf/format_value/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => 11,
             'accepted_args' => 3,
         ];
 
@@ -619,7 +826,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function load_value( $function ) {
+    public function load_value( callable $function ) {
         $this->filters['load_value'] = [
             'filter'        => 'acf/load_value/key=',
             'function'      => $function,
@@ -636,7 +843,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function update_value( $function ) {
+    public function update_value( callable $function ) {
         $this->filters['update_value'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => $function,
@@ -653,7 +860,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function prepare_field( $function ) {
+    public function prepare_field( callable $function ) {
         $this->filters['prepare_field'] = [
             'filter'        => 'acf/prepare_field/key=',
             'function'      => $function,
@@ -670,7 +877,7 @@ abstract class Field {
      * @param callable $function A function to register.
      * @return self
      */
-    public function load_field( $function ) {
+    public function load_field( callable $function ) {
         $this->filters['load_field'] = [
             'filter'        => 'acf/load_field/key=',
             'function'      => $function,
@@ -679,5 +886,74 @@ abstract class Field {
         ];
 
         return $this;
+    }
+
+    /**
+     * Register a field rendering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function render_field( callable $function ) {
+        $this->filters['render_field'] = [
+            'filter'        => 'acf/render_field',
+            'function'      => $function,
+            'priority'      => 10,
+            'accepted_args' => 1,
+            'no_suffix'     => true,
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Enable indexing features for RediPress plugin.
+     *
+     * @return void
+     */
+    public static function redipress_enable_indexing() {
+        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
+    }
+
+    /**
+     * Disable indexing features for RediPress plugin.
+     *
+     * @return void
+     */
+    public static function redipress_disable_indexing() {
+        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
+    }
+
+    /**
+     * A wrapper for ACF get_fields to get the values for indexing.
+     *
+     * @param \WP_Post $post The WP Post object.
+     * @return void
+     */
+    public static function redipress_get_fields( \WP_Post $post ) {
+        get_fields( $post->ID, true );
+    }
+
+    /**
+     * A helper function to use to enable indexing the post outside save action.
+     *
+     * @param mixed $value   The value.
+     * @param int   $post_id The Post ID.
+     * @param array $field   The field object as an array.
+     * @return mixed
+     */
+    protected static function redipress_additional_field( $value, $post_id, $field ) {
+        if ( $field['redipress_add_queryable'] === true ) {
+            add_filter(
+                'redipress/additional_field/' . $post_id . '/' . ( $field['redipress_add_queryable_field_name'] ?? $field['key'] ),
+                function( $field ) use ( $value ) {
+                    return $value;
+                }
+            );
+        }
+
+        return $value;
     }
 }

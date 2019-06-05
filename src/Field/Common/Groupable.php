@@ -1,9 +1,9 @@
 <?php
 /**
- * ACF Codifier Groupable group abstract class
+ * ACF Codifier Groupable trait
  */
 
-namespace Geniem\ACF\Field;
+namespace Geniem\ACF\Field\Common;
 
 /**
  * Groupable Trait
@@ -15,16 +15,33 @@ trait Groupable {
      *
      * @param boolean $register Whether the field is to be registered.
      *
+     * @throws Exception Throws an exception if a key or a name is not defined.
+     *
      * @return array
      */
     public function export( $register = false ) {
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
+        }
+
+        if ( empty( $this->name ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
+        }
+
+        if ( $register && ! empty( $this->filters ) ) {
+            array_walk( $this->filters, function( $filter ) {
+                $filter = wp_parse_args( $filter, $this->default_filter_arguments );
+                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+            });
+        }
+
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
         unset( $obj['filters'] );
 
         // Allow hide label functionality for Groupables if they are an instance of Field
-        if ( $register && $this->hide_label && $this instanceof \Geniem\ACF\Field ) {
+        if ( $register && $this instanceof \Geniem\ACF\Field && $this->hide_label ) {
             \Geniem\ACF\Codifier::hide_label( $this );
         }
 
@@ -58,6 +75,18 @@ trait Groupable {
         }
         else {
             $obj['wrapper']['class'] = '';
+        }
+
+        if ( ! empty( $obj['conditional_logic'] ) ) {
+            foreach ( $obj['conditional_logic'] as &$group ) {
+                if ( count( $group ) > 0 ) {
+                    foreach ( $group as &$rule ) {
+                        if ( ! is_string( $rule['field'] ) ) {
+                            $rule['field'] = $rule['field']->get_key();
+                        }
+                    }
+                }
+            }
         }
 
         return $obj;

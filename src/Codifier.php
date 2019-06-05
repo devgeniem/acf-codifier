@@ -21,7 +21,13 @@ class Codifier {
      * @return void
      */
     public static function init() {
+        // Enable label hiding.
         add_action( 'admin_head', __CLASS__ . '::hide_labels' );
+
+        // Add some actions for RediPress search if it's enabled.
+        add_action( 'redipress/before_index_all', '\\Geniem\\ACF\\Field::redipress_enable_indexing', 10, 0 );
+        add_action( 'redipress/indexed_all', '\\Geniem\\ACF\\Field::redipress_disable_indexing', 10, 0 );
+        add_action( 'redipress/before_index_post', '\\Geniem\\ACF\\Field::redipress_get_fields', 10, 1 );
     }
 
     /**

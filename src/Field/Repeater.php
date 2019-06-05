@@ -72,51 +72,6 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
     }
 
     /**
-     * Export field in ACF's native format.
-     * This also exports sub fields
-     *
-     * @param boolean $register Whether the field is to be registered.
-     *
-     * @return array
-     */
-    public function export( $register = false ) {
-        if ( $register && ! empty( $this->filters ) ) {
-            array_walk( $this->filters, function( $filter ) {
-                $filter = wp_parse_args( $filter, $this->default_filter_arguments );
-                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
-            });
-        }
-
-        if ( $register && $this->hide_label ) {
-            \Geniem\ACF\Codifier::hide_label( $this );
-        }
-
-        $obj = get_object_vars( $this );
-
-        if ( ! empty( $obj['sub_fields'] ) ) {
-            $obj['sub_fields'] = array_map( function( $field ) use ( $register ) {
-                return $field->export( $register );
-            }, $obj['sub_fields'] );
-
-            $obj['sub_fields'] = array_values( $obj['sub_fields'] );
-        }
-
-        // Convert the wrapper class array to a space-separated string.
-        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
-            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
-        }
-        else {
-            $obj['wrapper']['class'] = '';
-        }
-
-        // Remove unnecessary properties from the exported array.
-        unset( $obj['fields_var'] );
-        unset( $obj['filters'] );
-
-        return $obj;
-    }
-
-    /**
      * Set maximum amount of layouts
      *
      * @param integer $max Maximum amount.

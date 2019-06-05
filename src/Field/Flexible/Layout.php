@@ -5,7 +5,8 @@
 
 namespace Geniem\ACF\Field\Flexible;
 
-use Geniem\ACF\Field\Groupable;
+use Geniem\ACF\Field,
+    Geniem\ACF\Field\Common\Groupable;
 
 /**
  * Class Layout
@@ -83,9 +84,9 @@ class Layout {
     public function __construct( string $label, string $key = null, string $name = null ) {
         $this->label = $label;
 
-        $this->key = $key ?? sanitize_title( $label );
+        $this->key = $key;
 
-        $this->name = $name ?? sanitize_title( $label );
+        $this->name = $name;
 
         $this->active = 1;
     }
@@ -104,7 +105,7 @@ class Layout {
      *
      * @param  string      $key  New field key.
      * @param  string|null $name New field name.
-     * @return Geniem\ACF\Field
+     * @return Field
      */
     public function clone( $key, $name = null ) {
         $clone = clone $this;
@@ -185,12 +186,12 @@ class Layout {
      * Set display mode
      *
      * @param string $display_mode Display mode to set.
-     * @throws \Geniem\ACF\Field Info about invalid display mode.
+     * @throws \Geniem\ACF\Exception Info about invalid display mode.
      * @return self
      */
     public function set_display_mode( string $display_mode = 'block' ) {
         if ( ! in_array( $display_mode, [ 'block', 'table', 'row' ], true ) ) {
-            throw new \Geniem\ACF\Field( 'Geniem\ACF\FlexibleLayout: set_display_mode() does not accept argument "' . $display_mode . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\FlexibleLayout: set_display_mode() does not accept argument "' . $display_mode . '"' );
         }
 
         $this->display = $display_mode;
@@ -299,7 +300,7 @@ class Layout {
      * @return self
      */
     public function exclude_field( $field ) {
-        if ( $field instanceof \Geniem\ACF\Field ) {
+        if ( $field instanceof Field ) {
             $field = $field->get_name();
         }
 
@@ -329,7 +330,7 @@ class Layout {
      * @return self
      */
     public function remove_excluded_field( $field ) {
-        if ( $field instanceof \Geniem\ACF\Field ) {
+        if ( $field instanceof Field ) {
             $field = $field->get_name();
         }
 

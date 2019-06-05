@@ -15,6 +15,35 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     + Component rendering functionality implementing the `Geniem\ACF\Interfaces\Renderer` interface.
         * `Geniem\ACF\Renderer\PHP`: Uses PHP files as templates.
 
+## [1.16.0] - 2019-04-17
+
+### Added
+- Support for [RediPress](https://github.com/devgeniem/redipress) plugin.
+
+### Fixed
+- A problem that would cause notices when wrapper classes were defined for a clone field.
+
+## [1.15.1] - 2019-02-19
+
+### Changed
+- Moved the field registration from `acf/init` back to `wp_loaded` as it apparently causes problems in some cases.
+
+## [1.15.0] - 2019-02-18
+
+### Added
+- Wrap file extension methods on top of ACF's misleadingly named mime types.
+
+### Changed
+- Moved redundant functionalities to traits
+
+### Fixed
+- A bug that caused tabs to appear twice in situations where field group was already registered before adding the tab.
+
+## [1.14.4] - 2018-10-25
+
+### Fixed
+- A bug that threw a notice when a Flexible Layout where used.
+
 ## [1.14.3] - 2018-10-18
 
 ### Fixed

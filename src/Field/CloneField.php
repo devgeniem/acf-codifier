@@ -58,21 +58,40 @@ class CloneField extends \Geniem\ACF\Field {
      *
      * @param boolean $register Whether the field is to be registered.
      *
+     * @throws Exception Throws an exception if a key or a name is not defined.
+     *
      * @return array
      */
     public function export( $register = false ) {
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
+        }
+
+        if ( empty( $this->name ) ) {
+            throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
+        }
+
         $obj = get_object_vars( $this );
 
         $obj['clone'] = array_map( function( $clone ) {
             if ( is_string( $clone ) ) {
                 return $clone;
-            } else {
+            }
+            else {
                 return $clone->get_name();
             }
         }, $obj['clone'] );
 
         // Remove keys from the array.
         $obj['clone'] = array_values( $obj['clone'] );
+        
+        // Convert the wrapper class array to a space-separated string.
+        if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
+            $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );
+        }
+        else {
+            $obj['wrapper']['class'] = '';
+        }
 
         return $obj;
     }

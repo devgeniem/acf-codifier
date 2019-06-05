@@ -5,7 +5,9 @@
 
 namespace Geniem\ACF;
 
-use Geniem\ACF\Field\Groupable;
+use Geniem\ACF\Field\Common\Groupable,
+    Geniem\ACF\Exception as Exception,
+    Geniem\ACF\Field\PseudoGroupableField as PseudoGroupableField;
 
 /**
  * Class Group
@@ -112,7 +114,7 @@ class Group {
     public function __construct( string $title, string $key = null ) {
         $this->title = $title;
 
-        $this->key = $key ?? sanitize_title( $title );
+        $this->key = $key;
 
         $this->active = 1;
     }
@@ -214,13 +216,13 @@ class Group {
      * Set field group position within the edit post screen.
      *
      * @param string $position       Field group's position value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_position( string $position = 'normal' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $position, [ 'acf_after_title', 'normal', 'side' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_position() does not accept argument "' . $position . '"' );
         }
 
         $this->position = $position;
@@ -241,13 +243,13 @@ class Group {
      * Set field group display style.
      *
      * @param string $style Field group's style value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_style( string $style = 'default' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $style, [ 'default', 'seamless' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_style() does not accept argument "' . $style . '"' );
         }
 
         $this->style = $style;
@@ -268,13 +270,13 @@ class Group {
      * Set field group label placement value.
      *
      * @param string $placement Field group's label placement value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_label_placement( string $placement = 'top' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'top', 'left' ], true ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_label_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->label_placement = $placement;
@@ -295,13 +297,13 @@ class Group {
      * Set field group instructions placement value.
      *
      * @param string $placement Field group's instruction placement value.
-     * @throws \Geniem\ACF\Exception Throw error if given parameter is not valid.
+     * @throws Exception Throw error if given parameter is not valid.
      * @return self
      */
     public function set_instruction_placement( string $placement = 'label' ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $placement, [ 'label', 'field' ], true ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
+            throw new Exception( 'Geniem\ACF\Group: set_instruction_placement() does not accept argument "' . $placement . '"' );
         }
 
         $this->instruction_placement = $placement;
@@ -389,7 +391,7 @@ class Group {
     /**
      * Add a field to the field group.
      *
-     * @param \Geniem\ACF\Field $field A field to be added.
+     * @param Field $field A field to be added.
      * @param string            $order Whether the field is added first or last.
      * @return self
      */
@@ -479,15 +481,13 @@ class Group {
      */
     public function register() {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
-            $element = $this;
-
-            \add_action( 'wp_loaded', function() use ( $element ) {
-                $exported = $element->export( true );
+            \add_action( 'wp_loaded', function() {
+                $exported = $this->export( true );
 
                 \acf_add_local_field_group( $exported );
-            });
 
-            $this->registered = true;
+                $this->registered = true;
+            });
         }
     }
 
@@ -505,9 +505,15 @@ class Group {
      *
      * @param boolean $register Whether the field group is to be registered.
      *
+     * @throws Exception Throws an exception if a key is not defined.
+     *
      * @return array Acf fields
      */
     public function export( $register = false ) {
+        if ( empty( $this->key ) ) {
+            throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
+        }
+
         $obj = get_object_vars( $this );
 
         // Remove unnecessary properties from the exported array.
@@ -518,7 +524,7 @@ class Group {
             $fields = [];
 
             foreach ( $obj['fields'] as $field ) {
-                if ( $field instanceof \Geniem\ACF\Field\PseudoGroupableField ) {
+                if ( $field instanceof PseudoGroupableField ) {
                     // Get the subfields
                     $sub_fields = $field->get_fields();
                 }
@@ -537,6 +543,18 @@ class Group {
 
             // Remove keys, ACF requires the arrays to be numbered.
             $obj['fields'] = array_filter( array_values( $fields ) );
+        }
+
+        if ( ! empty( $obj['conditional_logic'] ) ) {
+            foreach ( $obj['conditional_logic'] as &$group ) {
+                if ( count( $group ) > 0 ) {
+                    foreach ( $group as &$rule ) {
+                        if ( ! is_string( $rule['field'] ) ) {
+                            $rule['field'] = $rule['field']->get_key();
+                        }
+                    }
+                }
+            }
         }
 
         return $obj;

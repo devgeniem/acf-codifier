@@ -5,7 +5,7 @@
 
 namespace Geniem\ACF;
 
-use Geniem\ACF\Field\Groupable,
+use Geniem\ACF\Field\Common\Groupable,
     Geniem\ACF\Interfaces\Component as ComponentInterface;
 use Geniem\ACF\Interfaces\Renderer;
 

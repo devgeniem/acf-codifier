@@ -6,7 +6,7 @@
 namespace Geniem\ACF\Interfaces;
 
 /**
- * Class IComponent
+ * Class Component
  *
  * @package Geniem\ACF
  */

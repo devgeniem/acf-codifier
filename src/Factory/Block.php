@@ -38,7 +38,7 @@ class Block implements ComponentFactory {
         $this->component = $component;
 
         if ( ! function_exists( 'acf_register_block' ) ) {
-            throw new Exception( 'Advanced Custom Fields must be activated!' );
+            throw new Exception( 'Advanced Custom Fields version 5.8.0 or greater must be activated!' );
         }
     }
 
@@ -108,6 +108,10 @@ class Block implements ComponentFactory {
         $renderer = $this->component->get_renderer();
 
         $data = get_fields();
+
+        if ( method_exists( $this->component, 'data' ) ) {
+            $data = $this->component->data( $data );
+        }
 
         echo $renderer->render(
             [

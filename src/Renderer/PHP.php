@@ -17,17 +17,37 @@ use Geniem\ACF\Interfaces\Renderer;
 class PHP implements Renderer {
 
     /**
+     * Template file path.
+     *
+     * @var string
+     */
+    protected $template;
+
+    /**
+     * Constructor
+     *
+     * @param string $template Path to template file.
+     *
+     * @throws \Exception If template is not found.
+     */
+    public function __construct( string $template ) {
+        if ( file_exists( $template ) ) {
+            $this->template = $template;
+        }
+        else {
+            throw new \Exception( 'Template file ' . $template . ' can not be found.' );
+        }
+    }
+
+    /**
      * Renders ACF fields with the given template file.
      *
-     * @param string $template The template file path.
-     * @param array  $fields   ACF field values.
+     * @param array $fields ACF field values.
      */
-    public function render( string $template, array $fields ) : void {
-        extract( $fields );
+    public function render( array $fields ) : void {
+        extract( $fields ); // phpcs:ignore
 
-		if ( file_exists( $template ) ) {
-            include $template;
-        }
+		include $this->template;
 
     }
 

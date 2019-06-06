@@ -114,9 +114,9 @@ abstract class Component implements ComponentInterface {
     /**
      * Constructor method
      *
-     * @param array $args Arguments to give to the block on creation.
+     * @param array|null $args Arguments to give to the block on creation.
      */
-    public function __construct( array $args ) {}
+    public function __construct( ?array $args = null ) {}
 
     /**
      * Set the renderer for the component.

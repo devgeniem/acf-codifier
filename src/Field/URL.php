@@ -24,6 +24,13 @@ class URL extends \Geniem\ACF\Field {
     protected $placeholder;
 
     /**
+     * Whether the field is read only
+     *
+     * @var boolean
+     */
+    protected $readonly = false;
+
+    /**
      * Set placeholder value
      *
      * @param string $placeholder Placeholder.
@@ -42,5 +49,36 @@ class URL extends \Geniem\ACF\Field {
      */
     public function get_placeholder() {
         return $this->placeholder;
+    }
+
+    /**
+     * Set field to read only
+     *
+     * @return self
+     */
+    public function set_readonly() {
+        $this->readonly = true;
+
+        return $this;
+    }
+
+    /**
+     * Set field to writable
+     *
+     * @return self
+     */
+    public function set_writable() {
+        $this->readonly = false;
+
+        return $this;
+    }
+
+    /**
+     * Get field readonly state
+     *
+     * @return boolean
+     */
+    public function get_readonly() {
+        return $this->readonly;
     }
 }

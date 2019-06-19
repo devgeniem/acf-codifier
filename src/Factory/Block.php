@@ -81,18 +81,25 @@ class Block implements ComponentFactory {
      * @return array
      */
     protected function register_block() {
+        $args = [
+            'name'            => $this->component->get_name(),
+            'title'           => $this->component->get_title(),
+            'description'     => $this->component->get_description(),
+            'render_callback' => [ $this, 'render' ],
+            'category'        => $this->component->get_category(),
+            'icon'            => $this->component->get_icon(),
+            'keywords'        => $this->component->get_keywords(),
+            'mode'            => $this->component->get_mode(),
+            'align'           => $this->component->get_align(),
+            'supports'        => $this->component->get_supports(),
+        ];
+
+        if ( ! empty( $this->component->get_post_types() ) ) {
+            $args['post_types'] = $this->component->get_post_types();
+        }
+
         // Register the ACF Block.
-        $block = acf_register_block(
-            [
-                'name'            => $this->component->get_name(),
-                'title'           => $this->component->get_title(),
-                'description'     => $this->component->get_description(),
-                'render_callback' => [ $this, 'render' ],
-                'category'        => $this->component->get_category(),
-                'icon'            => $this->component->get_icon(),
-                'keywords'        => $this->component->get_keywords(),
-            ]
-        );
+        $block = acf_register_block( $args );
 
         return $block;
     }

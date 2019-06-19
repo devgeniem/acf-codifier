@@ -39,26 +39,25 @@ abstract class Component implements ComponentInterface {
     protected $title = '';
 
     /**
-     * Getter for the category.
+     * The block category
      *
      * @var string
      */
     protected $category = '';
 
     /**
-     * Getter for the icon.
+     * The block icon. Can hold both the string or array representation.
      *
-     * @var string
+     * @var string|array
      */
     protected $icon = '';
 
     /**
-     * Getter for the keywords.
+     * The block keywords.
      *
      * @var array
      */
     protected $keywords = [];
-
 
     /**
      * Component description, shows to the user
@@ -73,6 +72,40 @@ abstract class Component implements ComponentInterface {
      * @var array
      */
     protected $fields = [];
+
+    /**
+     * Array of post types to restrict this block type to.
+     *
+     * @var array
+     */
+    protected $post_types = [];
+
+    /**
+     * Display mode for the block.
+     *
+     * Options: auto, preview or edit.
+     *
+     * @var string
+     */
+    protected $mode = 'preview';
+
+    /**
+     * The default block alignment.
+     *
+     * Options: left, center, right, wide or full.
+     *
+     * @var string
+     */
+    protected $align = '';
+
+    /**
+     * An array of features for the block to support.
+     *
+     * @see https://wordpress.org/gutenberg/handbook/block-api/
+     *
+     * @var array
+     */
+    protected $supports = [];
 
     /**
      * The renderer for this component.
@@ -156,9 +189,9 @@ abstract class Component implements ComponentInterface {
     /**
      * Getter for the icon.
      *
-     * @return string
+     * @return string|array
      */
-    public function get_icon() : string {
+    public function get_icon() {
         return $this->icon;
     }
 
@@ -169,5 +202,41 @@ abstract class Component implements ComponentInterface {
      */
     public function get_keywords() : array {
         return $this->keywords;
+    }
+
+    /**
+     * Getter for the post types.
+     *
+     * @return array
+     */
+    public function get_post_types() : array {
+        return $this->post_types;
+    }
+
+    /**
+     * Getter for the display mode.
+     *
+     * @return string
+     */
+    public function get_mode() : string {
+        return $this->mode;
+    }
+
+    /**
+     * Getter for the default block alignment.
+     *
+     * @return string
+     */
+    public function get_align() : string {
+        return $this->align;
+    }
+
+    /**
+     * Getter for the supported features of the block.
+     *
+     * @return array
+     */
+    public function get_supports() : array {
+        return $this->supports;
     }
 }

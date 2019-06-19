@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         * `Geniem\ACF\Factory\Block`: A factory for creating ACF Gutenberg blocks with Codifier components.
     + Component rendering functionality implementing the `Geniem\ACF\Interfaces\Renderer` interface.
         * `Geniem\ACF\Renderer\PHP`: Uses PHP files as templates.
+        * `Geniem\ACF\Renderer\Dust`: Uses Dust.js template files.
 
 ## [1.16.0] - 2019-04-17
 

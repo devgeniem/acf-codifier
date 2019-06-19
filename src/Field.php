@@ -700,9 +700,10 @@ abstract class Field {
      *
      * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
      * @param float  $weight     Optional weight for the search field.
+     * @param string $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter)
      * @return self
      */
-    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0 ) {
+    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last' ) {
         $this->redipress_add_queryable = true;
 
         $this->redipress_add_queryable_field_name = $field_name;
@@ -710,13 +711,49 @@ abstract class Field {
 
         $this->filters['redipress_add_queryable'] = [
             'filter'        => 'acf/update_value/key=',
-            'function'      => function( $value, $post_id, $field ) {
-                add_filter(
-                    'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
-                    function( $field ) use ( $value ) {
-                        return $value;
-                    }
-                );
+            'function'      => function( $value, $post_id, $field ) use ( $method ) {
+                switch( $method ) {
+                    case 'use_last':
+                        add_filter(
+                            'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                            function( $original ) use ( $value ) {
+                                return $value;
+                            }
+                        );
+                        break;
+                    case 'concat':
+                        add_filter(
+                            'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                            function( $original = '' ) use ( $value ) {
+                                return $original . $value;
+                            }
+                        );
+                        break;
+                    case 'concat_with_spaces':
+                        add_filter(
+                            'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                            function( $original = '' ) use ( $value ) {
+                                return $original . ' ' . $value;
+                            }
+                        );
+                        break;
+                    case 'sum':
+                        add_filter(
+                            'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                            function( $original = 0 ) use ( $value ) {
+                                return $original + $value;
+                            }
+                        );
+                        break;
+                    default:
+                        add_filter(
+                            'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
+                            function( $original = 0 ) use ( $method, $value ) {
+                                return apply_filters( 'codifier/redipress/queryable_method/' . $method, $value, $original );
+                            }
+                        );
+                        break;
+                }
 
                 return $value;
             },

@@ -153,7 +153,7 @@
 | public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
-| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
+| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
 | public static | <strong>redipress_disable_indexing()</strong> : <em>void</em><br /><em>Disable indexing features for RediPress plugin.</em> |
 | public static | <strong>redipress_enable_indexing()</strong> : <em>void</em><br /><em>Enable indexing features for RediPress plugin.</em> |
 | public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
@@ -218,9 +218,12 @@
 | public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the append value of the field.</em> |
 | public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get the placeholder of the field.</em> |
 | public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the prepend value of the field.</em> |
+| public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the append value of the field.</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the placeholder of the field.</em> |
 | public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the prepend value of the field.</em> |
+| public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
+| public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -825,7 +828,10 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
+| public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
+| public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
+| public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 

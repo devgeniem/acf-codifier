@@ -45,6 +45,13 @@ class TrueFalse extends \Geniem\ACF\Field {
     protected $ui_off_text;
 
     /**
+     * What type the RediPress index field should be.
+     *
+     * @var string
+     */
+    protected $redipress_field_type = 'Numeric';
+
+    /**
      * Set message
      *
      * @param string $message New message.

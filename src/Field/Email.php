@@ -38,6 +38,13 @@ class Email extends \Geniem\ACF\Field {
     protected $append;
 
     /**
+     * Whether the field is read only
+     *
+     * @var boolean
+     */
+    protected $readonly = false;
+
+    /**
      * Set the placeholder of the field.
      *
      * @param string $placeholder The placeholder of the field.
@@ -98,5 +105,36 @@ class Email extends \Geniem\ACF\Field {
      */
     public function get_append() {
         return $this->append;
+    }
+
+    /**
+     * Set field to read only
+     *
+     * @return self
+     */
+    public function set_readonly() {
+        $this->readonly = true;
+
+        return $this;
+    }
+
+    /**
+     * Set field to writable
+     *
+     * @return self
+     */
+    public function set_writable() {
+        $this->readonly = false;
+
+        return $this;
+    }
+
+    /**
+     * Get field readonly state
+     *
+     * @return boolean
+     */
+    public function get_readonly() {
+        return $this->readonly;
     }
 }

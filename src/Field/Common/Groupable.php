@@ -31,7 +31,13 @@ trait Groupable {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
-                add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+
+                if ( $filter['no_suffix'] ) {
+                    add_filter( $filter['filter'], $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
+                else {
+                    add_filter( $filter['filter'] . $this->key, $filter['function'], $filter['priority'], $filter['accepted_args'] );
+                }
             });
         }
 

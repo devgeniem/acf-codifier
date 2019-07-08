@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- Ability to define the priority for field filter functions as a second parameter.
+
+### Changed
+- Groupable export function's filter registration to resemble the one of normal fields.
+
 ## [1.16.0] - 2019-04-17
 
 ### Added

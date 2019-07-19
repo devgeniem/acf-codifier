@@ -699,12 +699,13 @@ abstract class Field {
     /**
      * Add this field's value as a queryable value to RediSearch index.
      *
-     * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
-     * @param float  $weight     Optional weight for the search field.
-     * @param string $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter)
+     * @param string  $field_name Optional field name to RediSearch index. Defaults to field name.
+     * @param float   $weight     Optional weight for the search field.
+     * @param string  $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter)
+     * @param boolean $sortable   Whether the field should be sortable or not.
      * @return self
      */
-    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last' ) {
+    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last', bool $sortable = false ) {
         $this->redipress_add_queryable = true;
 
         $this->redipress_add_queryable_field_name = $field_name;
@@ -764,7 +765,7 @@ abstract class Field {
 
         $this->filters['redipress_schema_fields'] = [
             'filter'        => 'redipress/schema_fields',
-            'function'      => function( $fields ) {
+            'function'      => function( $fields ) use ( $sortable ) {
                 $type = '\\Geniem\\RediPress\\Entity\\' . $this->redipress_field_type . 'Field';
 
                 $field_args = [
@@ -774,6 +775,8 @@ abstract class Field {
                 if ( $this->redipress_field_type === 'Text' ) {
                     $field_args['weight'] = $this->redipress_add_queryable_weight;
                 }
+
+                $field_args['sortable'] = $sortable;
 
                 if ( class_exists( $type ) ) {
                     $field = new $type( $field_args );

@@ -281,4 +281,21 @@ class Taxonomy extends \Geniem\ACF\Field {
 
         return $this;
     }
+
+    /**
+     * Register a function to filter the result texts for the field in admin
+     *
+     * @param callable $function
+     * @return self
+     */
+    public function filter_results( callable $function ) {
+        $this->filters['filter_results'] = [
+            'filter'        => 'acf/fields/taxonomy/result/key=',
+            'function'      => $function,
+            'priority'      => 10,
+            'accepted_args' => 4,
+        ];
+
+        return $this;
+    }
 }

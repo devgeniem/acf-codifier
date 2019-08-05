@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 ### Added
-- The support for `acf/fields/taxonomy/result` filter.
+- Support for `acf/fields/taxonomy/result` filter.
 
 ## [1.17.0] - 2019-07-08
 

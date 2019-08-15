@@ -189,9 +189,9 @@ abstract class Component implements ComponentInterface {
     /**
      * Getter for the icon.
      *
-     * @return string|array
+     * @return string
      */
-    public function get_icon() {
+    public function get_icon() : string {
         return $this->icon;
     }
 

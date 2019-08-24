@@ -940,9 +940,21 @@ abstract class Field {
      * @return self
      */
     public function render_field( callable $function, int $priority = 10 ) {
-        $this->filters['render_field'] = [
-            'filter'        => 'acf/render_field',
-            'function'      => $function,
+            $this->codifier_unique_id = uniqid( '', true );;
+
+            $this->filters['render_field'] = [
+            'filter'        => 'acf/render_field/type=' . $this->type,
+            'function'      => function( $field ) use ( $function ) {
+                if (
+                    ! empty( $field['codifier_unique_id'] ) &&
+                    $this->codifier_unique_id === $field['codifier_unique_id']
+                ) {
+                    return $function( $field );
+                }
+                else {
+                    return $field;
+                }
+            },
             'priority'      => $priority,
             'accepted_args' => 1,
             'no_suffix'     => true,

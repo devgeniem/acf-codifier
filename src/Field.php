@@ -942,7 +942,7 @@ abstract class Field {
     public function render_field( callable $function, int $priority = 10 ) {
             $this->codifier_unique_id = uniqid( '', true );;
 
-            $this->filters['render_field'] = [
+            $this->filters['render_field_' . $this->codifier_unique_id ] = [
             'filter'        => 'acf/render_field/type=' . $this->type,
             'function'      => function( $field ) use ( $function ) {
                 if (

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- The ability to disable all or some of the options in the Checkbox field.
+
 ### Fixed
 - `acf/render_field` function wrapped to work only with the specific field the method is used on.
 

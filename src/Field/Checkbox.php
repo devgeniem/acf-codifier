@@ -78,7 +78,7 @@ class Checkbox extends \Geniem\ACF\Field {
                 $this->disabled = array_keys( $this->choices );
             }
 
-            unset( $this->disable_all );
+            $this->disable_all = false;
         }
 
         // Call the original export method

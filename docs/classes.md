@@ -288,6 +288,7 @@
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
 | public | <strong>disallow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable saving terms to the post object</em> |
 | public | <strong>filter_arguments(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a arguments filtering function for the field</em> |
+| public | <strong>filter_results(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a function to filter the result texts for the field in admin</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Get whether terms can be added</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_field_type()</strong> : <em>string</em><br /><em>Get displayed field type</em> |
@@ -989,16 +990,21 @@
 | public | <strong>allow_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow custom values</em> |
 | public | <strong>allow_save_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow saving custom values to default values</em> |
 | public | <strong>allow_toggle()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow toggle all checkbox</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable all checkboxes</em> |
 | public | <strong>disallow_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow custom values</em> |
 | public | <strong>disallow_save_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow saving custom values to default values</em> |
 | public | <strong>disallow_toggle()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow toggle all checkbox</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set all checkboxes to be enabled</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_custom()</strong> : <em>integer</em><br /><em>Get allow custom values status</em> |
+| public | <strong>get_disabled()</strong> : <em>string/array</em><br /><em>Get the disabled checkboxes</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get the current display style of the checkbox.</em> |
 | public | <strong>get_save_custom()</strong> : <em>integer</em><br /><em>Get save custom status</em> |
 | public | <strong>get_toggle()</strong> : <em>integer</em><br /><em>Get toggle all checkbox</em> |
 | public | <strong>remove_choice(</strong><em>\string</em> <strong>$choice</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a choice.</em> |
 | public | <strong>set_choices(</strong><em>array</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
+| public | <strong>set_disabled(</strong><em>array</em> <strong>$keys</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the disabled checkboxes as array</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'vertical'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set whether the checkboxes are displayed vertically or horizontally.</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*

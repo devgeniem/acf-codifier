@@ -56,7 +56,7 @@ class Checkbox extends \Geniem\ACF\Field {
      *
      * @var array
      */
-    protected $disabled;
+    protected $disabled = [];
 
     /**
      * Whether to disable all checkboxes or not

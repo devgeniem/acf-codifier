@@ -21,6 +21,12 @@ class GravityForms extends \Geniem\ACF\Field\Select {
     public function __construct( string $label, string $key = null, string $name = null ) {
         parent::__construct( $label, $key, $name );
 
+        if ( ! class_exists( '\GFFormsModel' ) ) {
+            $this->disable();
+            $this->add_choice( 'Gravity Forms is not activated.' );
+            return;
+        }
+
         if ( is_admin() ) {
             $this->populate_options();
         }
@@ -34,10 +40,10 @@ class GravityForms extends \Geniem\ACF\Field\Select {
     protected function populate_options() {
         global $wpdb;
 
-        $table_name = GFFormsModel::get_form_table_name();
+        $table_name = \GFFormsModel::get_form_table_name();
 
-        $sql        = "SELECT id, title from $table_name where is_active = %d and is_trash = %d";
-        $query      = $wpdb->prepare( $sql, 1, 0 ); // phpcs:ignore
+        $sql   = "SELECT id, title from $table_name where is_active = %d and is_trash = %d";
+        $query = $wpdb->prepare( $sql, 1, 0 ); // phpcs:ignore
 
         $gf_form_results = $wpdb->get_results( $query ); // phpcs:ignore
 

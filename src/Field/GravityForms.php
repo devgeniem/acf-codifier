@@ -47,4 +47,27 @@ class GravityForms extends \Geniem\ACF\Field\Select {
             }
         }
     }
+
+    /**
+     * A deprecated function to cover previous functionality.
+     *
+     * @param string $return_format Not used parameter.
+     * @return self
+     */
+    public function set_return_format( string $return_format = 'object' ) {
+        trigger_error( 'ACF Codifier: Gravity Forms field method "set_return_format" is deprecated and does no longer function.' ); // phpcs: ignore
+
+        return $this;
+    }
+
+    /**
+     * A deprecated function to cover previous functionality.
+     *
+     * @return string
+     */
+    public function get_return_format() {
+        trigger_error( 'ACF Codifier: Gravity Forms field method "get_return_format" is deprecated and does no longer function.' ); // phpcs: ignore
+
+        return 'id';
+    }
 }

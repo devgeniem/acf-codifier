@@ -52,6 +52,42 @@ class Checkbox extends \Geniem\ACF\Field {
     protected $save_custom;
 
     /**
+     * Array of disabled checkboxes
+     *
+     * @var array
+     */
+    protected $disabled = [];
+
+    /**
+     * Whether to disable all checkboxes or not
+     *
+     * @var boolean
+     */
+    protected $disable_all = false;
+
+    /**
+     * Export field in ACF's native format.
+     *
+     * @param boolean $register Whether the field is to be registered.
+     *
+     * @return array
+     */
+    public function export( $register = false ) {
+        if ( $register ) {
+            if ( $this->disable_all ) {
+                $this->disabled = array_keys( $this->choices );
+            }
+
+            $this->disable_all = false;
+        }
+
+        // Call the original export method
+        $obj = parent::export( $register );
+
+        return $obj;
+    }
+
+    /**
      * Set choices for the checkbox
      *
      * @param array $choices Choices as strings.
@@ -222,5 +258,54 @@ class Checkbox extends \Geniem\ACF\Field {
      */
     public function get_save_custom() {
         return $this->save_custom;
+    }
+
+    /**
+     * Disable all checkboxes
+     *
+     * @return self
+     */
+    public function disable() {
+        $this->disable_all = true;
+
+        return $this;
+    }
+
+    /**
+     * Set all checkboxes to be enabled
+     *
+     * @return self
+     */
+    public function enable() {
+        $this->disable_all = false;
+        $this->disabled = [];
+
+        return $this;
+    }
+
+    /**
+     * Set the disabled checkboxes as array
+     *
+     * @param array $keys The checkboxes to disable.
+     * @return self
+     */
+    public function set_disabled( array $keys ) {
+        $this->disabled = array_keys( $keys );
+
+        return $this;
+    }
+
+    /**
+     * Get the disabled checkboxes
+     *
+     * @return string|array
+     */
+    public function get_disabled() {
+        if ( $this->disable_all ) {
+            return 'all';
+        }
+        else {
+            return $this->disabled;
+        }
     }
 }

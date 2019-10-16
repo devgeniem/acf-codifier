@@ -16,6 +16,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         * `Geniem\ACF\Renderer\PHP`: Uses PHP files as templates.
         * `Geniem\ACF\Renderer\Dust`: Uses Dust.js template files.
 
+## [1.20.0] - 2019-10-10
+
+### Changed
+- Removed the dependency for the external plugin for the Gravity Forms field. *NOTE!* If you have used the field previously with the return format set as "object", this will change the behaviour.
+
+## [1.19.0] - 2019-09-13
+
+### Added
+- The ability to disable all or some of the options in the Checkbox field.
+
+### Fixed
+- `acf/render_field` function wrapped to work only with the specific field the method is used on.
+
+## [1.18.0] - 2019-08-05
+
+### Added
+- Support for `acf/fields/taxonomy/result` filter.
+
+## [1.17.0] - 2019-07-08
+
+### Added
+- Ability to define the priority for field filter functions as a second parameter.
+
+### Changed
+- Groupable export function's filter registration to resemble the one of normal fields.
+
 ## [1.16.0] - 2019-04-17
 
 ### Added

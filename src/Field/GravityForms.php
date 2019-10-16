@@ -1,10 +1,6 @@
 <?php
 /**
  * ACF Codifier Gravity Forms field
- *
- * A field object to use with Danny van Holten's Gravityforms Add-on
- *
- * https://wordpress.org/plugins/acf-gravityforms-add-on/
  */
 
 namespace Geniem\ACF\Field;
@@ -12,120 +8,72 @@ namespace Geniem\ACF\Field;
 /**
  * Class GravityForms
  */
-class GravityForms extends \Geniem\ACF\Field {
-    /**
-     * Field type
-     *
-     * @var string
-     */
-    protected $type = 'forms';
+class GravityForms extends \Geniem\ACF\Field\Select {
 
     /**
-     * Return format to set
+     * Constructor.
      *
-     * @var string
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
+     * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
-    protected $return_format = 'object';
+    public function __construct( string $label, string $key = null, string $name = null ) {
+        parent::__construct( $label, $key, $name );
 
-    /**
-     * Can this field be left empty
-     *
-     * @var integer
-     */
-    protected $allow_null;
+        if ( ! class_exists( '\GFFormsModel' ) ) {
+            $this->disable();
+            $this->add_choice( 'Gravity Forms is not activated.' );
+            return;
+        }
 
-    /**
-     * Should this field contain multiple values
-     *
-     * @var integer
-     */
-    protected $multiple;
-
-    /**
-     * Allow null value
-     *
-     * @return self
-     */
-    public function allow_null() {
-        $this->allow_null = 1;
-
-        return $this;
+        if ( is_admin() ) {
+            $this->populate_options();
+        }
     }
 
     /**
-     * Disallow null value
+     * Populate the Gravity Forms forms
      *
-     * @return self
+     * @return void
      */
-    public function disallow_null() {
-        $this->allow_null = 0;
+    protected function populate_options() {
+        global $wpdb;
 
-        return $this;
+        $table_name = \GFFormsModel::get_form_table_name();
+
+        $sql   = "SELECT id, title from $table_name where is_active = %d and is_trash = %d";
+        $query = $wpdb->prepare( $sql, 1, 0 ); // phpcs:ignore
+
+        $gf_form_results = $wpdb->get_results( $query ); // phpcs:ignore
+
+        if ( ! empty( $gf_form_results ) ) {
+            foreach ( $gf_form_results as $gf_form ) {
+                $this->add_choice( $gf_form->title, $gf_form->id );
+            }
+        }
     }
 
     /**
-     * Get allow null status
+     * A deprecated function to cover previous functionality.
      *
-     * @return integer
-     */
-    public function get_allow_null() {
-        return $this->allow_null;
-    }
-
-    /**
-     * Allow multiple values
-     *
-     * @return self
-     */
-    public function allow_multiple() {
-        $this->multiple = 1;
-
-        return $this;
-    }
-
-    /**
-     * Disallow multiple values
-     *
-     * @return self
-     */
-    public function disallow_multiple() {
-        $this->multiple = 0;
-
-        return $this;
-    }
-
-    /**
-     * Get allow multiple status
-     *
-     * @return integer
-     */
-    public function get_allow_multiple() {
-        return $this->multiple;
-    }
-
-    /**
-     * Set return format
-     *
-     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
-     * @param string $return_format Return format to use.
+     * @param string $return_format Not used parameter.
      * @return self
      */
     public function set_return_format( string $return_format = 'object' ) {
-        if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\GravityForms: set_return_format() does not accept argument "' . $return_format . '"' );
-        }
-
-        $this->return_format = $return_format;
+        trigger_error( 'ACF Codifier: Gravity Forms field method "set_return_format" is deprecated and does no longer function.' ); // phpcs: ignore
 
         return $this;
     }
 
     /**
-     * Get return format
+     * A deprecated function to cover previous functionality.
      *
      * @return string
      */
     public function get_return_format() {
-        return $this->return_format;
+        trigger_error( 'ACF Codifier: Gravity Forms field method "get_return_format" is deprecated and does no longer function.' ); // phpcs: ignore
+
+        return 'id';
     }
 }

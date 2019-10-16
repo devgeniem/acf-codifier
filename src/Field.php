@@ -262,6 +262,7 @@ abstract class Field {
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
+
                 if ( $filter['no_suffix'] ) {
                     add_filter( $filter['filter'], $filter['function'], $filter['priority'], $filter['accepted_args'] );
                 }
@@ -827,13 +828,14 @@ abstract class Field {
      * Register a value validation function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function validate_value( callable $function ) {
+    public function validate_value( callable $function, int $priority = 10 ) {
         $this->filters['validate_value'] = [
             'filter'        => 'acf/validate_value/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => $priority,
             'accepted_args' => 4,
         ];
 
@@ -844,13 +846,14 @@ abstract class Field {
      * Register a value formatting function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function format_value( callable $function ) {
+    public function format_value( callable $function, int $priority = 11 ) {
         $this->filters['format_value'] = [
             'filter'        => 'acf/format_value/key=',
             'function'      => $function,
-            'priority'      => 11,
+            'priority'      => $priority,
             'accepted_args' => 3,
         ];
 
@@ -861,13 +864,14 @@ abstract class Field {
      * Register a value loading function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function load_value( callable $function ) {
+    public function load_value( callable $function, int $priority = 10 ) {
         $this->filters['load_value'] = [
             'filter'        => 'acf/load_value/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => $priority,
             'accepted_args' => 3,
         ];
 
@@ -878,13 +882,14 @@ abstract class Field {
      * Register a value updating function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function update_value( callable $function ) {
+    public function update_value( callable $function, int $priority = 10 ) {
         $this->filters['update_value'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => $priority,
             'accepted_args' => 3,
         ];
 
@@ -895,13 +900,14 @@ abstract class Field {
      * Register a field preparing function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function prepare_field( callable $function ) {
+    public function prepare_field( callable $function, int $priority = 10 ) {
         $this->filters['prepare_field'] = [
             'filter'        => 'acf/prepare_field/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => $priority,
             'accepted_args' => 1,
         ];
 
@@ -912,13 +918,14 @@ abstract class Field {
      * Register a field loading function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function load_field( callable $function ) {
+    public function load_field( callable $function, int $priority = 10 ) {
         $this->filters['load_field'] = [
             'filter'        => 'acf/load_field/key=',
             'function'      => $function,
-            'priority'      => 10,
+            'priority'      => $priority,
             'accepted_args' => 1,
         ];
 
@@ -929,13 +936,26 @@ abstract class Field {
      * Register a field rendering function for the field
      *
      * @param callable $function A function to register.
+     * @param int      $priority The filter priority.
      * @return self
      */
-    public function render_field( callable $function ) {
-        $this->filters['render_field'] = [
-            'filter'        => 'acf/render_field',
-            'function'      => $function,
-            'priority'      => 10,
+    public function render_field( callable $function, int $priority = 10 ) {
+            $this->codifier_unique_id = uniqid( '', true );
+
+            $this->filters['render_field_' . $this->codifier_unique_id ] = [
+            'filter'        => 'acf/render_field/type=' . $this->type,
+            'function'      => function( $field ) use ( $function ) {
+                if (
+                    ! empty( $field['codifier_unique_id'] ) &&
+                    $this->codifier_unique_id === $field['codifier_unique_id']
+                ) {
+                    return $function( $field );
+                }
+                else {
+                    return $field;
+                }
+            },
+            'priority'      => $priority,
             'accepted_args' => 1,
             'no_suffix'     => true,
         ];

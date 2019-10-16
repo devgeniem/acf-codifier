@@ -136,7 +136,7 @@
 | public | <strong>add_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a single wrapper class to be added for the field.</em> |
 | public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>\Geniem\ACF\Geniem\ACF\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
 | public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
-| public | <strong>format_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value formatting function for the field</em> |
+| public | <strong>format_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=11</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value formatting function for the field</em> |
 | public | <strong>get_conditional_logic()</strong> : <em>[\Geniem\ACF\ConditionalLogicGroup](#class-geniemacfconditionallogicgroup)</em><br /><em>Get the conditional logic group that have been added to the group.</em> |
 | public | <strong>get_default_value()</strong> : <em>mixed</em><br /><em>Get the default value of the field.</em> |
 | public | <strong>get_instructions()</strong> : <em>string</em><br /><em>Get the instruction text of the field.</em> |
@@ -150,9 +150,9 @@
 | public | <strong>get_wrapper_id()</strong> : <em>string</em><br /><em>Get the id that has been added for the field.</em> |
 | public | <strong>get_wrapper_width()</strong> : <em>int</em><br /><em>Get the wrapper width.</em> |
 | public | <strong>hide_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Hide the field label in the admin side</em> |
-| public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
-| public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
-| public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
+| public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
+| public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
+| public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
 | public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
 | public static | <strong>redipress_disable_indexing()</strong> : <em>void</em><br /><em>Disable indexing features for RediPress plugin.</em> |
 | public static | <strong>redipress_enable_indexing()</strong> : <em>void</em><br /><em>Enable indexing features for RediPress plugin.</em> |
@@ -163,7 +163,7 @@
 | public | <strong>redipress_include_search(</strong><em>\callable</em> <strong>$callback=null</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Include this field's value in the RediPress search index.</em> |
 | public | <strong>redipress_remove_queryable()</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove this field from being queryable in RediSearch index.</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
-| public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
+| public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
 | public | <strong>set_default_value(</strong><em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the default value for the field.</em> |
 | public | <strong>set_instructions(</strong><em>\string</em> <strong>$instructions</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set instruction text for the field.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set key for the field.</em> |
@@ -176,8 +176,8 @@
 | public | <strong>set_wrapper_width(</strong><em>integer/\int</em> <strong>$width</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the wrapper width in percents.</em> |
 | public | <strong>show_label()</strong> : <em>\Geniem\ACF\self</em><br /><em>Show the field label in the admin side</em> |
 | public | <strong>unset_filter(</strong><em>string</em> <strong>$filter</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Unset a previously set filter.</em> |
-| public | <strong>update_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value updating function for the field</em> |
-| public | <strong>validate_value(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value validation function for the field</em> |
+| public | <strong>update_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value updating function for the field</em> |
+| public | <strong>validate_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value validation function for the field</em> |
 | protected | <strong>__clone()</strong> : <em>void</em><br /><em>Prevent raw cloning.</em> |
 | protected | <strong>check_for_unique_key()</strong> : <em>void</em><br /><em>Checks if the field's key is unique within the project scope. Throws a notice if not.</em> |
 | protected static | <strong>redipress_additional_field(</strong><em>mixed</em> <strong>$value</strong>, <em>int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>A helper function to use to enable indexing the post outside save action.</em> |
@@ -288,6 +288,7 @@
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
 | public | <strong>disallow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable saving terms to the post object</em> |
 | public | <strong>filter_arguments(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a arguments filtering function for the field</em> |
+| public | <strong>filter_results(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a function to filter the result texts for the field in admin</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Get whether terms can be added</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_field_type()</strong> : <em>string</em><br /><em>Get displayed field type</em> |
@@ -989,16 +990,21 @@
 | public | <strong>allow_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow custom values</em> |
 | public | <strong>allow_save_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow saving custom values to default values</em> |
 | public | <strong>allow_toggle()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow toggle all checkbox</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable all checkboxes</em> |
 | public | <strong>disallow_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow custom values</em> |
 | public | <strong>disallow_save_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow saving custom values to default values</em> |
 | public | <strong>disallow_toggle()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow toggle all checkbox</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set all checkboxes to be enabled</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_custom()</strong> : <em>integer</em><br /><em>Get allow custom values status</em> |
+| public | <strong>get_disabled()</strong> : <em>string/array</em><br /><em>Get the disabled checkboxes</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get the current display style of the checkbox.</em> |
 | public | <strong>get_save_custom()</strong> : <em>integer</em><br /><em>Get save custom status</em> |
 | public | <strong>get_toggle()</strong> : <em>integer</em><br /><em>Get toggle all checkbox</em> |
 | public | <strong>remove_choice(</strong><em>\string</em> <strong>$choice</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a choice.</em> |
 | public | <strong>set_choices(</strong><em>array</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
+| public | <strong>set_disabled(</strong><em>array</em> <strong>$keys</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the disabled checkboxes as array</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'vertical'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set whether the checkboxes are displayed vertically or horizontally.</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*

@@ -146,6 +146,12 @@ $field_group->add_field_after( $text, $target_field_object );
 
 You can use either the field key or the field object with both methods.
 
+There are also methods like `add_fields()` that can be used to add an array of fields at once, and `add_fields_from()` that takes another _groupable_  object (for example a field group, group field, repeater or a flexible layout) as its first parameter and copies its fields to the calling object.
+
+```php
+$field_group->add_fields_from( $repeater );
+```
+
 List of all field types and their methods can be found [here](docs/classes.md).
 
 #### Grouping field types
@@ -226,6 +232,41 @@ $pseudo = new Field\Pseudo( 'pseudo-group' );
 $pseudo->add_field( $some_field )
        ->add_field( $another_field );
 ```
+
+## Gutenberg
+
+Codifier has a feature to register Gutenberg blocks using ACF's register block feature internally. It works in a very similar fashion than the basic field creation in Codifier as well.
+
+Block's constructor takes two mandatory parameters: the title and the name (or key) of the block. The properties are then set for the block with appropriate methods.
+
+```php
+$block = new \Geniem\ACF\Block( 'Some block', 'some_block' );
+$block->set_category( 'common' );
+$block->add_post_type( 'post' );
+$block->set_mode( 'edit' );
+```
+
+The rendering of the block happens with a Renderer class. Codifier includes three renderers by default: CallableRenderer that uses a simple method for rendering; PHP that renders a normal PHP file with the given data and Dust that uses [DustPHP](http://cretz.github.io/dust-php/) templates for rendering.
+
+The following uses the `print_r()` method to output a list of the data from the fields.
+
+```php
+$renderer = new \Geniem\ACF\Renderer\CallableRenderer( function( $data ) {
+  return print_r( $data, true );
+});
+
+$block->set_renderer( $renderer );
+```
+
+The ACF fields themselves are added to the block as they would to any other _groupable_ type object with methods like `add_field()` and `set_fields()`.
+
+To register the block for Gutenberg, just use the `register()` method.
+
+```php
+$block->register();
+```
+
+If you need, the abovementioned method returns the output of ACF's `register_block()` function.
 
 ## Additional features
 

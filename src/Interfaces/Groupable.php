@@ -14,6 +14,7 @@ use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
  * @see \Geniem\ACF\Field\Common\Groupable
  */
 interface Groupable {
+    // phpcs:disable
     public function export( bool $register = false ) : array;
     public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self;
     public function add_fields( array $fields, string $order = 'last' ) : self;
@@ -28,4 +29,5 @@ interface Groupable {
     public function remove_fields() : self;
     public function clone( string $key, string $name = null ) : self;
     public function fields_var() : string;
+    // phpcs:enable
 }

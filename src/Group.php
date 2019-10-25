@@ -396,7 +396,7 @@ class Group implements GroupableInterface {
      * @param string            $order  Whether the field is added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
@@ -425,7 +425,7 @@ class Group implements GroupableInterface {
      * @param string $key The name of the field to be removed.
      * @return self
      */
-    public function remove_field( string $key ) {
+    public function remove_field( string $key ) : self {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_remove_local_field' ) ) {
@@ -510,7 +510,7 @@ class Group implements GroupableInterface {
      *
      * @return array Acf fields
      */
-    public function export( $register = false ) {
+    public function export( $register = false ) : array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }

@@ -6,12 +6,13 @@
 namespace Geniem\ACF\Field\Flexible;
 
 use Geniem\ACF\Field,
-    Geniem\ACF\Field\Common\Groupable;
+    Geniem\ACF\Field\Common\Groupable,
+    Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Class Layout
  */
-class Layout {
+class Layout implements GroupableInterface {
 
     /**
      * Import the groupable functionalities

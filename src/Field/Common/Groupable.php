@@ -5,6 +5,9 @@
 
 namespace Geniem\ACF\Field\Common;
 
+use TypeError;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
+
 /**
  * Groupable Trait
  */
@@ -267,6 +270,20 @@ trait Groupable {
      */
     public function set_fields( $fields ) {
         $this->{ $this->fields_var() } = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Get fields from another Groupable.
+     *
+     * @param GroupableInterface $groupable The groupable to use fields from.
+     *
+     * @throws TypeError If the parameter doesn't have the right trait.
+     * @return self
+     */
+    public function get_fields_from( GroupableInterface $groupable ) {
+        $this->set_fields( $groupable->get_fields() );
 
         return $this;
     }

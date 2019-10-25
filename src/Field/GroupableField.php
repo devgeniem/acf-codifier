@@ -6,12 +6,13 @@
 namespace Geniem\ACF\Field;
 
 use Geniem\ACF\Field,
-    Geniem\ACF\Field\Common\Groupable;
+    Geniem\ACF\Field\Common\Groupable,
+    Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Abstract class GroupableField
  */
-abstract class GroupableField extends Field {
+abstract class GroupableField extends Field implements GroupableInterface {
 
     /**
      * Import the groupable functionalities

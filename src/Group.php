@@ -510,7 +510,7 @@ class Group implements GroupableInterface {
      *
      * @return array Acf fields
      */
-    public function export( $register = false ) : array {
+    public function export( bool $register = false ) : array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }

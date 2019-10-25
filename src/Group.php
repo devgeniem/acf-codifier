@@ -8,7 +8,7 @@ namespace Geniem\ACF;
 use Geniem\ACF\Field\Common\Groupable,
     Geniem\ACF\Exception as Exception,
     Geniem\ACF\Field\PseudoGroupableField as PseudoGroupableField;
-use Geniem\ACF\Field\Common\GroupableInterface;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Class Group
@@ -74,7 +74,7 @@ class Group implements GroupableInterface {
     /**
      * Field group hide on screen value
      *
-     * @var boolean
+     * @var array
      */
     protected $hide_on_screen;
 
@@ -392,8 +392,8 @@ class Group implements GroupableInterface {
     /**
      * Add a field to the field group.
      *
-     * @param Field $field A field to be added.
-     * @param string            $order Whether the field is added first or last.
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param string            $order  Whether the field is added first or last.
      * @return self
      */
     public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {

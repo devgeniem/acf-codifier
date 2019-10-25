@@ -5,23 +5,27 @@
 
 namespace Geniem\ACF\Interfaces;
 
+use Geniem\ACF\Field;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
+
 /**
  * Groupable interface
  *
  * @see \Geniem\ACF\Field\Common\Groupable
  */
 interface Groupable {
-    public function export( $register = false );
-    public function add_field( \Geniem\ACF\Field $field, $order = 'last' );
-    public function add_fields( array $fields, $order = 'last' );
-    public function add_field_before( \Geniem\ACF\Field $field, $target );
-    public function add_field_after( \Geniem\ACF\Field $field, $target );
-    public function remove_field( string $field_name );
-    public function set_fields( $fields );
-    public function get_fields_from( GroupableInterface $groupable );
-    public function get_fields();
-    public function get_field( $name );
-    public function remove_fields();
-    public function clone( $key, $name = null );
+    public function export( bool $register = false ) : array;
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self;
+    public function add_fields( array $fields, string $order = 'last' ) : self;
+    public function add_field_before( \Geniem\ACF\Field $field, $target ) : self;
+    public function add_field_after( \Geniem\ACF\Field $field, $target ) : self;
+    public function add_fields_from( GroupableInterface $groupable ) : self;
+    public function remove_field( string $field_name ) : self;
+    public function set_fields( array $fields ) : self;
+    public function set_fields_from( GroupableInterface $groupable ) : self;
+    public function get_fields() : array;
+    public function get_field( string $name ) : ?Field;
+    public function remove_fields() : self;
+    public function clone( string $key, string $name = null ) : self;
     public function fields_var() : string;
 }

@@ -57,14 +57,14 @@ class Block {
     protected $keywords = [];
 
     /**
-    * Block description, shows to the user
+     * Block description, shows to the user
      *
      * @var string
      */
     protected $description = '';
 
     /**
-    * Block fields.
+     * Block fields.
      *
      * @var array
      */
@@ -110,6 +110,17 @@ class Block {
      * @var Renderer
      */
     protected $renderer;
+
+    /**
+     * Constructor
+     *
+     * @param string $title Block title.
+     * @param string $name  Block name.
+     */
+    public function __construct( string $title, string $name ) {
+        $this->title = $title;
+        $this->name  = $name;
+    }
 
     /**
      * Setter for the name.
@@ -210,7 +221,7 @@ class Block {
     /**
      * Add multiple keywords
      *
-     * @param array $keyword The keywords to add.
+     * @param array $keywords The keywords to add.
      * @return self
      */
     public function add_keywords( array $keywords ) : self {
@@ -290,7 +301,7 @@ class Block {
     /**
      * Add multiple post types
      *
-     * @param array $post_type The post types to add.
+     * @param array $post_types The post types to add.
      * @return self
      */
     public function add_post_types( array $post_types ) : self {
@@ -364,10 +375,11 @@ class Block {
     /**
      * Setter for the default block alignment.
      *
+     * @param string $align The alignment.
      * @return self
      */
     public function set_align( string $align ) : self {
-        if ( ! in_array( $align, [ 'left', 'center', 'right', 'wide', 'full' ] ) ) {
+        if ( ! in_array( $align, [ 'left', 'center', 'right', 'wide', 'full' ], true ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Block: set_mode() does not accept argument "' . $align . '"' );
         }
 

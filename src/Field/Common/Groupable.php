@@ -5,6 +5,7 @@
 
 namespace Geniem\ACF\Field\Common;
 
+use Geniem\ACF\Field;
 use TypeError;
 use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
@@ -22,7 +23,7 @@ trait Groupable {
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( $register = false ) : array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -108,7 +109,7 @@ trait Groupable {
      * @param boolean $register Whether the field group is to be registered.
      * @return array
      */
-    private function export_sub_fields( $fields, $register ) {
+    private function export_sub_fields( array $fields, bool $register ) : array {
         $return = [];
 
         foreach ( $fields as $field ) {
@@ -140,7 +141,7 @@ trait Groupable {
      * @param string            $order Whether the field is to be added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self{
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->{ $this->fields_var() } = [ $field->get_name() => $field ] + $this->{ $this->fields_var() };
@@ -160,7 +161,7 @@ trait Groupable {
      * @param string            $order Whether the fields are to be added first or last.
      * @return self
      */
-    public function add_fields( array $fields, $order = 'last' ) {
+    public function add_fields( array $fields, string $order = 'last' ) : self {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             foreach ( array_reverse( $fields ) as $field ) {
@@ -183,7 +184,7 @@ trait Groupable {
      * @param [mixed]           $target A target field.
      * @return self
      */
-    public function add_field_before( \Geniem\ACF\Field $field, $target ) {
+    public function add_field_before( \Geniem\ACF\Field $field, $target ) : self {
         // Call the real function.
         return $this->add_field_location( $field, 'before', $target );
     }
@@ -195,7 +196,7 @@ trait Groupable {
      * @param [mixed]           $target A target field.
      * @return self
      */
-    public function add_field_after( \Geniem\ACF\Field $field, $target ) {
+    public function add_field_after( \Geniem\ACF\Field $field, $target ) : self {
         // Call the real function.
         return $this->add_field_location( $field, 'after', $target );
     }
@@ -206,11 +207,11 @@ trait Groupable {
      * @throws \Geniem\ACF\Exception Throw error if given target is not valid.
      *
      * @param  \Geniem\ACF\Field $field  A field to be added.
-     * @param  [string]          $action Whether it's added before or after.
+     * @param  string            $action Whether it's added before or after.
      * @param  [mixed]           $target A target field.
      * @return self
      */
-    private function add_field_location( \Geniem\ACF\Field $field, $action, $target ) {
+    private function add_field_location( \Geniem\ACF\Field $field, string $action, $target ) : self {
         // If given a field instance, replace the value with its name.
         if ( $target instanceof \ Geniem\ACF\Field ) {
             $target = $target->get_name();
@@ -248,12 +249,38 @@ trait Groupable {
     }
 
     /**
+     * Add fields from another groupable
+     *
+     * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
+     * @param GroupableInterface $fields A groupable from which to add the fields
+     * @param string             $order  Whether the fields are to be added first or last.
+     * @return self
+     */
+    public function add_fields_from( GroupableInterface $groupable, string $order = 'last' ) : self {
+        $fields = $groupable->get_fields();
+
+        // Add the field to the fields array.
+        if ( $order === 'first' ) {
+            foreach ( array_reverse( $fields ) as $field ) {
+                $this->add_field( $field, 'first' );
+            }
+        }
+        else {
+            foreach ( $fields as $field ) {
+                $this->add_field( $field );
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Remove field from sub fields
      *
      * @param  string $field_name Name of the field to remove.
      * @return self
      */
-    public function remove_field( string $field_name ) {
+    public function remove_field( string $field_name ) : self {
 
         if ( isset( $this->{ $this->fields_var() }[ $field_name ] ) ) {
             unset( $this->{ $this->fields_var() }[ $field_name ] );
@@ -268,21 +295,21 @@ trait Groupable {
      * @param array $fields Fields to set.
      * @return self
      */
-    public function set_fields( $fields ) {
+    public function set_fields( $fields ) : self {
         $this->{ $this->fields_var() } = $fields;
 
         return $this;
     }
 
     /**
-     * Get fields from another Groupable.
+     * Set fields from another Groupable.
      *
      * @param GroupableInterface $groupable The groupable to use fields from.
      *
      * @throws TypeError If the parameter doesn't have the right trait.
      * @return self
      */
-    public function get_fields_from( GroupableInterface $groupable ) {
+    public function set_fields_from( GroupableInterface $groupable ) : self {
         $this->set_fields( $groupable->get_fields() );
 
         return $this;
@@ -293,7 +320,7 @@ trait Groupable {
      *
      * @return array
      */
-    public function get_fields() {
+    public function get_fields() : array {
         return $this->{ $this->fields_var() };
     }
 
@@ -303,7 +330,7 @@ trait Groupable {
      * @param string $name Field name.
      * @return array
      */
-    public function get_field( $name ) {
+    public function get_field( $name ) : ?Field {
         return $this->{ $this->fields_var() }[ $name ] ?? null;
     }
 
@@ -312,7 +339,7 @@ trait Groupable {
      *
      * @return self
      */
-    public function remove_fields() {
+    public function remove_fields() : self {
         unset( $this->{ $this->fields_var() } );
 
         return $this;
@@ -325,9 +352,9 @@ trait Groupable {
      *
      * @param string $key  Field key.
      * @param string $name Field name (optional).
-     * @return Geniem\ACF\Field
+     * @return self
      */
-    public function clone( $key, $name = null ) {
+    public function clone( $key, $name = null ) : self {
         $clone = clone $this;
 
         $clone->set_key( $key );

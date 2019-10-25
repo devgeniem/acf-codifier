@@ -47,7 +47,7 @@ class PHP implements Renderer {
      * @return string
      */
     public function render( array $fields ) : string {
-        extract( $fields ); // phpcs:ignore
+        extract( $fields['data'] ); // phpcs:ignore
 
         ob_start();
         include $this->template;

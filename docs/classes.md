@@ -328,10 +328,12 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>add_choice(</strong><em>\string</em> <strong>$choice</strong>, <em>mixed</em> <strong>$value</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a choice.</em> |
+| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
 | public | <strong>allow_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow other choice</em> |
 | public | <strong>allow_save_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow saving custom values to default values</em> |
 | public | <strong>disallow_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow other choice</em> |
 | public | <strong>disallow_save_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow saving custom values to default values</em> |
+| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_other_choice()</strong> : <em>integer</em><br /><em>Get other choice values status</em> |
 | public | <strong>get_save_other_choice()</strong> : <em>integer</em><br /><em>Get save other choice status</em> |
@@ -691,16 +693,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>allow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow multiple values</em> |
-| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
-| public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
-| public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
-| public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
-| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
-| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
-| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>A deprecated function to cover previous functionality.</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>A deprecated function to cover previous functionality.</em> |
+| protected | <strong>populate_options()</strong> : <em>void</em><br /><em>Populate the Gravity Forms forms</em> |
 
-*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+*This class extends [\Geniem\ACF\Field\Select](#class-geniemacffieldselect)*
 
 <hr />
 

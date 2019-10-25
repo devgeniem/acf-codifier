@@ -5,9 +5,9 @@
 
 namespace Geniem\ACF\Field\Common;
 
-use Geniem\ACF\Field;
-use TypeError;
-use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
+use \Geniem\ACF\Field;
+use \TypeError;
+use \Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Groupable Trait
@@ -23,7 +23,7 @@ trait Groupable {
      *
      * @return array
      */
-    public function export( $register = false ) : array {
+    public function export( bool $register = false ) : array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -139,9 +139,9 @@ trait Groupable {
      * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
      * @param \Geniem\ACF\Field $field A field to be added.
      * @param string            $order Whether the field is to be added first or last.
-     * @return self
+     * @return GroupableInterface
      */
-    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self{
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : GroupableInterface {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->{ $this->fields_var() } = [ $field->get_name() => $field ] + $this->{ $this->fields_var() };
@@ -159,9 +159,9 @@ trait Groupable {
      * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
      * @param array             $fields An array of fields to be added.
      * @param string            $order Whether the fields are to be added first or last.
-     * @return self
+     * @return GroupableInterface
      */
-    public function add_fields( array $fields, string $order = 'last' ) : self {
+    public function add_fields( array $fields, string $order = 'last' ) : GroupableInterface {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             foreach ( array_reverse( $fields ) as $field ) {
@@ -182,9 +182,9 @@ trait Groupable {
      *
      * @param \Geniem\ACF\Field $field  A field to be added.
      * @param [mixed]           $target A target field.
-     * @return self
+     * @return GroupableInterface
      */
-    public function add_field_before( \Geniem\ACF\Field $field, $target ) : self {
+    public function add_field_before( \Geniem\ACF\Field $field, $target ) : GroupableInterface {
         // Call the real function.
         return $this->add_field_location( $field, 'before', $target );
     }
@@ -194,9 +194,9 @@ trait Groupable {
      *
      * @param \Geniem\ACF\Field $field  A field to be added.
      * @param [mixed]           $target A target field.
-     * @return self
+     * @return GroupableInterface
      */
-    public function add_field_after( \Geniem\ACF\Field $field, $target ) : self {
+    public function add_field_after( \Geniem\ACF\Field $field, $target ) : GroupableInterface {
         // Call the real function.
         return $this->add_field_location( $field, 'after', $target );
     }
@@ -209,9 +209,9 @@ trait Groupable {
      * @param  \Geniem\ACF\Field $field  A field to be added.
      * @param  string            $action Whether it's added before or after.
      * @param  [mixed]           $target A target field.
-     * @return self
+     * @return GroupableInterface
      */
-    private function add_field_location( \Geniem\ACF\Field $field, string $action, $target ) : self {
+    private function add_field_location( \Geniem\ACF\Field $field, string $action, $target ) : GroupableInterface {
         // If given a field instance, replace the value with its name.
         if ( $target instanceof \ Geniem\ACF\Field ) {
             $target = $target->get_name();
@@ -254,9 +254,9 @@ trait Groupable {
      * @throws \Geniem\ACF\Exception Throw error if given field is not valid.
      * @param GroupableInterface $fields A groupable from which to add the fields
      * @param string             $order  Whether the fields are to be added first or last.
-     * @return self
+     * @return GroupableInterface
      */
-    public function add_fields_from( GroupableInterface $groupable, string $order = 'last' ) : self {
+    public function add_fields_from( GroupableInterface $groupable, string $order = 'last' ) : GroupableInterface {
         $fields = $groupable->get_fields();
 
         // Add the field to the fields array.
@@ -278,9 +278,9 @@ trait Groupable {
      * Remove field from sub fields
      *
      * @param  string $field_name Name of the field to remove.
-     * @return self
+     * @return GroupableInterface
      */
-    public function remove_field( string $field_name ) : self {
+    public function remove_field( string $field_name ) : GroupableInterface {
 
         if ( isset( $this->{ $this->fields_var() }[ $field_name ] ) ) {
             unset( $this->{ $this->fields_var() }[ $field_name ] );
@@ -293,9 +293,9 @@ trait Groupable {
      * Set fields
      *
      * @param array $fields Fields to set.
-     * @return self
+     * @return GroupableInterface
      */
-    public function set_fields( $fields ) : self {
+    public function set_fields( array $fields ) : GroupableInterface {
         $this->{ $this->fields_var() } = $fields;
 
         return $this;
@@ -307,9 +307,9 @@ trait Groupable {
      * @param GroupableInterface $groupable The groupable to use fields from.
      *
      * @throws TypeError If the parameter doesn't have the right trait.
-     * @return self
+     * @return GroupableInterface
      */
-    public function set_fields_from( GroupableInterface $groupable ) : self {
+    public function set_fields_from( GroupableInterface $groupable ) : GroupableInterface {
         $this->set_fields( $groupable->get_fields() );
 
         return $this;
@@ -330,16 +330,16 @@ trait Groupable {
      * @param string $name Field name.
      * @return array
      */
-    public function get_field( $name ) : ?Field {
+    public function get_field( string $name ) : ?Field {
         return $this->{ $this->fields_var() }[ $name ] ?? null;
     }
 
     /**
      * Remove all sub fields
      *
-     * @return self
+     * @return GroupableInterface
      */
-    public function remove_fields() : self {
+    public function remove_fields() : GroupableInterface {
         unset( $this->{ $this->fields_var() } );
 
         return $this;
@@ -352,9 +352,9 @@ trait Groupable {
      *
      * @param string $key  Field key.
      * @param string $name Field name (optional).
-     * @return self
+     * @return GroupableInterface
      */
-    public function clone( $key, $name = null ) : self {
+    public function clone( string $key, string $name = null ) : GroupableInterface {
         $clone = clone $this;
 
         $clone->set_key( $key );

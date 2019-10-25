@@ -134,9 +134,9 @@ class Group implements GroupableInterface {
      *
      * @param string $key  Field group key.
      * @param string $name Field group name (optional).
-     * @return Geniem\ACF\Group
+     * @return GroupableInterface
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, string $name = null ) : GroupableInterface {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -396,7 +396,7 @@ class Group implements GroupableInterface {
      * @param string            $order  Whether the field is added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) {
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : GroupableInterface {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
@@ -425,7 +425,7 @@ class Group implements GroupableInterface {
      * @param string $key The name of the field to be removed.
      * @return self
      */
-    public function remove_field( string $key ) {
+    public function remove_field( string $key ) : GroupableInterface {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_remove_local_field' ) ) {

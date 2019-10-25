@@ -16,12 +16,12 @@ use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 interface Groupable {
     // phpcs:disable
     public function export( bool $register = false ) : array;
-    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : self;
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' );
     public function add_fields( array $fields, string $order = 'last' ) : self;
     public function add_field_before( \Geniem\ACF\Field $field, $target ) : self;
     public function add_field_after( \Geniem\ACF\Field $field, $target ) : self;
     public function add_fields_from( GroupableInterface $groupable ) : self;
-    public function remove_field( string $field_name ) : self;
+    public function remove_field( string $field_name );
     public function set_fields( array $fields ) : self;
     public function set_fields_from( GroupableInterface $groupable ) : self;
     public function get_fields() : array;

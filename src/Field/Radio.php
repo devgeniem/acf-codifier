@@ -46,7 +46,6 @@ class Radio extends Checkbox {
      */
     protected $allow_null;
 
-
     /**
      * Allow other choice
      *
@@ -67,6 +66,16 @@ class Radio extends Checkbox {
         $this->allow_null = 1;
 
         return $this;
+    }
+
+
+    /**
+     * Get allow null status
+     *
+     * @return integer
+     */
+    public function get_allow_null() {
+        return $this->allow_null;
     }
 
     /**

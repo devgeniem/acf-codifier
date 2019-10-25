@@ -15,18 +15,18 @@ use Geniem\ACF\Field;
 interface Groupable {
     // phpcs:disable
     public function export( bool $register = false ) : array;
-    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : Groupable;
-    public function add_fields( array $fields, string $order = 'last' ) : Groupable;
-    public function add_field_before( \Geniem\ACF\Field $field, $target ) : Groupable;
-    public function add_field_after( \Geniem\ACF\Field $field, $target ) : Groupable;
-    public function add_fields_from( Groupable $groupable ) : Groupable;
-    public function remove_field( string $field_name ) : Groupable;
-    public function set_fields( array $fields ) : Groupable;
-    public function set_fields_from( Groupable $groupable ) : Groupable;
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : \Geniem\ACF\Interfaces\Groupable;
+    public function add_fields( array $fields, string $order = 'last' ) : \Geniem\ACF\Interfaces\Groupable;
+    public function add_field_before( \Geniem\ACF\Field $field, $target ) : \Geniem\ACF\Interfaces\Groupable;
+    public function add_field_after( \Geniem\ACF\Field $field, $target ) : \Geniem\ACF\Interfaces\Groupable;
+    public function add_fields_from( \Geniem\ACF\Interfaces\Groupable $groupable ) : \Geniem\ACF\Interfaces\Groupable;
+    public function remove_field( string $field_name ) : \Geniem\ACF\Interfaces\Groupable;
+    public function set_fields( array $fields ) : \Geniem\ACF\Interfaces\Groupable;
+    public function set_fields_from( \Geniem\ACF\Interfaces\Groupable $groupable ) : \Geniem\ACF\Interfaces\Groupable;
     public function get_fields() : array;
     public function get_field( string $name ) : ?Field;
-    public function remove_fields() : Groupable;
-    public function clone( string $key, string $name = null ) : Groupable;
+    public function remove_fields() : \Geniem\ACF\Interfaces\Groupable;
+    public function clone( string $key, string $name = null ) : \Geniem\ACF\Interfaces\Groupable;
     public function fields_var() : string;
     // phpcs:enable
 }

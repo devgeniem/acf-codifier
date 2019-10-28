@@ -79,7 +79,7 @@ class PostObject extends \Geniem\ACF\Field {
      *
      * @return array
      */
-    public function export( bool $register = false ) : array {
+    public function export( bool $register = false ) : ?array {
 
         // Call the parent's export method
         $obj = parent::export( $register );

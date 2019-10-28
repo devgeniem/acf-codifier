@@ -29,7 +29,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * @param boolean $register Whether we are registering the field or not.
      * @return array
      */
-    public function export( bool $register = false ) {
+    public function export( bool $register = false ) : array {
         return null;
     }
 
@@ -42,7 +42,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * @param string $name Field name (optional).
      * @return Geniem\ACF\Field
      */
-    public function clone( $key = null, $name = null ) {
+    public function clone( string $key, string $name = null ) : \Geniem\ACF\Interfaces\Groupable {
         $clone = clone $this;
 
         $clone->set_key( $key );

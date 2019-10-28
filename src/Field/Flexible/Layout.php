@@ -108,7 +108,7 @@ class Layout implements GroupableInterface {
      * @param  string|null $name New field name.
      * @return Field
      */
-    public function clone( $key, $name = null ) {
+    public function clone( string $key, string $name = null ) : \Geniem\ACF\Interfaces\Groupable {
         $clone = clone $this;
 
         $clone->set_key( $key );

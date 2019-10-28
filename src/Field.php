@@ -229,7 +229,7 @@ abstract class Field {
      * @param string $name Field name (optional).
      * @return Geniem\ACF\Field
      */
-    public function clone( $key, $name = null ) {
+    public function clone( string $key, string $name = null ) : \Geniem\ACF\Interfaces\Groupable {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -250,7 +250,7 @@ abstract class Field {
      *
      * @return array
      */
-    public function export( bool $register = false ) {
+    public function export( bool $register = false ) : array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }

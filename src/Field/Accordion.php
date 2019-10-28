@@ -65,7 +65,7 @@ class Accordion extends GroupableField implements PseudoGroupableField {
      *
      * @return array
      */
-    public function export( bool $register = false ) {
+    public function export( bool $register = false ) : array {
         $obj = parent::export( $register );
 
         // Make the key unique so that it can't collide with others. This is only used in

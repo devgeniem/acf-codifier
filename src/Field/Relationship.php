@@ -72,7 +72,7 @@ class Relationship extends \Geniem\ACF\Field {
      *
      * @return array
      */
-    public function export( bool $register = false ) {
+    public function export( bool $register = false ) : array {
         $obj = parent::export( $register );
 
         $obj['filters'] = $obj['field_filters'];

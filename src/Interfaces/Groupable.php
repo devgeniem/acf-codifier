@@ -19,7 +19,7 @@ interface Groupable {
     public function add_fields( array $fields, string $order = 'last' ) : \Geniem\ACF\Interfaces\Groupable;
     public function add_field_before( \Geniem\ACF\Field $field, $target ) : \Geniem\ACF\Interfaces\Groupable;
     public function add_field_after( \Geniem\ACF\Field $field, $target ) : \Geniem\ACF\Interfaces\Groupable;
-    public function add_fields_from( \Geniem\ACF\Interfaces\Groupable $groupable ) : \Geniem\ACF\Interfaces\Groupable;
+    public function add_fields_from( \Geniem\ACF\Interfaces\Groupable $groupable, string $order = 'last' ) : \Geniem\ACF\Interfaces\Groupable;
     public function remove_field( string $field_name ) : \Geniem\ACF\Interfaces\Groupable;
     public function set_fields( array $fields ) : \Geniem\ACF\Interfaces\Groupable;
     public function set_fields_from( \Geniem\ACF\Interfaces\Groupable $groupable ) : \Geniem\ACF\Interfaces\Groupable;

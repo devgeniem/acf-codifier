@@ -45,7 +45,7 @@ abstract class GroupableField extends Field implements GroupableInterface {
      * @param string $name Field name (optional).
      * @return Field
      */
-    public function clone( $key, $name = null ) {
+    public function clone( string $key, string $name = null ) : \Geniem\ACF\Interfaces\Groupable {
         $clone = clone $this;
 
         $clone->set_key( $key );

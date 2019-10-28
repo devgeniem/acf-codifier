@@ -250,7 +250,7 @@ abstract class Field {
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false ) {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }

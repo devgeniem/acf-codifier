@@ -80,7 +80,7 @@ class MediumEditor extends \Geniem\ACF\Field {
      * @param boolean $register Whether we are exporting to register or not.
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false ) {
         $obj = parent::export( $register );
 
         $obj['custom_buttons'] = array_map( function( $cb ) use ( $register ) {

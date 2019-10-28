@@ -29,7 +29,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * @param boolean $register Whether we are registering the field or not.
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false ) {
         return null;
     }
 

@@ -136,7 +136,7 @@ class Group implements GroupableInterface {
      * @param string $name Field group name (optional).
      * @return GroupableInterface
      */
-    public function clone( string $key, string $name = null ) : GroupableInterface {
+    public function clone( string $key, string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -510,7 +510,7 @@ class Group implements GroupableInterface {
      *
      * @return array Acf fields
      */
-    public function export( bool $register = false ) : array {
+    public function export( bool $register = false ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }

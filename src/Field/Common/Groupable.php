@@ -23,7 +23,7 @@ trait Groupable {
      *
      * @return array
      */
-    public function export( bool $register = false ) : array {
+    public function export( bool $register = false ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -352,9 +352,9 @@ trait Groupable {
      *
      * @param string $key  Field key.
      * @param string $name Field name (optional).
-     * @return GroupableInterface
+     * @return self
      */
-    public function clone( string $key, string $name = null ) : GroupableInterface {
+    public function clone( string $key, string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

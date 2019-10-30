@@ -72,7 +72,7 @@ class Checkbox extends \Geniem\ACF\Field {
      *
      * @return array
      */
-    public function export( bool $register = false ) : array {
+    public function export( bool $register = false ) : ?array {
         if ( $register ) {
             if ( $this->disable_all ) {
                 $this->disabled = array_keys( $this->choices );

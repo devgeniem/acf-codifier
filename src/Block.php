@@ -8,13 +8,14 @@ namespace Geniem\ACF;
 use Geniem\ACF\Field\Common\Groupable;
 use Geniem\ACF\Exception;
 use Geniem\ACF\Group;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 use Geniem\ACF\RuleGroup;
 use Geniem\ACF\Interfaces\Renderer;
 
 /**
  * Class Block
  */
-class Block {
+class Block implements GroupableInterface {
 
     /**
      * Import the groupable functionalities.

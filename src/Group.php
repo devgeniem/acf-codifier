@@ -504,12 +504,13 @@ class Group {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key is not defined.
      *
      * @return array Acf fields
      */
-    public function export( $register = false ) {
+    public function export( $register = false, $parent = null ) {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }
@@ -529,11 +530,11 @@ class Group {
                     $sub_fields = $field->get_fields();
                 }
 
-                $fields[] = $field->export( $register );
+                $fields[] = $field->export( $register, $this );
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register, $this );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
 

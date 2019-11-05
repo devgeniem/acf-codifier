@@ -76,13 +76,14 @@ class PostObject extends \Geniem\ACF\Field {
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( $register = false, $parent = null ) {
 
         // Call the parent's export method
-        $obj = parent::export( $register );
+        $obj = parent::export( $register, $parent );
 
         // Handle the post type functionality
         if ( ! empty( $this->added_post_types ) ) {

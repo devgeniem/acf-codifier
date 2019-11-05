@@ -84,12 +84,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * This also exports layout fields
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent Possible parent object.
      *
      * @throws Exception Throws an exception if a key or a name is not defined.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( $register = false, $parent = null ) {
         global $post;
 
         if ( empty( $this->key ) ) {
@@ -139,7 +140,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
                 }
 
                 if ( $layout instanceof Flexible\Layout ) {
-                    return $layout->export( $register );
+                    return $layout->export( $register, $parent );
                 }
                 else {
                     return $layout;
@@ -153,7 +154,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
             $this->layouts = array_values( $this->layouts );
         }
 
-        $obj = parent::export( $register );
+        $obj = parent::export( $register, $parent );
 
         // Remove post type exclude info
         unset( $obj['exclude_post_types'] );

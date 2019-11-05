@@ -28,7 +28,7 @@ class RuleGroup {
     public function add_rule( string $param, string $operator, string $value ) {
         // Check for valid values for the parameter.
         if ( ! in_array( $operator, [ '==', '!=' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\RuleGroup: add_role() does not accept argument "' . $operator . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\RuleGroup: add_rule() does not accept argument "' . $operator . '"' );
         }
 
         $this->rules[] = [ 'param' => $param, 'operator' => $operator, 'value' => $value ];

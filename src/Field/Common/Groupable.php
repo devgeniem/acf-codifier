@@ -14,12 +14,13 @@ trait Groupable {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key or a name is not defined.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( $register = false, $parent = null ) {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -43,6 +44,8 @@ trait Groupable {
 
         $obj = get_object_vars( $this );
 
+        $this->parent = $parent;
+
         // Remove unnecessary properties from the exported array.
         unset( $obj['filters'] );
 
@@ -61,11 +64,11 @@ trait Groupable {
                     $sub_fields = $field->get_fields();
                 }
 
-                $fields[ $field->get_key() ] = $field->export( $register );
+                $fields[ $field->get_key() ] = $field->export( $register, $parent );
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register, $parent );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
                 }
@@ -103,9 +106,10 @@ trait Groupable {
      *
      * @param array   $fields Fields to export.
      * @param boolean $register Whether the field group is to be registered.
+     * @param mixed   $parent Possible parent object.
      * @return array
      */
-    private function export_sub_fields( $fields, $register ) {
+    private function export_sub_fields( $fields, $register, $parent = null ) {
         $return = [];
 
         foreach ( $fields as $field ) {
@@ -116,11 +120,11 @@ trait Groupable {
                 $sub_fields = $field->get_fields();
             }
 
-            $return[] = $field->export( $register );
+            $return[] = $field->export( $register, $parent );
 
             // Add the possibly stored subfields
             if ( ! empty( $sub_fields ) ) {
-                $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register, $parent );
 
                 $return = array_merge( $return, $exported_sub_fields );
             }

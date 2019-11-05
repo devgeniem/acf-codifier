@@ -78,10 +78,11 @@ class MediumEditor extends \Geniem\ACF\Field {
      * ACF Codifier core function to export the field in ACF array format.
      *
      * @param boolean $register Whether we are exporting to register or not.
+     * @param mixed   $parent Possible parent object.
      * @return array
      */
-    public function export( $register = false ) {
-        $obj = parent::export( $register );
+    public function export( $register = false, $parent = null ) {
+        $obj = parent::export( $register, $parent );
 
         $obj['custom_buttons'] = array_map( function( $cb ) use ( $register ) {
             return $cb->export( $register );

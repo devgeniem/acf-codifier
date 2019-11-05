@@ -245,12 +245,13 @@ abstract class Field {
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key or a name is not defined.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( $register = false, $parent = null ) {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -260,8 +261,18 @@ abstract class Field {
         }
 
         if ( $register && ! empty( $this->filters ) ) {
-            array_walk( $this->filters, function( $filter ) {
+            array_walk( $this->filters, function( $filter ) use ( $parent ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
+
+                if ( substr( $filter['filter'], 0, 10 ) === 'redipress/' ) {
+                    if ( $this->get_is_user() ) {
+                        switch ( $filter['filter'] ) {
+                            case 'redipress/schema_fields':
+                                $filter['filter'] = 'redipress/user_schema_fields';
+                                break;
+                        }
+                    }
+                }
 
                 if ( $filter['no_suffix'] ) {
                     add_filter( $filter['filter'], $filter['function'], $filter['priority'], $filter['accepted_args'] );
@@ -272,11 +283,22 @@ abstract class Field {
             });
         }
 
+        if ( $register && $this->redipress_get_queryable_status() === true ) {
+            if ( $this->get_is_user() ) {
+                add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+            }
+            else {
+                add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+            }
+        }
+
         if ( $register && $this->hide_label ) {
             \Geniem\ACF\Codifier::hide_label( $this );
         }
 
         $obj = get_object_vars( $this );
+
+        $this->parent = $parent;
 
         // Remove unnecessary properties from the exported array.
         unset( $obj['fields_var'] );
@@ -284,7 +306,7 @@ abstract class Field {
 
         if ( \property_exists( $this, 'fields_var' ) && ! empty( $obj[ $this->fields_var ] ) ) {
             $obj[ $this->fields_var ] = array_map( function( $field ) use ( $register ) {
-                return $field->export( $register );
+                return $field->export( $register, $this );
             }, $obj[ $this->fields_var ] );
 
             $obj[ $this->fields_var ] = array_values( $obj[ $this->fields_var ] );
@@ -316,6 +338,55 @@ abstract class Field {
         }
 
         return $obj;
+    }
+
+    /**
+     * Get field group
+     *
+     * @param mixed $parent Parent object.
+     *
+     * @return \Geniem\ACF\Group
+     */
+    protected function get_field_group( $parent ) : ?\Geniem\ACF\Group {
+        if ( $parent instanceof \Geniem\ACF\Group ) {
+            return $parent;
+        }
+        else {
+            return $this->get_field_group( $parent->parent );
+        }
+    }
+
+    /**
+     * If the field is for user or not
+     *
+     * @return bool
+     */
+    protected function get_is_user() : bool {
+        if ( empty( $this->parent ) ) {
+            return false;
+        }
+
+        $field_group = $this->get_field_group( $this->parent );
+
+        $rules = $field_group->get_rule_groups();
+
+        if ( empty( $rules ) ) {
+            return false;
+        }
+
+        $flatten = array_merge( ...$rules );
+
+        return array_reduce( $flatten, function( $carry, $item ) : bool {
+            if ( $carry ) {
+                return true;
+            }
+
+            if ( substr( $item['param'], 0, 5 ) === 'user_' && $item['operator'] === '==' ) {
+                return true;
+            }
+
+            return false;
+        }, false );
     }
 
     /**
@@ -713,7 +784,7 @@ abstract class Field {
         $this->filters['redipress_add_queryable'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => function( $value, $post_id, $field ) use ( $method ) {
-                switch( $method ) {
+                switch ( $method ) {
                     case 'use_last':
                         add_filter(
                             'redipress/additional_field/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
@@ -765,6 +836,7 @@ abstract class Field {
         $this->filters['redipress_schema_fields'] = [
             'filter'        => 'redipress/schema_fields',
             'function'      => function( $fields ) {
+
                 $type = '\\Geniem\\RediPress\\Entity\\' . $this->redipress_field_type . 'Field';
 
                 $field_args = [
@@ -940,9 +1012,9 @@ abstract class Field {
      * @return self
      */
     public function render_field( callable $function, int $priority = 10 ) {
-            $this->codifier_unique_id = uniqid( '', true );
+        $this->codifier_unique_id = uniqid( '', true );
 
-            $this->filters['render_field_' . $this->codifier_unique_id ] = [
+        $this->filters[ 'render_field_' . $this->codifier_unique_id ] = [
             'filter'        => 'acf/render_field/type=' . $this->type,
             'function'      => function( $field ) use ( $function ) {
                 if (
@@ -964,33 +1036,42 @@ abstract class Field {
     }
 
     /**
-     * Enable indexing features for RediPress plugin.
+     * Set the RediSearch index field type for the field
      *
-     * @return void
+     * @param string $type
+     * @return self
      */
-    public static function redipress_enable_indexing() {
-        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
-        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
-    }
+    public function redipress_set_field_type( string $type ) {
+        $type = ucwords( $type );
 
-    /**
-     * Disable indexing features for RediPress plugin.
-     *
-     * @return void
-     */
-    public static function redipress_disable_indexing() {
-        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
-        remove_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 11, 3 );
+        $class = '\\Geniem\\RediPress\\Entity\\' . $type . 'Field';
+
+        if ( class_exists( $class ) ) {
+            $this->redipress_field_type = $type;
+        }
+        else {
+            trigger_error(
+                'ACF Codifier: RediPress field ' . $this->name . ' type ' . $type . ' is not supported. Using "' . $this->redipress_field_type . '"',
+                E_USER_NOTICE
+            );
+        }
+
+        return $this;
     }
 
     /**
      * A wrapper for ACF get_fields to get the values for indexing.
      *
-     * @param \WP_Post $post The WP Post object.
+     * @param \WP_Post|\WP_User $item The WP Post or WP_User object.
      * @return void
      */
-    public static function redipress_get_fields( \WP_Post $post ) {
-        get_fields( $post->ID, true );
+    public static function redipress_get_fields( $item ) {
+        if ( $item instanceof \WP_Post ) {
+            \get_fields( $item->ID, true );
+        }
+        elseif ( $item instanceof \WP_User ) {
+            \get_fields( 'user_' . $item->ID, true );
+        }
     }
 
     /**
@@ -1001,10 +1082,18 @@ abstract class Field {
      * @param array $field   The field object as an array.
      * @return mixed
      */
-    protected static function redipress_additional_field( $value, $post_id, $field ) {
-        if ( $field['redipress_add_queryable'] === true ) {
+    protected function redipress_additional_field( $value, $post_id, $field ) {
+        if ( $this->redipress_add_queryable === true ) {
+            if ( $this->get_is_user() ) {
+                $action  = 'additional_user_field';
+                $post_id = str_replace( 'user_', '', $post_id );
+            }
+            else {
+                $action = 'additional_field';
+            }
+
             add_filter(
-                'redipress/additional_field/' . $post_id . '/' . ( $field['redipress_add_queryable_field_name'] ?? $field['key'] ),
+                'redipress/' . $action . '/' . $post_id . '/' . ( $field['redipress_add_queryable_field_name'] ?? $field['key'] ),
                 function( $field ) use ( $value ) {
                     return $value;
                 }

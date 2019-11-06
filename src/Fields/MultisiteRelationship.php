@@ -35,9 +35,24 @@ add_action( 'acf/init', function() {
             );
 
             // extra
-            \add_action( 'wp_ajax_acf/fields/relationship/query', array( $this, 'ajax_query' ) );
-            \add_action( 'wp_ajax_nopriv_acf/fields/relationship/query', array( $this, 'ajax_query' ) );
+            \add_action( 'wp_ajax_acf/fields/multisite_relationship/query', array( $this, 'ajax_query' ) );
+            \add_action( 'wp_ajax_nopriv_acf/fields/multisite_relationship/query', array( $this, 'ajax_query' ) );
+        }
 
+        /**
+         * Enqueue admin scripts
+         *
+         * @return void
+         */
+        public function input_admin_enqueue_scripts() {
+            parent::input_admin_enqueue_scripts();
+
+            $src = \plugin_dir_url( realpath( __DIR__ . '/..' ) . '/plugin.php' );
+
+            // Strip the src
+            $src = \str_replace( '/src/', '/', $src );
+
+            \wp_enqueue_script( 'acf_multisite_relationship', $src . 'assets/scripts/multisite-relationship.js', [ 'acf-input' ] );
         }
 
         /**
@@ -66,7 +81,7 @@ add_action( 'acf/init', function() {
          * @return string
          */
         public function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
-            \switch_to_blog( $field['multisite'] );
+            \switch_to_blog( $field['blog_id'] );
 
             $title = parent::get_post_title( $post, $field, $post_id, $is_search );
 
@@ -83,7 +98,7 @@ add_action( 'acf/init', function() {
          * @return void
          */
         public function render_field( $field ) {
-            \switch_to_blog( $field['multisite'] );
+            \switch_to_blog( $field['blog_id'] );
 
             parent::render_field( $field );
 
@@ -99,7 +114,7 @@ add_action( 'acf/init', function() {
          * @return mixed
          */
         public function format_value( $value, $post_id, $field ) {
-            \switch_to_blog( $field['multisite'] );
+            \switch_to_blog( $field['blog_id'] );
 
             $value = parent::format_value( $value, $post_id, $field );
 

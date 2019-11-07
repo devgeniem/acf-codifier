@@ -62,7 +62,11 @@ add_action( 'acf/init', function() {
          * @return mixed
          */
         public function get_ajax_query( $options = array() ) {
-            \switch_to_blog( $options['blog_id'] );
+            $field = acf_get_field( $options['field_key'] );
+
+            $blog_id = $field['blog_id'];
+
+            \switch_to_blog( $blog_id );
 
             $response = parent::get_ajax_query( $options );
 

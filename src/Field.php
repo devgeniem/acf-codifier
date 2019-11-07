@@ -260,6 +260,8 @@ abstract class Field {
             throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
         }
 
+        $this->parent = $parent;
+
         if ( $register && ! empty( $this->filters ) ) {
             array_walk( $this->filters, function( $filter ) use ( $parent ) {
                 $filter = wp_parse_args( $filter, $this->default_filter_arguments );
@@ -298,11 +300,10 @@ abstract class Field {
 
         $obj = get_object_vars( $this );
 
-        $this->parent = $parent;
-
         // Remove unnecessary properties from the exported array.
         unset( $obj['fields_var'] );
         unset( $obj['filters'] );
+        unset( $obj['parent'] );
 
         if ( \property_exists( $this, 'fields_var' ) && ! empty( $obj[ $this->fields_var ] ) ) {
             $obj[ $this->fields_var ] = array_map( function( $field ) use ( $register ) {

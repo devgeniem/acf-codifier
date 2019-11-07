@@ -407,7 +407,7 @@ class Group {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_add_local_field' ) ) {
-                $exported = $field->export();
+                $exported = $field->export( false, $this->parent );
 
                 $exported['parent'] = $this->key;
 
@@ -448,7 +448,7 @@ class Group {
     public function export_fields() {
         // Loop through fields and return their export method.
         return array_map( function( $field ) {
-            return $field->export();
+            return $field->export( false, $this );
         }, $this->fields );
     }
 

@@ -102,7 +102,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
         }
 
         if ( ! empty( $this->layouts ) ) {
-            $this->layouts = array_map( function( $layout ) use ( $register, $post ) {
+            $this->layouts = array_map( function( $layout ) use ( $register, $post, $parent ) {
                 if ( $register && $layout instanceof Flexible\Layout ) {
                     $exclude_post_types = $layout->get_excluded_post_types();
                     $exclude_templates  = $layout->get_excluded_templates();

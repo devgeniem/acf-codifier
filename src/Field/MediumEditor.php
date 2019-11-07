@@ -84,8 +84,8 @@ class MediumEditor extends \Geniem\ACF\Field {
     public function export( $register = false, $parent = null ) {
         $obj = parent::export( $register, $parent );
 
-        $obj['custom_buttons'] = array_map( function( $cb ) use ( $register ) {
-            return $cb->export( $register );
+        $obj['custom_buttons'] = array_map( function( $cb ) use ( $register, $parent ) {
+            return $cb->export( $register, $parent );
         }, $obj['custom_buttons'] );
 
         return $obj;

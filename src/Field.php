@@ -286,12 +286,7 @@ abstract class Field {
         }
 
         if ( $register && $this->redipress_get_queryable_status() === true ) {
-            if ( $this->get_is_user() ) {
-                add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
-            }
-            else {
-                add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
-            }
+            add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
         }
 
         if ( $register && $this->hide_label ) {

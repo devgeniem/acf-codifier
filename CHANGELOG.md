@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.22.0] - 2019-11-08
+
+### Added
+- Support for RediPress user indexing and custom fields there.
+- Multisite Relationship field that allows the user to pick posts from other sites of a multisite.
+
 ## [1.21.0] - 2019-10-25
 
 ### Added

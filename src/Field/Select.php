@@ -59,6 +59,13 @@ class Select extends \Geniem\ACF\Field {
     protected $placeholder;
 
     /**
+     * Format when returned via get_field
+     *
+     * @var string
+     */
+    protected $return_format = 'value';
+
+    /**
      * Is field disabled
      *
      * @var boolean
@@ -327,5 +334,31 @@ class Select extends \Geniem\ACF\Field {
      */
     public function get_disabled() {
         return $this->disabled;
+    }
+
+    /**
+     * Set return format
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
+     * @return self
+     */
+    public function set_return_format( string $return_format = 'value' ) {
+        if ( ! in_array( $return_format, [ 'value', 'label', 'array' ], true ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Select: set_return_format() does not accept argument "' . $return_format . '"' );
+        }
+
+        $this->return_format = $return_format;
+
+        return $this;
+    }
+
+    /**
+     * Get return format
+     *
+     * @return string
+     */
+    public function get_return_format() {
+        return $this->return_format;
     }
 }

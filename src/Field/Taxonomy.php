@@ -207,7 +207,7 @@ class Taxonomy extends \Geniem\ACF\Field {
      */
     public function set_return_format( string $return_format = 'object' ) {
         if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Taxonomy: set_return_format() does not accept argument "' . $return_format . '"' );
         }
 
         $this->return_format = $return_format;

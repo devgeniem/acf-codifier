@@ -11,6 +11,13 @@ namespace Geniem\ACF\Field;
 class GravityForms extends \Geniem\ACF\Field\Select {
 
     /**
+     * Field type
+     *
+     * @var string
+     */
+    protected $type = 'gravity_forms';
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.

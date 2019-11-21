@@ -32,6 +32,7 @@
 - [\Geniem\ACF\Field\GravityForms](#class-geniemacffieldgravityforms)
 - [\Geniem\ACF\Field\TrueFalse](#class-geniemacffieldtruefalse)
 - [\Geniem\ACF\Field\Repeater](#class-geniemacffieldrepeater)
+- [\Geniem\ACF\Field\Multitaxonomy](#class-geniemacffieldmultitaxonomy)
 - [\Geniem\ACF\Field\FlexibleContent](#class-geniemacffieldflexiblecontent)
 - [\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)
 - [\Geniem\ACF\Field\MultisiteRelationship](#class-geniemacffieldmultisiterelationship)
@@ -743,6 +744,23 @@
 | public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
 
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\Multitaxonomy
+
+> Class Taxonomy
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>allow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Override the parent method to disallow adding terms.</em> |
+| public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Override the parent method to disallow adding terms.</em> |
+| public | <strong>get_taxonomies()</strong> : <em>array</em><br /><em>Get taxonomies.</em> |
+| public | <strong>get_taxonomy()</strong> : <em>string/null</em><br /><em>You should not use this method! Overridden method of the parent class. Use get_taxonomies() instead.</em> |
+| public | <strong>set_taxonomies(</strong><em>array</em> <strong>$taxonomy=array()</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set taxonomies.</em> |
+| public | <strong>set_taxonomy(</strong><em>\string</em> <strong>$taxonomy=`'category'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>You should not use this method! Overridden method of the parent class. Use set_taxonomies() instead.</em> |
+
+*This class extends [\Geniem\ACF\Field\Taxonomy](#class-geniemacffieldtaxonomy)*
 
 <hr />
 

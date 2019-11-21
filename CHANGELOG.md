@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - A possibility to create Gutenberg blocks with ACF's register block feature using Codifier's object-oriented model.
 
+## [1.24.0] - 2019-11-21
+
+### Added
+
+- A new custom field: Multitaxonomy. This field enables selecting terms from multiple taxonomies.
+
 ## [1.23.0] - 2019-11-19
 
 ### Added

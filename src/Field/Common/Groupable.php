@@ -113,7 +113,7 @@ trait Groupable {
      * @param mixed   $parent Possible parent object.
      * @return array
      */
-    private function export_sub_fields( array $fields, bool $register, $parent = null ) ) : array {
+    private function export_sub_fields( array $fields, bool $register, $parent = null ) : array {
         $return = [];
 
         foreach ( $fields as $field ) {

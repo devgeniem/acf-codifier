@@ -69,11 +69,12 @@ class Relationship extends \Geniem\ACF\Field {
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @return array
      */
-    public function export( bool $register = false ) : ?array {
-        $obj = parent::export( $register );
+    public function export( bool $register = false, $parent = null ) : ?array {
+        $obj = parent::export( $register, $parent );
 
         $obj['filters'] = $obj['field_filters'];
         unset( $obj['field_filters'] );

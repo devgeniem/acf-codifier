@@ -1,9 +1,9 @@
 <?php
 /**
  * ACF Codifier Medium Editor field
- * 
+ *
  * A field object to use with Hube2's Medium Editor Field
- * 
+ *
  * Original version: https://github.com/Hube2/acf-medium-editor
  * Geniem fork with Composer support: https://github.com/devgeniem/acf-medium-editor
  */
@@ -58,7 +58,7 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Constructor to throw an error if the Medium Editor plugin is not present
-     * 
+     *
      * @param string      $label          Label for the field.
      * @param string|null $key            Key for the field.
      * @param string|null $name           Name for the field.
@@ -78,13 +78,14 @@ class MediumEditor extends \Geniem\ACF\Field {
      * ACF Codifier core function to export the field in ACF array format.
      *
      * @param boolean $register Whether we are exporting to register or not.
+     * @param mixed   $parent Possible parent object.
      * @return array
      */
-    public function export( bool $register = false ) : ?array {
-        $obj = parent::export( $register );
+    public function export( bool $register = false, $parent = null ) : ?array {
+        $obj = parent::export( $register, $parent );
 
-        $obj['custom_buttons'] = array_map( function( $cb ) use ( $register ) {
-            return $cb->export( $register );
+        $obj['custom_buttons'] = array_map( function( $cb ) use ( $register, $parent ) {
+            return $cb->export( $register, $parent );
         }, $obj['custom_buttons'] );
 
         return $obj;
@@ -113,9 +114,9 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Set standard text formatting buttons to show
-     * 
+     *
      * Takes an array of buttons and overrides possible previous values with the new array.
-     * 
+     *
      *
      * Possible values:
      * - bold
@@ -161,7 +162,7 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Add a button into the standard text formatting buttons
-     * 
+     *
      * Adds one button in the array without affecting the others.
      *
      * Possible values:
@@ -205,7 +206,7 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Removes a standard button from the text formatting buttons
-     * 
+     *
      * @see    MediumEditor::add_button()   For the possible buttons to be removed.
      * @param  string $button Button.
      * @return self
@@ -231,7 +232,7 @@ class MediumEditor extends \Geniem\ACF\Field {
 
     /**
      * Add a button to the custom buttons.
-     * 
+     *
      * The custom button must be defined as a \Geniem\ACF\Field\MediumEditor\CustomButton object.
      *
      * @throws \Geniem\ACF\Exception Throws error if $custom_button is not valid.

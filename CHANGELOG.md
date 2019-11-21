@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - A possibility to create Gutenberg blocks with ACF's register block feature using Codifier's object-oriented model.
 
+## [1.23.0] - 2019-11-19
+
+### Added
+- Support for Select field's return format that was introduced in ACF version 5.4.0.
+
+### Fixed
+- A bug in Flexible Content's export function.
+
+## [1.22.0] - 2019-11-08
+
+### Added
+- Support for RediPress user indexing and custom fields there.
+- Multisite Relationship field that allows the user to pick posts from other sites of a multisite.
+
+## [1.21.0] - 2019-10-25
+
+### Added
+- Added the ability to use Allow null setting with the Radio field.
+
 ## [1.20.0] - 2019-10-10
 
 ### Changed

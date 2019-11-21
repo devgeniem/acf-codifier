@@ -27,9 +27,11 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * Export empty array because this is not a real field.
      *
      * @param boolean $register Whether we are registering the field or not.
+     * @param mixed   $parent   Possible parent object.
+     *
      * @return array
      */
-    public function export( bool $register = false ) : ?array {
+    public function export( bool $register = false, $parent = null ) : ?array {
         return null;
     }
 

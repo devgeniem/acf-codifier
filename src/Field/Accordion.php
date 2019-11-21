@@ -62,11 +62,12 @@ class Accordion extends GroupableField implements PseudoGroupableField {
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @return array
      */
-    public function export( bool $register = false ) : ?array {
-        $obj = parent::export( $register );
+    public function export( bool $register = false, $parent = null ) : ?array {
+        $obj = parent::export( $register, $parent );
 
         // Make the key unique so that it can't collide with others. This is only used in
         // the conditional logic feature so it can change on every page load.

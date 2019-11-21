@@ -49,12 +49,13 @@ trait File {
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @return array
      */
-    public function export( bool $register = false ) : ?array {
+    public function export( bool $register = false, $parent = null ) : ?array {
         // Call the original export method
-        $obj = parent::export( $register );
+        $obj = parent::export( $register, $parent );
 
         // Convert the mime type array to a comma-separated list
         $obj['mime_types'] = implode( ',', $obj['mime_types'] );

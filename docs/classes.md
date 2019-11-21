@@ -34,6 +34,7 @@
 - [\Geniem\ACF\Field\Repeater](#class-geniemacffieldrepeater)
 - [\Geniem\ACF\Field\FlexibleContent](#class-geniemacffieldflexiblecontent)
 - [\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)
+- [\Geniem\ACF\Field\MultisiteRelationship](#class-geniemacffieldmultisiterelationship)
 - [\Geniem\ACF\Field\GoogleMap](#class-geniemacffieldgooglemap)
 - [\Geniem\ACF\Field\URL](#class-geniemacffieldurl)
 - [\Geniem\ACF\Field\Password](#class-geniemacffieldpassword)
@@ -69,7 +70,7 @@
 | public | <strong>add_rule_group(</strong><em>[\Geniem\ACF\RuleGroup](#class-geniemacfrulegroup)</em> <strong>$group</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a location rule group for the field group.</em> |
 | public | <strong>clone(</strong><em>\string</em> <strong>$key</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>\Geniem\ACF\Geniem\ACF\Group</em><br /><em>Clone method Forces the developer to give new key to cloned field group.</em> |
 | public | <strong>deactivate()</strong> : <em>\Geniem\ACF\self</em><br /><em>Change the field group's status as not active.</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array Acf fields</em><br /><em>Export current field and sub fields to acf compatible format</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array Acf fields</em><br /><em>Export current field and sub fields to acf compatible format</em> |
 | public | <strong>export_fields()</strong> : <em>array</em><br /><em>Export fields in the ACF format.</em> |
 | public | <strong>fields_var()</strong> : <em>string</em><br /><em>Returns current fields_var</em> |
 | public | <strong>get_field(</strong><em>string</em> <strong>$name</strong>)</strong> : <em>array</em><br /><em>Get a field</em> |
@@ -135,7 +136,7 @@
 | public | <strong>add_conditional_logic(</strong><em>[\Geniem\ACF\ConditionalLogicGroup](#class-geniemacfconditionallogicgroup)</em> <strong>$group</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a conditional logic for the field.</em> |
 | public | <strong>add_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a single wrapper class to be added for the field.</em> |
 | public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>\Geniem\ACF\Geniem\ACF\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>format_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=11</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value formatting function for the field</em> |
 | public | <strong>get_conditional_logic()</strong> : <em>[\Geniem\ACF\ConditionalLogicGroup](#class-geniemacfconditionallogicgroup)</em><br /><em>Get the conditional logic group that have been added to the group.</em> |
 | public | <strong>get_default_value()</strong> : <em>mixed</em><br /><em>Get the default value of the field.</em> |
@@ -154,14 +155,13 @@
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
 | public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
-| public static | <strong>redipress_disable_indexing()</strong> : <em>void</em><br /><em>Disable indexing features for RediPress plugin.</em> |
-| public static | <strong>redipress_enable_indexing()</strong> : <em>void</em><br /><em>Enable indexing features for RediPress plugin.</em> |
 | public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
-| public static | <strong>redipress_get_fields(</strong><em>\WP_Post</em> <strong>$post</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
+| public static | <strong>redipress_get_fields(</strong><em>\WP_Post/\WP_User</em> <strong>$item</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
 | public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
 | public | <strong>redipress_get_search_status()</strong> : <em>boolean</em><br /><em>Get RediPress search index status of this field.</em> |
 | public | <strong>redipress_include_search(</strong><em>\callable</em> <strong>$callback=null</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Include this field's value in the RediPress search index.</em> |
 | public | <strong>redipress_remove_queryable()</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove this field from being queryable in RediSearch index.</em> |
+| public | <strong>redipress_set_field_type(</strong><em>\string</em> <strong>$type</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the RediSearch index field type for the field</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
 | public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
 | public | <strong>set_default_value(</strong><em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the default value for the field.</em> |
@@ -180,7 +180,9 @@
 | public | <strong>validate_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value validation function for the field</em> |
 | protected | <strong>__clone()</strong> : <em>void</em><br /><em>Prevent raw cloning.</em> |
 | protected | <strong>check_for_unique_key()</strong> : <em>void</em><br /><em>Checks if the field's key is unique within the project scope. Throws a notice if not.</em> |
-| protected static | <strong>redipress_additional_field(</strong><em>mixed</em> <strong>$value</strong>, <em>int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>A helper function to use to enable indexing the post outside save action.</em> |
+| protected | <strong>get_field_group(</strong><em>mixed</em> <strong>$parent</strong>)</strong> : <em>[\Geniem\ACF\Group](#class-geniemacfgroup)</em><br /><em>Get field group</em> |
+| protected | <strong>get_is_user()</strong> : <em>bool</em><br /><em>If the field is for user or not</em> |
+| protected | <strong>redipress_additional_field(</strong><em>mixed</em> <strong>$value</strong>, <em>int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>A helper function to use to enable indexing the post outside save action.</em> |
 | protected static | <strong>redipress_include_search_filter(</strong><em>mixed</em> <strong>$value</strong>, <em>integer</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>mixed</em><br /><em>Include the field's value in RediPress search index.</em> |
 
 <hr />
@@ -237,7 +239,7 @@
 |:-----------|:---------|
 | public | <strong>add_clone(</strong><em>mixed</em> <strong>$clone</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a field or a group to be cloned.</em> |
 | public | <strong>add_conditional_logic(</strong><em>[\Geniem\ACF\ConditionalLogicGroup](#class-geniemacfconditionallogicgroup)</em> <strong>$group</strong>)</strong> : <em>void</em><br /><em>Clone fields do not support conditional logic</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export the fields to be cloned in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export the fields to be cloned in ACF's native format.</em> |
 | public | <strong>get_clones()</strong> : <em>array</em><br /><em>Get an array of cloned fields.</em> |
 | public | <strong>get_display_mode()</strong> : <em>string</em><br /><em>Get the display mode.</em> |
 | public | <strong>get_label_prefix()</strong> : <em>boolean</em><br /><em>Get the label prefixing status.</em> |
@@ -328,10 +330,12 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>add_choice(</strong><em>\string</em> <strong>$choice</strong>, <em>mixed</em> <strong>$value</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a choice.</em> |
+| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
 | public | <strong>allow_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow other choice</em> |
 | public | <strong>allow_save_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow saving custom values to default values</em> |
 | public | <strong>disallow_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow other choice</em> |
 | public | <strong>disallow_save_other_choice()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow saving custom values to default values</em> |
+| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_other_choice()</strong> : <em>integer</em><br /><em>Get other choice values status</em> |
 | public | <strong>get_save_other_choice()</strong> : <em>integer</em><br /><em>Get save other choice status</em> |
@@ -350,7 +354,7 @@
 |:-----------|:---------|
 | public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
 | public | <strong>get_library()</strong> : <em>string Library</em><br /><em>Get library</em> |
 | public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
@@ -503,7 +507,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_endpoint()</strong> : <em>integer</em><br /><em>Get endpoint status</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
 | public | <strong>get_multi_expand()</strong> : <em>integer</em><br /><em>Get multi expand status</em> |
@@ -543,7 +547,7 @@
 |:-----------|:---------|
 | public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
 | public | <strong>get_library()</strong> : <em>string Library</em><br /><em>Get library</em> |
 | public | <strong>get_max_size()</strong> : <em>string Maximum size</em><br /><em>Get maximum size</em> |
@@ -579,7 +583,7 @@
 | public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
 | public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_added_post_types()</strong> : <em>array</em><br /><em>Get added post types</em> |
 | public | <strong>get_ajax()</strong> : <em>integer</em><br /><em>Get ajax loading state</em> |
 | public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
@@ -609,7 +613,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>clone(</strong><em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Geniem\ACF\Field</em><br /><em>Clone method No key forcing or prefixing because this is just a pseudo group. Parameters are there just for compatibility.</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export empty array because this is not a real field.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export empty array because this is not a real field.</em> |
 
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
@@ -670,7 +674,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_endpoint()</strong> : <em>integer</em><br /><em>Get endpoint status</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
 | public | <strong>get_placement()</strong> : <em>string</em><br /><em>Get placement</em> |
@@ -691,16 +695,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>allow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow multiple values</em> |
-| public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
-| public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
-| public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
-| public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
-| public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
-| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
-| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>A deprecated function to cover previous functionality.</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>A deprecated function to cover previous functionality.</em> |
+| protected | <strong>populate_options()</strong> : <em>void</em><br /><em>Populate the Gravity Forms forms</em> |
 
-*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+*This class extends [\Geniem\ACF\Field\Select](#class-geniemacffieldselect)*
 
 <hr />
 
@@ -754,7 +754,7 @@
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>, <em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
 | public | <strong>add_layout(</strong><em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a layout to the layouts</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format. This also exports layout fields</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format. This also exports layout fields</em> |
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
 | public | <strong>get_layout(</strong><em>\string</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)</em><br /><em>Get layout by name</em> |
 | public | <strong>get_layouts()</strong> : <em>array</em><br /><em>Get all layouts</em> |
@@ -785,7 +785,7 @@
 | public | <strong>add_option(</strong><em>string</em> <strong>$option</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add an option</em> |
 | public | <strong>delay_loading()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Delay the initialization of Medium until the field is clicked</em> |
 | public | <strong>dont_delay_loading()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Do not delay the initialization of Medium until the field is clicked</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>ACF Codifier core function to export the field in ACF array format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>ACF Codifier core function to export the field in ACF array format.</em> |
 | public | <strong>get_buttons()</strong> : <em>array</em><br /><em>Returns the defined text formatting buttons as an array</em> |
 | public | <strong>get_custom_button(</strong><em>\string</em> <strong>$custom_button</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor\CustomButton](#class-geniemacffieldmediumeditorcustombutton)</em><br /><em>Get custom button by name</em> |
 | public | <strong>get_custom_buttons()</strong> : <em>array</em><br /><em>Get all custom buttons</em> |
@@ -800,6 +800,19 @@
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\MultisiteRelationship
+
+> Class MultisiteRelationship
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>get_blog_id()</strong> : <em>integer Blog ID.</em><br /><em>Get blog id</em> |
+| public | <strong>set_blog_id(</strong><em>integer/\int</em> <strong>$blog_id</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set blog id</em> |
+
+*This class extends [\Geniem\ACF\Field\Relationship](#class-geniemacffieldrelationship)*
 
 <hr />
 
@@ -874,7 +887,7 @@
 | public | <strong>add_filter(</strong><em>\string</em> <strong>$filter</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a filter</em> |
 | public | <strong>add_post_type(</strong><em>\string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a post type to allowed post types</em> |
 | public | <strong>add_taxonomy(</strong><em>string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add an allowed taxonomy</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_elements()</strong> : <em>array</em><br /><em>Get elements to show</em> |
 | public | <strong>get_filters()</strong> : <em>array</em><br /><em>Get usable filters</em> |
 | public | <strong>get_max()</strong> : <em>integer Maximum value.</em><br /><em>Get maximum value</em> |
@@ -912,7 +925,7 @@
 | public | <strong>add_field_before(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>, <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\[mixed]</em> <strong>$target</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add a field to the group before a target field.</em> |
 | public | <strong>add_fields(</strong><em>array</em> <strong>$fields</strong>, <em>string</em> <strong>$order=`'last'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Add an array of fields to group</em> |
 | public | <strong>clone(</strong><em>string</em> <strong>$key</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Field</em><br /><em>Clone method Forces the developer to give new key to cloned field.</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export current field and sub fields to acf compatible format</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export current field and sub fields to acf compatible format</em> |
 | public | <strong>fields_var()</strong> : <em>string</em><br /><em>Returns current fields_var</em> |
 | public | <strong>get_field(</strong><em>string</em> <strong>$name</strong>)</strong> : <em>array</em><br /><em>Get a field</em> |
 | public | <strong>get_fields()</strong> : <em>array</em><br /><em>Get fields</em> |
@@ -967,11 +980,13 @@
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
 | public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder text</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>no_ajax()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable loading values via ajax</em> |
 | public | <strong>no_ui()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable custom ui</em> |
 | public | <strong>remove_choice(</strong><em>mixed</em> <strong>$choice</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a choice.</em> |
 | public | <strong>set_choices(</strong><em>mixed</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
 | public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'value'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 | public | <strong>ui()</strong> : <em>integer</em><br /><em>Get custom ui state</em> |
 | public | <strong>use_ajax()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable loading values via ajax</em> |
 | public | <strong>use_ui()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable custom ui</em> |
@@ -995,7 +1010,7 @@
 | public | <strong>disallow_save_custom()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow saving custom values to default values</em> |
 | public | <strong>disallow_toggle()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow toggle all checkbox</em> |
 | public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set all checkboxes to be enabled</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
 | public | <strong>get_custom()</strong> : <em>integer</em><br /><em>Get allow custom values status</em> |
 | public | <strong>get_disabled()</strong> : <em>string/array</em><br /><em>Get the disabled checkboxes</em> |
@@ -1112,7 +1127,7 @@
 |:-----------|:---------|
 | public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
 | public | <strong>get_library()</strong> : <em>string Library</em><br /><em>Get library</em> |
 | public | <strong>get_max_height()</strong> : <em>integer Maximum height</em><br /><em>Get maximum height</em> |
@@ -1159,7 +1174,7 @@
 | public | <strong>exclude_field(</strong><em>string/object</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude a Flexible Content field.</em> |
 | public | <strong>exclude_post_type(</strong><em>\string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude the post type.</em> |
 | public | <strong>exclude_template(</strong><em>\string</em> <strong>$template</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Exclude a template.</em> |
-| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>)</strong> : <em>array</em><br /><em>Export current field and sub fields to acf compatible format</em> |
+| public | <strong>export(</strong><em>bool/boolean</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export current field and sub fields to acf compatible format</em> |
 | public | <strong>fields_var()</strong> : <em>string</em><br /><em>Returns current fields_var</em> |
 | public | <strong>get_excluded_fields()</strong> : <em>array Excluded fields.</em><br /><em>Get the list of excluded fields.</em> |
 | public | <strong>get_excluded_post_types()</strong> : <em>array Excluded post types.</em><br /><em>Get the list of excluded post types.</em> |

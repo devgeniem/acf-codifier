@@ -317,6 +317,16 @@ $php->run( function() {
 });
 ```
 
+### Multisite Relationship
+
+The Multisite Relationship is an ACF field type that can only be used with the Codifier. It is a clone of the original Relationship field but with the ability to define the blog from which the posts can be picked.
+
+The usage is otherwise exactly the same as with the Relationship field, but there is a new `set_blog_id()` method.
+
+```php
+$ms_relationship = new Field\MultisiteRelationship( __('My Multisite Relationship field' ) );
+$ms_relationship->set_blog_id( 2 );
+```
 
 ### Support for external field types
 

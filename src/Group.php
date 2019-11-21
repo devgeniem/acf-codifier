@@ -408,7 +408,7 @@ class Group implements GroupableInterface {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_add_local_field' ) ) {
-                $exported = $field->export();
+                $exported = $field->export( false, $this->parent );
 
                 $exported['parent'] = $this->key;
 
@@ -449,7 +449,7 @@ class Group implements GroupableInterface {
     public function export_fields() {
         // Loop through fields and return their export method.
         return array_map( function( $field ) {
-            return $field->export();
+            return $field->export( false, $this );
         }, $this->fields );
     }
 
@@ -505,12 +505,13 @@ class Group implements GroupableInterface {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key is not defined.
      *
      * @return array Acf fields
      */
-    public function export( bool $register = false ) : ?array {
+    public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }
@@ -530,11 +531,11 @@ class Group implements GroupableInterface {
                     $sub_fields = $field->get_fields();
                 }
 
-                $fields[] = $field->export( $register );
+                $fields[] = $field->export( $register, $this );
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register, $this );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
 

@@ -3,7 +3,7 @@
 Plugin Name: ACF Codifier
 Plugin URI: https://github.com/devgeniem/acf-codifier
 Description: A helper class to make defining ACF field groups and fields easier in the code.
-Version: 1.20.0
+Version: 1.23.0
 Author: Miika Arponen / Geniem Oy
 Author URI: https://geniem.fi
 License: GPL-3.0
@@ -21,6 +21,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 if ( file_exists( __DIR__ . '/src/Fields/PHP.php' ) ) {
     add_action( 'acf/include_field_types' , function() {
         require_once __DIR__ . '/src/Fields/PHP.php';
+        require_once __DIR__ . '/src/Fields/MultisiteRelationship.php';
     });
 }
 

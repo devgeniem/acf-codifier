@@ -115,6 +115,13 @@ abstract class Field {
     protected $redipress_add_queryable_field_weight;
 
     /**
+     * A possible filter method for the value before inserting to RediSearch.
+     *
+     * @var callable
+     */
+    protected $redipress_queryable_filter;
+
+    /**
      * What type the RediPress index field should be. Defaults to 'Text'.
      *
      * @var string
@@ -699,6 +706,18 @@ abstract class Field {
     }
 
     /**
+     * Add a filter method for the value before inserting it into RediSearch.
+     *
+     * @param callable $filter The filter method.
+     * @return self
+     */
+    public function redipress_queryable_filter( callable $filter ) {
+        $this->redipress_queryable_filter = $filter;
+
+        return $this;
+    }
+
+    /**
      * Include this field's value in the RediPress search index.
      *
      * @param callable $callback Possible callback to run the value through before inserting into index.
@@ -795,6 +814,10 @@ abstract class Field {
                         add_filter(
                             'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
                             function( $original ) use ( $value ) {
+                                if ( ! empty( $this->redipress_queryable_filter ) ) {
+                                    $value = ( $this->redipress_queryable_filter )( $value );
+                                }
+
                                 return $value;
                             },
                             10,
@@ -805,6 +828,10 @@ abstract class Field {
                         add_filter(
                             'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
                             function( $original = '' ) use ( $value ) {
+                                if ( ! empty( $this->redipress_queryable_filter ) ) {
+                                    $value = ( $this->redipress_queryable_filter )( $value );
+                                }
+
                                 return $original . $value;
                             },
                             10,
@@ -815,6 +842,10 @@ abstract class Field {
                         add_filter(
                             'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
                             function( $original = '' ) use ( $value ) {
+                                if ( ! empty( $this->redipress_queryable_filter ) ) {
+                                    $value = ( $this->redipress_queryable_filter )( $value );
+                                }
+
                                 return $original . ' ' . $value;
                             },
                             10,
@@ -825,6 +856,10 @@ abstract class Field {
                         add_filter(
                             'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
                             function( $original = 0 ) use ( $value ) {
+                                if ( ! empty( $this->redipress_queryable_filter ) ) {
+                                    $value = ( $this->redipress_queryable_filter )( $value );
+                                }
+
                                 return $original + $value;
                             },
                             10,
@@ -835,6 +870,10 @@ abstract class Field {
                         add_filter(
                             'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['key'] ),
                             function( $original = 0 ) use ( $method, $value ) {
+                                if ( ! empty( $this->redipress_queryable_filter ) ) {
+                                    $value = ( $this->redipress_queryable_filter )( $value );
+                                }
+
                                 return apply_filters( 'codifier/redipress/queryable_method/' . $method, $value, $original );
                             },
                             10,

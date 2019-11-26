@@ -52,6 +52,20 @@ class TrueFalse extends \Geniem\ACF\Field {
     protected $redipress_field_type = 'Numeric';
 
     /**
+     * Constructor.
+     *
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
+     * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
+     */
+    public function __construct( string $label, string $key = null, string $name = null ) {
+        parent::__construct( $label, $key, $name );
+
+        $this->redipress_queryable_filter = 'intval';
+    }
+
+    /**
      * Set message
      *
      * @param string $message New message.

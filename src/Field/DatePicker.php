@@ -56,9 +56,7 @@ class DatePicker extends \Geniem\ACF\Field {
     public function __construct( string $label, string $key = null, string $name = null ) {
         parent::__construct( $label, $key, $name );
 
-        $this->redipress_queryable_filter = function( $value ) {
-            return \DateTime::createFromFormat( '!' . $this->return_format, $value )->getTimestamp();
-        };
+        $this->redipress_queryable_filter = 'strtotime';
     }
 
     /**

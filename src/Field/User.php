@@ -177,6 +177,23 @@ class User extends \Geniem\ACF\Field {
     }
 
     /**
+     * Register a user query filtering function for the field
+     *
+     * @param callable $function A function to register.
+     * @return self
+     */
+    public function user_query( callable $function ) {
+        $this->filters['user_query'] = [
+            'filter'        => 'acf/fields/user/query/key=',
+            'function'      => $function,
+            'priority'      => 10,
+            'accepted_args' => 3,
+        ];
+
+        return $this;
+    }
+
+    /**
      * Set return format
      *
      * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.

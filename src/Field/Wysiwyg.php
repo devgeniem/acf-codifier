@@ -38,6 +38,13 @@ class Wysiwyg extends \Geniem\ACF\Field {
     protected $media_upload = 1;
 
     /**
+     * Delay initialization of the wysiwyg editor
+     *
+     * @var integer
+     */
+    protected $delay = 0;
+
+    /**
      * Set tabs to show
      *
      * @throws \Geniem\ACF\Exception Throws error if $tabs is not valid.
@@ -113,5 +120,36 @@ class Wysiwyg extends \Geniem\ACF\Field {
      */
     public function get_media_upload() {
         return $this->media_upload;
+    }
+
+    /**
+     * Enable delay of the wysiwyg editor initialization
+     *
+     * @return self
+     */
+    public function enable_delay() {
+        $this->delay = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disable delay of the wysiwyg editor initialization
+     *
+     * @return self
+     */
+    public function disable_delay() {
+        $this->delay = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get wysiwyg initialization delay state
+     *
+     * @return integer
+     */
+    public function get_delay() {
+        return $this->delay;
     }
 }

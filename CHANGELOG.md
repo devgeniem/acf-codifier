@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - A possibility to create Gutenberg blocks with ACF's register block feature using Codifier's object-oriented model.
 
+## [1.25.0] - 2019-12-11
+
+### Added
+- User query filter.
+- Wysiwyg field delay attribute.
+
+### Fixed
+- A bug in RediPress queryable field functionality.
+
 ## [1.24.0] - 2019-11-21
 
 ### Added

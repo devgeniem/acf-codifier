@@ -820,7 +820,7 @@ abstract class Field {
 
                                 return $value;
                             },
-                            10,
+                            11,
                             1
                         );
                         break;
@@ -834,7 +834,7 @@ abstract class Field {
 
                                 return $original . $value;
                             },
-                            10,
+                            11,
                             1
                         );
                         break;
@@ -848,7 +848,7 @@ abstract class Field {
 
                                 return $original . ' ' . $value;
                             },
-                            10,
+                            11,
                             1
                         );
                         break;
@@ -862,7 +862,7 @@ abstract class Field {
 
                                 return $original + $value;
                             },
-                            10,
+                            11,
                             1
                         );
                         break;
@@ -876,7 +876,7 @@ abstract class Field {
 
                                 return apply_filters( 'codifier/redipress/queryable_method/' . $method, $value, $original );
                             },
-                            10,
+                            11,
                             1
                         );
                         break;

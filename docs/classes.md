@@ -161,6 +161,7 @@
 | public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
 | public | <strong>redipress_get_search_status()</strong> : <em>boolean</em><br /><em>Get RediPress search index status of this field.</em> |
 | public | <strong>redipress_include_search(</strong><em>\callable</em> <strong>$callback=null</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Include this field's value in the RediPress search index.</em> |
+| public | <strong>redipress_queryable_filter(</strong><em>\callable</em> <strong>$filter</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a filter method for the value before inserting it into RediSearch.</em> |
 | public | <strong>redipress_remove_queryable()</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove this field from being queryable in RediSearch index.</em> |
 | public | <strong>redipress_set_field_type(</strong><em>\string</em> <strong>$type</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the RediSearch index field type for the field</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
@@ -265,10 +266,10 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>allow_media_upload()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow media upload</em> |
-| public | <strong>disable_media_upload()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable media upload</em> |
 | public | <strong>disable_delay()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable delay of the wysiwyg editor initialization</em> |
+| public | <strong>disable_media_upload()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable media upload</em> |
 | public | <strong>enable_delay()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable delay of the wysiwyg editor initialization</em> |
-| public | <strong>get_delay()</strong> : <em>boolean</em><br /><em>Get wysiwyg initialization delay state</em> |
+| public | <strong>get_delay()</strong> : <em>integer</em><br /><em>Get wysiwyg initialization delay state</em> |
 | public | <strong>get_media_upload()</strong> : <em>boolean</em><br /><em>Get media upload state</em> |
 | public | <strong>get_tabs()</strong> : <em>string</em><br /><em>Get allowed tabs</em> |
 | public | <strong>get_toolbar()</strong> : <em>string</em><br /><em>Get what toolbars to show</em> |
@@ -316,6 +317,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
 | public | <strong>get_display_format()</strong> : <em>string</em><br /><em>Get display_format variable</em> |
 | public | <strong>get_first_day()</strong> : <em>integer</em><br /><em>Get first_day variable</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
@@ -715,6 +717,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
 | public | <strong>get_message()</strong> : <em>string</em><br /><em>Get message</em> |
 | public | <strong>get_ui_off_text()</strong> : <em>string</em><br /><em>Get button off text</em> |
 | public | <strong>get_ui_on_text()</strong> : <em>string</em><br /><em>Get button on text</em> |
@@ -1239,3 +1242,4 @@
 | public | <strong>set_label(</strong><em>\string</em> <strong>$label</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set button label</em> |
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set name</em> |
 | public | <strong>set_tag(</strong><em>\string</em> <strong>$tag</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set the HTML tag to be used.</em> |
+

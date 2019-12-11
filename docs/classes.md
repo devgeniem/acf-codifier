@@ -266,6 +266,9 @@
 |:-----------|:---------|
 | public | <strong>allow_media_upload()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow media upload</em> |
 | public | <strong>disable_media_upload()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable media upload</em> |
+| public | <strong>disable_delay()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable delay of the wysiwyg editor initialization</em> |
+| public | <strong>enable_delay()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable delay of the wysiwyg editor initialization</em> |
+| public | <strong>get_delay()</strong> : <em>boolean</em><br /><em>Get wysiwyg initialization delay state</em> |
 | public | <strong>get_media_upload()</strong> : <em>boolean</em><br /><em>Get media upload state</em> |
 | public | <strong>get_tabs()</strong> : <em>string</em><br /><em>Get allowed tabs</em> |
 | public | <strong>get_toolbar()</strong> : <em>string</em><br /><em>Get what toolbars to show</em> |
@@ -1236,4 +1239,3 @@
 | public | <strong>set_label(</strong><em>\string</em> <strong>$label</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set button label</em> |
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set name</em> |
 | public | <strong>set_tag(</strong><em>\string</em> <strong>$tag</strong>)</strong> : <em>[\Geniem\ACF\Field\MediumEditor](#class-geniemacffieldmediumeditor)\self</em><br /><em>Set the HTML tag to be used.</em> |
-

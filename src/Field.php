@@ -932,7 +932,7 @@ abstract class Field {
                 $type = '\\Geniem\\RediPress\\Entity\\' . $this->redipress_field_type . 'Field';
 
                 $field_args = [
-                    'name' => $this->redipress_add_queryable_field_name ?? $this->key,
+                    'name' => $this->redipress_add_queryable_field_name ?? $this->name,
                 ];
 
                 if ( $this->redipress_field_type === 'Text' ) {

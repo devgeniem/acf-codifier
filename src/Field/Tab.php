@@ -52,7 +52,7 @@ class Tab extends GroupableField implements PseudoGroupableField {
      *
      * @return array
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         $obj = parent::export( $register, $parent );
 
         // Make the key unique so that it can't collide with others. This is only used in

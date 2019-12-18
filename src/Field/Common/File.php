@@ -53,7 +53,7 @@ trait File {
      *
      * @return array
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         // Call the original export method
         $obj = parent::export( $register, $parent );
 

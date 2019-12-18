@@ -63,7 +63,7 @@ class CloneField extends \Geniem\ACF\Field {
      *
      * @return array
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }

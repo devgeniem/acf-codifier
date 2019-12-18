@@ -31,7 +31,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      *
      * @return array
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         return null;
     }
 
@@ -44,7 +44,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * @param string $name Field name (optional).
      * @return Geniem\ACF\Field
      */
-    public function clone( $key = null, $name = null ) {
+    public function clone( string $key, string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

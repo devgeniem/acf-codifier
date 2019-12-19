@@ -903,7 +903,12 @@ abstract class Field {
                 if ( ! empty( $doc_id ) ) {
                     $field_name = $this->redipress_add_queryable_field_name ?? $field['name'];
 
-                    $redipress_value = $value;
+                    if ( ! empty( $this->redipress_queryable_filter ) ) {
+                        $redipress_value = ( $this->redipress_queryable_filter )( $value );
+                    }
+                    else {
+                        $redipress_value = $value;
+                    }
 
                     if ( strtolower( $this->redipress_field_type ) === 'tag' && is_array( $redipress_value ) ) {
                         $redipress_value = implode( \Geniem\RediPress\Index\Index::get_tag_separator(), $redipress_value );

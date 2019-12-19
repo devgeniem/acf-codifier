@@ -915,7 +915,7 @@ abstract class Field {
                             $redipress_value = (int) $redipress_value;
                         }
 
-                        \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1.0 );
+                        \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1 );
                     }
                 }
 

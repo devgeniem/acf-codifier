@@ -891,32 +891,30 @@ abstract class Field {
         $this->filters['redipress_add_queryable_single'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => function( $value, $post_id, $field ) {
-                if ( self::running_update_field() ) {
-                    if ( $this->get_is_user() ) {
-                        $user_id = str_replace( 'user_', '', $post_id );
+                if ( $this->get_is_user() ) {
+                    $user_id = str_replace( 'user_', '', $post_id );
 
-                        $doc_id = \Geniem\RediPress\Index\UserIndex::get_document_id( get_user_by( 'id', $user_id ) );
+                    $doc_id = \Geniem\RediPress\Index\UserIndex::get_document_id( get_user_by( 'id', $user_id ) );
+                }
+                elseif ( is_numeric( $post_id ) ) {
+                    $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
+                }
+
+                if ( ! empty( $doc_id ) ) {
+                    $field_name = $this->redipress_add_queryable_field_name ?? $field['name'];
+
+                    $redipress_value = $value;
+
+                    if ( strtolower( $this->redipress_field_type ) === 'tag' && is_array( $redipress_value ) ) {
+                        $redipress_value = implode( \Geniem\RediPress\Index\Index::get_tag_separator(), $redipress_value );
                     }
-                    elseif ( is_numeric( $post_id ) ) {
-                        $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
+
+                    // RediSearch doesn't accept boolean values
+                    if ( is_bool( $redipress_value ) ) {
+                        $redipress_value = (int) $redipress_value;
                     }
 
-                    if ( ! empty( $doc_id ) ) {
-                        $field_name = $this->redipress_add_queryable_field_name ?? $field['name'];
-
-                        $redipress_value = $value;
-
-                        if ( $this->redipress_field_type === 'TAG' && is_array( $redipress_value ) ) {
-                            $redipress_value = implode( \Geniem\RediPress\Index\Index::get_tag_separator(), $redipress_value );
-                        }
-
-                        // RediSearch doesn't accept boolean values
-                        if ( is_bool( $redipress_value ) ) {
-                            $redipress_value = (int) $redipress_value;
-                        }
-
-                        \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1 );
-                    }
+                    \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1 );
                 }
 
                 return $value;

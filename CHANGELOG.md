@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 ### Added
+- Support for Gutenberg block styles.
 - A possibility to create Gutenberg blocks with ACF's register block feature using Codifier's object-oriented model.
 
 ## [1.25.1] - 2019-12-18

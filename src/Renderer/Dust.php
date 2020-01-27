@@ -73,6 +73,9 @@ class Dust implements Renderer {
     public function render( array $fields ) : string {
         $compiled = self::$dust->compileFile( $this->template );
 
+        // Pass on the block data
+        $fields['data']['block'] = $fields['block'];
+
         return self::$dust->renderTemplate( $compiled, $fields['data'] );
     }
 }

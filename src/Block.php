@@ -106,6 +106,15 @@ class Block implements GroupableInterface {
     protected $supports = [];
 
     /**
+     * An array of style definitions for the block.
+     *
+     * @see https://developer.wordpress.org/block-editor/developers/block-api/block-registration/#styles-optional
+     *
+     * @var array
+     */
+    protected $styles = [];
+
+    /**
      * The renderer for this block.
      *
      * @var Renderer
@@ -420,6 +429,27 @@ class Block implements GroupableInterface {
     }
 
     /**
+     * Setter for the styles of the block.
+     *
+     * @param array $styles Array of style definition arrays.
+     * @return self
+     */
+    public function set_styles( array $styles ) : self {
+        $this->styles = $styles;
+
+        return $this;
+    }
+
+    /**
+     * Getter for the styles of the block.
+     *
+     * @return array
+     */
+    public function get_styles() : array {
+        return $this->styles;
+    }
+
+    /**
      * Add a data filtering function for the block
      *
      * @param callable $function The function to add.
@@ -515,6 +545,7 @@ class Block implements GroupableInterface {
             'mode'            => $this->get_mode(),
             'align'           => $this->get_align(),
             'supports'        => $this->get_supports(),
+            'styles'          => $this->get_styles(),
         ];
 
         if ( ! empty( $this->get_post_types() ) ) {

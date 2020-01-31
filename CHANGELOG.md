@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.27.0] - 2020-01-31
+
+### Added
+- RediPress support for `update_field()` function.
+
 ## [1.26.0] - 2020-01-31
 
 ### Added

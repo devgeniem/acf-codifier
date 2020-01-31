@@ -8,13 +8,14 @@ namespace Geniem\ACF;
 use Geniem\ACF\Field\Common\Groupable,
     Geniem\ACF\Exception as Exception,
     Geniem\ACF\Field\PseudoGroupableField as PseudoGroupableField;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Class Group
  *
  * @package Geniem\ACF
  */
-class Group {
+class Group implements GroupableInterface {
 
     /**
      * Import the groupable functionalities
@@ -73,7 +74,7 @@ class Group {
     /**
      * Field group hide on screen value
      *
-     * @var boolean
+     * @var array
      */
     protected $hide_on_screen;
 
@@ -133,7 +134,7 @@ class Group {
      *
      * @param string $key  Field group key.
      * @param string $name Field group name (optional).
-     * @return Geniem\ACF\Group
+     * @return GroupableInterface
      */
     public function clone( string $key, string $name = null ) {
         $clone = clone $this;
@@ -391,11 +392,11 @@ class Group {
     /**
      * Add a field to the field group.
      *
-     * @param Field $field A field to be added.
-     * @param string            $order Whether the field is added first or last.
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param string            $order  Whether the field is added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : GroupableInterface {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
@@ -424,7 +425,7 @@ class Group {
      * @param string $key The name of the field to be removed.
      * @return self
      */
-    public function remove_field( string $key ) {
+    public function remove_field( string $key ) : GroupableInterface {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_remove_local_field' ) ) {
@@ -510,7 +511,7 @@ class Group {
      *
      * @return array Acf fields
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }

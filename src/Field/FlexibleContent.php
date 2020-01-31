@@ -90,7 +90,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
      *
      * @return array
      */
-    public function export( $register = false, $parent = null ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         global $post;
 
         if ( empty( $this->key ) ) {

@@ -1,15 +1,15 @@
 <?php
 /**
- *  ACF - Multitaxonomy field
+ *  ACF - MultisiteTaxonomy field
  */
 
 namespace Geniem\ACF\Fields;
 
 add_action( 'acf/init', function() {
     /**
-     * ACF Multitaxonomy class
+     * ACF MultisiteTaxonomy Relationship class
      */
-    class Multitaxonomy extends \acf_field_taxonomy {
+    class MultisiteTaxonomy extends \acf_field_taxonomy {
 
         /**
          * Initialize the field
@@ -19,8 +19,8 @@ add_action( 'acf/init', function() {
         public function initialize() {
 
             // vars
-            $this->name     = 'multitaxonomy';
-            $this->label    = __( 'Multitaxonomy', 'acf' );
+            $this->name     = 'multisitetaxonomy';
+            $this->label    = __( 'Multisite taxonomy', 'acf' );
             $this->category = 'relational';
             $this->defaults = array(
                 'taxonomy'      => [ 'category' ],
@@ -29,14 +29,12 @@ add_action( 'acf/init', function() {
                 'allow_null'    => 0,
                 'return_format' => 'id',
                 'add_term'      => 0, // 5.2.3
-                'load_terms'    => 0, // 5.2.7
-                'save_terms'    => 0 // 5.2.7
+                'blog_id'       => \get_current_blog_id(),
             );
             // extra
-            \add_action( 'wp_ajax_acf/fields/multitaxonomy/query', [ $this, 'ajax_query' ] );
-            \add_action( 'wp_ajax_nopriv_acf/fields/multitaxonomy/query', [ $this, 'ajax_query' ] );
-            // actions
-            add_action( 'acf/save_post', [ $this, 'save_post' ], 15, 1 );
+            \add_action( 'wp_ajax_acf/fields/multisite_taxonomy/query', [ $this, 'ajax_query' ] );
+            \add_action( 'wp_ajax_nopriv_acf/fields/multisite_taxonomy/query', [ $this, 'ajax_query' ] );
+            \add_action( 'wp_ajax_acf/fields/multisite_taxonomy/add_term', [ $this, 'ajax_add_term' ] );
         }
 
         /**
@@ -50,7 +48,7 @@ add_action( 'acf/init', function() {
             // Strip the src
             $src = \str_replace( '/src/', '/', $src );
 
-            \wp_enqueue_script( 'acf_multitaxonomy', $src . 'assets/scripts/multitaxonomy.js', [ 'acf-input' ] );
+            \wp_enqueue_script( 'acf_multisite_taxonomy', $src . 'assets/scripts/multisite_taxonomy.js', [ 'acf-input' ] );
         }
 
         /**
@@ -60,6 +58,12 @@ add_action( 'acf/init', function() {
          *  @return  array
          */
         function get_ajax_query( $options = [] ) {
+
+            $field = acf_get_field( $options['field_key'] );
+
+            $blog_id = $field['blog_id'];
+
+            \switch_to_blog( $blog_id );
 
             // defaults
             $options = acf_parse_args(
@@ -103,9 +107,9 @@ add_action( 'acf/init', function() {
             }
 
             // filters
-            $args = apply_filters( 'acf/fields/multitaxonomy/query', $args, $field, $options['post_id'] );
-            $args = apply_filters( 'acf/fields/multitaxonomy/query/name=' . $field['name'], $args, $field, $options['post_id'] );
-            $args = apply_filters( 'acf/fields/multitaxonomy/query/key=' . $field['key'], $args, $field, $options['post_id'] );
+            $args = apply_filters( 'acf/fields/multisite_taxonomy/query', $args, $field, $options['post_id'] );
+            $args = apply_filters( 'acf/fields/multisite_taxonomy/query/name=' . $field['name'], $args, $field, $options['post_id'] );
+            $args = apply_filters( 'acf/fields/multisite_taxonomy/query/key=' . $field['key'], $args, $field, $options['post_id'] );
 
             // get terms
             $terms = $this->get_all_terms( $args );
@@ -124,6 +128,8 @@ add_action( 'acf/init', function() {
                 'results' => $results,
                 'limit'   => $limit,
             );
+
+            \restore_current_blog();
 
             // return
             return $response;
@@ -161,9 +167,9 @@ add_action( 'acf/init', function() {
             $title .= $term->name;
 
             // filters
-            $title = apply_filters( 'acf/fields/taxonomy/result', $title, $term, $field, $post_id );
-            $title = apply_filters( 'acf/fields/taxonomy/result/name=' . $field['_name'], $title, $term, $field, $post_id );
-            $title = apply_filters( 'acf/fields/taxonomy/result/key=' . $field['key'], $title, $term, $field, $post_id );
+            $title = apply_filters( 'acf/fields/multisite_taxonomy/result', $title, $term, $field, $post_id );
+            $title = apply_filters( 'acf/fields/multisite_taxonomy/result/name=' . $field['_name'], $title, $term, $field, $post_id );
+            $title = apply_filters( 'acf/fields/multisite_taxonomy/result/key=' . $field['key'], $title, $term, $field, $post_id );
 
             // return
             return $title;
@@ -181,13 +187,13 @@ add_action( 'acf/init', function() {
 
             // defaults
             $args = wp_parse_args( $args, [
-                'taxonomy'					=> null,
-                'hide_empty'				=> false,
-                'update_term_meta_cache'	=> false,
+                'taxonomy'               => null,
+                'hide_empty'             => false,
+                'update_term_meta_cache' => false,
             ] );
 
             // parameters changed in version 4.5
-            if( acf_version_compare('wp', '<', '4.5') ) {
+            if( acf_version_compare( 'wp', '<', '4.5' ) ) {
                 return get_terms( $args['taxonomy'], $args );
             }
 
@@ -247,55 +253,11 @@ add_action( 'acf/init', function() {
          */
         function load_value( $value, $post_id, $field ) {
 
-            // force into array
-            $value = acf_get_array( $value );
+            \switch_to_blog( $field['blog_id'] );
 
+            $value = parent::load_value( $value, $post_id, $field );
 
-            // force ints
-            $value = array_map( 'intval', $value );
-
-            // load_terms
-            if ( ! empty( $field['load_terms'] ) ) {
-
-                // get terms
-                $info     = acf_get_post_id_info( $post_id );
-                $term_ids = wp_get_object_terms(
-                    $info['id'], $field['taxonomy'], array(
-                        'fields'  => 'ids',
-                        'orderby' => 'none',
-                    )
-                );
-
-                // bail early if no terms
-                if ( empty( $term_ids ) || is_wp_error( $term_ids ) ) { return false;
-                }
-
-                // sort
-                if ( ! empty( $value ) ) {
-
-                    $order = array();
-
-                    foreach ( $term_ids as $i => $v ) {
-
-                        $order[ $i ] = array_search( $v, $value );
-
-                    }
-
-                    array_multisort( $order, $term_ids );
-
-                }
-
-                // update value
-                $value = $term_ids;
-
-            }
-
-            // convert back from array if neccessary
-            if ( $field['field_type'] == 'select' || $field['field_type'] == 'radio' ) {
-
-                $value = array_shift( $value );
-
-            }
+            \restore_current_blog();
 
             // return
             return $value;
@@ -303,7 +265,7 @@ add_action( 'acf/init', function() {
         }
 
         /**
-         *  This filter is appied to the $value before it is updated in the db
+         *  This filter is applied to the $value before it is updated in the db
 
          *  @param array $value   The value that will be save in the database.
          *  @param int   $post_id The $post_id from which the value was loaded from.
@@ -320,46 +282,6 @@ add_action( 'acf/init', function() {
 
             }
 
-            // save_terms
-            if ( ! empty( $field['save_terms'] ) ) {
-
-                // force value to array
-                $term_ids = acf_get_array( $value );
-
-                // convert to int
-                $term_ids = array_map( 'intval', $term_ids );
-
-                $new_terms = [];
-
-                // Gather new term ids and group by taxonomy.
-                foreach ( $term_ids as $term_id ) {
-                    $term     = get_term( $term_id );
-
-                    if ( empty( $this->save_post_terms[ $term->taxonomy ] ) ) {
-                        $new_terms[ $term->taxonomy ] = [];
-                    }
-
-                    $new_terms[] = $term_id;
-                }
-
-                // Merge old values with new ones.
-                foreach ( $new_terms as $taxonomy => $terms_per_tax ) {
-                    // get existing term id's (from a previously saved field)
-                    $old_term_ids = isset( $this->save_post_terms[ $taxonomy ] ) ? $this->save_post_terms[ $taxonomy ] : array();
-                    // append
-                    $this->save_post_terms[ $taxonomy ] = array_merge( $old_term_ids, $term_ids );
-                }
-
-                // if called directly from frontend update_field()
-                if ( ! did_action( 'acf/save_post' ) ) {
-
-                    $this->save_post( $post_id );
-
-                    return $value;
-
-                }
-            }
-
             // return
             return $value;
 
@@ -372,13 +294,14 @@ add_action( 'acf/init', function() {
          */
         public function render_field( $field ) {
 
+            \switch_to_blog( $field['blog_id'] );
+
             // force value to array
             $field['value'] = acf_get_array( $field['value'] );
 
             // vars
             $div = array(
-                'class'           => 'acf-multitaxonomy-field',
-                'data-save'       => $field['save_terms'],
+                'class'           => 'acf-multisite-taxonomy-field',
                 'data-ftype'      => $field['field_type'],
                 'data-taxonomy'   => $field['taxonomy'],
                 'data-allow_null' => $field['allow_null'],
@@ -422,6 +345,8 @@ add_action( 'acf/init', function() {
             </div>
             <?php
 
+            \restore_current_blog();
+
         }
 
         /**
@@ -432,15 +357,45 @@ add_action( 'acf/init', function() {
          * @return bool
          */
         protected function taxonomies_exist( array $taxonomies = [] ) {
+            $field = acf_get_field( $args['field_key'] );
+
+            \switch_to_blog( $field['blog_id'] );
+
             $taxonomies_exist = array_map( 'taxonomy_exists', $taxonomies );
+
+            \restore_current_blog();
+
             if ( in_array( false, $taxonomies_exist, true ) ) {
                 return false;
             }
 
             return true;
         }
+
+        /**
+         * Add term via ajax
+         */
+        public function ajax_add_term() {
+            // vars
+            $args = wp_parse_args( $_POST, array(
+                'nonce'       => '',
+                'field_key'   => '',
+                'term_name'   => '',
+                'term_parent' => '',
+            ));
+
+            // load field
+            $field = acf_get_field( $args['field_key'] );
+            if ( ! $field ) {
+                die();
+            }
+
+            parent::ajax_add_term();
+
+            \switch_to_blog( $field['blog_id'] );
+        }
     }
 
     // initialize
-    new Multitaxonomy();
+    new MultisiteTaxonomy();
 });

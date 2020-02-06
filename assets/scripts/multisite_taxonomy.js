@@ -1,5 +1,5 @@
 (function( $, undefined ){
-    var Field = acf.models.MultisiteTaxonomyField.extend({
+    var Field = acf.models.MultitaxonomyField.extend({
         type: 'multisite_taxonomy',
 
         $control: function(){

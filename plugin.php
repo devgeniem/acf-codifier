@@ -19,7 +19,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 
 // Register the included fields to the ACF
 if ( file_exists( __DIR__ . '/src/Fields/PHP.php' ) ) {
-    add_action( 'acf/include_field_types' , function() {
+    add_action( 'acf/include_field_types', function() {
         require_once __DIR__ . '/src/Fields/PHP.php';
         require_once __DIR__ . '/src/Fields/MultisiteRelationship.php';
         require_once __DIR__ . '/src/Fields/Multitaxonomy.php';

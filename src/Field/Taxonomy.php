@@ -88,7 +88,7 @@ class Taxonomy extends \Geniem\ACF\Field {
      */
     public function set_field_type( string $field_type = 'checkbox' ) {
         if ( ! in_array( $field_type, [ 'checkbox', 'multi_select', 'radio', 'select' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_field_type() does not accept argument "' . $field_type . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Taxonomy: set_field_type() does not accept argument "' . $field_type . '"' );
         }
 
         $this->field_type = $field_type;

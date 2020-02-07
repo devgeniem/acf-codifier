@@ -44,5 +44,29 @@ class MultisiteTaxonomy extends Multitaxonomy {
     public function get_blog_id() {
         return $this->blog_id;
     }
+
+    /**
+     * Not in use. Only here because of the parent class.
+     *
+     * @throws \Exception This method is not in use.
+     * @return self
+     */
+    public function allow_save_terms() {
+        throw new \Exception( 'This method does not work with MultisiteTaxonomy fields.' );
+
+        return $this; // phpcs:ignore
+    }
+
+    /**
+     * Not in use. Only here because of the parent class.
+     *
+     * @throws \Exception This method is not in use.
+     * @return self
+     */
+    public function disallow_save_terms() {
+        throw new \Exception( 'This method does not work with MultisiteTaxonomy fields.' );
+
+        return $this; // phpcs:ignore
+    }
 }
 

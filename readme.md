@@ -330,7 +330,7 @@ $ms_relationship->set_blog_id( 2 );
 
 ### Multitaxonomy
 
-The Multitaxonomy is an ACF field type that can only be used with the Codifier. It is a clone of the original Taxonomy field but with the ability to define multiple taxonomies to select the terms from. It supports all features defined for the Taxonomy field except the ability to add a new term with the field input.
+The Multitaxonomy is an ACF field type that can only be used with the Codifier. It is a clone of the original Taxonomy field but with the ability to define multiple taxonomies to select the terms from. It supports all features defined for the Taxonomy field except the ability to add a new term with the field input. It also has an additional feature for setting the field disabled, which is not possible with the original Taxonomy field.
 
 #### Usage
 
@@ -345,6 +345,18 @@ To enable selecting multiple terms, change the field type to `multi_select`.
 
 ```php
 $categories_and_tags->set_field_type( 'multi_select' );
+```
+
+### Multisite Taxonomy
+
+The Multisite Taxonomy is an ACF field type that can only be used with the Codifier. It extends the abilities of the Multitaxonomy field by allowing the developer to set a multisite blog id from which the taxonomy terms can be chosen.
+
+#### Usage
+
+```php
+$multisite_taxonomy = new Field\MultisiteTaxonomy( __( 'Select a category or a tag from blog 2', 'multisite_tax', 'multisite_tax' ) );
+$multisite_taxonomy->set_taxonomies( [ 'category', 'post_tag' ] );
+$multisite_taxonomy->set_blog_id( 2 );
 ```
 
 ### Support for external field types

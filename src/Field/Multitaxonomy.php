@@ -25,6 +25,13 @@ class Multitaxonomy extends Taxonomy {
     protected $taxonomy = [];
 
     /**
+     * Is field disabled
+     *
+     * @var boolean
+     */
+    protected $disabled;
+
+    /**
      * Get taxonomies.
      *
      * @return array
@@ -127,5 +134,35 @@ class Multitaxonomy extends Taxonomy {
         return false;
     }
 
+    /**
+     * Disable field
+     *
+     * @return self
+     */
+    public function disable() {
+        $this->disable = true;
+
+        return $this;
+    }
+
+    /**
+     * Enable field
+     *
+     * @return self
+     */
+    public function enable() {
+        $this->disable = false;
+
+        return $this;
+    }
+
+    /**
+     * Get whether field is disabled or not
+     *
+     * @return boolean
+     */
+    public function get_disabled() {
+        return $this->disabled;
+    }
 }
 

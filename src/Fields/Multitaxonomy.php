@@ -460,7 +460,7 @@ add_action( 'acf/init', function() {
                     // vars
                     $selected = in_array( $term->term_id, $this->field['value'], true );
                     // append
-                    $output .= '<li data-id="' . $term->term_id . '"><label' . ( $selected ? ' class="selected"' : '' ) . '><input type="' . $this->field['field_type'] . '" name="' . $this->field['name'] . '" value="' . $term->term_id . '" ' . ( $selected ? 'checked="checked"' : '' ) . ' /> <span>' . ( ( $args['cat_count'] > 1 ) ? ( $term->taxonomy . ': ' ) : '' ) . $term->name . '</span></label>';
+                    $output .= '<li data-id="' . $term->term_id . '"><label' . ( $selected ? ' class="selected"' : '' ) . '><input type="' . $this->field['field_type'] . '" name="' . $this->field['name'] . '" value="' . $term->term_id . '" ' . ( $selected ? 'checked="checked"' : '' ) . ( $args['disable'] ? ' disabled="disabled"' : '' ) . ' /> <span>' . ( ( $args['cat_count'] > 1 ) ? ( $term->taxonomy . ': ' ) : '' ) . $term->name . '</span></label>';
                 }
             };
 
@@ -484,6 +484,7 @@ add_action( 'acf/init', function() {
                     'walker'           => $walker,
                     'echo'             => false,
                     'cat_count'        => $cat_count,
+                    'disable'          => $field['disable'] ?? false,
                 );
 
                 // filter for 3rd party customization

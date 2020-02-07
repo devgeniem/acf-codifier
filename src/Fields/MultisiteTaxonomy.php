@@ -61,6 +61,10 @@ add_action( 'acf/init', function() {
 
             $field = acf_get_field( $options['field_key'] );
 
+            if ( ! $field ) {
+                return false;
+            }
+
             $blog_id = $field['blog_id'];
 
             \switch_to_blog( $blog_id );
@@ -75,14 +79,12 @@ add_action( 'acf/init', function() {
                 )
             );
 
-            // load field
-            $field = acf_get_field( $options['field_key'] );
-            if ( ! $field ) { return false;
-            }
 
             // bail early if a taxonomy does not exist
             $taxonomies_exist = $this->taxonomies_exist( $field['taxonomy'] );
+
             if ( ! $taxonomies_exist ) {
+                \restore_current_blog();
                 return false;
             }
 

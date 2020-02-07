@@ -38,10 +38,29 @@ class Multitaxonomy extends Taxonomy {
      *
      * Use get_taxonomies() instead.
      *
+     * @throws \Exception This method is not in use.
      * @return string|null
      */
     public function get_taxonomy() : ?string {
         throw new \Exception( 'This method does not work with MultiTaxonomy fields.' );
+
+        return ''; // phpcs:ignore
+    }
+
+    /**
+     * You should not use this method! Overridden method of the parent class.
+     *
+     * Use set_taxonomies() or add_taxonomy() instead.
+     *
+     * @param string $taxonomy Not in use.
+     *
+     * @throws \Exception This method is not in use.
+     * @return self
+     */
+    public function set_taxonomy( string $taxonomy = 'category' ) {
+        throw new \Exception( 'This method does not work with MultiTaxonomy fields.' );
+
+        return $this; // phpcs:ignore
     }
 
     /**

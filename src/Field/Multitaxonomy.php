@@ -22,7 +22,7 @@ class Multitaxonomy extends Taxonomy {
      *
      * @var array
      */
-    protected $taxonomies;
+    protected $taxonomy;
 
     /**
      * Get taxonomies.
@@ -30,7 +30,7 @@ class Multitaxonomy extends Taxonomy {
      * @return array
      */
     public function get_taxonomies() : ?array {
-        return $this->taxonomies;
+        return $this->taxonomy;
     }
 
     /**
@@ -41,7 +41,7 @@ class Multitaxonomy extends Taxonomy {
      * @return string|null
      */
     public function get_taxonomy() : ?string {
-        return $this->taxonomies[0] ?? null;
+        throw new \Exception( 'This method does not work with MultiTaxonomy fields.' );
     }
 
     /**
@@ -52,8 +52,26 @@ class Multitaxonomy extends Taxonomy {
      * @param string $taxonomy Taxonomy slug.
      * @return self
      */
-    public function set_taxonomy( string $taxonomy = 'category' ) {
-        $this->taxonomy = $taxonomy;
+    public function add_taxonomy( string $taxonomy = 'category' ) {
+        $this->taxonomy[] = $taxonomy;
+
+        $this->taxonomy = array_unique( $this->taxonomy );
+
+        return $this;
+    }
+
+    /**
+     * Remove a taxonomy from the list.
+     *
+     * @param string $taxonomy The taxonomy to remove.
+     * @return self
+     */
+    public function remove_taxonomy( string $taxonomy ) {
+        $position = array_search( $taxonomy, $this->taxonomy );
+
+        if ( ( $position !== false ) ) {
+            unset( $this->taxonomy[ $position ] );
+        }
 
         return $this;
     }

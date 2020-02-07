@@ -357,13 +357,7 @@ add_action( 'acf/init', function() {
          * @return bool
          */
         protected function taxonomies_exist( array $taxonomies = [] ) {
-            $field = acf_get_field( $args['field_key'] );
-
-            \switch_to_blog( $field['blog_id'] );
-
             $taxonomies_exist = array_map( 'taxonomy_exists', $taxonomies );
-
-            \restore_current_blog();
 
             if ( in_array( false, $taxonomies_exist, true ) ) {
                 return false;

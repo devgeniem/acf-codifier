@@ -22,7 +22,7 @@ class Multitaxonomy extends Taxonomy {
      *
      * @var array
      */
-    protected $taxonomy;
+    protected $taxonomy = [];
 
     /**
      * Get taxonomies.

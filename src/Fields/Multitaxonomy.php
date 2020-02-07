@@ -421,7 +421,42 @@ add_action( 'acf/init', function() {
                 ?>
             </div>
             <?php
+        }
 
+        /**
+         * Render field select
+         *
+         * @param array $field The field object.
+         * @return void
+         */
+        public function render_field_select( $field ) {
+
+            // Change Field into a select
+            $field['type']     = 'select';
+            $field['ui']       = 1;
+            $field['ajax']     = 1;
+            $field['choices']  = array();
+            $field['disabled'] = $field['disable'] ?? false;
+
+            // value
+            if ( ! empty( $field['value'] ) ) {
+                // get terms
+                $terms = $this->get_terms( $field['value'], $field['taxonomy'] );
+
+                // set choices
+                if ( ! empty( $terms ) ) {
+                    foreach ( array_keys( $terms )  as $i ) {
+                        // vars
+                        $term = acf_extract_var( $terms, $i );
+
+                        // append to choices
+                        $field['choices'][ $term->term_id ] = $this->get_term_title( $term, $field );
+                    }
+                }
+            }
+
+            // render select
+            acf_render_field( $field );
         }
 
         /**
@@ -429,7 +464,7 @@ add_action( 'acf/init', function() {
          *
          * @param array $field The field object.
          */
-        function render_field_checkbox( $field ) {
+        public function render_field_checkbox( $field ) {
 
             // hidden input
             acf_hidden_input(array(

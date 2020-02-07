@@ -9,7 +9,7 @@ add_action( 'acf/init', function() {
     /**
      * ACF MultisiteTaxonomy Relationship class
      */
-    class MultisiteTaxonomy extends \acf_field_taxonomy {
+    class ACF_Field_Multisite_Taxonomy extends Multitaxonomy {
 
         /**
          * Initialize the field
@@ -19,7 +19,7 @@ add_action( 'acf/init', function() {
         public function initialize() {
 
             // vars
-            $this->name     = 'multisitetaxonomy';
+            $this->name     = 'multisite_taxonomy';
             $this->label    = __( 'Multisite taxonomy', 'acf' );
             $this->category = 'relational';
             $this->defaults = array(
@@ -397,5 +397,5 @@ add_action( 'acf/init', function() {
     }
 
     // initialize
-    new MultisiteTaxonomy();
+    new ACF_Field_Multisite_Taxonomy();
 });

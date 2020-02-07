@@ -425,6 +425,85 @@ add_action( 'acf/init', function() {
         }
 
         /**
+         * Render field checkbox
+         *
+         * @param array $field The field object.
+         */
+        function render_field_checkbox( $field ) {
+
+            // hidden input
+            acf_hidden_input(array(
+                'type' => 'hidden',
+                'name' => $field['name'],
+            ));
+
+            // checkbox saves an array
+            if ( $field['field_type'] === 'checkbox' ) {
+                $field['name'] .= '[]';
+            }
+
+            // include default walker
+            acf_include('includes/walkers/class-acf-walker-taxonomy-field.php');
+
+            $walker = new class( $field ) extends \ACF_Taxonomy_Field_Walker {
+                /**
+                 * Start el function
+                 *
+                 * @param string  $output            Output string.
+                 * @param array   $term              The term array.
+                 * @param integer $depth             How far into the tree we are.
+                 * @param array   $args              Possible arguments.
+                 * @param integer $current_object_id Current object id.
+                 * @return void
+                 */
+                function start_el( &$output, $term, $depth = 0, $args = array(), $current_object_id = 0 ) { //phpcs:ignore
+                    // vars
+                    $selected = in_array( $term->term_id, $this->field['value'], true );
+                    // append
+                    $output .= '<li data-id="' . $term->term_id . '"><label' . ( $selected ? ' class="selected"' : '' ) . '><input type="' . $this->field['field_type'] . '" name="' . $this->field['name'] . '" value="' . $term->term_id . '" ' . ( $selected ? 'checked="checked"' : '' ) . ' /> <span>' . ( ( $args['cat_count'] > 1 ) ? ( $term->taxonomy . ': ' ) : '' ) . $term->name . '</span></label>';
+                }
+            };
+
+            if ( ! is_array( $field['taxonomy'] ) ) {
+                $field['taxonomy'] = [ $field['taxonomy'] ];
+            }
+
+            $output    = '';
+            $cat_count = count( $field['taxonomy'] );
+
+            foreach ( $field['taxonomy'] as $taxonomy ) {
+                // taxonomy
+		        $taxonomy_obj = get_taxonomy( $taxonomy );
+
+                // vars
+                $args = array(
+                    'taxonomy'         => $taxonomy,
+                    'show_option_none' => sprintf( _x( 'No %s', 'No terms', 'acf' ), strtolower( $taxonomy_obj->labels->name ) ),
+                    'hide_empty'       => false,
+                    'style'            => 'none',
+                    'walker'           => $walker,
+                    'echo'             => false,
+                    'cat_count'        => $cat_count,
+                );
+
+                // filter for 3rd party customization
+                $args = apply_filters('acf/fields/taxonomy/wp_list_categories', $args, $field);
+                $args = apply_filters('acf/fields/taxonomy/wp_list_categories/name=' . $field['_name'], $args, $field);
+                $args = apply_filters('acf/fields/taxonomy/wp_list_categories/key=' . $field['key'], $args, $field);
+
+                $output .= wp_list_categories( $args );
+            }
+
+            ?>
+    <div class="categorychecklist-holder">
+        <ul class="acf-checkbox-list acf-bl">
+            <?php echo $output; ?>
+        </ul>
+    </div>
+            <?php
+        }
+
+        /**
          * Check if all taxonomies exist in a given array.
          *
          * @param array $taxonomies Taxonomy names.

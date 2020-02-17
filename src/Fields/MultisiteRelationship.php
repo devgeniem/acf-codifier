@@ -68,11 +68,31 @@ add_action( 'acf/init', function() {
 
             \switch_to_blog( $blog_id );
 
+            add_filter('acf/fields/relationship/query', [ $this, 'polylang_filter' ], 100, 3 );
+
             $response = parent::get_ajax_query( $options );
+
+            remove_filter('acf/fields/relationship/query', [ $this, 'polylang_filter' ], 100 );
 
             \restore_current_blog();
 
             return $response;
+        }
+
+        /**
+         * A plugin specific fix for Polylang injecting wrong language taxonomy IDs with switch_to_blog.
+         *
+         * @param array $args The arguments to filter.
+         * @param array $field The field object.
+         * @param int $post_id The post ID.
+         * @return array
+         */
+        public function polylang_filter( $args, $field, $post_id ) {
+            if ( function_exists( 'pll_current_language' ) && empty( $args['lang'] ) ) {
+                $args['lang'] = \pll_current_language();
+            }
+
+            return $args;
         }
 
         /**

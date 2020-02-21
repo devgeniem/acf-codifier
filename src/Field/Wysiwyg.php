@@ -93,15 +93,7 @@ class Wysiwyg extends \Geniem\ACF\Field {
             \add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) use ( $toolbar, $uniqid ) {
                 if ( is_array( $toolbar ) ) {
                     $multi_level = array_reduce( $toolbar, function( $carry, $item ) {
-                        if ( $carry ) {
-                            return $carry;
-                        }
-
-                        if ( is_array( $item ) ) {
-                            return true;
-                        }
-
-                        return false;
+                        return $carry ?: is_array( $item );
                     }, false );
 
                     if ( ! $multi_level ) {

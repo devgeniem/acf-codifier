@@ -22,7 +22,14 @@ class Multitaxonomy extends Taxonomy {
      *
      * @var array
      */
-    protected $taxonomies;
+    protected $taxonomy = [];
+
+    /**
+     * Is field disabled
+     *
+     * @var boolean
+     */
+    protected $disabled;
 
     /**
      * Get taxonomies.
@@ -30,7 +37,7 @@ class Multitaxonomy extends Taxonomy {
      * @return array
      */
     public function get_taxonomies() : ?array {
-        return $this->taxonomies;
+        return $this->taxonomy;
     }
 
     /**
@@ -38,10 +45,29 @@ class Multitaxonomy extends Taxonomy {
      *
      * Use get_taxonomies() instead.
      *
+     * @throws \Exception This method is not in use.
      * @return string|null
      */
     public function get_taxonomy() : ?string {
-        return $this->taxonomies[0] ?? null;
+        throw new \Exception( 'This method does not work with MultiTaxonomy fields.' );
+
+        return ''; // phpcs:ignore
+    }
+
+    /**
+     * You should not use this method! Overridden method of the parent class.
+     *
+     * Use set_taxonomies() or add_taxonomy() instead.
+     *
+     * @param string $taxonomy Not in use.
+     *
+     * @throws \Exception This method is not in use.
+     * @return self
+     */
+    public function set_taxonomy( string $taxonomy = 'category' ) {
+        throw new \Exception( 'This method does not work with MultiTaxonomy fields.' );
+
+        return $this; // phpcs:ignore
     }
 
     /**
@@ -52,8 +78,26 @@ class Multitaxonomy extends Taxonomy {
      * @param string $taxonomy Taxonomy slug.
      * @return self
      */
-    public function set_taxonomy( string $taxonomy = 'category' ) {
-        $this->taxonomy = $taxonomy;
+    public function add_taxonomy( string $taxonomy = 'category' ) {
+        $this->taxonomy[] = $taxonomy;
+
+        $this->taxonomy = array_unique( $this->taxonomy );
+
+        return $this;
+    }
+
+    /**
+     * Remove a taxonomy from the list.
+     *
+     * @param string $taxonomy The taxonomy to remove.
+     * @return self
+     */
+    public function remove_taxonomy( string $taxonomy ) {
+        $position = array_search( $taxonomy, $this->taxonomy );
+
+        if ( ( $position !== false ) ) {
+            unset( $this->taxonomy[ $position ] );
+        }
 
         return $this;
     }
@@ -90,5 +134,35 @@ class Multitaxonomy extends Taxonomy {
         return false;
     }
 
+    /**
+     * Disable field
+     *
+     * @return self
+     */
+    public function disable() {
+        $this->disable = true;
+
+        return $this;
+    }
+
+    /**
+     * Enable field
+     *
+     * @return self
+     */
+    public function enable() {
+        $this->disable = false;
+
+        return $this;
+    }
+
+    /**
+     * Get whether field is disabled or not
+     *
+     * @return boolean
+     */
+    public function get_disabled() {
+        return $this->disabled;
+    }
 }
 

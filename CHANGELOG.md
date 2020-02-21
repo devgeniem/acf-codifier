@@ -4,7 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [1.28.1] - 2020-02-17
+
+### Fixed
+- Polylang incompatibility with MultisiteRelationship.
+
+## [1.28.0] - 2020-02-07
+
+### Added
+- MultisiteTaxonomy field for choosing taxonomy terms from other multisite blogs.
+- Ability to set Multitaxonomy and MultisiteTaxonomy fields as "disabled".
+
+## [1.27.0] - 2020-01-31
+
+### Added
+- RediPress support for `update_field()` function.
 
 ### Added
 - Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.

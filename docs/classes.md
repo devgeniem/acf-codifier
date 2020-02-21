@@ -13,6 +13,7 @@
 - [\Geniem\ACF\Field\Taxonomy](#class-geniemacffieldtaxonomy)
 - [\Geniem\ACF\Field\DatePicker](#class-geniemacffielddatepicker)
 - [\Geniem\ACF\Field\Radio](#class-geniemacffieldradio)
+- [\Geniem\ACF\Field\MultisiteTaxonomy](#class-geniemacffieldmultisitetaxonomy)
 - [\Geniem\ACF\Field\Gallery](#class-geniemacffieldgallery)
 - [\Geniem\ACF\Field\ButtonGroup](#class-geniemacffieldbuttongroup)
 - [\Geniem\ACF\Field\Number](#class-geniemacffieldnumber)
@@ -176,6 +177,7 @@
 | public | <strong>redipress_set_field_type(</strong><em>\string</em> <strong>$type</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the RediSearch index field type for the field</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
 | public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
+| public static | <strong>running_update_field()</strong> : <em>boolean</em><br /><em>A helper function to detect if we are running ACF's update_field function.</em> |
 | public | <strong>set_default_value(</strong><em>mixed</em> <strong>$value</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the default value for the field.</em> |
 | public | <strong>set_instructions(</strong><em>\string</em> <strong>$instructions</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set instruction text for the field.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set key for the field.</em> |
@@ -230,6 +232,7 @@
 | public | <strong>get_name()</strong> : <em>string</em><br /><em>Getter for the name.</em> |
 | public | <strong>get_post_types()</strong> : <em>array</em><br /><em>Getter for the post types.</em> |
 | public | <strong>get_renderer()</strong> : <em>[\Geniem\ACF\Interfaces\Renderer](#interface-geniemacfinterfacesrenderer)</em><br /><em>Getter for the component renderer.</em> |
+| public | <strong>get_styles()</strong> : <em>array</em><br /><em>Getter for the styles of the block.</em> |
 | public | <strong>get_supports()</strong> : <em>array</em><br /><em>Getter for the supported features of the block.</em> |
 | public | <strong>get_title()</strong> : <em>string</em><br /><em>Getter for the title.</em> |
 | public | <strong>register()</strong> : <em>array The registered block data.</em><br /><em>Registers the ACF Gutenberg block</em> |
@@ -249,6 +252,7 @@
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the name.</em> |
 | public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the post_ ypes.</em> |
 | public | <strong>set_renderer(</strong><em>[\Geniem\ACF\Interfaces\Renderer](#interface-geniemacfinterfacesrenderer)</em> <strong>$renderer</strong>)</strong> : <em>void</em><br /><em>Set the renderer for the component.</em> |
+| public | <strong>set_styles(</strong><em>array</em> <strong>$styles</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the styles of the block.</em> |
 | public | <strong>set_supports(</strong><em>array</em> <strong>$supports</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the supported features of the block.</em> |
 | public | <strong>set_title(</strong><em>\string</em> <strong>$title</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the title</em> |
 | protected | <strong>register_block()</strong> : <em>array</em><br /><em>Register the ACF block.</em> |
@@ -419,6 +423,21 @@
 | public | <strong>set_choices(</strong><em>array</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
 
 *This class extends [\Geniem\ACF\Field\Checkbox](#class-geniemacffieldcheckbox)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\MultisiteTaxonomy
+
+> Class Taxonomy
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>allow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Not in use. Only here because of the parent class.</em> |
+| public | <strong>disallow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Not in use. Only here because of the parent class.</em> |
+| public | <strong>get_blog_id()</strong> : <em>integer Blog ID.</em><br /><em>Get blog id</em> |
+| public | <strong>set_blog_id(</strong><em>integer/\int</em> <strong>$blog_id</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set blog id</em> |
+
+*This class extends [\Geniem\ACF\Field\Multitaxonomy](#class-geniemacffieldmultitaxonomy)*
 
 <hr />
 
@@ -834,12 +853,17 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>add_taxonomy(</strong><em>\string</em> <strong>$taxonomy=`'category'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>You should not use this method! Overridden method of the parent class. Use set_taxonomies() instead.</em> |
 | public | <strong>allow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Override the parent method to disallow adding terms.</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable field</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable field</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Override the parent method to disallow adding terms.</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
 | public | <strong>get_taxonomies()</strong> : <em>array</em><br /><em>Get taxonomies.</em> |
 | public | <strong>get_taxonomy()</strong> : <em>string/null</em><br /><em>You should not use this method! Overridden method of the parent class. Use get_taxonomies() instead.</em> |
+| public | <strong>remove_taxonomy(</strong><em>\string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a taxonomy from the list.</em> |
 | public | <strong>set_taxonomies(</strong><em>array</em> <strong>$taxonomy=array()</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set taxonomies.</em> |
-| public | <strong>set_taxonomy(</strong><em>\string</em> <strong>$taxonomy=`'category'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>You should not use this method! Overridden method of the parent class. Use set_taxonomies() instead.</em> |
+| public | <strong>set_taxonomy(</strong><em>\string</em> <strong>$taxonomy=`'category'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>You should not use this method! Overridden method of the parent class. Use set_taxonomies() or add_taxonomy() instead.</em> |
 
 *This class extends [\Geniem\ACF\Field\Taxonomy](#class-geniemacffieldtaxonomy)*
 

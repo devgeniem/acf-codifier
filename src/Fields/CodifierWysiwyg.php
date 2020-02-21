@@ -10,7 +10,7 @@ add_action( 'acf/init', function() {
     /**
      * ACF Extended Wysiwyg Field class.
      */
-    class ACF_Field_Codifier_Wysiwyg extends \acf_field_wysiwyg {
+    class ACF_Field_Extended_Wysiwyg extends \acf_field_wysiwyg {
         /**
          * Constructor for the mandatory ACF stuff.
          */
@@ -71,5 +71,5 @@ add_action( 'acf/init', function() {
             }
     }
 
-    new ACF_Field_Codifier_Wysiwyg();
+    new ACF_Field_Extended_Wysiwyg();
 });

@@ -359,6 +359,15 @@ $multisite_taxonomy->set_taxonomies( [ 'category', 'post_tag' ] );
 $multisite_taxonomy->set_blog_id( 2 );
 ```
 
+### Extended Wysiwyg
+
+The Extended Wysiwyg is an ACF field type that can only be used with the Codifier. It extends the abilities of the Wysiwyg field by allowing the developer to set the height of the TinyMCE editor.
+
+```php
+$extended_wysiwyg = new Field\ExtendedWysiwyg( __( 'Extended Wysiwyg', 'extended_wysiwyg', 'extended_wysiwyg' ) );
+$extended_wysiwyg->set_height( 150 );
+```
+
 ### Support for external field types
 
 There are also some field types that are created in the ACF Codifier that are not built-in in the ACF itself. These fields require a plugin to work. The plugins should be linked in the docblock comment of the field type class.

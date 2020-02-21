@@ -14,7 +14,7 @@ class Wysiwyg extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $type = 'extended_wysiwyg';
+    protected $type = 'wysiwyg';
 
     /**
      * What wysiwyg tabs should be shown
@@ -193,26 +193,5 @@ class Wysiwyg extends \Geniem\ACF\Field {
      */
     public function get_delay() {
         return $this->delay;
-    }
-
-    /**
-     * Set the height of the element
-     *
-     * @param integer $height The height.
-     * @return self
-     */
-    public function set_height( int $height ) {
-        $this->height = $height;
-
-        return $this;
-    }
-
-    /**
-     * Get the height of the element.
-     *
-     * @return integer
-     */
-    public function get_height() : int {
-        return $this->height;
     }
 }

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.
+- Extended Wysiwyg field with ability to set textarea heights individually by field instance.
+
 ## [1.28.1] - 2020-02-17
 
 ### Fixed
@@ -19,10 +25,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - RediPress support for `update_field()` function.
-
-### Added
-- Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.
-- Ability to set Wysiwyg fields' heights individually by field instance, even below 100px.
 
 ## [1.26.0] - 2020-01-31
 

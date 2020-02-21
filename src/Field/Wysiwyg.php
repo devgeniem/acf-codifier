@@ -14,7 +14,7 @@ class Wysiwyg extends \Geniem\ACF\Field {
      *
      * @var string
      */
-    protected $type = 'wysiwyg';
+    protected $type = 'extended_wysiwyg';
 
     /**
      * What wysiwyg tabs should be shown
@@ -45,6 +45,13 @@ class Wysiwyg extends \Geniem\ACF\Field {
     protected $delay = 0;
 
     /**
+     * The height of the element
+     *
+     * @var integer
+     */
+    protected $height = 300;
+
+    /**
      * Set tabs to show
      *
      * @throws \Geniem\ACF\Exception Throws error if $tabs is not valid.
@@ -73,11 +80,45 @@ class Wysiwyg extends \Geniem\ACF\Field {
     /**
      * Set what toolbars should be shown
      *
-     * @param string $toolbar Toolbar to show.
+     * @param string|array|callable $toolbar Toolbar to show. Callable gets called with the field object as its parameter and should return an array.
      * @return self
      */
-    public function set_toolbar( string $toolbar = 'full' ) {
-        $this->toolbar = $toolbar;
+    public function set_toolbar( $toolbar = 'full' ) {
+        if ( is_string( $toolbar ) ) {
+            $this->toolbar = $toolbar;
+        }
+        elseif ( is_array( $toolbar ) || \is_callable( $toolbar ) ) {
+            $uniqid = sha1( uniqid( true ) );
+
+            \add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) use ( $toolbar, $uniqid ) {
+                if ( is_array( $toolbar ) ) {
+                    $multi_level = array_reduce( $toolbar, function( $carry, $item ) {
+                        if ( $carry ) {
+                            return $carry;
+                        }
+
+                        if ( is_array( $item ) ) {
+                            return true;
+                        }
+
+                        return false;
+                    }, false );
+
+                    if ( ! $multi_level ) {
+                        $toolbar = [ 1 => $toolbar ];
+                    }
+
+                    $toolbars[ 'codifier_' . $uniqid ] = $toolbar;
+                }
+                elseif ( is_callable( $toolbar ) ) {
+                    $toolbars[ 'codifier_' . $uniqid ] = $toolbar( $this );
+                }
+
+                return $toolbars;
+            }, false );
+
+            $this->toolbar = 'codifier_' . $uniqid;
+        }
 
         return $this;
     }
@@ -151,5 +192,26 @@ class Wysiwyg extends \Geniem\ACF\Field {
      */
     public function get_delay() {
         return $this->delay;
+    }
+
+    /**
+     * Set the height of the element
+     *
+     * @param integer $height The height.
+     * @return self
+     */
+    public function set_height( int $height ) {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get the height of the element.
+     *
+     * @return integer
+     */
+    public function get_height() : int {
+        return $this->height;
     }
 }

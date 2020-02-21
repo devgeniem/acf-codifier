@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.
+- Ability to set Wysiwyg fields' heights individually by field instance, even below 100px.
+
 ## [1.26.0] - 2020-01-31
 
 ### Added

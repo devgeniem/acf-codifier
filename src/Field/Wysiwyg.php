@@ -105,10 +105,19 @@ class Wysiwyg extends \Geniem\ACF\Field {
                     }, false );
 
                     if ( ! $multi_level ) {
-                        $toolbar = [ 1 => $toolbar ];
+                        $e_toolbar = [ 1 => $toolbar ];
+                    }
+                    else {
+                        $e_toolbar = [];
+
+                        $i = 1;
+
+                        foreach ( $toolbar as $row ) {
+                            $e_toolbar[ $i++ ] = $row;
+                        }
                     }
 
-                    $toolbars[ 'codifier_' . $uniqid ] = $toolbar;
+                    $toolbars[ 'codifier_' . $uniqid ] = $e_toolbar;
                 }
                 elseif ( is_callable( $toolbar ) ) {
                     $toolbars[ 'codifier_' . $uniqid ] = $toolbar( $this );

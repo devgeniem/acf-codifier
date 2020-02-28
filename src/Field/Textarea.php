@@ -6,6 +6,7 @@
 namespace Geniem\ACF\Field;
 
 use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\Placeholder;
 use Geniem\ACF\Field\Common\Readonly;
 
 /**
@@ -13,7 +14,7 @@ use Geniem\ACF\Field\Common\Readonly;
  */
 class Textarea extends \Geniem\ACF\Field {
 
-    use Readonly, Disabled;
+    use Readonly, Disabled, Placeholder;
 
     /**
      * Field type
@@ -49,27 +50,6 @@ class Textarea extends \Geniem\ACF\Field {
      * @var integer
      */
     protected $rows;
-
-    /**
-     * Set placeholder value
-     *
-     * @param string $placeholder Placeholder.
-     * @return self
-     */
-    public function  string $placeholder ) {
-        $this->placeholder = $placeholder;
-
-        return $this;
-    }
-
-    /**
-     * Get placeholder value
-     *
-     * @return string
-     */
-    public function get_placeholder() {
-        return $this->placeholder;
-    }
 
     /**
      * Set text max length

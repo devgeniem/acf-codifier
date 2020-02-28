@@ -5,10 +5,16 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\Placeholder;
+
 /**
  * Class Select
  */
 class Select extends \Geniem\ACF\Field {
+
+    use Disabled, Placeholder;
+
     /**
      * Field type
      *
@@ -52,13 +58,6 @@ class Select extends \Geniem\ACF\Field {
     protected $ajax;
 
     /**
-     * Field placeholder
-     *
-     * @var string
-     */
-    protected $placeholder;
-
-    /**
      * Format when returned via get_field
      *
      * @var string
@@ -66,15 +65,8 @@ class Select extends \Geniem\ACF\Field {
     protected $return_format = 'value';
 
     /**
-     * Is field disabled
-     *
-     * @var boolean
-     */
-    protected $disabled;
-
-    /**
      * Set choices for the checkbox
-     * 
+     *
      * @throws \Geniem\ACF\Exception If the parameter or its end result are not arrays.
      * @param mixed $choices Choices as key-value pair strings or a callable that returns one.
      * @return self
@@ -282,58 +274,6 @@ class Select extends \Geniem\ACF\Field {
      */
     public function get_ajax() {
         return $this->ajax;
-    }
-
-    /**
-     * Set field placeholder
-     *
-     * @param string $placeholder Placeholder text.
-     * @return self
-     */
-    public function set_placeholder( string $placeholder ) {
-        $this->placeholder = $placeholder;
-
-        return $this;
-    }
-
-    /**
-     * Get field placeholder text
-     *
-     * @return string
-     */
-    public function get_placeholder() {
-        return $this->placeholder;
-    }
-
-    /**
-     * Disable field
-     *
-     * @return self
-     */
-    public function disable() {
-        $this->disabled = true;
-
-        return $this;
-    }
-
-    /**
-     * Enable field
-     *
-     * @return self
-     */
-    public function enable() {
-        $this->disabled = false;
-
-        return $this;
-    }
-
-    /**
-     * Get whether field is disabled or not
-     *
-     * @return boolean
-     */
-    public function get_disabled() {
-        return $this->disabled;
     }
 
     /**

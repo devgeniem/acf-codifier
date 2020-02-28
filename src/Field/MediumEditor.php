@@ -10,23 +10,21 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Placeholder;
+
 /**
  * Class MediumEditor
  */
 class MediumEditor extends \Geniem\ACF\Field {
+
+    use Placeholder;
+
     /**
      * Field type
      *
      * @var string
      */
     protected $type = 'medium_editor';
-
-    /**
-     * Field placeholder
-     *
-     * @var string
-     */
-    protected $placeholder;
 
     /**
      * Standard buttons to show
@@ -89,27 +87,6 @@ class MediumEditor extends \Geniem\ACF\Field {
         }, $obj['custom_buttons'] );
 
         return $obj;
-    }
-
-    /**
-     * Set placeholder value
-     *
-     * @param string $placeholder Placeholder.
-     * @return self
-     */
-    public function set_placeholder( string $placeholder ) {
-        $this->placeholder = $placeholder;
-
-        return $this;
-    }
-
-    /**
-     * Get placeholder value
-     *
-     * @return string
-     */
-    public function get_placeholder() {
-        return $this->placeholder;
     }
 
     /**

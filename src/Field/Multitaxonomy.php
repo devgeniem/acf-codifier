@@ -5,11 +5,12 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+
 /**
  * Class Taxonomy
  */
 class Multitaxonomy extends Taxonomy {
-
     /**
      * Field type
      *
@@ -23,14 +24,6 @@ class Multitaxonomy extends Taxonomy {
      * @var array
      */
     protected $taxonomy = [];
-
-    /**
-     * Is field disabled
-     *
-     * @var boolean
-     */
-    protected $disabled;
-
     /**
      * Get taxonomies.
      *
@@ -132,37 +125,6 @@ class Multitaxonomy extends Taxonomy {
      */
     public function get_add_term() {
         return false;
-    }
-
-    /**
-     * Disable field
-     *
-     * @return self
-     */
-    public function disable() {
-        $this->disable = true;
-
-        return $this;
-    }
-
-    /**
-     * Enable field
-     *
-     * @return self
-     */
-    public function enable() {
-        $this->disable = false;
-
-        return $this;
-    }
-
-    /**
-     * Get whether field is disabled or not
-     *
-     * @return boolean
-     */
-    public function get_disabled() {
-        return $this->disabled;
     }
 }
 

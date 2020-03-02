@@ -1,3 +1,941 @@
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
+
+Deprecated: Function ReflectionParameter::export() is deprecated in /Users/miika/Geniem/Plugins/ACF-Codifier/vendor/victorjonsson/markdowndocs/src/PHPDocsMD/Reflector.php on line 318
 ## Table of contents
 
 - [\Geniem\ACF\Group](#class-geniemacfgroup)
@@ -19,6 +957,7 @@
 - [\Geniem\ACF\Field\Number](#class-geniemacffieldnumber)
 - [\Geniem\ACF\Field\PostContent](#class-geniemacffieldpostcontent)
 - [\Geniem\ACF\Field\Group](#class-geniemacffieldgroup)
+- [\Geniem\ACF\Field\MultisitePostObject](#class-geniemacffieldmultisitepostobject)
 - [\Geniem\ACF\Field\PageLink](#class-geniemacffieldpagelink)
 - [\Geniem\ACF\Field\Link](#class-geniemacffieldlink)
 - [\Geniem\ACF\Field\PostExcerpt](#class-geniemacffieldpostexcerpt)
@@ -293,13 +1232,16 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the append value of the field.</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get the placeholder of the field.</em> |
-| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the prepend value of the field.</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the field append value</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
+| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the field prepend value</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
-| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the append value of the field.</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the placeholder of the field.</em> |
-| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the prepend value of the field.</em> |
+| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field append value</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
+| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field prepend value</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
@@ -364,14 +1306,17 @@
 | public | <strong>allow_load_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable loading terms to the post object</em> |
 | public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
 | public | <strong>allow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable saving terms to the post object</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
 | public | <strong>disallow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable adding terms</em> |
 | public | <strong>disallow_load_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable loading terms to the post object</em> |
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
 | public | <strong>disallow_save_terms()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable saving terms to the post object</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
 | public | <strong>filter_arguments(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a arguments filtering function for the field</em> |
 | public | <strong>filter_results(</strong><em>\callable</em> <strong>$function</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Register a function to filter the result texts for the field in admin</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Get whether terms can be added</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
 | public | <strong>get_field_type()</strong> : <em>string</em><br /><em>Get displayed field type</em> |
 | public | <strong>get_load_terms()</strong> : <em>integer</em><br /><em>Get the status of loading terms to the post object</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
@@ -392,12 +1337,18 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Constructor.</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
 | public | <strong>get_display_format()</strong> : <em>string</em><br /><em>Get display_format variable</em> |
 | public | <strong>get_first_day()</strong> : <em>integer</em><br /><em>Get first_day variable</em> |
+| public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return_format variable</em> |
 | public | <strong>set_display_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set display_format variable</em> |
 | public | <strong>set_first_day(</strong><em>integer/\int</em> <strong>$day</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set first_day variable</em> |
+| public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$format</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return_format variable</em> |
+| public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -511,18 +1462,24 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get append value</em> |
-| public | <strong>get_max()</strong> : <em>integer Maximum value.</em><br /><em>Get maximum value</em> |
-| public | <strong>get_min()</strong> : <em>integer Minimum value.</em><br /><em>Get minimum value</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
-| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the field append value</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
+| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
+| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
+| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the field prepend value</em> |
+| public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>get_step()</strong> : <em>integer</em><br /><em>Get step size</em> |
-| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
-| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
-| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
+| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field append value</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
+| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field prepend value</em> |
+| public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_step(</strong><em>integer/\int</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
+| public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -554,6 +1511,19 @@
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
 *This class implements [\Geniem\ACF\Interfaces\Groupable](#interface-geniemacfinterfacesgroupable)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\MultisitePostObject
+
+> Class MultisitePostObject
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>get_blog_id()</strong> : <em>integer Blog ID.</em><br /><em>Get blog id</em> |
+| public | <strong>set_blog_id(</strong><em>integer/\int</em> <strong>$blog_id</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set blog id</em> |
+
+*This class extends [\Geniem\ACF\Field\PostObject](#class-geniemacffieldpostobject)*
 
 <hr />
 
@@ -832,14 +1802,14 @@
 | public | <strong>__construct(</strong><em>string</em> <strong>$label</strong>, <em>string</em> <strong>$key=null</strong>, <em>string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Override field construction method to add default button label but run parent constructor after that</em> |
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
-| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount of layouts</em> |
-| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount of layouts</em> |
+| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
+| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
 | public | <strong>remove_collapsed()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove collapsed field.</em> |
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
 | public | <strong>set_collapsed(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field whose value is shown when collapsed.</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
-| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
-| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
 
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
@@ -855,10 +1825,7 @@
 |:-----------|:---------|
 | public | <strong>add_taxonomy(</strong><em>\string</em> <strong>$taxonomy=`'category'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>You should not use this method! Overridden method of the parent class. Use set_taxonomies() instead.</em> |
 | public | <strong>allow_add_term()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Override the parent method to disallow adding terms.</em> |
-| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable field</em> |
-| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable field</em> |
 | public | <strong>get_add_term()</strong> : <em>integer</em><br /><em>Override the parent method to disallow adding terms.</em> |
-| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
 | public | <strong>get_taxonomies()</strong> : <em>array</em><br /><em>Get taxonomies.</em> |
 | public | <strong>get_taxonomy()</strong> : <em>string/null</em><br /><em>You should not use this method! Overridden method of the parent class. Use get_taxonomies() instead.</em> |
 | public | <strong>remove_taxonomy(</strong><em>\string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a taxonomy from the list.</em> |
@@ -881,13 +1848,13 @@
 | public | <strong>get_button_label()</strong> : <em>string Button label</em><br /><em>Get button label</em> |
 | public | <strong>get_layout(</strong><em>\string</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)</em><br /><em>Get layout by name</em> |
 | public | <strong>get_layouts()</strong> : <em>array</em><br /><em>Get all layouts</em> |
-| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount of layouts</em> |
-| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount of layouts</em> |
+| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
+| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
 | public | <strong>remove_layout(</strong><em>[\Geniem\ACF\Field\Flexible\Layout](#class-geniemacffieldflexiblelayout)/string</em> <strong>$layout</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove layout from layouts</em> |
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
 | public | <strong>set_layouts(</strong><em>array</em> <strong>$layouts</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layouts</em> |
-| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount of layouts</em> |
-| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount of layouts</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
 | protected | <strong>exclude_fields()</strong> : <em>void</em><br /><em>Exclude from fields</em> |
 | protected | <strong>exclude_post_types()</strong> : <em>void</em><br /><em>Exclude from post types</em> |
 | protected | <strong>exclude_templates()</strong> : <em>void</em><br /><em>Exclude from templates</em> |
@@ -914,13 +1881,13 @@
 | public | <strong>get_custom_buttons()</strong> : <em>array</em><br /><em>Get all custom buttons</em> |
 | public | <strong>get_delay_status()</strong> : <em>integer</em><br /><em>Get delay status</em> |
 | public | <strong>get_options()</strong> : <em>array</em><br /><em>Returns set options as an array</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
 | public | <strong>remove_button(</strong><em>string</em> <strong>$button</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Removes a standard button from the text formatting buttons</em> |
 | public | <strong>remove_custom_button(</strong><em>[\Geniem\ACF\Field\MediumEditor\CustomButton](#class-geniemacffieldmediumeditorcustombutton)/string</em> <strong>$custom_button</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a button from custom buttons</em> |
 | public | <strong>remove_option(</strong><em>string</em> <strong>$option</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove an option</em> |
 | public | <strong>set_buttons(</strong><em>array</em> <strong>$buttons</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set standard text formatting buttons to show Takes an array of buttons and overrides possible previous values with the new array. Possible values: - bold - italic - underline - strikethrough - subscript - superscript - anchor - image - quote - pre - orderedlist - unorderedlist - indent - outdent - justifyLeft - justifyCenter - justifyRight - justifyFull - h1 - h2 - h3 - h4 - h5 - h6 - html - removeFormat</em> |
 | public | <strong>set_options(</strong><em>array</em> <strong>$options</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set Medium Editor options</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -964,9 +1931,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
@@ -978,12 +1948,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_append()</strong> : <em>mixed</em> |
-| public | <strong>get_placeholder()</strong> : <em>mixed</em> |
-| public | <strong>get_prepend()</strong> : <em>mixed</em> |
-| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>void</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>void</em> |
-| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>void</em> |
+| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the field append value</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
+| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the field prepend value</em> |
+| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field append value</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
+| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field prepend value</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -1013,8 +1983,8 @@
 | public | <strong>export(</strong><em>\bool</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_elements()</strong> : <em>array</em><br /><em>Get elements to show</em> |
 | public | <strong>get_filters()</strong> : <em>array</em><br /><em>Get usable filters</em> |
-| public | <strong>get_max()</strong> : <em>integer Maximum value.</em><br /><em>Get maximum value</em> |
-| public | <strong>get_min()</strong> : <em>integer Minimum value.</em><br /><em>Get minimum value</em> |
+| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
+| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
 | public | <strong>get_post_types()</strong> : <em>array</em><br /><em>Get allowed post types</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>get_taxonomies()</strong> : <em>array</em><br /><em>Get allowed taxonomies</em> |
@@ -1026,8 +1996,8 @@
 | public | <strong>remove_taxonomy(</strong><em>string</em> <strong>$taxonomy</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove taxonomy from allowed by slug</em> |
 | public | <strong>set_elements(</strong><em>array</em> <strong>$elements</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set elements to show</em> |
 | public | <strong>set_filters(</strong><em>array</em> <strong>$filters</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set filters to show</em> |
-| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
 | public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set post types to show</em> |
 | public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'object'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 | public | <strong>set_taxonomies(</strong><em>array</em> <strong>$taxonomies</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set taxonomies to show</em> |
@@ -1070,16 +2040,16 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable field</em> |
-| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable field</em> |
-| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
 | public | <strong>get_new_lines()</strong> : <em>string</em><br /><em>Get new line handling way</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
 | public | <strong>get_rows()</strong> : <em>integer</em><br /><em>Get max rows</em> |
 | public | <strong>set_maxlength(</strong><em>integer/\int</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
 | public | <strong>set_new_lines(</strong><em>\string</em> <strong>$new_lines=`'wpautop'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set new line handling</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_rows(</strong><em>integer/\int</em> <strong>$rows</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set max rows</em> |
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
@@ -1097,16 +2067,16 @@
 | public | <strong>add_choice(</strong><em>mixed</em> <strong>$choice</strong>, <em>mixed</em> <strong>$value=null</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds a choice to the choices array</em> |
 | public | <strong>allow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow multiple values</em> |
 | public | <strong>allow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Allow null value</em> |
-| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable field</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
 | public | <strong>disallow_multiple()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow multiple values</em> |
 | public | <strong>disallow_null()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disallow null value</em> |
-| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable field</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
 | public | <strong>get_ajax()</strong> : <em>integer</em><br /><em>Get ajax loading state</em> |
 | public | <strong>get_allow_multiple()</strong> : <em>integer</em><br /><em>Get allow multiple status</em> |
 | public | <strong>get_allow_null()</strong> : <em>integer</em><br /><em>Get allow null status</em> |
 | public | <strong>get_choices()</strong> : <em>array</em><br /><em>Get all choices.</em> |
-| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder text</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>no_ajax()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable loading values via ajax</em> |
 | public | <strong>no_ui()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable custom ui</em> |
@@ -1155,24 +2125,12 @@
 
 ### Class: \Geniem\ACF\Field\Range
 
-> Class Number
+> Class Range
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get append value</em> |
-| public | <strong>get_max()</strong> : <em>integer Maximum value.</em><br /><em>Get maximum value</em> |
-| public | <strong>get_min()</strong> : <em>integer Minimum value.</em><br /><em>Get minimum value</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
-| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
-| public | <strong>get_step()</strong> : <em>integer</em><br /><em>Get step size</em> |
-| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
-| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum value</em> |
-| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum value</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
-| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
-| public | <strong>set_step(</strong><em>integer/\int</em> <strong>$step</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set step size</em> |
 
-*This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+*This class extends [\Geniem\ACF\Field\Number](#class-geniemacffieldnumber)*
 
 <hr />
 
@@ -1228,17 +2186,17 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable field</em> |
-| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable field</em> |
-| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get append value</em> |
-| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get whether field is disabled or not</em> |
-| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get placeholder value</em> |
-| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get prepend value</em> |
+| public | <strong>disable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field disabled</em> |
+| public | <strong>enable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field enabled</em> |
+| public | <strong>get_append()</strong> : <em>string</em><br /><em>Get the field append value</em> |
+| public | <strong>get_disabled()</strong> : <em>boolean</em><br /><em>Get field's disabled state</em> |
+| public | <strong>get_placeholder()</strong> : <em>string</em><br /><em>Get field placeholder</em> |
+| public | <strong>get_prepend()</strong> : <em>string</em><br /><em>Get the field prepend value</em> |
 | public | <strong>get_readonly()</strong> : <em>boolean</em><br /><em>Get field readonly state</em> |
-| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set append text</em> |
+| public | <strong>set_append(</strong><em>\string</em> <strong>$append</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field append value</em> |
 | public | <strong>set_maxlength(</strong><em>integer/\int</em> <strong>$maxlength</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set text max length</em> |
-| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set placeholder value</em> |
-| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set prepend text</em> |
+| public | <strong>set_placeholder(</strong><em>\string</em> <strong>$placeholder</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field placeholder</em> |
+| public | <strong>set_prepend(</strong><em>\string</em> <strong>$prepend</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field prepend value</em> |
 | public | <strong>set_readonly()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to read only</em> |
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 

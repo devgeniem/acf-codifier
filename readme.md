@@ -324,7 +324,7 @@ The Multisite Relationship is an ACF field type that can only be used with the C
 The usage is otherwise exactly the same as with the Relationship field, but there is a new `set_blog_id()` method.
 
 ```php
-$ms_relationship = new Field\MultisiteRelationship( __('My Multisite Relationship field' ) );
+$ms_relationship = new Field\MultisiteRelationship( __( 'My Multisite Relationship field', 'multisite_relationship', 'multisite_relationship' ) );
 $ms_relationship->set_blog_id( 2 );
 ```
 
@@ -357,6 +357,17 @@ The Multisite Taxonomy is an ACF field type that can only be used with the Codif
 $multisite_taxonomy = new Field\MultisiteTaxonomy( __( 'Select a category or a tag from blog 2', 'multisite_tax', 'multisite_tax' ) );
 $multisite_taxonomy->set_taxonomies( [ 'category', 'post_tag' ] );
 $multisite_taxonomy->set_blog_id( 2 );
+```
+
+### Multisite Post Object
+
+The Multisite Post Object is an ACF field type that can only be used with the Codifier. It is a clone of the original Post Object field but with the ability to define the blog from which the post object can be picked.
+
+The usage is similar to the Post Object field, but there is a new `set_blog_id()` method for selecting the blog.
+
+```php
+$ms_object = new Field\MultisitePostObject( __( 'My Multisite Post Object field', 'multisite_object', 'multisite_object' ) );
+$ms_object->set_blog_id( 2 );
 ```
 
 ### Support for external field types

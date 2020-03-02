@@ -24,6 +24,7 @@ if ( file_exists( __DIR__ . '/src/Fields/PHP.php' ) ) {
         require_once __DIR__ . '/src/Fields/MultisiteRelationship.php';
         require_once __DIR__ . '/src/Fields/Multitaxonomy.php';
         require_once __DIR__ . '/src/Fields/MultisiteTaxonomy.php';
+        require_once __DIR__ . '/src/Fields/MultisitePostObject.php';
     });
 }
 

@@ -553,7 +553,7 @@ class Block implements GroupableInterface {
         }
 
         // Register the ACF Block.
-        return acf_register_block( $args );
+        return \acf_register_block( $args );
     }
 
     /**

@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\MinMax;
+
 /**
  * Class Repeater
  */
 class Repeater extends \Geniem\ACF\Field\GroupableField {
+
+    use MinMax;
+
     /**
      * Field type
      *
@@ -22,20 +27,6 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
      * @var string Field key
      */
     protected $collapsed;
-
-    /**
-     * Minimum amount of items to add
-     *
-     * @var integer
-     */
-    protected $min;
-
-    /**
-     * Maximum amount of items to add
-     *
-     * @var integer
-     */
-    protected $max;
 
     /**
      * Field layout
@@ -69,48 +60,6 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
         $this->button_label = __( 'Add Row', 'acf' );
 
         parent::__construct( $label, $key, $name );
-    }
-
-    /**
-     * Set maximum amount of layouts
-     *
-     * @param integer $max Maximum amount.
-     * @return self
-     */
-    public function set_max( int $max ) {
-        $this->max = $max;
-
-        return $this;
-    }
-
-    /**
-     * Get maximum amount of layouts
-     *
-     * @return integer Maximum amount
-     */
-    public function get_max() {
-        return $this->max;
-    }
-
-    /**
-     * Set minimum amount of layouts
-     *
-     * @param integer $min Minimum amount.
-     * @return self
-     */
-    public function set_min( int $min ) {
-        $this->min = $min;
-
-        return $this;
-    }
-
-    /**
-     * Get minimum amount of layouts
-     *
-     * @return integer Minimum amount
-     */
-    public function get_min() {
-        return $this->min;
     }
 
     /**

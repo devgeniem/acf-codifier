@@ -5,10 +5,14 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\MinMax;
+
 /**
  * Class FlexibleContent
  */
 class FlexibleContent extends \Geniem\ACF\Field {
+
+    use MinMax;
 
     /**
      * Field type
@@ -23,20 +27,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * @var string
      */
     protected $button_label;
-
-    /**
-     * Minimum amount of flexible layouts to add
-     *
-     * @var integer
-     */
-    protected $min;
-
-    /**
-     * Maximum amount of flexible layouts to add
-     *
-     * @var integer
-     */
-    protected $max;
 
     /**
      * Layouts added
@@ -181,48 +171,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
      */
     public function get_button_label() {
         return $this->button_label;
-    }
-
-    /**
-     * Set maximum amount of layouts
-     *
-     * @param integer $max Maximum amount.
-     * @return self
-     */
-    public function set_max( int $max ) {
-        $this->max = $max;
-
-        return $this;
-    }
-
-    /**
-     * Get maximum amount of layouts
-     *
-     * @return integer Maximum amount
-     */
-    public function get_max() {
-        return $this->max;
-    }
-
-    /**
-     * Set minimum amount of layouts
-     *
-     * @param integer $min Minimum amount.
-     * @return self
-     */
-    public function set_min( int $min ) {
-        $this->min = $min;
-
-        return $this;
-    }
-
-    /**
-     * Get minimum amount of layouts
-     *
-     * @return integer Minimum amount
-     */
-    public function get_min() {
-        return $this->min;
     }
 
     /**

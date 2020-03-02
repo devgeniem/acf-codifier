@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\Readonly;
+
 /**
  * Class DatePicker
  */
 class DatePicker extends \Geniem\ACF\Field {
+
+    use Disabled, Readonly;
 
     /**
      * The field type

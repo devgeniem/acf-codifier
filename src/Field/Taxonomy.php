@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+
 /**
  * Class Taxonomy
  */
 class Taxonomy extends \Geniem\ACF\Field {
+
+    use Disabled;
+
     /**
      * Field type
      *

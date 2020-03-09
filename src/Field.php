@@ -1170,6 +1170,17 @@ abstract class Field {
     }
 
     /**
+     * Fulfill ACF's is_field_key check for field keys not starting with `field_`.
+     *
+     * @param boolean $is_field_key Original value.
+     * @param string $id Field key.
+     * @return bool Whether it's a field or not.
+     */
+    public static function acf_is_field_key( $is_field_key, $id ) : bool {
+        return $is_field_key ?: isset( self::$keys[ $id ] );
+    }
+
+    /**
      * A helper function to use to enable indexing the post outside save action.
      *
      * @param mixed $value   The value.

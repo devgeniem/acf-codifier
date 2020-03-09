@@ -21,6 +21,9 @@ class Codifier {
      * @return void
      */
     public static function init() {
+        // Hook to ACF's acf/is_field_key check.
+        add_filter( 'acf/is_field_key', '\\Geniem\ACF\\Field::acf_is_field_key', 10, 2 );
+
         // Enable label hiding.
         add_action( 'admin_head', __CLASS__ . '::hide_labels' );
 

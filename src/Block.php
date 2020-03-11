@@ -457,7 +457,7 @@ class Block implements GroupableInterface {
      * @return self
      */
     public function add_data_filter( callable $function, int $priority = 10 ) : self {
-        add_filter( 'codifier/blocks/data/' . $this->get_name(), $function, 2, $priority );
+        add_filter( 'codifier/blocks/data/' . $this->get_name(), $function, $priority, 6 );
 
         return $this;
     }

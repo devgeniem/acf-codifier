@@ -570,8 +570,8 @@ class Block implements GroupableInterface {
         $renderer = $this->get_renderer();
         $data     = \get_fields();
 
-        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this );
-        $data = apply_filters( 'codifier/blocks/data', $data, $this );
+        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this, $block = [], $content = '', $is_preview = false, $post_id = 0 );
+        $data = apply_filters( 'codifier/blocks/data', $data, $this, $block = [], $content = '', $is_preview = false, $post_id = 0 );
 
         echo $renderer->render(
             [

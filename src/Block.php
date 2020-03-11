@@ -566,12 +566,12 @@ class Block implements GroupableInterface {
      * @param bool   $is_preview If we are in preview or not.
      * @param mixed  $post_id The post ID.
      */
-    protected function render( array $block = [], string $content, bool $is_preview, $post_id ) {
+    protected function render( array $block = [], string $content = '', bool $is_preview = false, $post_id = 0 ) {
         $renderer = $this->get_renderer();
         $data     = \get_fields();
 
-        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this, $block = [], $content = '', $is_preview = false, $post_id = 0 );
-        $data = apply_filters( 'codifier/blocks/data', $data, $this, $block = [], $content = '', $is_preview = false, $post_id = 0 );
+        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this, $block, $content, $is_preview, $post_id );
+        $data = apply_filters( 'codifier/blocks/data', $data, $this, $block, $content, $is_preview, $post_id );
 
         echo $renderer->render(
             [

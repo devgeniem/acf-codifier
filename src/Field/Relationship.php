@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\MinMax;
+
 /**
  * Class Relationship
  */
 class Relationship extends \Geniem\ACF\Field {
+
+    use MinMax;
+
     /**
      * Field type
      *
@@ -43,20 +48,6 @@ class Relationship extends \Geniem\ACF\Field {
      * @var array
      */
     protected $elements = [];
-
-    /**
-     * Minimum amount of posts
-     *
-     * @var integer
-     */
-    protected $min;
-
-    /**
-     * Maximum amount of posts
-     *
-     * @var integer
-     */
-    protected $max;
 
     /**
      * Return format
@@ -304,48 +295,6 @@ class Relationship extends \Geniem\ACF\Field {
      */
     public function get_elements() {
         return $this->elements;
-    }
-
-    /**
-     * Set minimum value
-     *
-     * @param integer $min Minimum value.
-     * @return self
-     */
-    public function set_min( int $min ) {
-        $this->min = $min;
-
-        return $this;
-    }
-
-    /**
-     * Get minimum value
-     *
-     * @return integer Minimum value.
-     */
-    public function get_min() {
-        return $this->min;
-    }
-
-    /**
-     * Set maximum value
-     *
-     * @param integer $max Maximum value.
-     * @return self
-     */
-    public function set_max( int $max ) {
-        $this->max = $max;
-
-        return $this;
-    }
-
-    /**
-     * Get maximum value
-     *
-     * @return integer Maximum value.
-     */
-    public function get_max() {
-        return $this->max;
     }
 
     /**

@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.
 - Extended Wysiwyg field with ability to set textarea heights individually by field instance.
 
+## [1.29.0] - 2020-03-02
+
+### Added
+- MultisitePostObject field for selecting post objects from other sites.
+
+### Changed
+- Cleaned up code quite a bit and changed duplicate code to traits for DRY.
+
 ## [1.28.1] - 2020-02-17
 
 ### Fixed

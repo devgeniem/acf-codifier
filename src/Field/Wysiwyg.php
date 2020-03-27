@@ -88,9 +88,7 @@ class Wysiwyg extends \Geniem\ACF\Field {
             $this->toolbar = $toolbar;
         }
         elseif ( is_array( $toolbar ) || \is_callable( $toolbar ) ) {
-            $uniqid = sha1( uniqid( true ) );
-
-            \add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) use ( $toolbar, $uniqid ) {
+            \add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) use ( $toolbar ) {
                 if ( is_array( $toolbar ) ) {
                     $multi_level = array_reduce( $toolbar, function( $carry, $item ) {
                         return $carry ?: is_array( $item );
@@ -109,16 +107,16 @@ class Wysiwyg extends \Geniem\ACF\Field {
                         }
                     }
 
-                    $toolbars[ 'codifier_' . $uniqid ] = $e_toolbar;
+                    $toolbars[ 'codifier_' . sha1( $this->key ) ] = $e_toolbar;
                 }
                 elseif ( is_callable( $toolbar ) ) {
-                    $toolbars[ 'codifier_' . $uniqid ] = $toolbar( $this );
+                    $toolbars[ 'codifier_' . sha1( $this->key ) ] = $toolbar( $this );
                 }
 
                 return $toolbars;
             }, false );
 
-            $this->toolbar = 'codifier_' . $uniqid;
+            $this->toolbar = 'codifier_' . sha1( $this->key );
         }
 
         return $this;

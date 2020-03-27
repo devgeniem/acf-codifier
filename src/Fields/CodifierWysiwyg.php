@@ -20,7 +20,7 @@ add_action( 'acf/init', function() {
             $this->name     = 'extended_wysiwyg';
             $this->label    = 'ACF Codifier Extended Wysiwyg Editor';
             $this->defaults = array(
-                'tabs'			=> 'all',
+                'tabs'      	=> 'all',
                 'toolbar'		=> 'full',
                 'media_upload' 	=> 1,
                 'default_value'	=> '',
@@ -36,8 +36,6 @@ add_action( 'acf/init', function() {
          * @return void
          */
         public function render_field( $field ) {
-            $this->enqueue_scripts();
-
             ob_start();
             parent::render_field( $field );
             $return = ob_get_clean();
@@ -61,7 +59,7 @@ add_action( 'acf/init', function() {
              *
              * @return void
              */
-            public function enqueue_scripts() {
+            public function input_admin_enqueue_scripts() {
                 $src = \plugin_dir_url( realpath( __DIR__ . '/..' ) . '/plugin.php' );
 
                 // Strip the src

@@ -765,7 +765,7 @@ abstract class Field {
      *
      * @return void
      */
-    public static function use_redipress_include_search_filter() {
+    public static function redipress_use_include_search_filter() {
         add_filter( 'acf/format_value', \Closure::fromCallable(( [ __CLASS__, 'redipress_include_search_filter' ] ) ), 10, 3 );
     }
 
@@ -1170,7 +1170,7 @@ abstract class Field {
      * @return void
      */
     public static function redipress_get_fields( $item ) {
-        self::use_redipress_include_search_filter();
+        self::redipress_use_include_search_filter();
 
         if ( $item instanceof \WP_Post ) {
             \get_fields( $item->ID, true );

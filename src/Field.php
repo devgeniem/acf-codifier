@@ -761,6 +761,15 @@ abstract class Field {
     }
 
     /**
+     * Use RediPress formatting functions in all suitable fields.
+     *
+     * @return void
+     */
+    public static function use_redipress_include_search_filter() {
+        add_filter( 'acf/format_value', \Closure::fromCallable(( [ __CLASS__, 'redipress_include_search_filter' ] ) ), 10, 3 );
+    }
+
+    /**
      * Include the field's value in RediPress search index.
      *
      * @param mixed   $value   Field's value.
@@ -1161,6 +1170,8 @@ abstract class Field {
      * @return void
      */
     public static function redipress_get_fields( $item ) {
+        self::use_redipress_include_search_filter();
+
         if ( $item instanceof \WP_Post ) {
             \get_fields( $item->ID, true );
         }

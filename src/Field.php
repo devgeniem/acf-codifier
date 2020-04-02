@@ -1170,6 +1170,7 @@ abstract class Field {
      * @return void
      */
     public static function redipress_get_fields( $item ) {
+        // Only add the filter once.
         static $filter_added = false;
 
         if ( ! $filter_added ) {

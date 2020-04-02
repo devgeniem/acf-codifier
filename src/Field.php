@@ -1170,7 +1170,12 @@ abstract class Field {
      * @return void
      */
     public static function redipress_get_fields( $item ) {
-        self::redipress_use_include_search_filter();
+        static $filter_added = false;
+
+        if ( ! $filter_added ) {
+            self::redipress_use_include_search_filter();
+            $filter_added = true;
+        }
 
         if ( $item instanceof \WP_Post ) {
             \get_fields( $item->ID, true );

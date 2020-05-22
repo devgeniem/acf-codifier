@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.30.0] - 2020-05-22
 
 ### Added
-- A compability fix for Advanced Forms plugin to be able to handle Codifier-registered fields in submissions.
+- A compatibility fix for Advanced Forms plugin to be able to handle Codifier-registered fields in submissions.
 
 ## [1.29.2] - 2020-04-02
 

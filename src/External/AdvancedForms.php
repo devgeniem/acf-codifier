@@ -24,7 +24,7 @@ class AdvancedForms {
             $acf_core_forms_submissions = AF()->classes['core_forms_submissions'];
 
             \remove_action( 'init', [ $acf_core_forms_submissions, 'pre_form' ], 10 );
-            \add_action( 'init', [ $acf_core_forms_submissions, 'pre_form' ], 9999, 0 );
+            \add_action( 'wp-loaded', [ $acf_core_forms_submissions, 'pre_form' ], 9999, 0 );
         }
     }
 }

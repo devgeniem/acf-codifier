@@ -335,7 +335,9 @@ trait Groupable {
      * @return array
      */
     public function get_field( string $name ) : ?Field {
-        return $this->{ $this->fields_var() }[ $name ] ?? null;
+        return array_reduce( $this->{ $this->fields_var() }, function( ?Field $carry, Field $item ) use ( $name ) {
+            return $item->get_name() === $name ? $item : $carry;
+        }, null );
     }
 
     /**

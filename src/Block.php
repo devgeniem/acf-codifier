@@ -122,6 +122,20 @@ class Block implements GroupableInterface {
     protected $renderer;
 
     /**
+     * Holder variable for the post ID.
+     *
+     * @var mixed
+     */
+    protected $post_id;
+
+    /**
+     * The ACF Codifier field group
+     *
+     * @var Group
+     */
+    protected $field_group;
+
+    /**
      * Constructor
      *
      * @param string $title Block title.
@@ -450,6 +464,24 @@ class Block implements GroupableInterface {
     }
 
     /**
+     * Getter for the post ID.
+     *
+     * @return mixed
+     */
+    public function get_post_id() {
+        return $this->post_id;
+    }
+
+    /**
+     * Getter for the field group.
+     *
+     * @return Group
+     */
+    public function get_field_group() : Group {
+        return $this->field_group;
+    }
+
+    /**
      * Add a data filtering function for the block
      *
      * @param callable $function The function to add.
@@ -518,14 +550,15 @@ class Block implements GroupableInterface {
      */
     protected function register_field_group() {
         // Define a field group and set it to use the component fields.
-        $field_group = new Group( $this->get_title(), $this->get_name() );
+        $this->field_group        = new Group( $this->get_title(), $this->get_name() );
+        $this->field_group->block = $this;
 
         $rule_group = new RuleGroup();
         $rule_group->add_rule( 'block', '==', 'acf/' . $this->get_name() );
 
-        $field_group->add_rule_group( $rule_group );
-        $field_group->add_fields( $this->get_fields() );
-        $field_group->register();
+        $this->field_group->add_rule_group( $rule_group );
+        $this->field_group->add_fields( $this->get_fields() );
+        $this->field_group->register();
     }
 
     /**
@@ -561,19 +594,33 @@ class Block implements GroupableInterface {
      * Passes the data to the defined renderer and
      * prints out the rendered markup.
      *
-     * @param array $block The ACF block data.
+     * @param array   $block The ACF block data.
+     * @param string  $content The block content.
+     * @param boolean $is_preview If we are dealing with a preview.
+     * @param mixed   $post_id Post ID.
      */
-    protected function render( array $block = [] ) {
+    protected function render( array $block = [], $content = '', $is_preview = false, $post_id = 0 ) {
+        // Store the post ID for the fields to use.
+        if ( $post_id ) {
+            $this->post_id = $post_id;
+        }
+        elseif ( Field::$redipress_temporary_id ) {
+            $this->post_id = Field::$redipress_temporary_id;
+        }
+
         $renderer = $this->get_renderer();
         $data     = \get_fields();
 
-        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this );
-        $data = apply_filters( 'codifier/blocks/data', $data, $this );
+        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this, $content, $is_preview, $post_id );
+        $data = apply_filters( 'codifier/blocks/data', $data, $this, $content, $is_preview, $post_id );
 
         echo $renderer->render(
             [
-                'data'  => $data,
-                'block' => $block,
+                'data'       => $data,
+                'block'      => $block,
+                'content'    => $content,
+                'is_preview' => $is_preview,
+                'post_id'    => $post_id,
             ]
         );
     }

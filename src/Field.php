@@ -129,6 +129,13 @@ abstract class Field {
     protected $redipress_field_type = 'Text';
 
     /**
+     * This variable stores temporarily the post ID during RediPress indexing.
+     *
+     * @var integer
+     */
+    public static $redipress_temporary_id;
+
+    /**
      * Store registered field keys to warn if there are duplicates.
      *
      * @var array
@@ -766,7 +773,7 @@ abstract class Field {
      * @return void
      */
     public static function redipress_use_include_search_filter() {
-        add_filter( 'acf/format_value', \Closure::fromCallable(( [ __CLASS__, 'redipress_include_search_filter' ] ) ), 10, 3 );
+        add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_include_search_filter' ] ), 10, 3 );
     }
 
     /**
@@ -779,7 +786,10 @@ abstract class Field {
      */
     protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
         if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
-            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $field, $value ) {
+            // Handle fields defined in ACF Codifier blocks.
+            $post_id = static::convert_to_real_post_id( $post_id, $field );
+
+            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $field, $value, $post_id ) {
                 if ( ! empty( $field['redipress_include_search_callback'] ) ) {
                     $value = ( $field['redipress_include_search_callback'] )( $value );
                 }
@@ -796,7 +806,7 @@ abstract class Field {
      *
      * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
      * @param float  $weight     Optional weight for the search field.
-     * @param string $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter)
+     * @param string $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).
      * @return self
      */
     public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last' ) {
@@ -808,6 +818,8 @@ abstract class Field {
         $this->filters['redipress_add_queryable'] = [
             'filter'        => 'acf/format_value/key=',
             'function'      => function( $value, $post_id, $field ) use ( $method ) {
+                $post_id = static::convert_to_real_post_id( $post_id, $field );
+
                 if ( $this->redipress_add_queryable === true ) {
                     if ( $this->get_is_user() ) {
                         $action  = 'additional_user_field';
@@ -973,6 +985,35 @@ abstract class Field {
         ];
 
         return $this;
+    }
+
+    /**
+     * We may be dealing with an ACF Block. Convert its ID to a real post ID.
+     *
+     * @param mixed $post_id The post ID.
+     * @param array $field The field array.
+     * @return int
+     */
+    protected static function convert_to_real_post_id( $post_id, $field ) {
+        if ( substr( $post_id, 0, 6 ) === 'block_' ) {
+            // Bail early if no parent is defined
+            if ( ! $field['parent'] ) {
+                return $post_id;
+            }
+
+            $field_group = \acf_get_field_group( $field['parent'] );
+
+            // Bail early if no block is defined
+            if ( ! $field_group['block'] ) {
+                return $post_id;
+            }
+
+            $block = $field_group['block'];
+
+            $post_id = $block->get_post_id();
+        }
+
+        return $post_id;
     }
 
     /**
@@ -1180,6 +1221,14 @@ abstract class Field {
 
         if ( $item instanceof \WP_Post ) {
             \get_fields( $item->ID, true );
+
+            self::$redipress_temporary_id = $item->ID;
+
+            // Do a dry-run with the_content filter for the post content
+            // to render possible ACF blocks and to gather their contents.
+            \apply_filters( 'the_content', $item->post_content );
+
+            self::$redipress_temporary_id = null;
         }
         elseif ( $item instanceof \WP_User ) {
             \get_fields( 'user_' . $item->ID, true );

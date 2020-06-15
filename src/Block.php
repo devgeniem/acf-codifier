@@ -457,7 +457,7 @@ class Block implements GroupableInterface {
      * @return self
      */
     public function add_data_filter( callable $function, int $priority = 10 ) : self {
-        add_filter( 'codifier/blocks/data/' . $this->get_name(), $function, 2, $priority );
+        add_filter( 'codifier/blocks/data/' . $this->get_name(), $function, $priority, 6 );
 
         return $this;
     }
@@ -561,19 +561,25 @@ class Block implements GroupableInterface {
      * Passes the data to the defined renderer and
      * prints out the rendered markup.
      *
-     * @param array $block The ACF block data.
+     * @param array  $block The ACF block data.
+     * @param string $content The block content.
+     * @param bool   $is_preview If we are in preview or not.
+     * @param mixed  $post_id The post ID.
      */
-    protected function render( array $block = [] ) {
+    protected function render( array $block = [], string $content = '', bool $is_preview = false, $post_id = 0 ) {
         $renderer = $this->get_renderer();
         $data     = \get_fields();
 
-        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this );
-        $data = apply_filters( 'codifier/blocks/data', $data, $this );
+        $data = apply_filters( 'codifier/blocks/data/' . $this->get_name(), $data, $this, $block, $content, $is_preview, $post_id );
+        $data = apply_filters( 'codifier/blocks/data', $data, $this, $block, $content, $is_preview, $post_id );
 
         echo $renderer->render(
             [
-                'data'  => $data,
-                'block' => $block,
+                'data'       => $data,
+                'block'      => $block,
+                'content'    => $content,
+                'is_preview' => $is_preview,
+                'post_id'    => $post_id,
             ]
         );
     }

@@ -45,6 +45,13 @@ class Wysiwyg extends \Geniem\ACF\Field {
     protected $delay = 0;
 
     /**
+     * The height of the element
+     *
+     * @var integer
+     */
+    protected $height = 300;
+
+    /**
      * Set tabs to show
      *
      * @throws \Geniem\ACF\Exception Throws error if $tabs is not valid.
@@ -73,11 +80,44 @@ class Wysiwyg extends \Geniem\ACF\Field {
     /**
      * Set what toolbars should be shown
      *
-     * @param string $toolbar Toolbar to show.
+     * @param string|array|callable $toolbar Toolbar to show. Callable gets called with the field object as its parameter and should return an array.
      * @return self
      */
-    public function set_toolbar( string $toolbar = 'full' ) {
-        $this->toolbar = $toolbar;
+    public function set_toolbar( $toolbar = 'full' ) {
+        if ( is_string( $toolbar ) ) {
+            $this->toolbar = $toolbar;
+        }
+        elseif ( is_array( $toolbar ) || \is_callable( $toolbar ) ) {
+            \add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) use ( $toolbar ) {
+                if ( is_array( $toolbar ) ) {
+                    $multi_level = array_reduce( $toolbar, function( $carry, $item ) {
+                        return $carry ?: is_array( $item );
+                    }, false );
+
+                    if ( ! $multi_level ) {
+                        $e_toolbar = [ 1 => $toolbar ];
+                    }
+                    else {
+                        $e_toolbar = [];
+
+                        $i = 1;
+
+                        foreach ( $toolbar as $row ) {
+                            $e_toolbar[ $i++ ] = $row;
+                        }
+                    }
+
+                    $toolbars[ 'codifier_' . sha1( $this->key ) ] = $e_toolbar;
+                }
+                elseif ( is_callable( $toolbar ) ) {
+                    $toolbars[ 'codifier_' . sha1( $this->key ) ] = $toolbar( $this );
+                }
+
+                return $toolbars;
+            }, false );
+
+            $this->toolbar = 'codifier_' . sha1( $this->key );
+        }
 
         return $this;
     }

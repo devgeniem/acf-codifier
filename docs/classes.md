@@ -41,6 +41,7 @@
 - [\Geniem\ACF\Field\MultisiteRelationship](#class-geniemacffieldmultisiterelationship)
 - [\Geniem\ACF\Field\GoogleMap](#class-geniemacffieldgooglemap)
 - [\Geniem\ACF\Field\URL](#class-geniemacffieldurl)
+- [\Geniem\ACF\Field\ExtendedWysiwyg](#class-geniemacffieldextendedwysiwyg)
 - [\Geniem\ACF\Field\Password](#class-geniemacffieldpassword)
 - [\Geniem\ACF\Field\Color](#class-geniemacffieldcolor)
 - [\Geniem\ACF\Field\Relationship](#class-geniemacffieldrelationship)
@@ -352,7 +353,7 @@
 | public | <strong>get_tabs()</strong> : <em>string</em><br /><em>Get allowed tabs</em> |
 | public | <strong>get_toolbar()</strong> : <em>string</em><br /><em>Get what toolbars to show</em> |
 | public | <strong>set_tabs(</strong><em>\string</em> <strong>$tabs=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set tabs to show</em> |
-| public | <strong>set_toolbar(</strong><em>\string</em> <strong>$toolbar=`'full'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set what toolbars should be shown</em> |
+| public | <strong>set_toolbar(</strong><em>string/string/array/callable</em> <strong>$toolbar=`'full'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set what toolbars should be shown</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -1003,6 +1004,19 @@
 | public | <strong>set_writable()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field to writable</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
+
+<hr />
+
+### Class: \Geniem\ACF\Field\ExtendedWysiwyg
+
+> Class ExtendedWysiwyg
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>get_height()</strong> : <em>integer</em><br /><em>Get the height of the element.</em> |
+| public | <strong>set_height(</strong><em>integer/\int</em> <strong>$height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the height of the element</em> |
+
+*This class extends [\Geniem\ACF\Field\Wysiwyg](#class-geniemacffieldwysiwyg)*
 
 <hr />
 

@@ -359,6 +359,15 @@ $multisite_taxonomy->set_taxonomies( [ 'category', 'post_tag' ] );
 $multisite_taxonomy->set_blog_id( 2 );
 ```
 
+### Extended Wysiwyg
+
+The Extended Wysiwyg is an ACF field type that can only be used with the Codifier. It extends the abilities of the Wysiwyg field by allowing the developer to set the height of the TinyMCE editor.
+
+```php
+$extended_wysiwyg = new Field\ExtendedWysiwyg( __( 'Extended Wysiwyg', 'extended_wysiwyg', 'extended_wysiwyg' ) );
+$extended_wysiwyg->set_height( 150 );
+```
+
 ### Multisite Post Object
 
 The Multisite Post Object is an ACF field type that can only be used with the Codifier. It is a clone of the original Post Object field but with the ability to define the blog from which the post object can be picked.

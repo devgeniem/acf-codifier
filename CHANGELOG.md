@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.31.1] - 2020-06-16
 
+### Added
+- New operators for the conditional logic that have been added to the ACF core: '!=empty', '==empty', '==pattern', '==contains', '<' and '>'.
+
 ### Changed
 - RediPress-related methods to be conditional to whether RediPress is active or not.
 

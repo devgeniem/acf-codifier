@@ -724,6 +724,11 @@ abstract class Field {
      * @return self
      */
     public function redipress_include_search( callable $callback = null ) {
+        // Bail early if RediPress is not active.
+        if ( ! self::redipress_active() ) {
+            return $this;
+        }
+
         $this->redipress_include_search          = true;
         $this->redipress_include_search_callback = $callback;
 
@@ -800,6 +805,11 @@ abstract class Field {
      * @return self
      */
     public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last' ) {
+        // Bail early if RediPress is not active.
+        if ( ! self::redipress_active() ) {
+            return $this;
+        }
+
         $this->redipress_add_queryable = true;
 
         $this->redipress_add_queryable_field_name = $field_name;
@@ -1146,6 +1156,11 @@ abstract class Field {
      * @return self
      */
     public function redipress_set_field_type( string $type ) {
+        // Bail early if RediPress is not active.
+        if ( ! self::redipress_active() ) {
+            return $this;
+        }
+
         $type = ucwords( $type );
 
         $class = '\\Geniem\\RediPress\\Entity\\' . $type . 'Field';
@@ -1235,5 +1250,14 @@ abstract class Field {
                 return false;
             }
         }, false );
+    }
+
+    /**
+     * Returns whether RediPress is active or not.
+     *
+     * @return bool
+     */
+    protected static function redipress_active() : bool {
+        return class_exists( '\\Geniem\\RediPressPlugin' );
     }
 }

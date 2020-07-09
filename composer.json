@@ -21,6 +21,9 @@
             "url": "ssh://git@github.com/devgeniem/acf-codifier.git"
         }
     ],
+    "conflict": {
+        "devgeniem/redipress": "<1.7"
+    },
     "autoload": {
         "psr-4": {"Geniem\\ACF\\": "src/"}
     },

@@ -779,13 +779,13 @@ abstract class Field {
      */
     protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
         if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
-            add_filter( 'redipress/search_index/' . $post_id, function( $content ) use ( $field, $value ) {
+            if ( \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
                 if ( ! empty( $field['redipress_include_search_callback'] ) ) {
                     $value = ( $field['redipress_include_search_callback'] )( $value );
                 }
 
-                return $content . ' ' . $value;
-            });
+                \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $value, 'concat_with_spaces' );
+            }
         }
 
         return $value;
@@ -796,10 +796,19 @@ abstract class Field {
      *
      * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
      * @param float  $weight     Optional weight for the search field.
-     * @param string $method     The method to use with multiple values. Defaults to "use_last". Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter)
+     * @param string $method     The method to use with multiple values. Defaults to "use_last".
+     *                           Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).
      * @return self
      */
-    public function redipress_add_queryable( string $field_name = null, float $weight = 1.0, string $method = 'use_last' ) {
+    public function redipress_add_queryable(
+        string $field_name = null,
+        float $weight = 1.0,
+        string $method = 'use_last'
+    ) {
+        if ( ! \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
+            $this;
+        }
+
         $this->redipress_add_queryable = true;
 
         $this->redipress_add_queryable_field_name = $field_name;
@@ -810,85 +819,19 @@ abstract class Field {
             'function'      => function( $value, $post_id, $field ) use ( $method ) {
                 if ( $this->redipress_add_queryable === true ) {
                     if ( $this->get_is_user() ) {
-                        $action  = 'additional_user_field';
                         $post_id = str_replace( 'user_', '', $post_id );
                     }
-                    else {
-                        $action = 'additional_field';
+
+                    if ( ! empty( $this->redipress_queryable_filter ) ) {
+                        $value = ( $this->redipress_queryable_filter )( $value );
                     }
-                }
 
-                switch ( $method ) {
-                    case 'use_last':
-                        add_filter(
-                            'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['name'] ),
-                            function( $original ) use ( $value ) {
-                                if ( ! empty( $this->redipress_queryable_filter ) ) {
-                                    $value = ( $this->redipress_queryable_filter )( $value );
-                                }
-
-                                return $value;
-                            },
-                            11,
-                            1
-                        );
-                        break;
-                    case 'concat':
-                        add_filter(
-                            'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['name'] ),
-                            function( $original = '' ) use ( $value ) {
-                                if ( ! empty( $this->redipress_queryable_filter ) ) {
-                                    $value = ( $this->redipress_queryable_filter )( $value );
-                                }
-
-                                return $original . $value;
-                            },
-                            11,
-                            1
-                        );
-                        break;
-                    case 'concat_with_spaces':
-                        add_filter(
-                            'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['name'] ),
-                            function( $original = '' ) use ( $value ) {
-                                if ( ! empty( $this->redipress_queryable_filter ) ) {
-                                    $value = ( $this->redipress_queryable_filter )( $value );
-                                }
-
-                                return $original . ' ' . $value;
-                            },
-                            11,
-                            1
-                        );
-                        break;
-                    case 'sum':
-                        add_filter(
-                            'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['name'] ),
-                            function( $original = 0 ) use ( $value ) {
-                                if ( ! empty( $this->redipress_queryable_filter ) ) {
-                                    $value = ( $this->redipress_queryable_filter )( $value );
-                                }
-
-                                return $original + $value;
-                            },
-                            11,
-                            1
-                        );
-                        break;
-                    default:
-                        add_filter(
-                            'redipress/' . $action . '/' . $post_id . '/' . ( $this->redipress_add_queryable_field_name ?? $field['name'] ),
-                            function( $original = 0 ) use ( $method, $value ) {
-                                if ( ! empty( $this->redipress_queryable_filter ) ) {
-                                    $value = ( $this->redipress_queryable_filter )( $value );
-                                }
-
-                                return apply_filters( 'codifier/redipress/queryable_method/' . $method, $value, $original );
-                            },
-                            11,
-                            1
-                        );
-                        break;
+                    \Geniem\RediPress\Index\Index::store(
+                        $post_id,
+                        $this->redipress_add_queryable_field_name ?? $field['name'],
+                        $value,
+                        $method
+                    );
                 }
 
                 return $value;
@@ -1204,13 +1147,10 @@ abstract class Field {
                 $action = 'additional_field';
             }
 
-            add_filter(
-                'redipress/' . $action . '/' . $post_id . '/' . ( $field['redipress_add_queryable_field_name'] ?? $field['name'] ),
-                function( $field ) use ( $value ) {
-                    return $value;
-                },
-                10,
-                1
+            \Geniem\RediPress\Index\Index::store(
+                $post_id,
+                $field['redipress_add_queryable_field_name'] ?? $field['name'],
+                $value
             );
         }
 

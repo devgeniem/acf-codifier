@@ -818,10 +818,6 @@ abstract class Field {
             'filter'        => 'acf/format_value/key=',
             'function'      => function( $value, $post_id, $field ) use ( $method ) {
                 if ( $this->redipress_add_queryable === true ) {
-                    if ( $this->get_is_user() ) {
-                        $post_id = str_replace( 'user_', '', $post_id );
-                    }
-
                     if ( ! empty( $this->redipress_queryable_filter ) ) {
                         $value = ( $this->redipress_queryable_filter )( $value );
                     }
@@ -1139,14 +1135,6 @@ abstract class Field {
      */
     protected function redipress_additional_field( $value, $post_id, $field ) {
         if ( $this->redipress_add_queryable === true ) {
-            if ( $this->get_is_user() ) {
-                $action  = 'additional_user_field';
-                $post_id = str_replace( 'user_', '', $post_id );
-            }
-            else {
-                $action = 'additional_field';
-            }
-
             \Geniem\RediPress\Index\Index::store(
                 $post_id,
                 $field['redipress_add_queryable_field_name'] ?? $field['name'],

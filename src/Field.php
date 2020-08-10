@@ -839,10 +839,21 @@ abstract class Field {
         $this->filters['redipress_add_queryable_single'] = [
             'filter'        => 'acf/update_value/key=',
             'function'      => function( $value, $post_id, $field ) {
+                $users = false;
+
                 if ( $this->get_is_user() ) {
                     $user_id = str_replace( 'user_', '', $post_id );
 
-                    $doc_id = \Geniem\RediPress\Index\UserIndex::get_document_id( get_user_by( 'id', $user_id ) );
+                    $user = get_user_by( 'id', $user_id );
+
+                    // If the user does not exist, we don't know what to do so just bail out.
+                    if ( ! $user ) {
+                        return $value;
+                    }
+
+                    $doc_id = \Geniem\RediPress\Index\UserIndex::get_document_id( $user );
+
+                    $users = true;
                 }
                 elseif ( is_numeric( $post_id ) ) {
                     $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
@@ -867,7 +878,7 @@ abstract class Field {
                         $redipress_value = (int) $redipress_value;
                     }
 
-                    \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1 );
+                    \Geniem\RediPress\update_value( $doc_id, $field_name, $redipress_value, $this->redipress_add_queryable_field_weight ?? 1, $users );
                 }
 
                 return $value;

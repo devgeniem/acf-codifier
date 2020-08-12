@@ -563,10 +563,10 @@ class Block implements GroupableInterface {
      *
      * @param array  $block The ACF block data.
      * @param string $content The block content.
-     * @param bool   $is_preview If we are in preview or not.
+     * @param mixed  $is_preview Is preview.
      * @param mixed  $post_id The post ID.
      */
-    protected function render( array $block = [], string $content = '', bool $is_preview = false, $post_id = 0 ) {
+    protected function render( array $block = [], string $content = '', $is_preview = false, $post_id = 0 ) {
         $renderer = $this->get_renderer();
         $data     = \get_fields();
 

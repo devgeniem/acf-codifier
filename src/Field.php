@@ -806,7 +806,7 @@ abstract class Field {
         string $method = 'use_last'
     ) {
         if ( ! \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
-            $this;
+            return $this;
         }
 
         $this->redipress_add_queryable = true;

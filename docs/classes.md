@@ -976,12 +976,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_center_lat()</strong> : <em>integer</em><br /><em>Get center_lat variable</em> |
-| public | <strong>get_center_lng()</strong> : <em>integer</em><br /><em>Get center_lng variable</em> |
+| public | <strong>get_center_lat()</strong> : <em>float</em><br /><em>Get center_lat variable</em> |
+| public | <strong>get_center_lng()</strong> : <em>float</em><br /><em>Get center_lng variable</em> |
 | public | <strong>get_height()</strong> : <em>integer</em><br /><em>Get height variable</em> |
 | public | <strong>get_zoom()</strong> : <em>integer</em><br /><em>Get zoom variable</em> |
-| public | <strong>set_center_lat(</strong><em>integer/\int</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
-| public | <strong>set_center_lng(</strong><em>integer/\int</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
+| public | <strong>set_center_lat(</strong><em>\float</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
+| public | <strong>set_center_lng(</strong><em>\float</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
 | public | <strong>set_height(</strong><em>integer/\int</em> <strong>$height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set height variable</em> |
 | public | <strong>set_zoom(</strong><em>integer/\int</em> <strong>$zoom</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set zoom variable</em> |
 

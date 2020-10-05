@@ -393,4 +393,4 @@ If you use some ACF field type plugin, you can either request it to be included 
 
 ### Translations
 
-If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an approriate hook - for example `init` is fine.
+If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an appropriate hook - for example `init` is fine.

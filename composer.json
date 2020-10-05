@@ -27,6 +27,12 @@
     "autoload": {
         "psr-4": {"Geniem\\ACF\\": "src/"}
     },
+    "scripts": {
+        "update-docs": "./vendor/victorjonsson/markdowndocs/phpdoc-md generate --ignore=Fields,External src > docs/classes.md"
+    },
+    "require": {
+        "php": ">=7.3"
+    },
     "require-dev": {
         "victorjonsson/markdowndocs": "^1.3"
     }

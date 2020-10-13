@@ -168,7 +168,7 @@
 | public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
-| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index.</em> |
+| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index. Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).</em> |
 | public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
 | public static | <strong>redipress_get_fields(</strong><em>\WP_Post/\WP_User</em> <strong>$item</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
 | public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
@@ -177,6 +177,7 @@
 | public | <strong>redipress_queryable_filter(</strong><em>\callable</em> <strong>$filter</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add a filter method for the value before inserting it into RediSearch.</em> |
 | public | <strong>redipress_remove_queryable()</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove this field from being queryable in RediSearch index.</em> |
 | public | <strong>redipress_set_field_type(</strong><em>\string</em> <strong>$type</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Set the RediSearch index field type for the field</em> |
+| public static | <strong>redipress_use_include_search_filter()</strong> : <em>void</em><br /><em>Use RediPress formatting functions in all suitable fields.</em> |
 | public | <strong>remove_wrapper_class(</strong><em>\string</em> <strong>$class</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Remove a single wrapper class from the field.</em> |
 | public | <strong>render_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field rendering function for the field</em> |
 | public static | <strong>running_update_field()</strong> : <em>boolean</em><br /><em>A helper function to detect if we are running ACF's update_field function.</em> |
@@ -259,7 +260,7 @@
 | public | <strong>set_title(</strong><em>\string</em> <strong>$title</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the title</em> |
 | protected | <strong>register_block()</strong> : <em>array</em><br /><em>Register the ACF block.</em> |
 | protected | <strong>register_field_group()</strong> : <em>void</em><br /><em>Register the ACF field group for the block.</em> |
-| protected | <strong>render(</strong><em>array</em> <strong>$block=array()</strong>)</strong> : <em>void</em><br /><em>The render callback method for ACF blocks. Passes the data to the defined renderer and prints out the rendered markup.</em> |
+| protected | <strong>render(</strong><em>array</em> <strong>$block=array()</strong>, <em>\string</em> <strong>$content=`''`</strong>, <em>bool/mixed</em> <strong>$is_preview=false</strong>, <em>mixed</em> <strong>$post_id</strong>)</strong> : <em>void</em><br /><em>The render callback method for ACF blocks. Passes the data to the defined renderer and prints out the rendered markup.</em> |
 
 *This class implements [\Geniem\ACF\Interfaces\Groupable](#interface-geniemacfinterfacesgroupable)*
 
@@ -975,12 +976,12 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>get_center_lat()</strong> : <em>integer</em><br /><em>Get center_lat variable</em> |
-| public | <strong>get_center_lng()</strong> : <em>integer</em><br /><em>Get center_lng variable</em> |
+| public | <strong>get_center_lat()</strong> : <em>float</em><br /><em>Get center_lat variable</em> |
+| public | <strong>get_center_lng()</strong> : <em>float</em><br /><em>Get center_lng variable</em> |
 | public | <strong>get_height()</strong> : <em>integer</em><br /><em>Get height variable</em> |
 | public | <strong>get_zoom()</strong> : <em>integer</em><br /><em>Get zoom variable</em> |
-| public | <strong>set_center_lat(</strong><em>integer/\int</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
-| public | <strong>set_center_lng(</strong><em>integer/\int</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
+| public | <strong>set_center_lat(</strong><em>\float</em> <strong>$lat</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lat variable</em> |
+| public | <strong>set_center_lng(</strong><em>\float</em> <strong>$lng</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set center_lng variable</em> |
 | public | <strong>set_height(</strong><em>integer/\int</em> <strong>$height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set height variable</em> |
 | public | <strong>set_zoom(</strong><em>integer/\int</em> <strong>$zoom</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set zoom variable</em> |
 

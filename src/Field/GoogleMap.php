@@ -20,14 +20,14 @@ class GoogleMap extends \Geniem\ACF\Field {
     /**
      * Map center latitude
      *
-     * @var integer
+     * @var float
      */
     protected $center_lat;
 
     /**
      * Map center longitude
      *
-     * @var integer
+     * @var float
      */
     protected $center_lng;
 
@@ -48,10 +48,10 @@ class GoogleMap extends \Geniem\ACF\Field {
     /**
      * Set center_lat variable
      *
-     * @param  integer $lat Latitude.
+     * @param  float $lat Latitude.
      * @return self
      */
-    public function set_center_lat( int $lat ) {
+    public function set_center_lat( float $lat ) : self {
         $this->center_lat = $lat;
 
         return $this;
@@ -60,19 +60,19 @@ class GoogleMap extends \Geniem\ACF\Field {
     /**
      * Get center_lat variable
      *
-     * @return integer
+     * @return float
      */
-    public function get_center_lat() {
+    public function get_center_lat() : float {
         return $this->center_lat;
     }
 
     /**
      * Set center_lng variable
      *
-     * @param  integer $lng Longitude.
+     * @param  float $lng Longitude.
      * @return self
      */
-    public function set_center_lng( int $lng ) {
+    public function set_center_lng( float $lng ) : self {
         $this->center_lng = $lng;
 
         return $this;
@@ -81,9 +81,9 @@ class GoogleMap extends \Geniem\ACF\Field {
     /**
      * Get center_lng variable
      *
-     * @return integer
+     * @return float
      */
-    public function get_center_lng() {
+    public function get_center_lng() : float {
         return $this->center_lng;
     }
 

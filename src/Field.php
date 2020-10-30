@@ -778,13 +778,18 @@ abstract class Field {
      * @return mixed
      */
     protected static function redipress_include_search_filter( $value, $post_id, array $field ) {
-        if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true && is_string( $value ) ) {
+        if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true ) {
             if ( \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
                 if ( ! empty( $field['redipress_include_search_callback'] ) ) {
                     $value = ( $field['redipress_include_search_callback'] )( $value );
                 }
 
-                \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $value, 'concat_with_spaces' );
+                if ( is_string( $value ) ) {
+                    \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $value, 'concat_with_spaces' );
+                }
+                else {
+                    \trigger_error( 'ACF Codifier: RediPress search include failed for "' . $field['key'] . '", value is not a string.', \E_USER_WARNING );
+                }
             }
         }
 

@@ -4,10 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+- RediPress search include to be suitable also for field types returning other types of values than string.
+
 ## [1.33.0] - 2020-10-13
 
-### Fixed
-- Changed `\Geniem\ACF\Field\GoogleMap` latitude and longitude types from `int` to `float`.
+### Changed
+- `\Geniem\ACF\Field\GoogleMap` latitude and longitude types from `int` to `float`.
 
 ## [1.32.0] - 2020-07-09
 

@@ -824,13 +824,16 @@ abstract class Field {
             'function'      => function( $value, $post_id, $field ) use ( $method ) {
                 if ( $this->redipress_add_queryable === true ) {
                     if ( ! empty( $this->redipress_queryable_filter ) ) {
-                        $value = ( $this->redipress_queryable_filter )( $value );
+                        $redipress_value = ( $this->redipress_queryable_filter )( $value );
+                    }
+                    else {
+                        $redipress_value = $value;
                     }
 
                     \Geniem\RediPress\Index\Index::store(
                         $post_id,
                         $this->redipress_add_queryable_field_name ?? $field['name'],
-                        $value,
+                        $redipress_value,
                         $method
                     );
                 }

@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - RediPress search include to be suitable also for field types returning other types of values than string.
 
+### Fixed
+- The use of `redipress_queryable_callback` changed the return value of a field in some cases.
+
 ## [1.33.0] - 2020-10-13
 
 ### Changed

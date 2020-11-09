@@ -31,7 +31,7 @@
         "update-docs": "./vendor/victorjonsson/markdowndocs/phpdoc-md generate --ignore=Fields,External src > docs/classes.md"
     },
     "require": {
-        "php": ">=7.3"
+        "php": ">=7.1"
     },
     "require-dev": {
         "victorjonsson/markdowndocs": "^1.3"

@@ -784,11 +784,11 @@ abstract class Field {
                     $value = ( $field['redipress_include_search_callback'] )( $value );
                 }
 
-                if ( is_string( $value ) ) {
+                if ( is_string( $value ) || is_array( $value ) ) {
                     \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $value, 'concat_with_spaces' );
                 }
                 else {
-                    \trigger_error( 'ACF Codifier: RediPress search include failed for "' . $field['key'] . '", value is not a string.', \E_USER_WARNING );
+                    \trigger_error( 'ACF Codifier: RediPress search include failed for "' . $field['key'] . '", value is not a string or an array.', \E_USER_WARNING );
                 }
             }
         }
@@ -1153,14 +1153,19 @@ abstract class Field {
      * @return mixed
      */
     protected function redipress_additional_field( $value, $post_id, $field ) {
-        if ( $this->redipress_add_queryable === true ) {
+        if ( $field['redipress_add_queryable'] === true ) {
+            if ( ! empty( $field['redipress_queryable_filter'] ) ) {
+                $redipress_value = ( $field['redipress_queryable_filter'] )( $value );
+            }
+            else {
+                $redipress_value = $value;
+            }
             \Geniem\RediPress\Index\Index::store(
                 $post_id,
                 $field['redipress_add_queryable_field_name'] ?? $field['name'],
-                $value
+                $redipress_value
             );
         }
-
         return $value;
     }
 

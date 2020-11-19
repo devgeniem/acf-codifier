@@ -781,11 +781,22 @@ abstract class Field {
         if ( ! empty( $field['redipress_include_search'] ) && $field['redipress_include_search'] === true ) {
             if ( \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
                 if ( ! empty( $field['redipress_include_search_callback'] ) ) {
-                    $value = ( $field['redipress_include_search_callback'] )( $value );
+                    $redipress_value = ( $field['redipress_include_search_callback'] )( $value );
+                }
+                else {
+                    $redipress_value = $value;
                 }
 
-                if ( is_string( $value ) || is_array( $value ) ) {
-                    \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $value, 'concat_with_spaces' );
+                if ( is_string( $redipress_value ) || is_array( $redipress_value ) ) {
+                    if ( strpos( $post_id, 'block_' ) !== false &&
+                        ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
+                    ) {
+                        $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
+
+                        $post_id = basename( $document_uri );
+                    }
+
+                    \Geniem\RediPress\Index\Index::store( $post_id, 'search_index', $redipress_value, 'concat_with_spaces' );
                 }
                 else {
                     \trigger_error( 'ACF Codifier: RediPress search include failed for "' . $field['key'] . '", value is not a string or an array.', \E_USER_WARNING );
@@ -830,6 +841,14 @@ abstract class Field {
                         $redipress_value = $value;
                     }
 
+                    if ( strpos( $post_id, 'block_' ) !== false &&
+                        ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
+                    ) {
+                        $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
+
+                        $post_id = basename( $document_uri );
+                    }
+
                     \Geniem\RediPress\Index\Index::store(
                         $post_id,
                         $this->redipress_add_queryable_field_name ?? $field['name'],
@@ -864,6 +883,15 @@ abstract class Field {
                     $users = true;
                 }
                 elseif ( is_numeric( $post_id ) ) {
+                    $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
+                }
+                elseif ( strpos( $post_id, 'block_' ) !== false ) {
+                    if ( ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) ) {
+                        $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
+
+                        $post_id = basename( $document_uri );
+                    }
+
                     $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
                 }
 
@@ -1137,6 +1165,14 @@ abstract class Field {
         }
 
         if ( $item instanceof \WP_Post ) {
+            if ( \has_blocks( $item ) ) {
+                $blocks = parse_blocks( $item->post_content );
+
+                array_walk( $blocks, function( $block ) {
+                    render_block( $block );
+                });
+            }
+
             \get_fields( $item->ID, true );
         }
         elseif ( $item instanceof \WP_User ) {

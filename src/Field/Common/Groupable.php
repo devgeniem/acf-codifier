@@ -217,7 +217,7 @@ trait Groupable {
      */
     private function add_field_location( \Geniem\ACF\Field $field, string $action, $target ) : GroupableInterface {
         // If given a field instance, replace the value with its name.
-        if ( $target instanceof \ Geniem\ACF\Field ) {
+        if ( $target instanceof \Geniem\ACF\Field ) {
             $target = $target->get_name();
         }
 

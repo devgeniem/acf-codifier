@@ -5,7 +5,7 @@
 - Contributors: [devgeniem](https://github.com/devgeniem) / [Nomafin](https://github.com/Nomafin)
 - Tags: wordpress, acf
 - Requires at least: 4.6.0
-- Tested up to: 4.9.3
+- Tested up to: 5.6.3
 - License: GPL-3.0 or later
 - License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

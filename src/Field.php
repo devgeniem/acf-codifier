@@ -787,7 +787,7 @@ abstract class Field {
                     $redipress_value = $value;
                 }
 
-                if ( is_string( $redipress_value ) || is_array( $redipress_value ) ) {
+                if ( is_string( $redipress_value ) || is_array( $redipress_value ) || is_int( $redipress_value ) ) {
                     if ( strpos( $post_id, 'block_' ) !== false &&
                         ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
                     ) {
@@ -1165,7 +1165,8 @@ abstract class Field {
         }
 
         if ( $item instanceof \WP_Post ) {
-            if ( \has_blocks( $item ) ) {
+
+            if ( \has_blocks( $item->post_content ) ) {
                 $blocks = parse_blocks( $item->post_content );
 
                 array_walk( $blocks, function( $block ) {

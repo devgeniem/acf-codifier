@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.35.1] - 2021-01-14
+## [1.35.1] - 2021-01-27
+
+### Changed
+- `redipress_get_fields()` has_blocks check to use $item->post_content for custom posts to work.
 
 ### Fixed
+- The `redipress_include_search_filter()` to pass integer values.
 - A typo in the code that prevented the plugin from working with PHP 8.0.
 
 ## [1.35.0] - 2020-11-16

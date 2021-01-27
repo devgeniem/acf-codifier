@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.35.1] - 2021-01-25
 
 ### Fixed
+- Changes `redipress_get_fields()` has_blocks check to use $item->post_content.
 - Fixes the `redipress_include_search_filter()` to pass integer values.
 ## [1.35.0] - 2020-11-16
 

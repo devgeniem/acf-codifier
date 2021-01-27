@@ -1165,7 +1165,8 @@ abstract class Field {
         }
 
         if ( $item instanceof \WP_Post ) {
-            if ( \has_blocks( $item ) ) {
+
+            if ( \has_blocks( $item->post_content ) ) {
                 $blocks = parse_blocks( $item->post_content );
 
                 array_walk( $blocks, function( $block ) {

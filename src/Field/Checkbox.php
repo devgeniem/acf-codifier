@@ -66,6 +66,13 @@ class Checkbox extends \Geniem\ACF\Field {
     protected $disable_all = false;
 
     /**
+     * Return value to set
+     *
+     * @var string
+     */
+    protected $return_format;
+
+    /**
      * Export field in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
@@ -308,5 +315,31 @@ class Checkbox extends \Geniem\ACF\Field {
         else {
             return $this->disabled;
         }
+    }
+
+    /**
+     * Set return format
+     *
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
+     * @return self
+     */
+    public function set_return_format( string $return_format = 'value' ) {
+        if ( ! in_array( $return_format, [ 'value', 'label', 'array' ] ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\PostObject: set_return_format() does not accept argument "' . $return_format . '"' );
+        }
+
+        $this->return_format = $return_format;
+
+        return $this;
+    }
+
+    /**
+     * Get return format
+     *
+     * @return string
+     */
+    public function get_return_format() {
+        return $this->return_format;
     }
 }

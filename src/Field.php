@@ -115,6 +115,13 @@ abstract class Field {
     protected $redipress_add_queryable_field_weight;
 
     /**
+     * The method with which the data is saved into RediSearch.
+     *
+     * @var string|callable
+     */
+    protected $redipress_add_queryable_method;
+
+    /**
      * A possible filter method for the value before inserting to RediSearch.
      *
      * @var callable
@@ -267,6 +274,8 @@ abstract class Field {
             throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
         }
 
+        \do_action( 'codifier/export/key=' . $this->key );
+
         $this->parent = $parent;
 
         if ( $register && ! empty( $this->filters ) ) {
@@ -293,7 +302,7 @@ abstract class Field {
         }
 
         if ( $register && $this->redipress_get_queryable_status() === true ) {
-            add_filter( 'acf/format_value', \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
+            add_filter( 'acf/format_value/key=' . $this->key, \Closure::fromCallable( [ __CLASS__, 'redipress_additional_field' ] ), 10, 3 );
         }
 
         if ( $register && $this->hide_label ) {
@@ -819,16 +828,38 @@ abstract class Field {
     public function redipress_add_queryable(
         string $field_name = null,
         float $weight = 1.0,
-        string $method = 'use_last'
+        string $method = null
     ) {
         if ( ! \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
             return $this;
         }
 
-        $this->redipress_add_queryable = true;
-
+        $this->redipress_add_queryable            = true;
         $this->redipress_add_queryable_field_name = $field_name;
         $this->redipress_add_queryable_weight     = $weight;
+        $this->redipress_add_queryable_method     = $method;
+
+        add_action( 'codifier/export/key=' . $this->key, \Closure::fromCallable( [ $this, 'redipress_add_queryable_internal' ] ) );
+
+        return $this;
+    }
+
+    /**
+     * An internal function to be run with the add queryable functionality.
+     */
+    private function redipress_add_queryable_internal() {
+        $field_name = $this->redipress_add_queryable_field_name;
+        $weight     = $this->redipress_add_queryable_weight;
+        $method     = $this->redipress_add_queryable_method;
+
+        if ( ! $method ) {
+            if ( $this->redipress_field_type === 'Tag' ) {
+                $method = 'array_merge';
+            }
+            else {
+                $method = 'use_last';
+            }
+        }
 
         $this->filters['redipress_add_queryable'] = [
             'filter'        => 'acf/format_value/key=',
@@ -957,8 +988,6 @@ abstract class Field {
             'accepted_args' => 3,
             'no_suffix'     => true,
         ];
-
-        return $this;
     }
 
     /**
@@ -969,10 +998,7 @@ abstract class Field {
     public function redipress_remove_queryable() {
         $this->redipress_add_queryable = false;
 
-        unset( $this->filters['redipress_add_queryable'] );
-        unset( $this->filters['redipress_schema_fields'] );
-        $this->redipress_add_queryable_field_name = null;
-        $this->redipress_add_queryable_weight     = null;
+        remove_action( 'codifier/export/key=' . $this->key, \Closure::fromCallable( [ $this, 'redipress_add_queryable_internal' ] ) );
 
         return $this;
     }
@@ -983,7 +1009,7 @@ abstract class Field {
      * @return boolean
      */
     public function redipress_get_queryable_status() : bool {
-        return isset( $this->filters['redipress_add_queryable'] );
+        return $this->redipress_add_queryable;
     }
 
     /**
@@ -1197,10 +1223,12 @@ abstract class Field {
             else {
                 $redipress_value = $value;
             }
+
             \Geniem\RediPress\Index\Index::store(
                 $post_id,
                 $field['redipress_add_queryable_field_name'] ?? $field['name'],
-                $redipress_value
+                $redipress_value,
+                $field['redipress_add_queryable_method'] ?? 'use_last'
             );
         }
         return $value;

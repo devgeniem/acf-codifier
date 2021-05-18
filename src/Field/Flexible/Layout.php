@@ -7,6 +7,7 @@ namespace Geniem\ACF\Field\Flexible;
 
 use Geniem\ACF\Field,
     Geniem\ACF\Field\Common\Groupable,
+    Geniem\ACF\Field\Common\MinMax,
     Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
@@ -18,6 +19,11 @@ class Layout implements GroupableInterface {
      * Import the groupable functionalities
      */
     use Groupable;
+
+    /**
+     * Import the min max  functionalities
+     */
+    use MinMax;
 
     /**
      * Layout label

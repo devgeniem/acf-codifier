@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - RediPress field type `Numeric` for the Number field.
+- Added min-max trait to Flexible Content Layout
 
 ## [1.36.0] - 2021-02-24
 

@@ -33,6 +33,13 @@ class Number extends \Geniem\ACF\Field {
     protected $step;
 
     /**
+     * What type the RediPress index field should be.
+     *
+     * @var string
+     */
+    protected $redipress_field_type = 'Numeric';
+
+    /**
      * Set step size
      *
      * @param integer $step Step size.

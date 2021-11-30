@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - `Readonly` trait to `ReadonlyTrait` to avoid PHP 8.1 reserved word `readonly`.
 
+## [1.36.1] - 2021-09-24
+
+### Added
+- RediPress field type `Numeric` for the Number field.
+- Added min-max trait to Flexible Content Layout
+
 ## [1.36.0] - 2021-02-24
 
 ### Added

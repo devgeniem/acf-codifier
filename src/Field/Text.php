@@ -8,14 +8,14 @@ namespace Geniem\ACF\Field;
 use Geniem\ACF\Field\Common\AppendPrepend;
 use Geniem\ACF\Field\Common\Disabled;
 use Geniem\ACF\Field\Common\Placeholder;
-use Geniem\ACF\Field\Common\Readonly;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
 
 /**
  * Class Text
  */
 class Text extends \Geniem\ACF\Field {
 
-    use Readonly, Disabled, Placeholder, AppendPrepend;
+    use ReadonlyTrait, Disabled, Placeholder, AppendPrepend;
 
     /**
      * Field type

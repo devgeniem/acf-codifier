@@ -9,14 +9,14 @@ use Geniem\ACF\Field\Common\AppendPrepend;
 use Geniem\ACF\Field\Common\Disabled;
 use Geniem\ACF\Field\Common\MinMax;
 use Geniem\ACF\Field\Common\Placeholder;
-use Geniem\ACF\Field\Common\Readonly;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
 
 /**
  * Class Number
  */
 class Number extends \Geniem\ACF\Field {
 
-    use Readonly, Disabled, Placeholder, AppendPrepend, MinMax;
+    use ReadonlyTrait, Disabled, Placeholder, AppendPrepend, MinMax;
 
     /**
      * Field type

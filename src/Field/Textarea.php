@@ -7,14 +7,14 @@ namespace Geniem\ACF\Field;
 
 use Geniem\ACF\Field\Common\Disabled;
 use Geniem\ACF\Field\Common\Placeholder;
-use Geniem\ACF\Field\Common\Readonly;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
 
 /**
  * Class Textarea
  */
 class Textarea extends \Geniem\ACF\Field {
 
-    use Readonly, Disabled, Placeholder;
+    use ReadonlyTrait, Disabled, Placeholder;
 
     /**
      * Field type

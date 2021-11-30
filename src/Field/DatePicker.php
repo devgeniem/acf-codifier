@@ -6,14 +6,14 @@
 namespace Geniem\ACF\Field;
 
 use Geniem\ACF\Field\Common\Disabled;
-use Geniem\ACF\Field\Common\Readonly;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
 
 /**
  * Class DatePicker
  */
 class DatePicker extends \Geniem\ACF\Field {
 
-    use Disabled, Readonly;
+    use Disabled, ReadonlyTrait;
 
     /**
      * The field type

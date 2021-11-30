@@ -8,7 +8,7 @@ namespace Geniem\ACF\Field\Common;
 /**
  * Readonly trait
  */
-trait Readonly {
+trait ReadonlyTrait {
     /**
      * Whether the field is readonly or not.
      *

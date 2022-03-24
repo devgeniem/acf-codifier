@@ -488,7 +488,7 @@ class Group implements GroupableInterface {
                 \acf_add_local_field_group( $exported );
 
                 $this->registered = true;
-            });
+            }, 15 );
         }
     }
 

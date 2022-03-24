@@ -46,6 +46,29 @@ class GoogleMap extends \Geniem\ACF\Field {
     protected $height;
 
     /**
+     * What type the RediPress index field should be.
+     *
+     * @var string
+     */
+    protected $redipress_field_type = 'Geo';
+
+    /**
+     * Constructor.
+     *
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
+     * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
+     */
+    public function __construct( string $label, string $key = null, string $name = null ) {
+        parent::__construct( $label, $key, $name );
+
+        $this->redipress_queryable_filter = function( $value ) {
+            return $value['lat'] . ',' . $value['lng'];
+        };
+    }
+
+    /**
      * Set center_lat variable
      *
      * @param  float $lat Latitude.

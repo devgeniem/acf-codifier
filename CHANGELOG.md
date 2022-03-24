@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- Google Map to be queryable to RediPress.
+- Everything compatible with RediPress 2.0, which is a breaking change in the integration.
+
 ## [1.37.0] - 2021-11-30
 
 ### Changed

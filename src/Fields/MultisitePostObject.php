@@ -116,7 +116,22 @@ add_action(
              */
             public function render_field( $field ) {
                 \switch_to_blog( $field['blog_id'] );
-                parent::render_field( $field );
+
+                // If Polylang is active, we need to switch the global curlang manually
+                // as switch_to_blog does not do that in admin views.
+                // If this is not done, the field may not find its saved value if the taxonomy term IDs
+                // do not match between all sites.
+                if ( function_exists( 'pll_default_language' ) ) {
+                    $restore_curlang = \PLL()->curlang;
+                    $lang = \PLL()->model->get_language( $restore_curlang->slug );
+                    \PLL()->curlang = $lang ?: \PLL()->model->get_language( \pll_default_language() );
+                    parent::render_field( $field );
+                    \PLL()->curlang = $restore_curlang;
+                }
+                else {
+                    parent::render_field( $field );
+                }
+
                 \restore_current_blog();
             }
 

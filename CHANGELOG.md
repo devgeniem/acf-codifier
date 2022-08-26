@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+### Added
+- Support for registering example data for ACF Blocks.
+- Support for repeater pagination introduced in ACF 6.0.
+
 ## [1.37.1] - 2022-04-07
 
 ### Fixed

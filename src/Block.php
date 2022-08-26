@@ -115,6 +115,16 @@ class Block implements GroupableInterface {
     protected $styles = [];
 
     /**
+     * An array of example data for the block.
+     *
+     * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/#example-optional
+     * @see https://www.advancedcustomfields.com/resources/acf_register_block_type/
+     *
+     * @var array
+     */
+    protected $example = [];
+
+    /**
      * The renderer for this block.
      *
      * @var Renderer
@@ -450,6 +460,27 @@ class Block implements GroupableInterface {
     }
 
     /**
+     * Setter for the block example data.
+     *
+     * @param array $example Array of example data.
+     * @return self
+     */
+    public function set_example( array $example ) : self {
+        $this->example = $example;
+
+        return $this;
+    }
+
+    /**
+     * Getter for the example data of the block.
+     *
+     * @return array
+     */
+    public function get_example() : array {
+        return $this->example;
+    }
+
+    /**
      * Add a data filtering function for the block
      *
      * @param callable $function The function to add.
@@ -547,6 +578,10 @@ class Block implements GroupableInterface {
             'supports'        => $this->get_supports(),
             'styles'          => $this->get_styles(),
         ];
+
+        if ( ! empty( $this->get_example() ) ) {
+            $args['example'] = $this->get_example();
+        }
 
         if ( ! empty( $this->get_post_types() ) ) {
             $args['post_types'] = $this->get_post_types();

@@ -43,6 +43,20 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
     protected $button_label;
 
     /**
+     * Enable pagination
+     *
+     * @var integer
+     */
+    protected $pagination;
+
+    /**
+     * Rows per page
+     *
+     * @var integer
+     */
+    protected $rows_per_page;
+
+    /**
      * Repeater fields
      *
      * @var array
@@ -86,6 +100,58 @@ class Repeater extends \Geniem\ACF\Field\GroupableField {
      */
     public function get_layout() {
         return $this->layout;
+    }
+
+    /**
+     * Enable pagination
+     *
+     * @return self
+     */
+    public function use_pagination() {
+        $this->pagination = 1;
+
+        return $this;
+    }
+
+    /**
+     * Disable pagination
+     *
+     * @return self
+     */
+    public function no_pagination() {
+        $this->pagination = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get pagination
+     *
+     * @return integer
+     */
+    public function get_pagination() {
+        return $this->pagination;
+    }
+
+    /**
+     * Set rows per page
+     *
+     * @param integer $rows_per_page Rows per page.
+     * @return self
+     */
+    public function set_rows_per_page( int $rows_per_page ) {
+        $this->rows_per_page = $rows_per_page;
+
+        return $this;
+    }
+
+    /**
+     * Get rows per page
+     *
+     * @return integer
+     */
+    public function get_rows_per_page() {
+        return $this->rows_per_page;
     }
 
     /**

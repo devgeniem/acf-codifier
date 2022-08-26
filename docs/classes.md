@@ -168,7 +168,7 @@
 | public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
-| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index. Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).</em> |
+| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=null</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index. Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).</em> |
 | public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
 | public static | <strong>redipress_get_fields(</strong><em>\WP_Post/\WP_User</em> <strong>$item</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
 | public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
@@ -227,6 +227,7 @@
 | public | <strong>get_align()</strong> : <em>string</em><br /><em>Getter for the default block alignment.</em> |
 | public | <strong>get_category()</strong> : <em>string</em><br /><em>Getter for the category.</em> |
 | public | <strong>get_description()</strong> : <em>string</em><br /><em>Getter for the description.</em> |
+| public | <strong>get_example()</strong> : <em>array</em><br /><em>Getter for the example data of the block.</em> |
 | public | <strong>get_field(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>array</em><br /><em>Get a field</em> |
 | public | <strong>get_fields()</strong> : <em>array</em><br /><em>Get fields</em> |
 | public | <strong>get_icon()</strong> : <em>string</em><br /><em>Getter for the icon.</em> |
@@ -247,6 +248,7 @@
 | public | <strong>set_align(</strong><em>\string</em> <strong>$align</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the default block alignment.</em> |
 | public | <strong>set_category(</strong><em>\string</em> <strong>$category</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the category.</em> |
 | public | <strong>set_description(</strong><em>\string</em> <strong>$description</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the description.</em> |
+| public | <strong>set_example(</strong><em>array</em> <strong>$example</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the block example data.</em> |
 | public | <strong>set_fields(</strong><em>array</em> <strong>$fields</strong>)</strong> : <em>[\Geniem\ACF\Group](#class-geniemacfgroup)ableInterface</em><br /><em>Set fields</em> |
 | public | <strong>set_fields_from(</strong><em>[\Geniem\ACF\Group](#class-geniemacfgroup)ableInterface/[\Geniem\ACF\Interfaces\Groupable](#interface-geniemacfinterfacesgroupable)</em> <strong>$groupable</strong>)</strong> : <em>[\Geniem\ACF\Group](#class-geniemacfgroup)ableInterface</em><br /><em>Set fields from another Groupable.</em> |
 | public | <strong>set_icon(</strong><em>\string</em> <strong>$icon</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the icon.</em> |
@@ -868,12 +870,17 @@
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get layout</em> |
 | public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
 | public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
+| public | <strong>get_pagination()</strong> : <em>integer</em><br /><em>Get pagination</em> |
+| public | <strong>get_rows_per_page()</strong> : <em>integer</em><br /><em>Get rows per page</em> |
+| public | <strong>no_pagination()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Disable pagination</em> |
 | public | <strong>remove_collapsed()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove collapsed field.</em> |
 | public | <strong>set_button_label(</strong><em>\string</em> <strong>$button_label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set add row button label</em> |
 | public | <strong>set_collapsed(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set field whose value is shown when collapsed.</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'table'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set layout</em> |
 | public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
 | public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set minimum amount</em> |
+| public | <strong>set_rows_per_page(</strong><em>integer/\int</em> <strong>$rows_per_page</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set rows per page</em> |
+| public | <strong>use_pagination()</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Enable pagination</em> |
 
 *This class extends [\Geniem\ACF\Field\GroupableField](#class-geniemacffieldgroupablefield-abstract)*
 
@@ -1189,12 +1196,14 @@
 | public | <strong>get_custom()</strong> : <em>integer</em><br /><em>Get allow custom values status</em> |
 | public | <strong>get_disabled()</strong> : <em>string/array</em><br /><em>Get the disabled checkboxes</em> |
 | public | <strong>get_layout()</strong> : <em>string</em><br /><em>Get the current display style of the checkbox.</em> |
+| public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get return format</em> |
 | public | <strong>get_save_custom()</strong> : <em>integer</em><br /><em>Get save custom status</em> |
 | public | <strong>get_toggle()</strong> : <em>integer</em><br /><em>Get toggle all checkbox</em> |
 | public | <strong>remove_choice(</strong><em>\string</em> <strong>$choice</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a choice.</em> |
 | public | <strong>set_choices(</strong><em>array</em> <strong>$choices</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set choices for the checkbox</em> |
 | public | <strong>set_disabled(</strong><em>array</em> <strong>$keys</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set the disabled checkboxes as array</em> |
 | public | <strong>set_layout(</strong><em>\string</em> <strong>$layout=`'vertical'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set whether the checkboxes are displayed vertically or horizontally.</em> |
+| public | <strong>set_return_format(</strong><em>\string</em> <strong>$return_format=`'value'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set return format</em> |
 
 *This class extends [\Geniem\ACF\Field](#class-geniemacffield-abstract)*
 
@@ -1346,6 +1355,8 @@
 | public | <strong>get_fields()</strong> : <em>array</em><br /><em>Get fields</em> |
 | public | <strong>get_key()</strong> : <em>string Key</em><br /><em>Get key</em> |
 | public | <strong>get_label()</strong> : <em>string Label</em><br /><em>Get label</em> |
+| public | <strong>get_max()</strong> : <em>integer Maximum amount</em><br /><em>Get maximum amount</em> |
+| public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
 | public | <strong>get_name()</strong> : <em>string Name</em><br /><em>Get name</em> |
 | public | <strong>remove_excluded_field(</strong><em>string/object</em> <strong>$field</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Remove a field from the excluded fields list.</em> |
 | public | <strong>remove_excluded_post_type(</strong><em>\string</em> <strong>$post_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Remove a post type from the excluded post types list.</em> |
@@ -1360,6 +1371,8 @@
 | public | <strong>set_fields_from(</strong><em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\GroupableInterface/[\Geniem\ACF\Interfaces\Groupable](#interface-geniemacfinterfacesgroupable)</em> <strong>$groupable</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\GroupableInterface</em><br /><em>Set fields from another Groupable.</em> |
 | public | <strong>set_key(</strong><em>\string</em> <strong>$key</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set key</em> |
 | public | <strong>set_label(</strong><em>\string</em> <strong>$label</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set label</em> |
+| public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set maximum amount</em> |
+| public | <strong>set_min(</strong><em>integer/\int</em> <strong>$min</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set minimum amount</em> |
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\Flexible\self</em><br /><em>Set name</em> |
 
 *This class implements [\Geniem\ACF\Interfaces\Groupable](#interface-geniemacfinterfacesgroupable)*

@@ -100,6 +100,13 @@ class Group implements GroupableInterface {
     protected $active;
 
     /**
+     * Field group show in rest status
+     *
+     * @var boolean
+     */
+    protected $show_in_rest;
+
+    /**
      * Is field group registered yet
      *
      * @var boolean
@@ -118,6 +125,8 @@ class Group implements GroupableInterface {
         $this->key = $key;
 
         $this->active = 1;
+
+        $this->show_in_rest = 0;
     }
 
     /**
@@ -471,6 +480,17 @@ class Group implements GroupableInterface {
      */
     public function deactivate() {
         $this->active = 0;
+
+        return $this;
+    }
+
+    /**
+     * Change the field group's show in rest status to active.
+     *
+     * @return self
+     */
+    public function show_in_rest() {
+        $this->show_in_rest = 1;
 
         return $this;
     }

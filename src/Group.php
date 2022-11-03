@@ -496,6 +496,17 @@ class Group implements GroupableInterface {
     }
 
     /**
+     * Change the field group's show in rest status to unactive.
+     *
+     * @return self
+     */
+    public function hide_in_rest() {
+        $this->show_in_rest = 0;
+
+        return $this;
+    }
+
+    /**
      * Register the field group to ACF.
      *
      * @return void

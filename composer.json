@@ -22,7 +22,7 @@
         }
     ],
     "conflict": {
-        "devgeniem/redipress": "<1.9"
+        "devgeniem/redipress": "<2.0"
     },
     "autoload": {
         "psr-4": {"Geniem\\ACF\\": "src/"}

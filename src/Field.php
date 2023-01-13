@@ -286,7 +286,14 @@ abstract class Field {
                     if ( $this->get_is_user() ) {
                         switch ( $filter['filter'] ) {
                             case 'redipress/schema_fields':
-                                $filter['filter'] = 'redipress/user_schema_fields';
+                                $filter['filter'] = 'redipress/index/users/schema_fields';
+                                break;
+                        }
+                    }
+                    else {
+                        switch ( $filter['filter'] ) {
+                            case 'redipress/schema_fields':
+                                $filter['filter'] = 'redipress/index/posts/schema_fields';
                                 break;
                         }
                     }
@@ -873,7 +880,7 @@ abstract class Field {
                     }
 
                     if ( strpos( $post_id, 'block_' ) !== false &&
-                        ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
+                        ! ( $post_id = \Geniem\RediPress\Index\PostIndex::indexing() ) // phpcs:ignore
                     ) {
                         $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
 
@@ -914,7 +921,7 @@ abstract class Field {
                     $users = true;
                 }
                 elseif ( is_numeric( $post_id ) ) {
-                    $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
+                    $doc_id = \Geniem\RediPress\Index\PostIndex::get_document_id( get_post( $post_id ) );
                 }
                 elseif ( strpos( $post_id, 'block_' ) !== false ) {
                     if ( ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) ) {
@@ -923,7 +930,7 @@ abstract class Field {
                         $post_id = basename( $document_uri );
                     }
 
-                    $doc_id = \Geniem\RediPress\Index\Index::get_document_id( get_post( $post_id ) );
+                    $doc_id = \Geniem\RediPress\Index\PostIndex::get_document_id( get_post( $post_id ) );
                 }
 
                 if ( ! empty( $doc_id ) ) {
@@ -955,6 +962,7 @@ abstract class Field {
         ];
 
         $this->filters['redipress_schema_fields'] = [
+            // This gets changed to the proper filter in the export method.
             'filter'        => 'redipress/schema_fields',
             'function'      => function( $fields ) {
 

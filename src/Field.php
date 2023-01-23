@@ -1248,8 +1248,8 @@ abstract class Field {
      * @return boolean
      */
     public static function running_update_field() {
-        return array_reduce( \debug_backtrace(), function( bool $carry = false, array $item ) { // phpcs:ignore
-            if ( $carry ) {
+        return array_reduce( \debug_backtrace(), function( bool $carry, array $item ) { // phpcs:ignore
+            if ( ! empty ( $carry ) ) {
                 return $carry;
             }
 

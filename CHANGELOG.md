@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.37.3] - 2022-01-25
+
+### Added
+
+- Fixes "Automatic conversion of false to array is deprecated" on Dust.php
+- RediPress 1.x backwards compatibility hotfix. RediPress 1.x should have <1.38.x Codifier version.
+
 ## [1.37.2] - 2022-11-04
 
 ### Added

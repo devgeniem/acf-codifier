@@ -73,6 +73,12 @@ class Dust implements Renderer {
     public function render( array $fields ) : string {
         $compiled = self::$dust->compileFile( $this->template );
 
+        // In same cases this might be false.
+        // We need to set key as an array after PHP 8.1 in these situations.
+        if ( empty( $fields['data'] ) ) {
+            $fields['data'] = [];
+        }
+
         // Pass on the block data
         $fields['data']['block'] = $fields['block'];
 

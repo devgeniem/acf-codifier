@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+[unreleased]
+
+[php-81-automatic-conversion-hotfix]
+### Fixed
+- Fixes "Automatic conversion of false to array is deprecated" on Dust.php
+
+[released]
 ## [1.38.1]
 
 ### Fixed

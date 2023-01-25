@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
-[php-81-automatic-conversion-hotfix]
+## [1.38.2]
 ### Fixed
 - Fixes "Automatic conversion of false to array is deprecated" on Dust.php
 

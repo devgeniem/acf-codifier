@@ -5,10 +5,16 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\Placeholder;
+
 /**
  * Class Select
  */
 class Select extends \Geniem\ACF\Field {
+
+    use Disabled, Placeholder;
+
     /**
      * Field type
      *
@@ -52,22 +58,15 @@ class Select extends \Geniem\ACF\Field {
     protected $ajax;
 
     /**
-     * Field placeholder
+     * Format when returned via get_field
      *
      * @var string
      */
-    protected $placeholder;
-
-    /**
-     * Is field disabled
-     *
-     * @var boolean
-     */
-    protected $disabled;
+    protected $return_format = 'value';
 
     /**
      * Set choices for the checkbox
-     * 
+     *
      * @throws \Geniem\ACF\Exception If the parameter or its end result are not arrays.
      * @param mixed $choices Choices as key-value pair strings or a callable that returns one.
      * @return self
@@ -278,54 +277,28 @@ class Select extends \Geniem\ACF\Field {
     }
 
     /**
-     * Set field placeholder
+     * Set return format
      *
-     * @param string $placeholder Placeholder text.
+     * @throws \Geniem\ACF\Exception Throws error if $return_format is not valid.
+     * @param string $return_format Return format to use.
      * @return self
      */
-    public function set_placeholder( string $placeholder ) {
-        $this->placeholder = $placeholder;
+    public function set_return_format( string $return_format = 'value' ) {
+        if ( ! in_array( $return_format, [ 'value', 'label', 'array' ], true ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Select: set_return_format() does not accept argument "' . $return_format . '"' );
+        }
+
+        $this->return_format = $return_format;
 
         return $this;
     }
 
     /**
-     * Get field placeholder text
+     * Get return format
      *
      * @return string
      */
-    public function get_placeholder() {
-        return $this->placeholder;
-    }
-
-    /**
-     * Disable field
-     *
-     * @return self
-     */
-    public function disable() {
-        $this->disabled = true;
-
-        return $this;
-    }
-
-    /**
-     * Enable field
-     *
-     * @return self
-     */
-    public function enable() {
-        $this->disabled = false;
-
-        return $this;
-    }
-
-    /**
-     * Get whether field is disabled or not
-     *
-     * @return boolean
-     */
-    public function get_disabled() {
-        return $this->disabled;
+    public function get_return_format() {
+        return $this->return_format;
     }
 }

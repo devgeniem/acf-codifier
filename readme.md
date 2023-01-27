@@ -5,7 +5,7 @@
 - Contributors: [devgeniem](https://github.com/devgeniem) / [Nomafin](https://github.com/Nomafin)
 - Tags: wordpress, acf
 - Requires at least: 4.6.0
-- Tested up to: 4.9.3
+- Tested up to: 5.6.3
 - License: GPL-3.0 or later
 - License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -146,6 +146,12 @@ $field_group->add_field_after( $text, $target_field_object );
 
 You can use either the field key or the field object with both methods.
 
+There are also methods like `add_fields()` that can be used to add an array of fields at once, and `add_fields_from()` that takes another _groupable_  object (for example a field group, group field, repeater or a flexible layout) as its first parameter and copies its fields to the calling object.
+
+```php
+$field_group->add_fields_from( $repeater );
+```
+
 List of all field types and their methods can be found [here](docs/classes.md).
 
 #### Grouping field types
@@ -227,6 +233,41 @@ $pseudo->add_field( $some_field )
        ->add_field( $another_field );
 ```
 
+## Gutenberg
+
+Codifier has a feature to register Gutenberg blocks using ACF's register block feature internally. It works in a very similar fashion than the basic field creation in Codifier as well.
+
+Block's constructor takes two mandatory parameters: the title and the name (or key) of the block. The properties are then set for the block with appropriate methods.
+
+```php
+$block = new \Geniem\ACF\Block( 'Some block', 'some_block' );
+$block->set_category( 'common' );
+$block->add_post_type( 'post' );
+$block->set_mode( 'edit' );
+```
+
+The rendering of the block happens with a Renderer class. Codifier includes three renderers by default: CallableRenderer that uses a simple method for rendering; PHP that renders a normal PHP file with the given data and Dust that uses [DustPHP](http://cretz.github.io/dust-php/) templates for rendering.
+
+The following uses the `print_r()` method to output a list of the data from the fields.
+
+```php
+$renderer = new \Geniem\ACF\Renderer\CallableRenderer( function( $data ) {
+  return print_r( $data, true );
+});
+
+$block->set_renderer( $renderer );
+```
+
+The ACF fields themselves are added to the block as they would to any other _groupable_ type object with methods like `add_field()` and `set_fields()`.
+
+To register the block for Gutenberg, just use the `register()` method.
+
+```php
+$block->register();
+```
+
+If you need, the abovementioned method returns the output of ACF's `register_block()` function.
+
 ## Additional features
 
 ### Prevent Flexible Content layouts from showing in some post types or page templates
@@ -276,6 +317,67 @@ $php->run( function() {
 });
 ```
 
+### Multisite Relationship
+
+The Multisite Relationship is an ACF field type that can only be used with the Codifier. It is a clone of the original Relationship field but with the ability to define the blog from which the posts can be picked.
+
+The usage is otherwise exactly the same as with the Relationship field, but there is a new `set_blog_id()` method.
+
+```php
+$ms_relationship = new Field\MultisiteRelationship( __( 'My Multisite Relationship field', 'multisite_relationship', 'multisite_relationship' ) );
+$ms_relationship->set_blog_id( 2 );
+```
+
+### Multitaxonomy
+
+The Multitaxonomy is an ACF field type that can only be used with the Codifier. It is a clone of the original Taxonomy field but with the ability to define multiple taxonomies to select the terms from. It supports all features defined for the Taxonomy field except the ability to add a new term with the field input. It also has an additional feature for setting the field disabled, which is not possible with the original Taxonomy field.
+
+#### Usage
+
+Define the field and set the taxonomy slugs to enable selecting terms from multiple taxonomies.
+
+```php
+$categories_and_tags = new Field\Multitaxonomy( __( 'Select a category or a tag', 'multitaxonomy_test', 'multitaxonomy_test' ) );
+$categories_and_tags->set_taxonomies( [ 'category', 'post_tag' ] );
+```
+
+To enable selecting multiple terms, change the field type to `multi_select`.
+
+```php
+$categories_and_tags->set_field_type( 'multi_select' );
+```
+
+### Multisite Taxonomy
+
+The Multisite Taxonomy is an ACF field type that can only be used with the Codifier. It extends the abilities of the Multitaxonomy field by allowing the developer to set a multisite blog id from which the taxonomy terms can be chosen.
+
+#### Usage
+
+```php
+$multisite_taxonomy = new Field\MultisiteTaxonomy( __( 'Select a category or a tag from blog 2', 'multisite_tax', 'multisite_tax' ) );
+$multisite_taxonomy->set_taxonomies( [ 'category', 'post_tag' ] );
+$multisite_taxonomy->set_blog_id( 2 );
+```
+
+### Extended Wysiwyg
+
+The Extended Wysiwyg is an ACF field type that can only be used with the Codifier. It extends the abilities of the Wysiwyg field by allowing the developer to set the height of the TinyMCE editor.
+
+```php
+$extended_wysiwyg = new Field\ExtendedWysiwyg( __( 'Extended Wysiwyg', 'extended_wysiwyg', 'extended_wysiwyg' ) );
+$extended_wysiwyg->set_height( 150 );
+```
+
+### Multisite Post Object
+
+The Multisite Post Object is an ACF field type that can only be used with the Codifier. It is a clone of the original Post Object field but with the ability to define the blog from which the post object can be picked.
+
+The usage is similar to the Post Object field, but there is a new `set_blog_id()` method for selecting the blog.
+
+```php
+$ms_object = new Field\MultisitePostObject( __( 'My Multisite Post Object field', 'multisite_object', 'multisite_object' ) );
+$ms_object->set_blog_id( 2 );
+```
 
 ### Support for external field types
 
@@ -291,4 +393,4 @@ If you use some ACF field type plugin, you can either request it to be included 
 
 ### Translations
 
-If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an approriate hook - for example `init` is fine.
+If translated strings are used as field labels, instructions etc., the Codifier declarations should be run inside an appropriate hook - for example `init` is fine.

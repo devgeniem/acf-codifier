@@ -57,12 +57,13 @@ class CloneField extends \Geniem\ACF\Field {
      * Export the fields to be cloned in ACF's native format.
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key or a name is not defined.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
@@ -84,7 +85,7 @@ class CloneField extends \Geniem\ACF\Field {
 
         // Remove keys from the array.
         $obj['clone'] = array_values( $obj['clone'] );
-        
+
         // Convert the wrapper class array to a space-separated string.
         if ( isset( $obj['wrapper']['class'] ) && ! empty( $obj['wrapper']['class'] ) ) {
             $obj['wrapper']['class'] = implode( ' ', $obj['wrapper']['class'] );

@@ -5,10 +5,17 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\Placeholder;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
+
 /**
  * Class Textarea
  */
 class Textarea extends \Geniem\ACF\Field {
+
+    use ReadonlyTrait, Disabled, Placeholder;
+
     /**
      * Field type
      *
@@ -43,41 +50,6 @@ class Textarea extends \Geniem\ACF\Field {
      * @var integer
      */
     protected $rows;
-
-    /**
-     * Is field read only
-     *
-     * @var boolean
-     */
-    protected $readonly;
-
-    /**
-     * Is field disabled
-     *
-     * @var boolean
-     */
-    protected $disabled;
-
-    /**
-     * Set placeholder value
-     *
-     * @param string $placeholder Placeholder.
-     * @return self
-     */
-    public function set_placeholder( string $placeholder ) {
-        $this->placeholder = $placeholder;
-
-        return $this;
-    }
-
-    /**
-     * Get placeholder value
-     *
-     * @return string
-     */
-    public function get_placeholder() {
-        return $this->placeholder;
-    }
 
     /**
      * Set text max length
@@ -136,67 +108,5 @@ class Textarea extends \Geniem\ACF\Field {
      */
     public function get_rows() {
         return $this->rows;
-    }
-
-    /**
-     * Set field to read only
-     *
-     * @return self
-     */
-    public function set_readonly() {
-        $this->readonly = true;
-
-        return $this;
-    }
-
-    /**
-     * Set field to writable
-     *
-     * @return self
-     */
-    public function set_writable() {
-        $this->readonly = false;
-
-        return $this;
-    }
-
-    /**
-     * Get field readonly state
-     *
-     * @return boolean
-     */
-    public function get_readonly() {
-        return $this->readonly;
-    }
-
-    /**
-     * Disable field
-     *
-     * @return self
-     */
-    public function disable() {
-        $this->disable = true;
-
-        return $this;
-    }
-
-    /**
-     * Enable field
-     *
-     * @return self
-     */
-    public function enable() {
-        $this->disable = false;
-
-        return $this;
-    }
-
-    /**
-     * Get whether field is disabled or not
-     *
-     * @return boolean
-     */
-    public function get_disabled() {
-        return $this->disabled;
     }
 }

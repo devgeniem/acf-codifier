@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+use Geniem\ACF\Field\Common\ReadonlyTrait;
+
 /**
  * Class DatePicker
  */
 class DatePicker extends \Geniem\ACF\Field {
+
+    use Disabled, ReadonlyTrait;
 
     /**
      * The field type
@@ -37,6 +42,27 @@ class DatePicker extends \Geniem\ACF\Field {
      * @var integer
      */
     protected $first_day = 1;
+
+    /**
+     * What type the RediPress index field should be.
+     *
+     * @var string
+     */
+    protected $redipress_field_type = 'Numeric';
+
+    /**
+     * Constructor.
+     *
+     * @param string      $label          Label for the field.
+     * @param string|null $key            Key for the field.
+     * @param string|null $name           Name for the field.
+     * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
+     */
+    public function __construct( string $label, string $key = null, string $name = null ) {
+        parent::__construct( $label, $key, $name );
+
+        $this->redipress_queryable_filter = 'strtotime';
+    }
 
     /**
      * Set display_format variable

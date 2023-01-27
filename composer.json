@@ -21,8 +21,17 @@
             "url": "ssh://git@github.com/devgeniem/acf-codifier.git"
         }
     ],
+    "conflict": {
+        "devgeniem/redipress": "<2.0"
+    },
     "autoload": {
         "psr-4": {"Geniem\\ACF\\": "src/"}
+    },
+    "scripts": {
+        "update-docs": "./vendor/victorjonsson/markdowndocs/phpdoc-md generate --ignore=Fields,External src > docs/classes.md"
+    },
+    "require": {
+        "php": ">=7.1"
     },
     "require-dev": {
         "victorjonsson/markdowndocs": "^1.3"

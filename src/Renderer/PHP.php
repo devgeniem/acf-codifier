@@ -43,11 +43,15 @@ class PHP implements Renderer {
      * Renders ACF fields with the given template file.
      *
      * @param array $fields ACF field values.
+     *
+     * @return string
      */
-    public function render( array $fields ) : void {
-        extract( $fields ); // phpcs:ignore
+    public function render( array $fields ) : string {
+        extract( $fields['data'] ); // phpcs:ignore
 
-		include $this->template;
+        ob_start();
+        include $this->template;
+        return ob_get_clean();
 
     }
 

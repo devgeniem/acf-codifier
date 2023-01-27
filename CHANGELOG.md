@@ -16,6 +16,190 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         * `Geniem\ACF\Renderer\PHP`: Uses PHP files as templates.
         * `Geniem\ACF\Renderer\Dust`: Uses Dust.js template files.
 
+## [1.38.2]
+### Fixed
+- Fixes "Automatic conversion of false to array is deprecated" on Dust.php
+
+## [1.38.1]
+
+### Fixed
+- Parameter order for PHP 8.1
+
+## [1.38.0]
+
+### Changed
+- Google Maps field to be queryable to RediPress.
+- All mainline versions from now on require RediPress 2.0 if the integration is used.
+
+## [1.37.2] - 2022-11-04
+
+### Added
+
+- Show in rest option to Group.
+
+## [1.37.1] - 2022-04-07
+
+### Fixed
+- Fix Polylang incompatibility with multisite fields.
+
+## [1.37.0] - 2021-11-30
+
+### Changed
+- `Readonly` trait to `ReadonlyTrait` to avoid PHP 8.1 reserved word `readonly`.
+
+## [1.36.1] - 2021-09-24
+
+### Added
+- RediPress field type `Numeric` for the Number field.
+- Added min-max trait to Flexible Content Layout
+
+## [1.36.0] - 2021-02-24
+
+### Added
+- Added set_return_format and get_return_format methods to Checkbox.
+
+### Fixed
+- A bug where RediPress queryable fields with array values may not have worked properly.
+
+## [1.35.1] - 2021-01-27
+
+### Changed
+- `redipress_get_fields()` has_blocks check to use $item->post_content for custom posts to work.
+
+### Fixed
+- The `redipress_include_search_filter()` to pass integer values.
+- A typo in the code that prevented the plugin from working with PHP 8.0.
+
+## [1.35.0] - 2020-11-16
+
+### Added
+- The ability to use fields from ACF Blocks as queryable fields or search fields in RediPress.
+
+### Fixed
+- A bug with RediPress queryable filter functionality.
+
+## [1.34.0] - 2020-11-09
+
+### Changed
+- RediPress search include to be suitable also for field types returning other types of values than string.
+
+### Fixed
+- The use of `redipress_queryable_callback` changed the return value of a field in some cases.
+
+## [1.33.0] - 2020-10-13
+
+### Changed
+- `\Geniem\ACF\Field\GoogleMap` latitude and longitude types from `int` to `float`.
+
+## [1.32.0] - 2020-07-09
+
+### Fixed
+- Compatibility with WordPress 5.5 regarding the block rendering function.
+
+### Changed
+- RediPress integration changed to match the one in version 1.7.0.
+
+## [1.31.0] - 2020-06-15
+
+### Added
+- Ability to define TinyMCE toolbars individually by Wysiwyg fields instance.
+- Extended Wysiwyg field with ability to set textarea heights individually by field instance.
+
+## [1.30.2] - 2020-05-27
+
+### Fixed
+- Groupable's get_field.
+
+## [1.30.1] - 2020-05-25
+
+### Fixed
+- A bug in the Advanced Forms compatibility fix preventing form submissions in certain situations.
+
+## [1.30.0] - 2020-05-22
+
+### Added
+- A compatibility fix for Advanced Forms plugin to be able to handle Codifier-registered fields in submissions.
+
+## [1.29.2] - 2020-04-02
+
+### Fixed
+- A bug where field content would appear in the search index duplicated.
+
+## [1.29.1] - 2020-04-01
+
+### Fixed
+- A bug where RediPress indexing wouldn't take all search index bound content into account.
+
+## [1.29.0] - 2020-03-02
+
+### Added
+- MultisitePostObject field for selecting post objects from other sites.
+
+### Changed
+- Cleaned up code quite a bit and changed duplicate code to traits for DRY.
+
+## [1.28.1] - 2020-02-17
+
+### Fixed
+- Polylang incompatibility with MultisiteRelationship.
+
+## [1.28.0] - 2020-02-07
+
+### Added
+- MultisiteTaxonomy field for choosing taxonomy terms from other multisite blogs.
+- Ability to set Multitaxonomy and MultisiteTaxonomy fields as "disabled".
+
+## [1.27.0] - 2020-01-31
+
+### Added
+- RediPress support for `update_field()` function.
+
+## [1.26.0] - 2020-01-31
+
+### Added
+- Support for Gutenberg block styles.
+- A possibility to create Gutenberg blocks with ACF's register block feature using Codifier's object-oriented model.
+
+## [1.25.1] - 2019-12-18
+
+### Fixed
+- A bug regarding RediPress custom schema fields.
+
+## [1.25.0] - 2019-12-11
+
+### Added
+- User query filter.
+- Wysiwyg field delay attribute.
+
+### Fixed
+- A bug in RediPress queryable field functionality.
+
+## [1.24.0] - 2019-11-21
+
+### Added
+
+- A new custom field: Multitaxonomy. This field enables selecting terms from multiple taxonomies.
+
+## [1.23.0] - 2019-11-19
+
+### Added
+- Support for Select field's return format that was introduced in ACF version 5.4.0.
+
+### Fixed
+- A bug in Flexible Content's export function.
+
+## [1.22.0] - 2019-11-08
+
+### Added
+- Support for RediPress user indexing and custom fields there.
+- Multisite Relationship field that allows the user to pick posts from other sites of a multisite.
+
+## [1.21.0] - 2019-10-25
+
+### Added
+- Added the ability to use Allow null setting with the Radio field.
+>>>>>>> master
+
 ## [1.20.0] - 2019-10-10
 
 ### Changed

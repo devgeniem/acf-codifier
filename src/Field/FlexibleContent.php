@@ -5,10 +5,14 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\MinMax;
+
 /**
  * Class FlexibleContent
  */
 class FlexibleContent extends \Geniem\ACF\Field {
+
+    use MinMax;
 
     /**
      * Field type
@@ -23,20 +27,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * @var string
      */
     protected $button_label;
-
-    /**
-     * Minimum amount of flexible layouts to add
-     *
-     * @var integer
-     */
-    protected $min;
-
-    /**
-     * Maximum amount of flexible layouts to add
-     *
-     * @var integer
-     */
-    protected $max;
 
     /**
      * Layouts added
@@ -84,12 +74,13 @@ class FlexibleContent extends \Geniem\ACF\Field {
      * This also exports layout fields
      *
      * @param boolean $register Whether the field is to be registered.
+     * @param mixed   $parent Possible parent object.
      *
      * @throws Exception Throws an exception if a key or a name is not defined.
      *
      * @return array
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         global $post;
 
         if ( empty( $this->key ) ) {
@@ -101,7 +92,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
         }
 
         if ( ! empty( $this->layouts ) ) {
-            $this->layouts = array_map( function( $layout ) use ( $register, $post ) {
+            $this->layouts = array_map( function( $layout ) use ( $register, $post, $parent ) {
                 if ( $register && $layout instanceof Flexible\Layout ) {
                     $exclude_post_types = $layout->get_excluded_post_types();
                     $exclude_templates  = $layout->get_excluded_templates();
@@ -139,7 +130,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
                 }
 
                 if ( $layout instanceof Flexible\Layout ) {
-                    return $layout->export( $register );
+                    return $layout->export( $register, $parent );
                 }
                 else {
                     return $layout;
@@ -153,7 +144,7 @@ class FlexibleContent extends \Geniem\ACF\Field {
             $this->layouts = array_values( $this->layouts );
         }
 
-        $obj = parent::export( $register );
+        $obj = parent::export( $register, $parent );
 
         // Remove post type exclude info
         unset( $obj['exclude_post_types'] );
@@ -180,48 +171,6 @@ class FlexibleContent extends \Geniem\ACF\Field {
      */
     public function get_button_label() {
         return $this->button_label;
-    }
-
-    /**
-     * Set maximum amount of layouts
-     *
-     * @param integer $max Maximum amount.
-     * @return self
-     */
-    public function set_max( int $max ) {
-        $this->max = $max;
-
-        return $this;
-    }
-
-    /**
-     * Get maximum amount of layouts
-     *
-     * @return integer Maximum amount
-     */
-    public function get_max() {
-        return $this->max;
-    }
-
-    /**
-     * Set minimum amount of layouts
-     *
-     * @param integer $min Minimum amount.
-     * @return self
-     */
-    public function set_min( int $min ) {
-        $this->min = $min;
-
-        return $this;
-    }
-
-    /**
-     * Get minimum amount of layouts
-     *
-     * @return integer Minimum amount
-     */
-    public function get_min() {
-        return $this->min;
     }
 
     /**

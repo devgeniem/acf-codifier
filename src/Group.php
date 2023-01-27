@@ -8,13 +8,14 @@ namespace Geniem\ACF;
 use Geniem\ACF\Field\Common\Groupable,
     Geniem\ACF\Exception as Exception,
     Geniem\ACF\Field\PseudoGroupableField as PseudoGroupableField;
+use Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 
 /**
  * Class Group
  *
  * @package Geniem\ACF
  */
-class Group {
+class Group implements GroupableInterface {
 
     /**
      * Import the groupable functionalities
@@ -73,7 +74,7 @@ class Group {
     /**
      * Field group hide on screen value
      *
-     * @var boolean
+     * @var array
      */
     protected $hide_on_screen;
 
@@ -99,6 +100,13 @@ class Group {
     protected $active;
 
     /**
+     * Field group show in rest status
+     *
+     * @var boolean
+     */
+    protected $show_in_rest;
+
+    /**
      * Is field group registered yet
      *
      * @var boolean
@@ -117,6 +125,8 @@ class Group {
         $this->key = $key;
 
         $this->active = 1;
+
+        $this->show_in_rest = 0;
     }
 
     /**
@@ -133,7 +143,7 @@ class Group {
      *
      * @param string $key  Field group key.
      * @param string $name Field group name (optional).
-     * @return Geniem\ACF\Group
+     * @return GroupableInterface
      */
     public function clone( string $key, string $name = null ) {
         $clone = clone $this;
@@ -391,11 +401,11 @@ class Group {
     /**
      * Add a field to the field group.
      *
-     * @param Field $field A field to be added.
-     * @param string            $order Whether the field is added first or last.
+     * @param \Geniem\ACF\Field $field  A field to be added.
+     * @param string            $order  Whether the field is added first or last.
      * @return self
      */
-    public function add_field( \Geniem\ACF\Field $field, $order = 'last' ) {
+    public function add_field( \Geniem\ACF\Field $field, string $order = 'last' ) : GroupableInterface {
         // Add the field to the fields array.
         if ( $order === 'first' ) {
             $this->fields = [ $field->get_key() => $field ] + $this->fields;
@@ -407,7 +417,7 @@ class Group {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_add_local_field' ) ) {
-                $exported = $field->export();
+                $exported = $field->export( false, $this->parent );
 
                 $exported['parent'] = $this->key;
 
@@ -424,7 +434,7 @@ class Group {
      * @param string $key The name of the field to be removed.
      * @return self
      */
-    public function remove_field( string $key ) {
+    public function remove_field( string $key ) : GroupableInterface {
         // If the field group has already been registered, do things the ACF way.
         if ( $this->registered ) {
             if ( function_exists( 'acf_remove_local_field' ) ) {
@@ -448,7 +458,7 @@ class Group {
     public function export_fields() {
         // Loop through fields and return their export method.
         return array_map( function( $field ) {
-            return $field->export();
+            return $field->export( false, $this );
         }, $this->fields );
     }
 
@@ -475,6 +485,28 @@ class Group {
     }
 
     /**
+     * Change the field group's show in rest status to active.
+     *
+     * @return self
+     */
+    public function show_in_rest() {
+        $this->show_in_rest = 1;
+
+        return $this;
+    }
+
+    /**
+     * Change the field group's show in rest status to unactive.
+     *
+     * @return self
+     */
+    public function hide_in_rest() {
+        $this->show_in_rest = 0;
+
+        return $this;
+    }
+
+    /**
      * Register the field group to ACF.
      *
      * @return void
@@ -487,7 +519,7 @@ class Group {
                 \acf_add_local_field_group( $exported );
 
                 $this->registered = true;
-            });
+            }, 15 );
         }
     }
 
@@ -504,12 +536,13 @@ class Group {
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field group is to be registered.
+     * @param mixed   $parent   Possible parent object.
      *
      * @throws Exception Throws an exception if a key is not defined.
      *
      * @return array Acf fields
      */
-    public function export( $register = false ) {
+    public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
             throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
         }
@@ -529,11 +562,11 @@ class Group {
                     $sub_fields = $field->get_fields();
                 }
 
-                $fields[] = $field->export( $register );
+                $fields[] = $field->export( $register, $this );
 
                 // Add the possibly stored subfields
                 if ( ! empty( $sub_fields ) ) {
-                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register );
+                    $exported_sub_fields = $this->export_sub_fields( $sub_fields, $register, $this );
 
                     $fields = array_merge( $fields, $exported_sub_fields );
 

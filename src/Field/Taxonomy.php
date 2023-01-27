@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Disabled;
+
 /**
  * Class Taxonomy
  */
 class Taxonomy extends \Geniem\ACF\Field {
+
+    use Disabled;
+
     /**
      * Field type
      *
@@ -88,7 +93,7 @@ class Taxonomy extends \Geniem\ACF\Field {
      */
     public function set_field_type( string $field_type = 'checkbox' ) {
         if ( ! in_array( $field_type, [ 'checkbox', 'multi_select', 'radio', 'select' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_field_type() does not accept argument "' . $field_type . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Taxonomy: set_field_type() does not accept argument "' . $field_type . '"' );
         }
 
         $this->field_type = $field_type;
@@ -207,7 +212,7 @@ class Taxonomy extends \Geniem\ACF\Field {
      */
     public function set_return_format( string $return_format = 'object' ) {
         if ( ! in_array( $return_format, [ 'object', 'id' ] ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Group: set_return_format() does not accept argument "' . $return_format . '"' );
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Taxonomy: set_return_format() does not accept argument "' . $return_format . '"' );
         }
 
         $this->return_format = $return_format;

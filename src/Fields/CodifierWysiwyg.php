@@ -69,5 +69,5 @@ add_action( 'acf/init', function() {
             }
     }
 
-    new ACF_Field_Extended_Wysiwyg();
+    \acf_register_field_type( '\\Geniem\\ACF\\Fields\\ACF_Field_Extended_Wysiwyg' );
 });

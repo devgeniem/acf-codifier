@@ -84,11 +84,11 @@ class FlexibleContent extends \Geniem\ACF\Field {
         global $post;
 
         if ( empty( $this->key ) ) {
-            throw new Exception( 'Field ' . $this->label . ' does not have a key defined.' );
+            throw new \Exception( 'Field ' . $this->label . ' does not have a key defined.' );
         }
 
         if ( empty( $this->name ) ) {
-            throw new Exception( 'Field ' . $this->label . ' does not have a name defined.' );
+            throw new \Exception( 'Field ' . $this->label . ' does not have a name defined.' );
         }
 
         if ( ! empty( $this->layouts ) ) {
@@ -145,6 +145,27 @@ class FlexibleContent extends \Geniem\ACF\Field {
         }
 
         $obj = parent::export( $register, $parent );
+
+        // Register a REST field for this field.
+        \register_rest_field(
+            \get_post_types(),
+            $this->name,
+            [
+                'get_callback'    => function( $post ) {
+                    return \get_field( $this->name, $post['id'] );
+                },
+                'update_callback' => function( $value, $post ) {
+                    return \update_field( $this->name, $value, $post['id'] );
+                },
+                'schema'          => [
+                    'description' => $this->label,
+                    'type'        => 'array',
+                    'items'       => [
+                        'type' => 'object',
+                    ],
+                ],
+            ]
+        );
 
         // Remove post type exclude info
         unset( $obj['exclude_post_types'] );

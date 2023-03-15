@@ -100,6 +100,13 @@ class Group implements GroupableInterface {
     protected $active;
 
     /**
+     * Possible parent field roup
+     *
+     * @var object
+     */
+    protected $parent;
+
+    /**
      * Field group show in rest status
      *
      * @var boolean
@@ -149,10 +156,6 @@ class Group implements GroupableInterface {
         $clone = clone $this;
 
         $clone->set_key( $key );
-
-        if ( isset( $name ) ) {
-            $clone->set_name( $name );
-        }
 
         $clone->reset();
 
@@ -544,7 +547,7 @@ class Group implements GroupableInterface {
      */
     public function export( bool $register = false, $parent = null ) : ?array {
         if ( empty( $this->key ) ) {
-            throw new Exception( 'Field group ' . $this->label . ' does not have a key defined.' );
+            throw new Exception( 'Field group ' . $this->title . ' does not have a key defined.' );
         }
 
         $obj = get_object_vars( $this );

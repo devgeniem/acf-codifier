@@ -557,5 +557,5 @@ add_action( 'acf/init', function() {
     }
 
     // initialize
-    new Multitaxonomy();
+    \acf_register_field_type( '\\Geniem\\ACF\\Fields\\Multitaxonomy' );
 });

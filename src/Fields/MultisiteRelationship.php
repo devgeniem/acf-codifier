@@ -162,5 +162,5 @@ add_action( 'acf/init', function() {
     }
 
     // initialize
-    new ACF_Field_Multisite_Relationship();
+    \acf_register_field_type( '\\Geniem\\ACF\\Fields\\ACF_Field_Multisite_Relationship' );
 });

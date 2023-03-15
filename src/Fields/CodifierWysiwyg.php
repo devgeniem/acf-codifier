@@ -41,10 +41,10 @@ add_action( 'acf/init', function() {
             $return = ob_get_clean();
 
             // Get ACF default wysiwyg height
-            $height = acf_get_user_setting( 'wysiwyg_height', 300 );
+            $height = \acf_get_user_setting( 'wysiwyg_height', 300 );
             $height = max( $height, 300 );
 
-            echo str_replace( "height:${height}px;", 'height:'. $field['height'] . 'px;', $return );
+            echo str_replace( "height:{$height}px;", 'height:'. $field['height'] . 'px;', $return );
 
             static $min_height_zero = false;
 

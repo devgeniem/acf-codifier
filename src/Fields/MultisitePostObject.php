@@ -155,6 +155,6 @@ add_action(
         }
 
         // Initialize.
-        new MultisitePostObject();
+        \acf_register_field_type( '\\Geniem\\ACF\\Fields\\MultisitePostObject' );
     }
 );

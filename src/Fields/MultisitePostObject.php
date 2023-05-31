@@ -123,7 +123,15 @@ add_action(
                 // do not match between all sites.
                 if ( function_exists( 'pll_default_language' ) ) {
                     $restore_curlang = \PLL()->curlang;
-                    $lang = \PLL()->model->get_language( $restore_curlang->slug );
+
+                    // If the field has a post id as a value, we need to set the language by that posts language.
+                    if ( ! empty( $field['value'] ) ) {
+                        $lang_to_set = \pll_get_post_language( $field['value'] );
+                    } else {
+                        $lang_to_set = $restore_curlang->slug;
+                    }
+
+                    $lang = \PLL()->model->get_language( $lang_to_set );
                     \PLL()->curlang = $lang ?: \PLL()->model->get_language( \pll_default_language() );
                     parent::render_field( $field );
                     \PLL()->curlang = $restore_curlang;

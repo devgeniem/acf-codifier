@@ -805,7 +805,7 @@ abstract class Field {
 
                 if ( is_string( $redipress_value ) || is_array( $redipress_value ) || is_int( $redipress_value ) ) {
                     if ( strpos( $post_id, 'block_' ) !== false &&
-                        ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
+                        ! ( $post_id = \Geniem\RediPress\Index\PostIndex::indexing() ) // phpcs:ignore
                     ) {
                         $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
 
@@ -924,7 +924,7 @@ abstract class Field {
                     $doc_id = \Geniem\RediPress\Index\PostIndex::get_document_id( get_post( $post_id ) );
                 }
                 elseif ( strpos( $post_id, 'block_' ) !== false ) {
-                    if ( ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) ) {
+                    if ( ! ( $post_id = \Geniem\RediPress\Index\PostIndex::indexing() ) ) {
                         $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
 
                         $post_id = basename( $document_uri );

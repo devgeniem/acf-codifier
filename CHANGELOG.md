@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.38.3]
+### Fixed
+- Fixes undefined method error in RediPress functionalities
+
 ## [1.38.2]
 ### Fixed
 - Fixes "Automatic conversion of false to array is deprecated" on Dust.php

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.39.0]
+
+### Added
+- Add support for block parent attribute.
+
 ## [1.38.4]
 
 - Fix previous tag pointing to earlier commit.

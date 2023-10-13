@@ -237,7 +237,7 @@ add_action( 'acf/init', function() {
         }
 
         /**
-         *  This filter is appied to the $value after it is loaded from the db
+         *  This filter is applied to the $value after it is loaded from the db
          *
          *  @param array      $value   The value found in the database.
          *  @param int        $post_id The $post_id from which the value was loaded from.
@@ -290,7 +290,7 @@ add_action( 'acf/init', function() {
 
             }
 
-            // convert back from array if neccessary
+            // convert back from array if necessary
             if ( $field['field_type'] == 'select' || $field['field_type'] == 'radio' ) {
 
                 $value = array_shift( $value );
@@ -303,7 +303,7 @@ add_action( 'acf/init', function() {
         }
 
         /**
-         *  This filter is appied to the $value before it is updated in the db
+         *  This filter is applied to the $value before it is updated in the db
 
          *  @param array $value   The value that will be save in the database.
          *  @param int   $post_id The $post_id from which the value was loaded from.

@@ -829,7 +829,7 @@ abstract class Field {
      * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
      * @param float  $weight     Optional weight for the search field.
      * @param string $method     The method to use with multiple values. Defaults to "use_last".
-     *                           Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).
+     *                           Possibilities: use_last, concat, concat_with_spaces, sum, custom (needs filter).
      * @return self
      */
     public function redipress_add_queryable(

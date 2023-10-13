@@ -168,7 +168,7 @@
 | public | <strong>load_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field loading function for the field</em> |
 | public | <strong>load_value(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a value loading function for the field</em> |
 | public | <strong>prepare_field(</strong><em>\callable</em> <strong>$function</strong>, <em>\int</em> <strong>$priority=10</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Register a field preparing function for the field</em> |
-| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index. Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).</em> |
+| public | <strong>redipress_add_queryable(</strong><em>\string</em> <strong>$field_name=null</strong>, <em>\float</em> <strong>$weight=1</strong>, <em>\string</em> <strong>$method=`'use_last'`</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Add this field's value as a queryable value to RediSearch index. Possibilities: use_last, concat, concat_with_spaces, sum, custom (needs filter).</em> |
 | public | <strong>redipress_exclude_search()</strong> : <em>\Geniem\ACF\self</em><br /><em>Exclude this field's value in the RediPress search index.</em> |
 | public static | <strong>redipress_get_fields(</strong><em>\WP_Post/\WP_User</em> <strong>$item</strong>)</strong> : <em>void</em><br /><em>A wrapper for ACF get_fields to get the values for indexing.</em> |
 | public | <strong>redipress_get_queryable_status()</strong> : <em>boolean</em><br /><em>Whether this field is queryable in RediSearch index or not.</em> |
@@ -255,7 +255,7 @@
 | public | <strong>set_mode(</strong><em>\string</em> <strong>$mode</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the display mode Options: auto, preview or edit.</em> |
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the name.</em> |
 | public | <strong>set_parent(</strong><em>\array|null</em> <strong>$parent</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the parent of the block.</em> |
-| public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the post_ ypes.</em> |
+| public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the post_ types.</em> |
 | public | <strong>set_renderer(</strong><em>[\Geniem\ACF\Interfaces\Renderer](#interface-geniemacfinterfacesrenderer)</em> <strong>$renderer</strong>)</strong> : <em>void</em><br /><em>Set the renderer for the component.</em> |
 | public | <strong>set_styles(</strong><em>array</em> <strong>$styles</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the styles of the block.</em> |
 | public | <strong>set_supports(</strong><em>array</em> <strong>$supports</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the supported features of the block.</em> |
@@ -464,7 +464,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
+| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extensions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
 | public | <strong>export(</strong><em>\bool</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
@@ -473,14 +473,14 @@
 | public | <strong>get_max_height()</strong> : <em>integer Maximum height</em><br /><em>Get maximum height</em> |
 | public | <strong>get_max_size()</strong> : <em>string Maximum size</em><br /><em>Get maximum size</em> |
 | public | <strong>get_max_width()</strong> : <em>integer Maximum width</em><br /><em>Get maximum width</em> |
-| public | <strong>get_mime_types()</strong> : <em>array File extenions</em><br /><em>Get allowed file extenions</em> |
+| public | <strong>get_mime_types()</strong> : <em>array File extensions</em><br /><em>Get allowed file extensions</em> |
 | public | <strong>get_min()</strong> : <em>integer Minimum amount</em><br /><em>Get minimum amount</em> |
 | public | <strong>get_min_height()</strong> : <em>integer Minimum height</em><br /><em>Get minimum height</em> |
 | public | <strong>get_min_size()</strong> : <em>string</em><br /><em>Get the minimum size of the file.</em> |
 | public | <strong>get_min_width()</strong> : <em>integer Minimum width</em><br /><em>Get minimum width</em> |
 | public | <strong>get_preview_size()</strong> : <em>string</em><br /><em>Get the preview size of the field.</em> |
 | public | <strong>remove_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for remove_mime_type() Removes a file extension from allowed file extensions</em> |
-| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extenions</em> |
+| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extensions</em> |
 | public | <strong>set_allowed_file_extensions(</strong><em>array</em> <strong>$file_extensions</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for set_mime_types() Sets allowed file extensions, e.g. jpg, png, gif.</em> |
 | public | <strong>set_library(</strong><em>\string</em> <strong>$library=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets library</em> |
 | public | <strong>set_max(</strong><em>integer/\int</em> <strong>$max</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum amount</em> |
@@ -557,7 +557,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overridden constructor to provide our special functionality</em> |
 | public | <strong>load_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_content</em> |
 | public | <strong>save_post_content(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_content</em> |
 
@@ -626,7 +626,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overriden constructor to provide our special functionality</em> |
+| public | <strong>__construct(</strong><em>\string</em> <strong>$label</strong>, <em>\string</em> <strong>$key=null</strong>, <em>\string</em> <strong>$name=null</strong>)</strong> : <em>void</em><br /><em>Overridden constructor to provide our special functionality</em> |
 | public | <strong>load_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Load the value from post_excerpt</em> |
 | public | <strong>save_post_excerpt(</strong><em>\string</em> <strong>$value</strong>, <em>integer/\int</em> <strong>$post_id</strong>, <em>array</em> <strong>$field</strong>)</strong> : <em>void</em><br /><em>Save the value to post_excerpt</em> |
 
@@ -678,18 +678,18 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
+| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extensions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
 | public | <strong>export(</strong><em>\bool</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
 | public | <strong>get_library()</strong> : <em>string Library</em><br /><em>Get library</em> |
 | public | <strong>get_max_size()</strong> : <em>string Maximum size</em><br /><em>Get maximum size</em> |
-| public | <strong>get_mime_types()</strong> : <em>array File extenions</em><br /><em>Get allowed file extenions</em> |
+| public | <strong>get_mime_types()</strong> : <em>array File extensions</em><br /><em>Get allowed file extensions</em> |
 | public | <strong>get_min_size()</strong> : <em>string</em><br /><em>Get the minimum size of the file.</em> |
 | public | <strong>get_preview_size()</strong> : <em>string</em><br /><em>Get the preview size of the field.</em> |
 | public | <strong>get_return_format()</strong> : <em>string</em><br /><em>Get the return format of the field.</em> |
 | public | <strong>remove_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for remove_mime_type() Removes a file extension from allowed file extensions</em> |
-| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extenions</em> |
+| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extensions</em> |
 | public | <strong>set_allowed_file_extensions(</strong><em>array</em> <strong>$file_extensions</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for set_mime_types() Sets allowed file extensions, e.g. jpg, png, gif.</em> |
 | public | <strong>set_library(</strong><em>\string</em> <strong>$library=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets library</em> |
 | public | <strong>set_max_size(</strong><em>\string</em> <strong>$max_size</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum size</em> |
@@ -1289,7 +1289,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extentions, e.g. jpn, png, gif</em> |
+| public | <strong>add_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for add_mime_type() Adds an extensions to allowed file extensions, e.g. jpn, png, gif</em> |
 | public | <strong>add_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Adds an extension to allowed file extensions e.g. jpg, png, gif</em> |
 | public | <strong>export(</strong><em>\bool</em> <strong>$register=false</strong>, <em>mixed</em> <strong>$parent=null</strong>)</strong> : <em>array</em><br /><em>Export field in ACF's native format.</em> |
 | public | <strong>get_allowed_file_extensions()</strong> : <em>void</em><br /><em>A better named wrapper for get_mime_types() Returns a list of allowed file extensions</em> |
@@ -1297,14 +1297,14 @@
 | public | <strong>get_max_height()</strong> : <em>integer Maximum height</em><br /><em>Get maximum height</em> |
 | public | <strong>get_max_size()</strong> : <em>string Maximum size</em><br /><em>Get maximum size</em> |
 | public | <strong>get_max_width()</strong> : <em>integer Maximum width</em><br /><em>Get maximum width</em> |
-| public | <strong>get_mime_types()</strong> : <em>array File extenions</em><br /><em>Get allowed file extenions</em> |
+| public | <strong>get_mime_types()</strong> : <em>array File extensions</em><br /><em>Get allowed file extensions</em> |
 | public | <strong>get_min_height()</strong> : <em>integer Minimum height</em><br /><em>Get minimum height</em> |
 | public | <strong>get_min_size()</strong> : <em>string</em><br /><em>Get the minimum size of the file.</em> |
 | public | <strong>get_min_width()</strong> : <em>integer Minimum width</em><br /><em>Get minimum width</em> |
 | public | <strong>get_preview_size()</strong> : <em>string</em><br /><em>Get the preview size of the field.</em> |
 | public | <strong>get_return_format()</strong> : <em>string Return format</em><br /><em>Get return format</em> |
 | public | <strong>remove_allowed_file_extension(</strong><em>\string</em> <strong>$file_extension</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for remove_mime_type() Removes a file extension from allowed file extensions</em> |
-| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extenions</em> |
+| public | <strong>remove_mime_type(</strong><em>\string</em> <strong>$mime_type</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Remove a file extensions from allowed file extensions</em> |
 | public | <strong>set_allowed_file_extensions(</strong><em>array</em> <strong>$file_extensions</strong>)</strong> : <em>void</em><br /><em>A better named wrapper for set_mime_types() Sets allowed file extensions, e.g. jpg, png, gif.</em> |
 | public | <strong>set_library(</strong><em>\string</em> <strong>$library=`'all'`</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Sets library</em> |
 | public | <strong>set_max_height(</strong><em>integer/\int</em> <strong>$max_height</strong>)</strong> : <em>[\Geniem\ACF\Field](#class-geniemacffield-abstract)\self</em><br /><em>Set maximum height</em> |

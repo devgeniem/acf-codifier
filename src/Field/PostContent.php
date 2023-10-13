@@ -11,7 +11,7 @@ namespace Geniem\ACF\Field;
 class PostContent extends \Geniem\ACF\Field\Wysiwyg {
 
     /**
-     * Overriden constructor to provide our special functionality
+     * Overridden constructor to provide our special functionality
      *
      * @param string      $label          Label for the field.
      * @param string|null $key            Key for the field.

@@ -182,7 +182,7 @@ trait File {
     /**
      * A better named wrapper for add_mime_type()
      *
-     * Adds an extensions to allowed file extentions, e.g. jpn, png, gif
+     * Adds an extensions to allowed file extensions, e.g. jpg, png, gif
      *
      * @param string $file_extension
      * @return void
@@ -192,7 +192,7 @@ trait File {
     }
 
     /**
-     * Remove a file extensions from allowed file extenions
+     * Remove a file extensions from allowed file extensions
      *
      * @param  string $mime_type File extension.
      * @return self
@@ -220,9 +220,9 @@ trait File {
     }
 
     /**
-     * Get allowed file extenions
+     * Get allowed file extensions
      *
-     * @return array File extenions
+     * @return array File extensions
      */
     public function get_mime_types() {
         return $this->mime_types;

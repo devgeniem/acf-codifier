@@ -470,7 +470,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.2.4] - 2018-01-31
 
 ### Fixed
-- Fixed a bug that occured after the change made in 1.2.3.
+- Fixed a bug that occurred after the change made in 1.2.3.
 
 ## [1.2.3] - 2018-01-30
 

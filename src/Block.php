@@ -344,7 +344,7 @@ class Block implements GroupableInterface {
     }
 
     /**
-     * Setter for the post_ ypes.
+     * Setter for the post_types.
      *
      * @param array $post_types The post types to set.
      * @return self

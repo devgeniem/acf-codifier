@@ -255,7 +255,7 @@
 | public | <strong>set_mode(</strong><em>\string</em> <strong>$mode</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the display mode Options: auto, preview or edit.</em> |
 | public | <strong>set_name(</strong><em>\string</em> <strong>$name</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the name.</em> |
 | public | <strong>set_parent(</strong><em>\array|null</em> <strong>$parent</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the parent of the block.</em> |
-| public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the post_ types.</em> |
+| public | <strong>set_post_types(</strong><em>array</em> <strong>$post_types</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the post_types.</em> |
 | public | <strong>set_renderer(</strong><em>[\Geniem\ACF\Interfaces\Renderer](#interface-geniemacfinterfacesrenderer)</em> <strong>$renderer</strong>)</strong> : <em>void</em><br /><em>Set the renderer for the component.</em> |
 | public | <strong>set_styles(</strong><em>array</em> <strong>$styles</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the styles of the block.</em> |
 | public | <strong>set_supports(</strong><em>array</em> <strong>$supports</strong>)</strong> : <em>\Geniem\ACF\self</em><br /><em>Setter for the supported features of the block.</em> |

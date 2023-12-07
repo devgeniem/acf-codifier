@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+### Fixed
+- Fix PHP 8.2 deprecations (no dynamic properties, string interpolation {$var} instead of ${var}).
+- Use shorthand array notation.
+
 ## [1.39.0]
 
 ### Added

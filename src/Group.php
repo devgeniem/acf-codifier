@@ -23,6 +23,13 @@ class Group implements GroupableInterface {
     use Groupable;
 
     /**
+     * Field group label.
+     *
+     * @var string
+     */
+    protected $label;
+
+    /**
      * Field group title
      *
      * @var string
@@ -35,6 +42,13 @@ class Group implements GroupableInterface {
      * @var string
      */
     protected $key;
+
+    /**
+     * Field group parent.
+     *
+     * @var mixed
+     */
+    protected $parent;
 
     /**
      * Field group menu order value

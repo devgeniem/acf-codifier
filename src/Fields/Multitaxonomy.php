@@ -22,7 +22,7 @@ add_action( 'acf/init', function() {
             $this->name     = 'multitaxonomy';
             $this->label    = __( 'Multitaxonomy', 'acf' );
             $this->category = 'relational';
-            $this->defaults = array(
+            $this->defaults = [
                 'taxonomy'      => [ 'category' ],
                 'field_type'    => 'select',
                 'multiple'      => 0,
@@ -31,7 +31,7 @@ add_action( 'acf/init', function() {
                 'add_term'      => 0, // 5.2.3
                 'load_terms'    => 0, // 5.2.7
                 'save_terms'    => 0 // 5.2.7
-            );
+            ];
             // extra
             \add_action( 'wp_ajax_acf/fields/multitaxonomy/query', [ $this, 'ajax_query' ] );
             \add_action( 'wp_ajax_nopriv_acf/fields/multitaxonomy/query', [ $this, 'ajax_query' ] );
@@ -63,12 +63,12 @@ add_action( 'acf/init', function() {
 
             // defaults
             $options = acf_parse_args(
-                $options, array(
+                $options, [
                     'post_id'   => 0,
                     's'         => '',
                     'field_key' => '',
                     'paged'     => 0,
-                )
+                ]
             );
 
             // load field
@@ -83,14 +83,14 @@ add_action( 'acf/init', function() {
             }
 
             // vars
-            $results = array();
+            $results = [];
             $limit   = PHP_INT_MAX; // fetch all terms
 
             // args
-            $args = array(
+            $args = [
                 'taxonomy'   => $field['taxonomy'],
                 'hide_empty' => false,
-            );
+            ];
 
             // search
             if ( ! empty( $options['s'] ) ) {
@@ -113,17 +113,17 @@ add_action( 'acf/init', function() {
             // append to results
             foreach ( $terms as $term ) {
                 // add to json
-                $results[] = array(
+                $results[] = [
                     'id'   => $term->term_id,
                     'text' => $this->get_term_title( $term, $field, $options['post_id'] ),
-                );
+                ];
             }
 
             // vars
-            $response = array(
+            $response = [
                 'results' => $results,
                 'limit'   => $limit,
-            );
+            ];
 
             // return
             return $response;
@@ -213,11 +213,11 @@ add_action( 'acf/init', function() {
             if ( count( $value ) > 1 ) {
 
                 $terms = acf_get_terms(
-                    array(
+                    [
                         'taxonomy'   => $taxonomy,
                         'include'    => $value,
                         'hide_empty' => false,
-                    )
+                    ]
                 );
 
             }
@@ -260,10 +260,10 @@ add_action( 'acf/init', function() {
                 // get terms
                 $info     = acf_get_post_id_info( $post_id );
                 $term_ids = wp_get_object_terms(
-                    $info['id'], $field['taxonomy'], array(
+                    $info['id'], $field['taxonomy'], [
                         'fields'  => 'ids',
                         'orderby' => 'none',
-                    )
+                    ]
                 );
 
                 // bail early if no terms
@@ -273,7 +273,7 @@ add_action( 'acf/init', function() {
                 // sort
                 if ( ! empty( $value ) ) {
 
-                    $order = array();
+                    $order = [];
 
                     foreach ( $term_ids as $i => $v ) {
 
@@ -345,7 +345,7 @@ add_action( 'acf/init', function() {
                 // Merge old values with new ones.
                 foreach ( $new_terms as $taxonomy => $terms_per_tax ) {
                     // get existing term id's (from a previously saved field)
-                    $old_term_ids = isset( $this->save_post_terms[ $taxonomy ] ) ? $this->save_post_terms[ $taxonomy ] : array();
+                    $old_term_ids = isset( $this->save_post_terms[ $taxonomy ] ) ? $this->save_post_terms[ $taxonomy ] : [];
                     // append
                     $this->save_post_terms[ $taxonomy ] = array_merge( $old_term_ids, $term_ids );
                 }
@@ -376,13 +376,13 @@ add_action( 'acf/init', function() {
             $field['value'] = acf_get_array( $field['value'] );
 
             // vars
-            $div = array(
+            $div = [
                 'class'           => 'acf-multitaxonomy-field',
                 'data-save'       => $field['save_terms'],
                 'data-ftype'      => $field['field_type'],
                 'data-taxonomy'   => $field['taxonomy'],
                 'data-allow_null' => $field['allow_null'],
-            );
+            ];
 
             // get taxonomy
             $all_exist = $this->taxonomies_exist( $field['taxonomy'] );
@@ -393,7 +393,7 @@ add_action( 'acf/init', function() {
             }
 
             ?>
-            <div <?php acf_esc_attr_e( $div ); ?>>
+            <div <?php acf_esc_attrs( $div ); ?>>
                 <?php
 
                 if ( $field['field_type'] == 'select' ) {
@@ -435,7 +435,7 @@ add_action( 'acf/init', function() {
             $field['type']     = 'select';
             $field['ui']       = 1;
             $field['ajax']     = 1;
-            $field['choices']  = array();
+            $field['choices']  = [];
             $field['disabled'] = $field['disable'] ?? false;
 
             // value
@@ -467,10 +467,10 @@ add_action( 'acf/init', function() {
         public function render_field_checkbox( $field ) {
 
             // hidden input
-            acf_hidden_input(array(
+            acf_hidden_input( [
                 'type' => 'hidden',
                 'name' => $field['name'],
-            ));
+            ] );
 
             // checkbox saves an array
             if ( $field['field_type'] === 'checkbox' ) {
@@ -491,7 +491,7 @@ add_action( 'acf/init', function() {
                  * @param integer $current_object_id Current object id.
                  * @return void
                  */
-                function start_el( &$output, $term, $depth = 0, $args = array(), $current_object_id = 0 ) { //phpcs:ignore
+                function start_el( &$output, $term, $depth = 0, $args = [], $current_object_id = 0 ) { //phpcs:ignore
                     // vars
                     $selected = in_array( $term->term_id, $this->field['value'], true );
                     // append
@@ -511,7 +511,7 @@ add_action( 'acf/init', function() {
 		        $taxonomy_obj = get_taxonomy( $taxonomy );
 
                 // vars
-                $args = array(
+                $args = [
                     'taxonomy'         => $taxonomy,
                     'show_option_none' => sprintf( _x( 'No %s', 'No terms', 'acf' ), strtolower( $taxonomy_obj->labels->name ) ),
                     'hide_empty'       => false,
@@ -520,7 +520,7 @@ add_action( 'acf/init', function() {
                     'echo'             => false,
                     'cat_count'        => $cat_count,
                     'disable'          => $field['disable'] ?? false,
-                );
+                ];
 
                 // filter for 3rd party customization
                 $args = apply_filters('acf/fields/taxonomy/wp_list_categories', $args, $field);

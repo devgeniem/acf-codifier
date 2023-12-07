@@ -64,6 +64,13 @@ class Taxonomy extends \Geniem\ACF\Field {
     protected $add_term;
 
     /**
+     * Return format.
+     *
+     * @var string
+     */
+    protected $return_format;
+
+    /**
      * Set taxonomy
      *
      * @param string $taxonomy Taxonomy slug.

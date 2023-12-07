@@ -393,7 +393,7 @@ add_action( 'acf/init', function() {
             }
 
             ?>
-            <div <?php acf_esc_attrs( $div ); ?>>
+            <div <?php echo acf_esc_attrs( $div ); ?>>
                 <?php
 
                 if ( $field['field_type'] == 'select' ) {

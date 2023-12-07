@@ -47,6 +47,13 @@ class Layout implements GroupableInterface {
     protected $name;
 
     /**
+     * Field group parent.
+     *
+     * @var mixed
+     */
+    protected $parent;
+
+    /**
      * Layout active
      *
      * @var boolean

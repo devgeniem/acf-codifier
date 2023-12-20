@@ -15,6 +15,13 @@ use \Geniem\ACF\Interfaces\Groupable as GroupableInterface;
 trait Groupable {
 
     /**
+     * Possible parent object.
+     *
+     * @var mixed
+     */
+    protected $parent;
+
+    /**
      * Export current field and sub fields to acf compatible format
      *
      * @param boolean $register Whether the field is to be registered.

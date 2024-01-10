@@ -17,9 +17,9 @@ class ACF_Field_PHP extends \acf_field {
         $this->name     = 'php';
         $this->label    = __( 'PHP', 'acf-codifier' );
         $this->category = 'layout';
-        $this->defaults = array(
+        $this->defaults = [
             'code' => '',
-        );
+        ];
 
         parent::__construct();
     }

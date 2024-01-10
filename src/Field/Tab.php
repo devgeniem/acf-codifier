@@ -17,6 +17,13 @@ class Tab extends GroupableField implements PseudoGroupableField {
     protected $type = 'tab';
 
     /**
+     * Field layout.
+     *
+     * @var string
+     */
+    protected $layout;
+
+    /**
      * Fields inside the tab
      *
      * @var array

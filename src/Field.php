@@ -38,6 +38,48 @@ abstract class Field {
     protected $instructions;
 
     /**
+     * Field type.
+     *
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * Field wrapper.
+     *
+     * @var array
+     */
+    protected $wrapper = [];
+
+    /**
+     * Registered.
+     *
+     * @var string
+     */
+    protected $registered;
+
+    /**
+     * No key.
+     *
+     * @var boolean
+     */
+    protected $no_key;
+
+    /**
+     * Parent.
+     *
+     * @var mixed
+     */
+    protected $parent;
+
+    /**
+     * Fields var.
+     *
+     * @var mixed
+     */
+    protected $fields_var;
+
+    /**
      * Field required status.
      *
      * @var boolean
@@ -134,6 +176,13 @@ abstract class Field {
      * @var string
      */
     protected $redipress_field_type = 'Text';
+
+    /**
+     * Codifier unique ID.
+     *
+     * @var string
+     */
+    protected $codifier_unique_id;
 
     /**
      * Store registered field keys to warn if there are duplicates.
@@ -841,10 +890,10 @@ abstract class Field {
             return $this;
         }
 
-        $this->redipress_add_queryable            = true;
-        $this->redipress_add_queryable_field_name = $field_name;
-        $this->redipress_add_queryable_weight     = $weight;
-        $this->redipress_add_queryable_method     = $method;
+        $this->redipress_add_queryable              = true;
+        $this->redipress_add_queryable_field_name   = $field_name;
+        $this->redipress_add_queryable_field_weight = $weight;
+        $this->redipress_add_queryable_method       = $method;
 
         add_action( 'codifier/export/key=' . $this->key, \Closure::fromCallable( [ $this, 'redipress_add_queryable_internal' ] ) );
 
@@ -855,8 +904,6 @@ abstract class Field {
      * An internal function to be run with the add queryable functionality.
      */
     private function redipress_add_queryable_internal() {
-        $field_name = $this->redipress_add_queryable_field_name;
-        $weight     = $this->redipress_add_queryable_weight;
         $method     = $this->redipress_add_queryable_method;
 
         if ( ! $method ) {
@@ -973,7 +1020,7 @@ abstract class Field {
                 ];
 
                 if ( $this->redipress_field_type === 'Text' ) {
-                    $field_args['weight'] = $this->redipress_add_queryable_weight;
+                    $field_args['weight'] = $this->redipress_add_queryable_field_weight;
                 }
 
                 if ( class_exists( $type ) ) {

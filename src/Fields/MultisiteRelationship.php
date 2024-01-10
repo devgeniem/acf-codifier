@@ -23,20 +23,20 @@ add_action( 'acf/init', function() {
             $this->name     = 'multisite_relationship';
             $this->label    = __( 'Multisite Relationship', 'acf' );
             $this->category = 'relational';
-            $this->defaults = array(
-                'post_type'     => array(),
-                'taxonomy'      => array(),
+            $this->defaults = [
+                'post_type'     => [],
+                'taxonomy'      => [],
                 'min'           => 0,
                 'max'           => 0,
-                'filters'       => array( 'search', 'post_type', 'taxonomy' ),
-                'elements'      => array(),
+                'filters'       => ['search', 'post_type', 'taxonomy'],
+                'elements'      => [],
                 'return_format' => 'object',
                 'blog_id'       => \get_current_blog_id(),
-            );
+            ];
 
             // extra
-            \add_action( 'wp_ajax_acf/fields/multisite_relationship/query', array( $this, 'ajax_query' ) );
-            \add_action( 'wp_ajax_nopriv_acf/fields/multisite_relationship/query', array( $this, 'ajax_query' ) );
+            \add_action( 'wp_ajax_acf/fields/multisite_relationship/query', [ $this, 'ajax_query' ] );
+            \add_action( 'wp_ajax_nopriv_acf/fields/multisite_relationship/query', [ $this, 'ajax_query' ] );
         }
 
         /**
@@ -61,7 +61,7 @@ add_action( 'acf/init', function() {
          * @param array $options The options array.
          * @return mixed
          */
-        public function get_ajax_query( $options = array() ) {
+        public function get_ajax_query( $options = [] ) {
             $field = acf_get_field( $options['field_key'] );
 
             $blog_id = $field['blog_id'];

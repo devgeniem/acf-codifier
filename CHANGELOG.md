@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.39.1]
+
 ### Fixed
 - Fix PHP 8.2 deprecations (no dynamic properties, string interpolation {$var} instead of ${var}).
 - Replace deprecated acf_esc_attr_e with acf_esc_attrs.

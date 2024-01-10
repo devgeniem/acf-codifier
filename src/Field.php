@@ -904,8 +904,6 @@ abstract class Field {
      * An internal function to be run with the add queryable functionality.
      */
     private function redipress_add_queryable_internal() {
-        $field_name = $this->redipress_add_queryable_field_name;
-        $weight     = $this->redipress_add_queryable_field_weight;
         $method     = $this->redipress_add_queryable_method;
 
         if ( ! $method ) {

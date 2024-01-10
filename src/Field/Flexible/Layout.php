@@ -56,7 +56,7 @@ class Layout implements GroupableInterface {
     /**
      * Layout active
      *
-     * @var boolean
+     * @var integer
      */
     protected $active;
 

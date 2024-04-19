@@ -17,6 +17,13 @@ class Accordion extends GroupableField implements PseudoGroupableField {
     protected $type = 'accordion';
 
     /**
+     * Field layout
+     *
+     * @var string
+     */
+    protected $layout;
+
+    /**
      * Fields inside the tab
      *
      * @var array

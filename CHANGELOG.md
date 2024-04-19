@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Released]
 
+## [1.40.0]
+
+### Added
+- Added a filter `codifier/callable-renderer/render/data` for CallableRenderer->render() $data. For example this makes possible to identify fields inside commonly used custom renderer.
+
+## [1.39.1]
+
+### Fixed
+- Fix PHP 8.2 deprecations (no dynamic properties, string interpolation {$var} instead of ${var}).
+- Replace deprecated acf_esc_attr_e with acf_esc_attrs.
+- Use shorthand array notation.
+
 ## [1.39.0]
 
 ### Added

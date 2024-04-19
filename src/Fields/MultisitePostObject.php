@@ -59,7 +59,7 @@ add_action(
              *
              * @return mixed
              */
-            public function get_ajax_query( $options = array() ) {
+            public function get_ajax_query( $options = [] ) {
                 $field   = acf_get_field( $options['field_key'] );
                 $blog_id = $field['blog_id'];
 

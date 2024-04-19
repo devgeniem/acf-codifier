@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
-## [add-filter-renderer-render-data]
+## [1.40.0]
 
 ### Added
 - Added a filter `codifier/callable-renderer/render/data` for CallableRenderer->render() $data. For example this makes possible to identify fields inside commonly used custom renderer.

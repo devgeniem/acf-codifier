@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.0]
+
 ### Added
 - Support for ACF native bidirectional relationships. See https://www.advancedcustomfields.com/resources/bidirectional-relationships/.
 

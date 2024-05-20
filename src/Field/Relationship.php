@@ -5,6 +5,7 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Bidirectional;
 use Geniem\ACF\Field\Common\MinMax;
 
 /**
@@ -12,7 +13,7 @@ use Geniem\ACF\Field\Common\MinMax;
  */
 class Relationship extends \Geniem\ACF\Field {
 
-    use MinMax;
+    use Bidirectional, MinMax;
 
     /**
      * Field type

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.1]
+
+### Fixed
+- Fix MultisitePostObject compatibility with ACF v6.3
+
 ## [1.41.0]
 
 ### Added

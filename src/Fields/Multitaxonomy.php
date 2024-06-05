@@ -133,12 +133,13 @@ add_action( 'acf/init', function() {
         /**
          *  This function returns the value label for the input element on the admin side.
          *
-         *  @param   \WP_Term $term    The term object.
-         *  @param   array    $field   The field settings.
-         *  @param   int      $post_id The post_id to which this value is saved to
+         *  @param   \WP_Term $term     The term object.
+         *  @param   array    $field    The field settings.
+         *  @param   int      $post_id  The post_id to which this value is saved to
+         *  @param   boolean  $unescape Should we return an unescaped post title.
          *  @return  string
          */
-        function get_term_title( $term, $field, $post_id = 0 ) {
+        function get_term_title( $term, $field, $post_id = 0, $unescape = false ) {
 
             // get post_id
             if ( ! $post_id ) {
@@ -159,6 +160,11 @@ add_action( 'acf/init', function() {
 
             // title
             $title .= $term->name;
+
+            // unescape for select2 output which handles the escaping.
+            if ( $unescape ) {
+                $title = html_entity_decode( $title );
+            }
 
             // filters
             $title = apply_filters( 'acf/fields/taxonomy/result', $title, $term, $field, $post_id );
@@ -508,7 +514,7 @@ add_action( 'acf/init', function() {
 
             foreach ( $field['taxonomy'] as $taxonomy ) {
                 // taxonomy
-		        $taxonomy_obj = get_taxonomy( $taxonomy );
+                $taxonomy_obj = get_taxonomy( $taxonomy );
 
                 // vars
                 $args = [

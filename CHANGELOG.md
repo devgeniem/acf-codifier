@@ -16,6 +16,46 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         * `Geniem\ACF\Renderer\PHP`: Uses PHP files as templates.
         * `Geniem\ACF\Renderer\Dust`: Uses Dust.js template files.
 
+## [1.41.2]
+
+### Fixed
+- Fix MultisiteTaxonomy and Multitaxonomy compatibility with ACF v6.3.1.
+
+## [1.41.1]
+
+### Fixed
+- Fix MultisitePostObject compatibility with ACF v6.3
+
+## [1.41.0]
+
+### Added
+- Support for ACF native bidirectional relationships. See https://www.advancedcustomfields.com/resources/bidirectional-relationships/.
+
+## [1.40.0]
+
+### Added
+- Added a filter `codifier/callable-renderer/render/data` for CallableRenderer->render() $data. For example this makes possible to identify fields inside commonly used custom renderer.
+
+## [1.39.1]
+
+### Fixed
+- Fix PHP 8.2 deprecations (no dynamic properties, string interpolation {$var} instead of ${var}).
+- Replace deprecated acf_esc_attr_e with acf_esc_attrs.
+- Use shorthand array notation.
+
+## [1.39.0]
+
+### Added
+- Add support for block parent attribute.
+
+## [1.38.4]
+
+- Fix previous tag pointing to earlier commit.
+
+## [1.38.3]
+### Fixed
+- Fixes undefined method error in RediPress functionalities
+
 ## [1.38.2]
 ### Fixed
 - Fixes "Automatic conversion of false to array is deprecated" on Dust.php
@@ -468,7 +508,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.2.4] - 2018-01-31
 
 ### Fixed
-- Fixed a bug that occured after the change made in 1.2.3.
+- Fixed a bug that occurred after the change made in 1.2.3.
 
 ## [1.2.3] - 2018-01-30
 

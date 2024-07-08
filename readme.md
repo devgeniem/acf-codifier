@@ -233,6 +233,15 @@ $pseudo->add_field( $some_field )
        ->add_field( $another_field );
 ```
 
+#### Bidirectional relationships
+
+Codifier supports bidirectional relationships for the field types ACF is supporting the feature (currently PostObject, Relationship, Taxonomy and User).
+
+```php
+$field->set_bidirectional()
+      ->set_bidirectional_targets( [ 'field_name_or_key' ] );
+```
+
 ## Gutenberg
 
 Codifier has a feature to register Gutenberg blocks using ACF's register block feature internally. It works in a very similar fashion than the basic field creation in Codifier as well.

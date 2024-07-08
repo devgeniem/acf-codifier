@@ -59,7 +59,7 @@ add_action(
              *
              * @return mixed
              */
-            public function get_ajax_query( $options = array() ) {
+            public function get_ajax_query( $options = [] ) {
                 $field   = acf_get_field( $options['field_key'] );
                 $blog_id = $field['blog_id'];
 
@@ -95,12 +95,13 @@ add_action(
              * @param mixed   $field     Field.
              * @param integer $post_id   Post ID.
              * @param integer $is_search Is search.
+             * @param boolean $unescape  Unescape.
              *
              * @return string
              */
-            public function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
+            public function get_post_title( $post, $field, $post_id = 0, $is_search = 0, $unescape = false ) {
                 \switch_to_blog( $field['blog_id'] );
-                $title = parent::get_post_title( $post, $field, $post_id, $is_search );
+                $title = parent::get_post_title( $post, $field, $post_id, $is_search, $unescape );
                 \restore_current_blog();
 
                 // return

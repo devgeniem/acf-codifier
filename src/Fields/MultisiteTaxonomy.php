@@ -22,7 +22,7 @@ add_action( 'acf/init', function() {
             $this->name     = 'multisite_taxonomy';
             $this->label    = __( 'Multisite taxonomy', 'acf' );
             $this->category = 'relational';
-            $this->defaults = array(
+            $this->defaults = [
                 'taxonomy'      => [ 'category' ],
                 'field_type'    => 'select',
                 'multiple'      => 0,
@@ -30,7 +30,7 @@ add_action( 'acf/init', function() {
                 'return_format' => 'id',
                 'add_term'      => 0, // 5.2.3
                 'blog_id'       => \get_current_blog_id(),
-            );
+            ];
             // extra
             \add_action( 'wp_ajax_acf/fields/multisite_taxonomy/query', [ $this, 'ajax_query' ] );
             \add_action( 'wp_ajax_nopriv_acf/fields/multisite_taxonomy/query', [ $this, 'ajax_query' ] );
@@ -71,12 +71,12 @@ add_action( 'acf/init', function() {
 
             // defaults
             $options = acf_parse_args(
-                $options, array(
+                $options, [
                     'post_id'   => 0,
                     's'         => '',
                     'field_key' => '',
                     'paged'     => 0,
-                )
+                ]
             );
 
 
@@ -89,14 +89,14 @@ add_action( 'acf/init', function() {
             }
 
             // vars
-            $results = array();
+            $results = [];
             $limit   = PHP_INT_MAX; // fetch all terms
 
             // args
-            $args = array(
+            $args = [
                 'taxonomy'   => $field['taxonomy'],
                 'hide_empty' => false,
-            );
+            ];
 
             // search
             if ( ! empty( $options['s'] ) ) {
@@ -119,17 +119,17 @@ add_action( 'acf/init', function() {
             // append to results
             foreach ( $terms as $term ) {
                 // add to json
-                $results[] = array(
+                $results[] = [
                     'id'   => $term->term_id,
                     'text' => $this->get_term_title( $term, $field, $options['post_id'] ),
-                );
+                ];
             }
 
             // vars
-            $response = array(
+            $response = [
                 'results' => $results,
                 'limit'   => $limit,
-            );
+            ];
 
             \restore_current_blog();
 
@@ -141,12 +141,13 @@ add_action( 'acf/init', function() {
         /**
          *  This function returns the value label for the input element on the admin side.
          *
-         *  @param   \WP_Term $term    The term object.
-         *  @param   array    $field   The field settings.
-         *  @param   int      $post_id The post_id to which this value is saved to
+         *  @param   \WP_Term $term     The term object.
+         *  @param   array    $field    The field settings.
+         *  @param   int      $post_id  The post_id to which this value is saved to
+         *  @param   boolean  $unescape Should we return an unescaped post title.
          *  @return  string
          */
-        function get_term_title( $term, $field, $post_id = 0 ) {
+        function get_term_title( $term, $field, $post_id = 0, $unescape = false ) {
 
             // get post_id
             if ( ! $post_id ) {
@@ -167,6 +168,11 @@ add_action( 'acf/init', function() {
 
             // title
             $title .= $term->name;
+
+            // unescape for select2 output which handles the escaping.
+            if ( $unescape ) {
+                $title = html_entity_decode( $title );
+            }
 
             // filters
             $title = apply_filters( 'acf/fields/multisite_taxonomy/result', $title, $term, $field, $post_id );
@@ -221,11 +227,11 @@ add_action( 'acf/init', function() {
             if ( count( $value ) > 1 ) {
 
                 $terms = acf_get_terms(
-                    array(
+                    [
                         'taxonomy'   => $taxonomy,
                         'include'    => $value,
                         'hide_empty' => false,
-                    )
+                    ]
                 );
 
             }
@@ -245,7 +251,7 @@ add_action( 'acf/init', function() {
         }
 
         /**
-         *  This filter is appied to the $value after it is loaded from the db
+         *  This filter is applied to the $value after it is loaded from the db
          *
          *  @param array      $value   The value found in the database.
          *  @param int        $post_id The $post_id from which the value was loaded from.
@@ -302,12 +308,12 @@ add_action( 'acf/init', function() {
             $field['value'] = acf_get_array( $field['value'] );
 
             // vars
-            $div = array(
+            $div = [
                 'class'           => 'acf-multisite-taxonomy-field',
                 'data-ftype'      => $field['field_type'],
                 'data-taxonomy'   => $field['taxonomy'],
                 'data-allow_null' => $field['allow_null'],
-            );
+            ];
 
             // get taxonomy
             $all_exist = $this->taxonomies_exist( $field['taxonomy'] );
@@ -318,7 +324,7 @@ add_action( 'acf/init', function() {
             }
 
             ?>
-            <div <?php acf_esc_attr_e( $div ); ?>>
+            <div <?php echo acf_esc_attrs( $div ); ?>>
                 <?php
 
                 if ( $field['field_type'] == 'select' ) {
@@ -373,12 +379,12 @@ add_action( 'acf/init', function() {
          */
         public function ajax_add_term() {
             // vars
-            $args = wp_parse_args( $_POST, array(
+            $args = wp_parse_args( $_POST, [
                 'nonce'       => '',
                 'field_key'   => '',
                 'term_name'   => '',
                 'term_parent' => '',
-            ));
+            ] );
 
             // load field
             $field = acf_get_field( $args['field_key'] );

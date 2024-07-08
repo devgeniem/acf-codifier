@@ -19,14 +19,14 @@ add_action( 'acf/init', function() {
 
             $this->name     = 'extended_wysiwyg';
             $this->label    = 'ACF Codifier Extended Wysiwyg Editor';
-            $this->defaults = array(
+            $this->defaults = [
                 'tabs'      	=> 'all',
                 'toolbar'		=> 'full',
                 'media_upload' 	=> 1,
                 'default_value'	=> '',
                 'delay'			=> 0,
                 'height'        => 300,
-            );
+            ];
         }
 
         /**
@@ -44,7 +44,7 @@ add_action( 'acf/init', function() {
             $height = acf_get_user_setting( 'wysiwyg_height', 300 );
             $height = max( $height, 300 );
 
-            echo str_replace( "height:${height}px;", 'height:'. $field['height'] . 'px;', $return );
+            echo str_replace( "height:{$height}px;", 'height:'. $field['height'] . 'px;', $return );
 
             static $min_height_zero = false;
 

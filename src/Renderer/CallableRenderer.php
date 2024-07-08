@@ -42,6 +42,10 @@ class CallableRenderer implements Renderer {
      * @return string
      */
     public function render( array $fields ) : string {
-        return \call_user_func( $this->method, $fields['data'] );
+
+        // Filter the Renderer data.
+        $data = \apply_filters( 'codifier/callable-renderer/render/data', $fields[ 'data' ], $fields );
+
+        return \call_user_func( $this->method, $data );
     }
 }

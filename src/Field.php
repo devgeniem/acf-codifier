@@ -38,6 +38,48 @@ abstract class Field {
     protected $instructions;
 
     /**
+     * Field type.
+     *
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * Field wrapper.
+     *
+     * @var array
+     */
+    protected $wrapper = [];
+
+    /**
+     * Registered.
+     *
+     * @var string
+     */
+    protected $registered;
+
+    /**
+     * No key.
+     *
+     * @var boolean
+     */
+    protected $no_key;
+
+    /**
+     * Parent.
+     *
+     * @var mixed
+     */
+    protected $parent;
+
+    /**
+     * Fields var.
+     *
+     * @var mixed
+     */
+    protected $fields_var;
+
+    /**
      * Field required status.
      *
      * @var boolean
@@ -134,6 +176,13 @@ abstract class Field {
      * @var string
      */
     protected $redipress_field_type = 'Text';
+
+    /**
+     * Codifier unique ID.
+     *
+     * @var string
+     */
+    protected $codifier_unique_id;
 
     /**
      * Store registered field keys to warn if there are duplicates.
@@ -805,7 +854,7 @@ abstract class Field {
 
                 if ( is_string( $redipress_value ) || is_array( $redipress_value ) || is_int( $redipress_value ) ) {
                     if ( strpos( $post_id, 'block_' ) !== false &&
-                        ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) // phpcs:ignore
+                        ! ( $post_id = \Geniem\RediPress\Index\PostIndex::indexing() ) // phpcs:ignore
                     ) {
                         $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
 
@@ -829,7 +878,7 @@ abstract class Field {
      * @param string $field_name Optional field name to RediSearch index. Defaults to field name.
      * @param float  $weight     Optional weight for the search field.
      * @param string $method     The method to use with multiple values. Defaults to "use_last".
-     *                           Possibilites: use_last, concat, concat_with_spaces, sum, custom (needs filter).
+     *                           Possibilities: use_last, concat, concat_with_spaces, sum, custom (needs filter).
      * @return self
      */
     public function redipress_add_queryable(
@@ -841,10 +890,10 @@ abstract class Field {
             return $this;
         }
 
-        $this->redipress_add_queryable            = true;
-        $this->redipress_add_queryable_field_name = $field_name;
-        $this->redipress_add_queryable_weight     = $weight;
-        $this->redipress_add_queryable_method     = $method;
+        $this->redipress_add_queryable              = true;
+        $this->redipress_add_queryable_field_name   = $field_name;
+        $this->redipress_add_queryable_field_weight = $weight;
+        $this->redipress_add_queryable_method       = $method;
 
         add_action( 'codifier/export/key=' . $this->key, \Closure::fromCallable( [ $this, 'redipress_add_queryable_internal' ] ) );
 
@@ -855,8 +904,6 @@ abstract class Field {
      * An internal function to be run with the add queryable functionality.
      */
     private function redipress_add_queryable_internal() {
-        $field_name = $this->redipress_add_queryable_field_name;
-        $weight     = $this->redipress_add_queryable_weight;
         $method     = $this->redipress_add_queryable_method;
 
         if ( ! $method ) {
@@ -924,7 +971,7 @@ abstract class Field {
                     $doc_id = \Geniem\RediPress\Index\PostIndex::get_document_id( get_post( $post_id ) );
                 }
                 elseif ( strpos( $post_id, 'block_' ) !== false ) {
-                    if ( ! ( $post_id = \Geniem\RediPress\Index\Index::indexing() ) ) {
+                    if ( ! ( $post_id = \Geniem\RediPress\Index\PostIndex::indexing() ) ) {
                         $document_uri = filter_input( INPUT_SERVER, 'DOCUMENT_URI', \FILTER_SANITIZE_STRING );
 
                         $post_id = basename( $document_uri );
@@ -973,7 +1020,7 @@ abstract class Field {
                 ];
 
                 if ( $this->redipress_field_type === 'Text' ) {
-                    $field_args['weight'] = $this->redipress_add_queryable_weight;
+                    $field_args['weight'] = $this->redipress_add_queryable_field_weight;
                 }
 
                 if ( class_exists( $type ) ) {

@@ -5,6 +5,7 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Bidirectional;
 use Geniem\ACF\Field\Common\Disabled;
 
 /**
@@ -12,7 +13,7 @@ use Geniem\ACF\Field\Common\Disabled;
  */
 class Taxonomy extends \Geniem\ACF\Field {
 
-    use Disabled;
+    use Bidirectional, Disabled;
 
     /**
      * Field type
@@ -62,6 +63,13 @@ class Taxonomy extends \Geniem\ACF\Field {
      * @var integer
      */
     protected $add_term;
+
+    /**
+     * Return format.
+     *
+     * @var string
+     */
+    protected $return_format;
 
     /**
      * Set taxonomy

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.3]
+
+### Fixed
+- Fix MultisiteTaxonomy and Multitaxonomy compatibility with ACF v6.3.10.
+
 ## [1.41.2]
 
 ### Fixed

@@ -46,9 +46,9 @@ class Number extends \Geniem\ACF\Field {
      * @return self
      */
     public function set_step( $step ) {
-        // Validate that the step is numeric
-        if ( ! is_numeric( $step ) ) {
-            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Number: set_step() only accepts numeric values' );
+        // Validate that the step is an integer or a float
+        if ( ! is_int( $step ) && ! is_float( $step ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Number: set_step() only accepts integers or floats' );
         }
 
         // Ensure the step is positive

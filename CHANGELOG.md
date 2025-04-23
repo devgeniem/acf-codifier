@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.4]
+
+### Fixed
+- Fix block registration incompatibility with WP 6.8 version.
+
 ## [1.41.3]
 
 ### Fixed

@@ -121,6 +121,13 @@ class Group implements GroupableInterface {
     protected $show_in_rest;
 
     /**
+     * Show polylang field instructions.
+     *
+     * @var boolean
+     */
+    protected $pll_display_field_instructions;
+
+    /**
      * Is field group registered yet
      *
      * @var boolean
@@ -141,6 +148,8 @@ class Group implements GroupableInterface {
         $this->active = 1;
 
         $this->show_in_rest = 0;
+
+        $this->pll_display_field_instructions = 0;
     }
 
     /**
@@ -516,6 +525,28 @@ class Group implements GroupableInterface {
      */
     public function hide_in_rest() {
         $this->show_in_rest = 0;
+
+        return $this;
+    }
+
+    /**
+     * Show polylang field instructions.
+     *
+     * @return self
+     */
+    public function show_pll_display_field_instructions() {
+        $this->pll_display_field_instructions = 1;
+
+        return $this;
+    }
+
+    /**
+     * Hide polylang field instructions.
+     *
+     * @return self
+     */
+    public function hide_pll_display_field_instructions() {
+        $this->pll_display_field_instructions = 0;
 
         return $this;
     }

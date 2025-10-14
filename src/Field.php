@@ -105,7 +105,7 @@ abstract class Field {
      *
      * @var string
      */
-    protected $translations = 'translate';
+    protected $translations = 'translate_once';
 
     /**
      * Filters and actions to be hooked.

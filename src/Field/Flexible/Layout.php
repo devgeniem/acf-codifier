@@ -26,6 +26,13 @@ class Layout implements GroupableInterface {
     use MinMax;
 
     /**
+     * Field type
+     *
+     * @var string
+     */
+    protected $active;
+
+    /**
      * Layout label
      *
      * @var string

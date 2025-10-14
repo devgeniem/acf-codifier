@@ -199,6 +199,41 @@ abstract class Field {
     static public $indexing = false;
 
     /**
+     * Field type.
+     *
+     * @var string
+     */
+    protected $type = '';
+
+    /**
+     * Field wrapper.
+     *
+     * @var array
+     */
+    protected $wrapper = [];
+
+    /**
+     * Registered field as a string for debugging purposes.
+     *
+     * @var string
+     */
+    protected $registered = '';
+
+    /**
+     * Possible parent field object.
+     *
+     * @var mixed
+     */
+    protected $parent;
+
+    /**
+     * Fields variable name.
+     *
+     * @var string
+     */
+    protected $fields_var = '';
+
+    /**
      * Constructor.
      *
      * @param string      $label          Label for the field.

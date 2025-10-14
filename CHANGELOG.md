@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.5]
+
+### Fixed
+- Add support for Polylang version 3.7 field translation settings.
+
 ## [1.41.4]
 
 ### Fixed

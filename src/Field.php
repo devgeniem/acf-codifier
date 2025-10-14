@@ -101,6 +101,13 @@ abstract class Field {
     protected $default_value;
 
     /**
+     * Translation option for the field.
+     *
+     * @var string
+     */
+    protected $translations = 'translate_once';
+
+    /**
      * Filters and actions to be hooked.
      *
      * @var array
@@ -725,6 +732,27 @@ abstract class Field {
      */
     public function get_default_value() {
         return $this->default_value;
+    }
+
+    /**
+     * Set translation for the field.
+     *
+     * @param string $translations Type of translation.
+     * @return self
+     */
+    public function set_translations( string $translations ) {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * Get the translations value of the field.
+     *
+     * @return string
+     */
+    public function get_translations() {
+        return $this->translations;
     }
 
     /**

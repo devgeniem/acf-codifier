@@ -105,7 +105,7 @@ abstract class Field {
      *
      * @var string
      */
-    protected $translations;
+    protected $translations = 'translate';
 
     /**
      * Filters and actions to be hooked.
@@ -735,19 +735,19 @@ abstract class Field {
     }
 
     /**
-     * Set translation option for the field.
+     * Set translation for the field.
      *
      * @param string $translations Type of translation.
      * @return self
      */
-    public function set_translations( $translations ) {
+    public function set_translations( string $translations ) {
         $this->translations = $translations;
 
         return $this;
     }
 
     /**
-     * Get translation option of the field.
+     * Get the default value of the field.
      *
      * @return mixed
      */

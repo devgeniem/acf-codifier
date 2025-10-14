@@ -747,9 +747,9 @@ abstract class Field {
     }
 
     /**
-     * Get the default value of the field.
+     * Get the translations value of the field.
      *
-     * @return mixed
+     * @return string
      */
     public function get_translations() {
         return $this->translations;

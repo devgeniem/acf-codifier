@@ -13,6 +13,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Released]
 
+## [1.41.4]
+
+### Fixed
+- Fix block registration incompatibility with WP 6.8 version.
+
+## [1.41.3]
+
+### Fixed
+- Fix MultisiteTaxonomy and Multitaxonomy compatibility with ACF v6.3.10.
+
+## [1.41.2]
+
+### Fixed
+- Fix MultisiteTaxonomy and Multitaxonomy compatibility with ACF v6.3.1.
+
+## [1.41.1]
+
+### Fixed
+- Fix MultisitePostObject compatibility with ACF v6.3
+
+## [1.41.0]
+
+### Added
+- Support for ACF native bidirectional relationships. See https://www.advancedcustomfields.com/resources/bidirectional-relationships/.
+
 ## [1.40.0]
 
 ### Added

@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Bidirectional;
+
 /**
  * Class User
  */
 class User extends \Geniem\ACF\Field {
+
+    use Bidirectional;
+
     /**
      * Field type
      *

@@ -5,10 +5,15 @@
 
 namespace Geniem\ACF\Field;
 
+use Geniem\ACF\Field\Common\Bidirectional;
+
 /**
  * Class PostObject
  */
 class PostObject extends \Geniem\ACF\Field {
+
+    use Bidirectional;
+
     /**
      * Field type
      *

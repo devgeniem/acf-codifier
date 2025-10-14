@@ -576,11 +576,16 @@ class Block implements GroupableInterface {
             'align'           => $this->get_align(),
             'supports'        => $this->get_supports(),
             'styles'          => $this->get_styles(),
-            'parent'          => $this->get_parent(),
         ];
 
-        if ( ! empty( $this->get_post_types() ) ) {
-            $args['post_types'] = $this->get_post_types();
+        $parent = $this->get_parent();
+        if ( ! empty( $parent ) ) {
+            $args['parent'] = $parent;
+        }
+
+        $post_types = $this->get_post_types();
+        if ( ! empty( $post_types ) ) {
+            $args['post_types'] = $post_types;
         }
 
         // Register the ACF Block.

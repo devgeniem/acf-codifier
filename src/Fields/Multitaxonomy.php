@@ -133,12 +133,13 @@ add_action( 'acf/init', function() {
         /**
          *  This function returns the value label for the input element on the admin side.
          *
-         *  @param   \WP_Term $term    The term object.
-         *  @param   array    $field   The field settings.
-         *  @param   int      $post_id The post_id to which this value is saved to
+         *  @param   \WP_Term $term     The term object.
+         *  @param   array    $field    The field settings.
+         *  @param   int      $post_id  The post_id to which this value is saved to
+         *  @param   boolean  $unescape Should we return an unescaped post title.
          *  @return  string
          */
-        function get_term_title( $term, $field, $post_id = 0 ) {
+        function get_term_title( $term, $field, $post_id = 0, $unescape = false ) {
 
             // get post_id
             if ( ! $post_id ) {
@@ -159,6 +160,11 @@ add_action( 'acf/init', function() {
 
             // title
             $title .= $term->name;
+
+            // unescape for select2 output which handles the escaping.
+            if ( $unescape ) {
+                $title = html_entity_decode( $title );
+            }
 
             // filters
             $title = apply_filters( 'acf/fields/taxonomy/result', $title, $term, $field, $post_id );
@@ -375,6 +381,8 @@ add_action( 'acf/init', function() {
             // force value to array
             $field['value'] = acf_get_array( $field['value'] );
 
+            $nonce = wp_create_nonce( 'acf_field_' . $this->name . '_' . $field['key'] );
+
             // vars
             $div = [
                 'class'           => 'acf-multitaxonomy-field',
@@ -382,6 +390,7 @@ add_action( 'acf/init', function() {
                 'data-ftype'      => $field['field_type'],
                 'data-taxonomy'   => $field['taxonomy'],
                 'data-allow_null' => $field['allow_null'],
+                'data-nonce'      => $nonce,
             ];
 
             // get taxonomy
@@ -400,13 +409,13 @@ add_action( 'acf/init', function() {
 
                     $field['multiple'] = 0;
 
-                    $this->render_field_select( $field );
+                    $this->render_field_select( $field, $nonce );
 
                 } elseif ( $field['field_type'] == 'multi_select' ) {
 
                     $field['multiple'] = 1;
 
-                    $this->render_field_select( $field );
+                    $this->render_field_select( $field, $nonce );
 
                 } elseif ( $field['field_type'] == 'radio' ) {
 
@@ -424,17 +433,19 @@ add_action( 'acf/init', function() {
         }
 
         /**
-         * Render field select
+         * Render field select.
          *
          * @param array $field The field object.
+         * @param string $nonce The nonce.
          * @return void
          */
-        public function render_field_select( $field ) {
+        public function render_field_select( $field, $nonce ) {
 
             // Change Field into a select
             $field['type']     = 'select';
             $field['ui']       = 1;
             $field['ajax']     = 1;
+            $field['nonce']    = $nonce;
             $field['choices']  = [];
             $field['disabled'] = $field['disable'] ?? false;
 
@@ -508,7 +519,7 @@ add_action( 'acf/init', function() {
 
             foreach ( $field['taxonomy'] as $taxonomy ) {
                 // taxonomy
-		        $taxonomy_obj = get_taxonomy( $taxonomy );
+                $taxonomy_obj = get_taxonomy( $taxonomy );
 
                 // vars
                 $args = [

@@ -118,7 +118,7 @@ ACF's conditional logic groups work very similarly to groups' location rules. Fi
 
 ```php
 $conditional_logic = new ConditionalLogicGroup();
-$conditional_logic->add_rule( 'another_field', '==', true );
+$conditional_logic->add_rule( 'another_field', '==', '1' ); // For True/False fields, the value is a string, not boolean.
 
 $text->add_conditional_logic( $conditional_logic );
 ```

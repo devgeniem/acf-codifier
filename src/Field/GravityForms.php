@@ -18,7 +18,7 @@ class GravityForms extends \Geniem\ACF\Field\Select {
      * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         parent::__construct( $label, $key, $name );
 
         if ( ! class_exists( '\GFFormsModel' ) ) {
@@ -42,14 +42,17 @@ class GravityForms extends \Geniem\ACF\Field\Select {
 
         $table_name = \GFFormsModel::get_form_table_name();
 
-        $sql   = "SELECT id, title from $table_name where is_active = %d and is_trash = %d";
+        $sql   = "SELECT id, title from $table_name where is_active = %d and is_trash = %d ORDER BY title ASC";
         $query = $wpdb->prepare( $sql, 1, 0 ); // phpcs:ignore
 
         $gf_form_results = $wpdb->get_results( $query ); // phpcs:ignore
 
         if ( ! empty( $gf_form_results ) ) {
             foreach ( $gf_form_results as $gf_form ) {
-                $this->add_choice( $gf_form->title, $gf_form->id );
+
+                $display_title = $gf_form->title . ' (' . $gf_form->id . ')';
+
+                $this->add_choice( $display_title, $gf_form->id );
             }
         }
     }

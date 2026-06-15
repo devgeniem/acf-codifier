@@ -52,6 +52,36 @@ add_action(
             }
 
             /**
+             * Override parent ajax_query to use correct field type for nonce verification.
+             *
+             * ACF 6.8.4 added field-type validation to AJAX nonce checks.
+             * The parent passes 'post_object' as expected type, but this field
+             * registers as 'multisite_post_object', causing verification to fail.
+             *
+             * @return void
+             */
+            public function ajax_query() {
+                $nonce             = \acf_request_arg( 'nonce', '' );
+                $key               = \acf_request_arg( 'field_key', '' );
+                $conditional_logic = (bool) \acf_request_arg( 'conditional_logic', false );
+
+                if ( $conditional_logic ) {
+                    if ( ! \acf_current_user_can_admin() ) {
+                        die();
+                    }
+
+                    $nonce = '';
+                    $key   = '';
+                }
+
+                if ( ! \acf_verify_ajax( $nonce, $key, ! $conditional_logic, 'multisite_post_object' ) ) {
+                    die();
+                }
+
+                \acf_send_ajax_results( $this->get_ajax_query( $_POST ) );
+            }
+
+            /**
              * Switch to the selected blog when using
              * the parent method for fetching the AJAX response.
              *

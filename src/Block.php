@@ -124,6 +124,16 @@ class Block implements GroupableInterface {
     protected $parent = null;
 
     /**
+     * An array of example data for the block.
+     *
+     * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/#example-optional
+     * @see https://www.advancedcustomfields.com/resources/acf_register_block_type/
+     *
+     * @var array
+     */
+    protected $example = [];
+
+    /**
      * The renderer for this block.
      *
      * @var Renderer
@@ -466,6 +476,16 @@ class Block implements GroupableInterface {
      */
     public function set_parent( ?array $parent ) : self {
         $this->parent = $parent;
+    }
+
+    /**
+     * Setter for the block example data.
+     *
+     * @param array $example Array of example data.
+     * @return self
+     */
+    public function set_example( array $example ) : self {
+        $this->example = $example;
 
         return $this;
     }
@@ -477,6 +497,15 @@ class Block implements GroupableInterface {
      */
     public function get_parent() : ?array {
         return $this->parent;
+    }
+
+    /*
+     * Getter for the example data of the block.
+     *
+     * @return array
+     */
+    public function get_example() : array {
+        return $this->example;
     }
 
     /**
@@ -586,6 +615,10 @@ class Block implements GroupableInterface {
         $post_types = $this->get_post_types();
         if ( ! empty( $post_types ) ) {
             $args['post_types'] = $post_types;
+        }
+
+        if ( ! empty( $this->get_example() ) ) {
+            $args['example'] = $this->get_example();
         }
 
         // Register the ACF Block.

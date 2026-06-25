@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.7]
+
+### Fixed
+- Fix MultisitePostObject AJAX query compatibility with ACF Pro 6.8.4. ACF added field-type nonce validation that rejects requests where the field type doesn't match the expected type. The parent `ajax_query()` expected `'post_object'` but the field registers as `'multisite_post_object'`, causing the nonce check to fail silently.
+
 ## [1.41.6]
 
 ### Added

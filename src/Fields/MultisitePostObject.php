@@ -13,6 +13,8 @@ add_action(
          */
         class MultisitePostObject extends \acf_field_post_object {
 
+            use AcfAjaxQueryTrait;
+
             /**
              * Initialize the field.
              *
@@ -49,36 +51,6 @@ add_action(
                 \wp_enqueue_script(
                     'acf_multisite_post_object', $src . 'assets/scripts/multisite-post-object.js', [ 'acf-input' ]
                 );
-            }
-
-            /**
-             * Override parent ajax_query to use correct field type for nonce verification.
-             *
-             * ACF 6.8.4 added field-type validation to AJAX nonce checks.
-             * The parent passes 'post_object' as expected type, but this field
-             * registers as 'multisite_post_object', causing verification to fail.
-             *
-             * @return void
-             */
-            public function ajax_query() {
-                $nonce             = \acf_request_arg( 'nonce', '' );
-                $key               = \acf_request_arg( 'field_key', '' );
-                $conditional_logic = (bool) \acf_request_arg( 'conditional_logic', false );
-
-                if ( $conditional_logic ) {
-                    if ( ! \acf_current_user_can_admin() ) {
-                        die();
-                    }
-
-                    $nonce = '';
-                    $key   = '';
-                }
-
-                if ( ! \acf_verify_ajax( $nonce, $key, ! $conditional_logic, 'multisite_post_object' ) ) {
-                    die();
-                }
-
-                \acf_send_ajax_results( $this->get_ajax_query( $_POST ) );
             }
 
             /**

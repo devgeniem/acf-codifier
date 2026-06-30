@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.41.8]
+
+### Fixed
+- Fix AJAX query compatibility with ACF Pro 6.8.4 for MultisiteRelationship, MultisiteTaxonomy, and Multitaxonomy fields. ACF added field-type nonce validation that rejected requests where the custom field type didn't match the parent's expected type. Shared fix extracted into `AcfAjaxQueryTrait`.
+
 ## [1.41.7]
 
 ### Fixed

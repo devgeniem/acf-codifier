@@ -57,8 +57,8 @@ add_action( 'acf/init', function() {
             \wp_enqueue_script( 'acf_multisite_relationship', $src . 'assets/scripts/multisite-relationship.js', [ 'acf-input' ] );
         }
 
-            /**
-             * Get ajax query
+        /**
+         * Get ajax query
          *
          * @param array $options The options array.
          * @return mixed

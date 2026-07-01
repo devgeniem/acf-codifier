@@ -11,6 +11,8 @@ add_action( 'acf/init', function () {
      */
     class ACF_Field_Multisite_Taxonomy extends Multitaxonomy {
 
+        use AcfAjaxQueryTrait;
+
         /**
          * Initialize the field
          *

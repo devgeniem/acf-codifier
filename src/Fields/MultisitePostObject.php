@@ -13,6 +13,8 @@ add_action(
          */
         class MultisitePostObject extends \acf_field_post_object {
 
+            use AcfAjaxQueryTrait;
+
             /**
              * Initialize the field.
              *

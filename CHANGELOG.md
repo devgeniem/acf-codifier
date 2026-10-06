@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Support for registering example data for ACF Blocks.
 
+## [1.41.8]
+
+### Fixed
+- Fix AJAX query compatibility with ACF Pro 6.8.4 for MultisiteRelationship, MultisiteTaxonomy, and Multitaxonomy fields. ACF added field-type nonce validation that rejected requests where the custom field type didn't match the parent's expected type. Shared fix extracted into `AcfAjaxQueryTrait`.
+
+## [1.41.7]
+
+### Fixed
+- Fix MultisitePostObject AJAX query compatibility with ACF Pro 6.8.4. ACF added field-type nonce validation that rejects requests where the field type doesn't match the expected type. The parent `ajax_query()` expected `'post_object'` but the field registers as `'multisite_post_object'`, causing the nonce check to fail silently.
+
 ## [1.41.6]
 
 ### Added

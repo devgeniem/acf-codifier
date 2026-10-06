@@ -12,6 +12,8 @@ add_action( 'acf/init', function() {
      */
     class ACF_Field_Multisite_Relationship extends \acf_field_relationship {
 
+        use AcfAjaxQueryTrait;
+
         /**
          * Initialize the field
          *

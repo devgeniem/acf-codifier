@@ -476,6 +476,8 @@ class Block implements GroupableInterface {
      */
     public function set_parent( ?array $parent ) : self {
         $this->parent = $parent;
+
+        return $this;
     }
 
     /**

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+## [1.42.0]
+
+### Added
+- Support for registering example data for ACF Blocks.
+
 ## [1.41.8]
 
 ### Fixed

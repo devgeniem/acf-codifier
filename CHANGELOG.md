@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]
 
+### Fixed
+- Fix PHP 8.4 deprecations by explicitly marking implicitly nullable parameters as nullable.
+
 ## [1.42.0]
 
 ### Added

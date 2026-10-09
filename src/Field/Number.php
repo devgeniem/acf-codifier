@@ -42,10 +42,20 @@ class Number extends \Geniem\ACF\Field {
     /**
      * Set step size
      *
-     * @param integer $step Step size.
+     * @param integer|float $step Step size.
      * @return self
      */
-    public function set_step( int $step ) {
+    public function set_step( $step ) {
+        // Validate that the step is an integer or a float
+        if ( ! is_int( $step ) && ! is_float( $step ) ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Number: set_step() only accepts integers or floats' );
+        }
+
+        // Ensure the step is positive
+        if ( $step <= 0 ) {
+            throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\Number: set_step() only accepts positive values' );
+        }
+
         $this->step = $step;
 
         return $this;
@@ -54,7 +64,7 @@ class Number extends \Geniem\ACF\Field {
     /**
      * Get step size
      *
-     * @return integer
+     * @return integer|float
      */
     public function get_step() {
         return $this->step;

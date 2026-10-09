@@ -5,10 +5,18 @@
 
 namespace Geniem\ACF;
 
+use Geniem\ACF\Field\Common\Translatable;
+
 /**
  * Class Field
  */
 abstract class Field {
+
+    /**
+     * Import the translatable functionalities
+     */
+    use Translatable;
+
     /**
      * Field label.
      *

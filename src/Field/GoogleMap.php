@@ -60,7 +60,7 @@ class GoogleMap extends \Geniem\ACF\Field {
      * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         parent::__construct( $label, $key, $name );
 
         $this->redipress_queryable_filter = function( $value ) {

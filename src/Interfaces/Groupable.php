@@ -26,7 +26,7 @@ interface Groupable {
     public function get_fields() : array;
     public function get_field( string $name ) : ?Field;
     public function remove_fields() : \Geniem\ACF\Interfaces\Groupable;
-    public function clone( string $key, string $name = null );
+    public function clone( string $key, ?string $name = null );
     public function fields_var() : string;
     // phpcs:enable
 }

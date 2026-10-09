@@ -213,7 +213,7 @@ abstract class Field {
      * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if mandatory property is not set.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         // Force the inheriting class to have a property type.
         if ( ! isset( $this->type ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field: the extending class must have property "type"' );
@@ -299,7 +299,7 @@ abstract class Field {
      * @param string $name Field name (optional).
      * @return Geniem\ACF\Field
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, ?string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );
@@ -816,7 +816,7 @@ abstract class Field {
      * @param callable $callback Possible callback to run the value through before inserting into index.
      * @return self
      */
-    public function redipress_include_search( callable $callback = null ) {
+    public function redipress_include_search( ?callable $callback = null ) {
         $this->redipress_include_search          = true;
         $this->redipress_include_search_callback = $callback;
 
@@ -910,9 +910,9 @@ abstract class Field {
      * @return self
      */
     public function redipress_add_queryable(
-        string $field_name = null,
+        ?string $field_name = null,
         float $weight = 1.0,
-        string $method = null
+        ?string $method = null
     ) {
         if ( ! \method_exists( '\\Geniem\\RediPress\\Index\\Index', 'store' ) ) {
             return $this;

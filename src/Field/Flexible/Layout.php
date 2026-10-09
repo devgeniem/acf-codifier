@@ -102,7 +102,7 @@ class Layout implements GroupableInterface {
      * @param string|null $key   Layout key.
      * @param string|null $name  Layout name.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         $this->label = $label;
 
         $this->key = $key;
@@ -128,7 +128,7 @@ class Layout implements GroupableInterface {
      * @param  string|null $name New field name.
      * @return Field
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, ?string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

@@ -26,7 +26,7 @@ abstract class GroupableField extends Field implements GroupableInterface {
      * @param string|null $key            Key for the field.
      * @param string|null $name           Name for the field.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         // Call the original constructor
         parent::__construct( $label, $key, $name );
 
@@ -45,7 +45,7 @@ abstract class GroupableField extends Field implements GroupableInterface {
      * @param string $name Field name (optional).
      * @return Field
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, ?string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

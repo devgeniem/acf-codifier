@@ -44,7 +44,7 @@ class PseudoGroup extends GroupableField implements PseudoGroupableField {
      * @param string $name Field name (optional).
      * @return Geniem\ACF\Field
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, ?string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

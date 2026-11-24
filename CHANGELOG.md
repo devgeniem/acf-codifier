@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Fix PHP 8.4 deprecations by explicitly marking implicitly nullable parameters as nullable.
+- Fix PHP 8.5 deprecation by replacing the non-canonical `(boolean)` cast with `(bool)`.
 
 ## [1.42.0]
 

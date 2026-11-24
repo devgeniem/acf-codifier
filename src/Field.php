@@ -585,7 +585,7 @@ abstract class Field {
      * @return boolean
      */
     public function get_required() {
-        return (boolean) $this->required;
+        return (bool) $this->required;
     }
 
     /**

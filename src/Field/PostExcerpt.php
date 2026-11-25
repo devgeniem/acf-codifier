@@ -17,7 +17,7 @@ class PostExcerpt extends \Geniem\ACF\Field\Textarea {
      * @param string|null $key            Key for the field.
      * @param string|null $name           Name for the field.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         // Call the real constructor
         parent::__construct( $label, $key, $name );
 

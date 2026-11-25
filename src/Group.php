@@ -140,7 +140,7 @@ class Group implements GroupableInterface {
      * @param string $title Field group title.
      * @param string $key Field group key or null.
      */
-    public function __construct( string $title, string $key = null ) {
+    public function __construct( string $title, ?string $key = null ) {
         $this->title = $title;
 
         $this->key = $key;
@@ -168,7 +168,7 @@ class Group implements GroupableInterface {
      * @param string $name Field group name (optional).
      * @return GroupableInterface
      */
-    public function clone( string $key, string $name = null ) {
+    public function clone( string $key, ?string $name = null ) {
         $clone = clone $this;
 
         $clone->set_key( $key );

@@ -62,7 +62,7 @@ class MediumEditor extends \Geniem\ACF\Field {
      * @param string|null $name           Name for the field.
      * @throws \Geniem\ACF\Exception Throw error if Medium Editor field is not installed or activated.
      */
-    public function __construct( string $label, string $key = null, string $name = null ) {
+    public function __construct( string $label, ?string $key = null, ?string $name = null ) {
         // Check if the plugin exists and is activated
         if ( ! class_exists( 'acf_plugin_medium_editor' ) ) {
             throw new \Geniem\ACF\Exception( 'Geniem\ACF\Field\MediumEditor: Medium Editor field is not installed or activated. Install it from https://github.com/devgeniem/acf-medium-editor' );
